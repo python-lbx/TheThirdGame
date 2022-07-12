@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Character",menuName =("Data/Character"))]
+[CreateAssetMenu(fileName = "Character",menuName = "")]
 public class CharacterData : ScriptableObject
 {
     public enum TypeofCharactor{ememy,player};

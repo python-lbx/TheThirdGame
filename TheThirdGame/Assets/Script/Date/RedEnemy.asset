@@ -13,18 +13,18 @@ MonoBehaviour:
   m_Name: RedEnemy
   m_EditorClassIdentifier: 
   typeofCharactor: 0
-  CurrentHP: 100
-  MaxHP: 100
+  CurrentHP: 40
+  MaxHP: 40
   AttackPower: 8
-  Defense: 2
+  Defense: 0
   Speed: 4
   D_MaxHP: 40
   D_AttackPower: 8
-  D_Defense: 2
+  D_Defense: 0
   D_Speed: 4
   D_KillPoint: 50
   D_MaxExp: 0
-  KillPoint: 30
+  KillPoint: 50
   BaseExp: 0
   MaxExp: 0
   CurrentLevel: 1

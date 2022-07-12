@@ -6,7 +6,11 @@ public class CharacterStats : MonoBehaviour
 {
     public CharacterData tempDate;
     public CharacterData Character;
+    public Item item;
     CharacterStats isme;
+
+    public GameObject sword;
+
 
     private void Awake() 
     {
@@ -24,13 +28,12 @@ public class CharacterStats : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
     }
     public void TakeDamage(CharacterStats attacker, CharacterStats defener)
     {
@@ -40,6 +43,10 @@ public class CharacterStats : MonoBehaviour
         if(isme.Character.CurrentHP <=0)
         {
             attacker.Character.UpdateExp(isme.Character.KillPoint);
+            if(Random.value < item.DropRate)
+            {
+                Instantiate(sword,transform.position,Quaternion.identity);
+            }
             Destroy(isme.gameObject);
         }
     }
