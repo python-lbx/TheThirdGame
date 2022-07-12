@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8f42404f0305d498f7adc6027c1e99, type: 3}
+  m_Name: Player
+  m_EditorClassIdentifier: 
+  typeofCharactor: 1
+  CurrentHP: 100
+  MaxHP: 100
+  AttackPower: 10
+  Defense: 5
+  Speed: 5
+  D_MaxHP: 100
+  D_AttackPower: 10
+  D_Defense: 5
+  D_Speed: 5
+  D_KillPoint: 0
+  D_MaxExp: 100
+  KillPoint: 0
+  BaseExp: 0
+  MaxExp: 100
+  CurrentLevel: 1
+  MaxLevel: 30
+  LevelBuff: 0.1

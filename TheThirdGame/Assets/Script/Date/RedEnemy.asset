@@ -9,17 +9,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64d61cccb874459478f8d51d0e50415f, type: 3}
-  m_Name: PlayerDate
+  m_Script: {fileID: 11500000, guid: 8a8f42404f0305d498f7adc6027c1e99, type: 3}
+  m_Name: RedEnemy
   m_EditorClassIdentifier: 
+  typeofCharactor: 0
   CurrentHP: 100
   MaxHP: 100
-  AttackPower: 10
-  DefensePower: 5
-  speed: 5
-  Killpoint: 0
+  AttackPower: 8
+  Defense: 2
+  Speed: 4
+  D_MaxHP: 40
+  D_AttackPower: 8
+  D_Defense: 2
+  D_Speed: 4
+  D_KillPoint: 50
+  D_MaxExp: 0
+  KillPoint: 30
+  BaseExp: 0
+  MaxExp: 0
   CurrentLevel: 1
-  MaxLevel: 30
-  BaseExp: 50
-  CurrentExp: 0
-  LevelBuff: 0.1
+  MaxLevel: 0
+  LevelBuff: 0
