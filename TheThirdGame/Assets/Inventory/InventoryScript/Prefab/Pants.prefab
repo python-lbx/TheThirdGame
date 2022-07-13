@@ -126,7 +126,7 @@ MonoBehaviour:
   thisItem: {fileID: 0}
   tempDate: {fileID: 11400000, guid: cf36200602a2d3b4893ae8a0857614c2, type: 2}
   playerInventory: {fileID: 11400000, guid: 96247d6dc7aa579479bc28c8874ba08e, type: 2}
-  character: {fileID: 11400000, guid: ecc22032c9fd08847a7ef308a4f40210, type: 2}
+  Player: {fileID: 0}
 --- !u!50 &7021528349733046457
 Rigidbody2D:
   serializedVersion: 4

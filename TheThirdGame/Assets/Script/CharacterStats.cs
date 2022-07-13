@@ -6,10 +6,11 @@ public class CharacterStats : MonoBehaviour
 {
     public CharacterData tempDate;
     public CharacterData Character;
+    public LootArray loot;
     public Item item;
     CharacterStats isme;
 
-    public GameObject sword;
+   // public GameObject sword;
 
 
     private void Awake() 
@@ -28,7 +29,6 @@ public class CharacterStats : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -43,11 +43,31 @@ public class CharacterStats : MonoBehaviour
         if(isme.Character.CurrentHP <=0)
         {
             attacker.Character.UpdateExp(isme.Character.KillPoint);
-            if(Random.value < item.DropRate)
+            /*if(Random.value < item.DropRate)
             {
-                Instantiate(sword,transform.position,Quaternion.identity);
-            }
+                //Instantiate(sword,transform.position,Quaternion.identity);
+            }*/
+
+            lootRate();
+
             Destroy(isme.gameObject);
+        }
+    }
+
+    void lootRate()
+    {
+        float num = UnityEngine.Random.value;
+        for(var i = 0 ; i < loot.lootarray.Length ; i++)
+        {
+            //print(loot.lootarray[i].GetComponent<ItemOnWorld>().tempDate.DropRate);
+
+            if(num < loot.lootarray[i].GetComponent<ItemOnWorld>().tempDate.DropRate)
+            {
+                print("num" + num);
+                print("rate" + loot.lootarray[i].GetComponent<ItemOnWorld>().tempDate.DropRate + loot.lootarray[i].GetComponent<ItemOnWorld>().tempDate.ItemName);
+                Instantiate(loot.lootarray[i],transform.position,Quaternion.identity);
+                break;
+            }
         }
     }
     

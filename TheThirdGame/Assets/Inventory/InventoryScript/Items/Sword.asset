@@ -18,7 +18,7 @@ MonoBehaviour:
   ItemInfo: "\u4E00\u628A\u528D\n"
   equipable: 1
   HP: 0
-  ATK: 5
-  DFS: 1
-  Speed: 2
-  DropRate: 0.4
+  ATK: 2
+  DFS: 0
+  Speed: 1
+  DropRate: 0.3

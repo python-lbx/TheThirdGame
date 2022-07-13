@@ -9,17 +9,22 @@ public class ItemOnWorld : MonoBehaviour
     public InventoryList playerInventory;
     public CharacterStats Player;
 
+    //public float droprate;
+
     
 
     bool here;
 
-    private void Awake() 
+    private void OnEnable() 
     {
         if(tempDate != null)
         {
             thisItem = Instantiate(tempDate);
         }
-
+    }
+    private void Awake() 
+    {
+        //droprate = thisItem.DropRate;
         Player = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>();
         
     }
