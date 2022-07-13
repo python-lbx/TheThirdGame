@@ -15,11 +15,11 @@ MonoBehaviour:
   typeofCharactor: 1
   CurrentHP: 100
   MaxHP: 100
-  AttackPower: 10
+  AttackPower: 100
   Defense: 5
   Speed: 5
   D_MaxHP: 100
-  D_AttackPower: 10
+  D_AttackPower: 100
   D_Defense: 5
   D_Speed: 5
   D_KillPoint: 0

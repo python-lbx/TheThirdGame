@@ -21,4 +21,4 @@ MonoBehaviour:
   ATK: 0
   DFS: 2
   Speed: -1
-  DropRate: 0.55
+  DropRate: 0.3
