@@ -19,8 +19,6 @@ public class PickUpAndCheckItemInfo : MonoBehaviour
     public CharacterStats Player;
     public InventoryList playerInventory;
 
-    public int hp;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -38,10 +36,11 @@ public class PickUpAndCheckItemInfo : MonoBehaviour
 
         if(_here != null)
         {
-            //print(_here.gameObject.name);
+            print(_here.gameObject.name);
             EquipInfo.SetActive(true); 
             _Equip = _here.gameObject.GetComponent<ItemOnWorld>();
             EquipInfo.transform.position = _Equip.point.transform.position;
+            //print(_Equip.thisItem.HP);
         }
         else
         {
@@ -53,7 +52,6 @@ public class PickUpAndCheckItemInfo : MonoBehaviour
         {
             _EquipName.text = _Equip.thisItem.ItemName;
             _EquipHP.text = _Equip.thisItem.HP.ToString();
-            hp = _Equip.thisItem.HP;
             _EquipATK.text = _Equip.thisItem.ATK.ToString();
             _EquipDEF.text = _Equip.thisItem.DEF.ToString();
             _EquipSpeed.text = _Equip.thisItem.Speed.ToString();
@@ -77,10 +75,16 @@ public class PickUpAndCheckItemInfo : MonoBehaviour
         {
             if(playerInventory.ItemList[i] == null)
             {
-                print(_Equip.thisItem);
+                //print(_Equip.thisItem);
+                //顯示物品在背包
                 playerInventory.ItemList[i] = _Equip.tempDate;
+                //現在要顯示數據
+                //記住尼個!!
+                playerInventory.hp[i] = _Equip.thisItem.HP;
+
                 break;
             }
+            continue;
         }
 
         InventoryManager.RefreshItem();

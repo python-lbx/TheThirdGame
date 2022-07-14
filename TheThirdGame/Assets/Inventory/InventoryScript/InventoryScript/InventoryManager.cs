@@ -10,11 +10,14 @@ public class InventoryManager : MonoBehaviour
     public GameObject slotGrid;
     public GameObject emptySlot;
     public Text itemInfo;
-    public List<GameObject> slots = new List<GameObject>();
+    
+    public List<GameObject> slots = new List<GameObject>(); //空格子
+    public GameObject[] objPrefab; //預置物
+    //public int[] HP;
+
 
     public int _isfull;
 
-    public GameObject[] objPrefab;
 
     public bool isfull;
 
@@ -80,16 +83,17 @@ public class InventoryManager : MonoBehaviour
             }
 
             Destroy(instance.slotGrid.transform.GetChild(i).gameObject);
-            instance.slots.Clear();
+            instance.slots.Clear(); //清空
         }
 
         for(int i = 0 ; i<instance.myBag.ItemList.Count ; i++)
         {
-            instance.slots.Add(Instantiate(instance.emptySlot));
+            instance.slots.Add(Instantiate(instance.emptySlot)); //建立空格子
             instance.slots[i].transform.SetParent(instance.slotGrid.transform);
             instance.slots[i].GetComponent<Slot>().slotID = i;
 
             instance.slots[i].GetComponent<Slot>().SetUpSlot(instance.myBag.ItemList[i]);
+            instance.slots[i].GetComponent<Slot>().setupData(instance.myBag.hp[i]);
         }
     }
 }

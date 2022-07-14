@@ -16,10 +16,10 @@ public class Slot : MonoBehaviour
     public int thisSpeed;
 
     public GameObject itemInSlot;
-    public PickUpAndCheckItemInfo  PACII;
 
-    private void Awake() {
-        PACII = FindObjectOfType<PickUpAndCheckItemInfo>();
+    private void Awake() 
+    {
+
     }
 
     public void ItemOnClicked()
@@ -39,8 +39,10 @@ public class Slot : MonoBehaviour
         slotImage.sprite = item.ItemImage;
         //slotNum.text = item.ItemHeld.ToString();
         slotInfo = item.ItemInfo;
+    }
 
-        thisHP = PACII.hp;
-
+    public void setupData(int hp)
+    {
+        thisHP = hp;
     }
 }

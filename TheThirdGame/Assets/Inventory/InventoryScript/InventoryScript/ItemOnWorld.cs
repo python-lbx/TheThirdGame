@@ -7,7 +7,7 @@ public class ItemOnWorld : MonoBehaviour
     public Item thisItem; //副本
     public Item tempDate; //正本
     public InventoryList playerInventory;
-    public CharacterStats Player;
+    //public CharacterStats Player;
     public Transform point;
 
     float rate;
@@ -86,17 +86,17 @@ public class ItemOnWorld : MonoBehaviour
             if(rate < 0.05f)
             {
             thisItem.HP = Random.Range(8,10);
-            thisItem.Speed = -Random.Range(8,10);
+            thisItem.Speed = Random.Range(8,10);
             }
             else if(rate < 0.3f)
             {
             thisItem.HP = Random.Range(5,8);
-            thisItem.Speed = -Random.Range(5,8);
+            thisItem.Speed = Random.Range(5,8);
             }
             else
             {   
             thisItem.HP = Random.Range(0,5);
-            thisItem.Speed = -Random.Range(1,5);
+            thisItem.Speed = Random.Range(1,5);
             }
             break;
         }
@@ -105,7 +105,7 @@ public class ItemOnWorld : MonoBehaviour
     private void Awake() 
     {
         //droprate = thisItem.DropRate;
-        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>();
+        //Player = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>();
         
     }
     // Start is called before the first frame update
@@ -149,6 +149,7 @@ public class ItemOnWorld : MonoBehaviour
     }*/
     #endregion
 
+    #region  廢案
     public void AddNewItem()
     {
         //避免重覆
@@ -166,4 +167,5 @@ public class ItemOnWorld : MonoBehaviour
 
         InventoryManager.RefreshItem();
     }
+    #endregion
 }
