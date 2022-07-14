@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class ItemOnWorld : MonoBehaviour
 {
-    public Item thisItem;
-    public Item tempDate;
+    public Item thisItem; //副本
+    public Item tempDate; //正本
     public InventoryList playerInventory;
     public CharacterStats Player;
+    public Transform point;
 
-    //public float droprate;
-
-    
-
-    bool here;
+    float rate;
+    //public LayerMask player;
+    //bool here;
 
     private void OnEnable() 
     {
@@ -21,6 +20,87 @@ public class ItemOnWorld : MonoBehaviour
         {
             thisItem = Instantiate(tempDate);
         }
+
+
+        //隨機屬性
+        rate = Random.value;
+
+        print(rate);
+        switch (thisItem.ItemName)
+        {
+            case "Clothes":
+            if(rate < 0.05f)
+            {
+            thisItem.HP = Random.Range(8,10);
+            thisItem.Speed = -Random.Range(8,10);
+            }
+            else if(rate < 0.3f)
+            {
+            thisItem.HP = Random.Range(5,8);
+            thisItem.Speed = -Random.Range(5,8);
+            }
+            else
+            {   
+            thisItem.HP = Random.Range(0,5);
+            thisItem.Speed = -Random.Range(1,5);
+            }
+            break;
+
+            case "Pants":
+            if(rate < 0.05f)
+            {
+            thisItem.HP = Random.Range(8,10);
+            thisItem.Speed = -Random.Range(8,10);
+            }
+            else if(rate < 0.3f)
+            {
+            thisItem.HP = Random.Range(5,8);
+            thisItem.Speed = -Random.Range(5,8);
+            }
+            else
+            {   
+            thisItem.HP = Random.Range(0,5);
+            thisItem.Speed = -Random.Range(1,5);
+            }
+            break;
+
+            case "Sword":
+            if(rate < 0.05f)
+            {
+            thisItem.ATK = Random.Range(8,10);
+            thisItem.Speed = Random.Range(4,5);
+            }
+            else if(rate < 0.3f)
+            {
+            thisItem.ATK = Random.Range(5,8);
+            thisItem.Speed = Random.Range(3,4);
+            }
+            else
+            {   
+            thisItem.ATK = Random.Range(0,5);
+            thisItem.Speed = Random.Range(0,3);
+            }
+            break;
+
+            case "Shoe":
+            if(rate < 0.05f)
+            {
+            thisItem.HP = Random.Range(8,10);
+            thisItem.Speed = -Random.Range(8,10);
+            }
+            else if(rate < 0.3f)
+            {
+            thisItem.HP = Random.Range(5,8);
+            thisItem.Speed = -Random.Range(5,8);
+            }
+            else
+            {   
+            thisItem.HP = Random.Range(0,5);
+            thisItem.Speed = -Random.Range(1,5);
+            }
+            break;
+        }
+
     }
     private void Awake() 
     {
@@ -31,10 +111,13 @@ public class ItemOnWorld : MonoBehaviour
     // Start is called before the first frame update
     private void Update() 
     {
-        if(here && Input.GetKeyDown(KeyCode.Q))
+        #region 廢案
+        //here =  Physics2D.OverlapBox(transform.position,transform.localScale,0,player);
+
+        /*if(FindObjectOfType<test>().here && Input.GetKeyDown(KeyCode.Q))
         {
             Player.Character.AttackPower += thisItem.ATK;
-            Player.Character.Defense += thisItem.DFS;
+            Player.Character.Defense += thisItem.DEF;
             Player.Character.Speed += thisItem.Speed;
             Player.Character.MaxHP += thisItem.HP;
             print("你獲得了:"    + thisItem.ItemName+
@@ -43,25 +126,28 @@ public class ItemOnWorld : MonoBehaviour
                   "防御力:" + Player.Character.Defense +
                   "移動速度:" + Player.Character.Speed);
             Destroy(this.gameObject);
+            
+            //FindObjectOfType<test>().EquipInfo.SetActive(false);
         }
-    }
-    private void OnTriggerStay2D(Collider2D other) 
-    {
-        if(other.gameObject.CompareTag("Player"))
+
+        /*if(here)
         {
-            //print(other.gameObject.name);
-            here = true;
+            FindObjectOfType<test>()._Equip = this;
+            FindObjectOfType<test>().EquipInfo.SetActive(here);
+            FindObjectOfType<test>().EquipInfo.transform.position = point.transform.position;
         }
+        */
+        #endregion
+
     }
 
-    private void OnTriggerExit2D(Collider2D other) 
+    #region  廢案
+    /*private void OnDrawGizmos() 
     {
-        if(other.gameObject.CompareTag("Player"))
-        {
-            //print(other.gameObject.name);
-            here = false;
-        }    
-    }
+        Gizmos.color = here? Color.red : Color.clear;
+        Gizmos.DrawCube(transform.position,transform.localScale);
+    }*/
+    #endregion
 
     public void AddNewItem()
     {

@@ -8,7 +8,7 @@ public class Item : ScriptableObject
     [Header("物件訊息")]
     public string ItemName;
     public Sprite ItemImage;
-    public int ItemHeld;
+    //public int ItemHeld;
     [TextArea]
     public string ItemInfo;
     public bool equipable;
@@ -16,7 +16,7 @@ public class Item : ScriptableObject
     [Header("物件屬性")]
     public int HP;
     public int ATK;
-    public int DFS;
+    public int DEF; //魔力值
     public int Speed;
     public float DropRate;
 }

@@ -93,6 +93,7 @@ MonoBehaviour:
   slotImage: {fileID: 6053212941929961141}
   slotNum: {fileID: 7521612845511509027}
   slotInfo: 
+  slotName: 
   itemInSlot: {fileID: 6263334253485183804}
 --- !u!1 &3178388162127805582
 GameObject:
@@ -111,7 +112,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5735362951072108687
 RectTransform:
   m_ObjectHideFlags: 0
@@ -343,8 +344,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalParent: {fileID: 0}
   mybag: {fileID: 11400000, guid: 96247d6dc7aa579479bc28c8874ba08e, type: 2}
-  ObjPrefab: {fileID: 6265343236329388735, guid: b1c136b11661b1c40830c1a097b1ef17, type: 3}
+  Itemname: 
   currentItemID: 0
+  player: {fileID: 0}
 --- !u!114 &4217466286099159265
 MonoBehaviour:
   m_ObjectHideFlags: 0
