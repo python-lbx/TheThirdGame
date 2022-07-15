@@ -24,7 +24,7 @@ public class Slot : MonoBehaviour
 
     public void ItemOnClicked()
     {
-        InventoryManager.updateItemInfo(slotInfo);
+        //InventoryManager.updateItemInfo(slotInfo);
     }
 
     public void SetUpSlot(Item item)
@@ -41,8 +41,11 @@ public class Slot : MonoBehaviour
         slotInfo = item.ItemInfo;
     }
 
-    public void setupData(int hp)
+    public void setupData(int hp,int atk,int def,int speed)
     {
         thisHP = hp;
+        thisATK = atk;
+        thisDEF = def;
+        thisSpeed = speed;
     }
 }

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2500325189538476749}
   - component: {fileID: 2122503831877418156}
   - component: {fileID: 6986957044830494240}
-  - component: {fileID: 7717701385481689438}
   - component: {fileID: 4516067865653329523}
   m_Layer: 5
   m_Name: Slot
@@ -78,20 +77,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7717701385481689438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 686155157101278060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6d288a7371d58c44aac6c975f8ea8e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HP: 
-  ATK: 
 --- !u!114 &4516067865653329523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,7 +99,6 @@ MonoBehaviour:
   thisDEF: 0
   thisSpeed: 0
   itemInSlot: {fileID: 6263334253485183804}
-  PACII: {fileID: 0}
 --- !u!1 &3178388162127805582
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,9 +348,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalParent: {fileID: 0}
   mybag: {fileID: 11400000, guid: 96247d6dc7aa579479bc28c8874ba08e, type: 2}
-  Itemname: 
-  currentItemID: 0
   player: {fileID: 0}
+  currentItemID: 0
+  Itemname: 
+  ItemHp: 0
+  ItemAtk: 0
+  ItemDef: 0
+  ItemSpeed: 0
 --- !u!114 &4217466286099159265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,19 +398,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 778631391248234530}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4516067865653329523}
-        m_TargetAssemblyTypeName: Slot, Assembly-CSharp
-        m_MethodName: ItemOnClicked
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!225 &111848362016080627
 CanvasGroup:
   m_ObjectHideFlags: 0

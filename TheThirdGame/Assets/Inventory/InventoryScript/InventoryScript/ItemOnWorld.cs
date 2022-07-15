@@ -10,6 +10,13 @@ public class ItemOnWorld : MonoBehaviour
     //public CharacterStats Player;
     public Transform point;
 
+    public bool IsNewItem;
+
+    public int ohp;
+    public int oatk;
+    public int odef;
+    public int ospeed;
+
     float rate;
     //public LayerMask player;
     //bool here;
@@ -20,12 +27,64 @@ public class ItemOnWorld : MonoBehaviour
         {
             thisItem = Instantiate(tempDate);
         }
+        
+        if(IsNewItem) //新裝備 隨機屬性
+        {
+            RandomAttributes();
+        }
+        else
+        {
+            thisItem.HP = ohp;
+            thisItem.ATK = oatk;
+            thisItem.DEF = odef;
+            thisItem.Speed = ospeed;
+        }
+    }
+    private void Awake() 
+    {
+        //droprate = thisItem.DropRate;
+        //Player = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>();
+        
+    }
+    // Start is called before the first frame update
+    private void Update() 
+    {
+        #region 廢案
+        //here =  Physics2D.OverlapBox(transform.position,transform.localScale,0,player);
 
+        /*if(FindObjectOfType<test>().here && Input.GetKeyDown(KeyCode.Q))
+        {
+            Player.Character.AttackPower += thisItem.ATK;
+            Player.Character.Defense += thisItem.DEF;
+            Player.Character.Speed += thisItem.Speed;
+            Player.Character.MaxHP += thisItem.HP;
+            print("你獲得了:"    + thisItem.ItemName+
+                  "最大生命值:"  + Player.Character.MaxHP +
+                  "攻擊力:" + Player.Character.AttackPower +
+                  "防御力:" + Player.Character.Defense +
+                  "移動速度:" + Player.Character.Speed);
+            Destroy(this.gameObject);
+            
+            //FindObjectOfType<test>().EquipInfo.SetActive(false);
+        }
 
+        /*if(here)
+        {
+            FindObjectOfType<test>()._Equip = this;
+            FindObjectOfType<test>().EquipInfo.SetActive(here);
+            FindObjectOfType<test>().EquipInfo.transform.position = point.transform.position;
+        }
+        */
+        #endregion
+
+    }
+
+    public void RandomAttributes()
+    {
         //隨機屬性
         rate = Random.value;
 
-        print(rate);
+        //print(rate);
         switch (thisItem.ItemName)
         {
             case "Clothes":
@@ -101,44 +160,10 @@ public class ItemOnWorld : MonoBehaviour
             break;
         }
 
-    }
-    private void Awake() 
-    {
-        //droprate = thisItem.DropRate;
-        //Player = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>();
-        
-    }
-    // Start is called before the first frame update
-    private void Update() 
-    {
-        #region 廢案
-        //here =  Physics2D.OverlapBox(transform.position,transform.localScale,0,player);
-
-        /*if(FindObjectOfType<test>().here && Input.GetKeyDown(KeyCode.Q))
-        {
-            Player.Character.AttackPower += thisItem.ATK;
-            Player.Character.Defense += thisItem.DEF;
-            Player.Character.Speed += thisItem.Speed;
-            Player.Character.MaxHP += thisItem.HP;
-            print("你獲得了:"    + thisItem.ItemName+
-                  "最大生命值:"  + Player.Character.MaxHP +
-                  "攻擊力:" + Player.Character.AttackPower +
-                  "防御力:" + Player.Character.Defense +
-                  "移動速度:" + Player.Character.Speed);
-            Destroy(this.gameObject);
-            
-            //FindObjectOfType<test>().EquipInfo.SetActive(false);
-        }
-
-        /*if(here)
-        {
-            FindObjectOfType<test>()._Equip = this;
-            FindObjectOfType<test>().EquipInfo.SetActive(here);
-            FindObjectOfType<test>().EquipInfo.transform.position = point.transform.position;
-        }
-        */
-        #endregion
-
+        ohp = thisItem.HP;
+        oatk = thisItem.ATK;
+        odef = thisItem.DEF;
+        ospeed = thisItem.Speed;
     }
 
     #region  廢案

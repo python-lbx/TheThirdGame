@@ -157,12 +157,12 @@ MonoBehaviour:
   thisItem: {fileID: 0}
   tempDate: {fileID: 11400000, guid: d879dadca00d2024c92872ab98647842, type: 2}
   playerInventory: {fileID: 11400000, guid: 96247d6dc7aa579479bc28c8874ba08e, type: 2}
-  Player: {fileID: 0}
-  player:
-    serializedVersion: 2
-    m_Bits: 64
-  show: {fileID: 0}
   point: {fileID: 2535683078377190611}
+  IsNewItem: 1
+  ohp: 0
+  oatk: 0
+  odef: 0
+  ospeed: 0
 --- !u!50 &2903579498987979446
 Rigidbody2D:
   serializedVersion: 4

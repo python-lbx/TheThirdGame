@@ -36,7 +36,7 @@ public class PickUpAndCheckItemInfo : MonoBehaviour
 
         if(_here != null)
         {
-            print(_here.gameObject.name);
+            //print(_here.gameObject.name);
             EquipInfo.SetActive(true); 
             _Equip = _here.gameObject.GetComponent<ItemOnWorld>();
             EquipInfo.transform.position = _Equip.point.transform.position;
@@ -60,9 +60,31 @@ public class PickUpAndCheckItemInfo : MonoBehaviour
         //拾取物件且強化
         if(here && Input.GetKeyDown(KeyCode.Z))
         {
-            AddNewItem();
-            showstate();
-            Destroy(_here.gameObject);
+            if(FindObjectOfType<InventoryManager>().isfull)
+            {
+                FindObjectOfType<InventoryManager>().itemInfo.text = "背包滿了";
+            }
+            
+            for(int i = 0 ; i < playerInventory.ItemList.Count ; i++)
+            {
+                if(playerInventory.ItemList[i] == null)
+                {
+                    //print(_Equip.thisItem);
+                    //顯示物品在背包
+                    playerInventory.ItemList[i] = _Equip.tempDate;
+                    //array數據記錄
+                    playerInventory.hp[i] = _Equip.thisItem.HP;
+                    playerInventory.atk[i] = _Equip.thisItem.ATK;
+                    playerInventory.def[i] = _Equip.thisItem.DEF;
+                    playerInventory.speed[i] = _Equip.thisItem.Speed;
+
+                    Destroy(_here.gameObject);
+                    break;
+                }
+            }
+
+            InventoryManager.RefreshItem();
+            //showstate();
         }
     }
 
@@ -70,24 +92,6 @@ public class PickUpAndCheckItemInfo : MonoBehaviour
     {
         //避免重覆
         /*if(!playerInventory.ItemList.Contains(thisItem)){}*/ 
-        
-        for(int i = 0 ; i < playerInventory.ItemList.Count ; i++)
-        {
-            if(playerInventory.ItemList[i] == null)
-            {
-                //print(_Equip.thisItem);
-                //顯示物品在背包
-                playerInventory.ItemList[i] = _Equip.tempDate;
-                //現在要顯示數據
-                //記住尼個!!
-                playerInventory.hp[i] = _Equip.thisItem.HP;
-
-                break;
-            }
-            continue;
-        }
-
-        InventoryManager.RefreshItem();
     }
 
     public void showstate()

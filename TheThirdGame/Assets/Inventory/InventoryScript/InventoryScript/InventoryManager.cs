@@ -39,6 +39,7 @@ public class InventoryManager : MonoBehaviour
         for(int i = 0 ; i<instance.myBag.ItemList.Count ; i++)
         {   
             instance.myBag.ItemList[i] = null;
+            instance.myBag.hp[i] = 0;
         }
     }
 
@@ -93,7 +94,10 @@ public class InventoryManager : MonoBehaviour
             instance.slots[i].GetComponent<Slot>().slotID = i;
 
             instance.slots[i].GetComponent<Slot>().SetUpSlot(instance.myBag.ItemList[i]);
-            instance.slots[i].GetComponent<Slot>().setupData(instance.myBag.hp[i]);
+            instance.slots[i].GetComponent<Slot>().setupData(instance.myBag.hp[i],
+                                                             instance.myBag.atk[i],
+                                                             instance.myBag.def[i],
+                                                             instance.myBag.speed[i]);
         }
     }
 }
