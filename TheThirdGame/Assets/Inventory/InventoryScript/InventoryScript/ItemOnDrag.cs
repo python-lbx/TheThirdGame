@@ -16,6 +16,7 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
     public int ItemAtk;
     public int ItemDef;
     public int ItemSpeed;
+    
 
     
     InventoryManager inventory;
@@ -25,6 +26,12 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
     {   
         inventory = FindObjectOfType<InventoryManager>();
         player = GameObject.Find("Player");
+    }
+
+    private void Update() 
+    {
+        if(Input.GetMouseButton(1))
+        {print("右鍵");}
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -70,7 +77,7 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
             }
         }
 
-        //Debug.Log(eventData.pointerCurrentRaycast.gameObject.name);
+        Debug.Log(eventData.pointerCurrentRaycast.gameObject.transform.parent);
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -184,7 +191,8 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
                                  " DEF: "    + item.thisDEF + 
                                  " SPEED: "  + item.thisSpeed;
     
-        print("我選中了"+item.slotName+"HP:"+item.thisHP);
+        //print("我選中了"+item.slotName+"HP:"+item.thisHP);
+        //print(eventData.pointerCurrentRaycast.gameObject);
     }
 
     public void OnPointerExit(PointerEventData eventData)
