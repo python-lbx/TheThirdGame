@@ -18,11 +18,8 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
     public int ItemSpeed;
 
     
-
-
-
     InventoryManager inventory;
-    int ItemofWhichNo;
+    int ItemofWhichNo; //生成裝備
 
     private void Start() 
     {   
@@ -62,15 +59,16 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
         //print(Itemname);   
 
         //找尋 後續
-        /*for(int i = 0;i<inventory.objPrefab.Length;i++)
+        for(int i = 0;i<inventory.objPrefab.Length;i++)
         {
             if(inventory.objPrefab[i].name == Itemname)
             {
                 ItemofWhichNo = i;
-                print(ItemofWhichNo);
-                print(i);
+                //print(ItemofWhichNo);
+                //print(i);
+                break;
             }
-        }*/
+        }
 
         //Debug.Log(eventData.pointerCurrentRaycast.gameObject.name);
     }
@@ -78,7 +76,7 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
     public void OnEndDrag(PointerEventData eventData)
     {   
         var obj = eventData.pointerCurrentRaycast.gameObject;
-        Vector2 newpos = new Vector2(player.transform.position.x + 2.5f,player.transform.position.y);
+        Vector2 newpos = new Vector2(player.transform.position.x + 0.5f,player.transform.position.y);
 
             if(obj.name == "ItemImage" && obj != null)
             {   
@@ -146,11 +144,22 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
 
             else if(obj.name == "BagBG")
             {
-                mybag.ItemList[currentItemID] = null;
+                //生成舊道具 且不會屬性隨機
+                inventory.objPrefab[ItemofWhichNo].GetComponent<ItemOnWorld>().tempDate.HP = mybag.hp[currentItemID];
+                inventory.objPrefab[ItemofWhichNo].GetComponent<ItemOnWorld>().tempDate.ATK = mybag.atk[currentItemID];
+                inventory.objPrefab[ItemofWhichNo].GetComponent<ItemOnWorld>().tempDate.DEF = mybag.def[currentItemID];
+                inventory.objPrefab[ItemofWhichNo].GetComponent<ItemOnWorld>().tempDate.Speed = mybag.speed[currentItemID];
 
-                //Instantiate(inventory.objPrefab[ItemofWhichNo],newpos,Quaternion.identity); 後續
+                Instantiate(inventory.objPrefab[ItemofWhichNo],newpos,Quaternion.identity);
 
                 inventory.itemInfo.text = "";
+
+                //清空數據
+                mybag.ItemList[currentItemID] = null;
+                mybag.hp[currentItemID] = 0;
+                mybag.atk[currentItemID] = 0;
+                mybag.def[currentItemID] = 0;
+                mybag.speed[currentItemID] = 0;
 
                 GetComponent<CanvasGroup>().blocksRaycasts = true;
                 InventoryManager.RefreshItem();
@@ -168,13 +177,20 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        //var item = eventData.pointerCurrentRaycast.gameObject.GetComponentInParent<Slot>();
-
-        //print("我選中了"+item.slotName+"HP:"+item.thisHP);
+        var item = eventData.pointerCurrentRaycast.gameObject.GetComponentInParent<Slot>();
+        inventory.itemInfo.text ="EQUIP: "  + item.slotName + 
+                                 " HP: "    + item.thisHP +
+                                 " ATK: "   + item.thisATK +
+                                 " DEF: "    + item.thisDEF + 
+                                 " SPEED: "  + item.thisSpeed;
+    
+        print("我選中了"+item.slotName+"HP:"+item.thisHP);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        //inventory.ItemInfoScreen.SetActive(false);
+
         //print("我離開了"+eventData.pointerCurrentRaycast.gameObject.name);
     }
 

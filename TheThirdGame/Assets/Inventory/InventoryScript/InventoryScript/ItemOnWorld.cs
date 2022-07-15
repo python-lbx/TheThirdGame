@@ -32,13 +32,7 @@ public class ItemOnWorld : MonoBehaviour
         {
             RandomAttributes();
         }
-        else
-        {
-            thisItem.HP = ohp;
-            thisItem.ATK = oatk;
-            thisItem.DEF = odef;
-            thisItem.Speed = ospeed;
-        }
+
     }
     private void Awake() 
     {

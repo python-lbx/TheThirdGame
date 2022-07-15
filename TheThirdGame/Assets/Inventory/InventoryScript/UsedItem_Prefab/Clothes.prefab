@@ -158,8 +158,8 @@ MonoBehaviour:
   tempDate: {fileID: 11400000, guid: ebc01b052e180274b986c7983521a036, type: 2}
   playerInventory: {fileID: 11400000, guid: 96247d6dc7aa579479bc28c8874ba08e, type: 2}
   point: {fileID: 2892917714178074064}
-  IsNewItem: 1
-  ohp: 7
+  IsNewItem: 0
+  ohp: 0
   oatk: 0
   odef: 0
   ospeed: 0

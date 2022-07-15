@@ -10,6 +10,9 @@ public class InventoryManager : MonoBehaviour
     public GameObject slotGrid;
     public GameObject emptySlot;
     public Text itemInfo;
+
+    public GameObject ItemInfoScreen;
+
     
     public List<GameObject> slots = new List<GameObject>(); //空格子
     public GameObject[] objPrefab; //預置物
@@ -40,6 +43,9 @@ public class InventoryManager : MonoBehaviour
         {   
             instance.myBag.ItemList[i] = null;
             instance.myBag.hp[i] = 0;
+            instance.myBag.atk[i] = 0;
+            instance.myBag.def[i] = 0;
+            instance.myBag.speed[i] = 0;
         }
     }
 
