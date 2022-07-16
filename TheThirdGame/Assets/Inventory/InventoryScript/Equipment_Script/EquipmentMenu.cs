@@ -29,6 +29,12 @@ public class EquipmentMenu : MonoBehaviour,IPointerEnterHandler
     public InventoryManager inventory;
     public InventoryList playerInventory;
 
+    public GameObject HeadButton;
+    public GameObject SwordButton;
+    public GameObject ClothesButton;
+
+    public Part_Attribute PA;
+
 
     void Start()
     {
@@ -76,19 +82,37 @@ public class EquipmentMenu : MonoBehaviour,IPointerEnterHandler
     {
 
     }
+
+    public void buttontest(string PartName)
+    {
+        //找到部位
+        
+        print(PartName);
+        switch(PartName)
+        {
+            case "Head":
+            PA = HeadButton.GetComponent<Part_Attribute>();
+            break;
+
+            case "Sword":
+            PA = SwordButton.GetComponent<Part_Attribute>();
+            break;
+
+            case "Clothes":
+            PA = ClothesButton.GetComponent<Part_Attribute>();
+            break;
+        }
+
+    }
     public void TakeOffTheGear() //脫裝備
     {   
-        //找到部位屬性
-        var part =GetComponentInChildren<Part_Attribute>();
-        print(part.PartName + part.PartHP);
-
         //檢測背包是否還有空位
         if(FindObjectOfType<InventoryManager>().isfull)
         {
             FindObjectOfType<InventoryManager>().itemInfo.text = "背包滿了";
         }
 
-        if(part.PartName == "Clothes")
+        if(PA.PartName == "Clothes" && clothes.Isequip)
         {
             for(int i = 0; i < playerInventory.ItemList.Count ; i++)
             {
@@ -105,7 +129,7 @@ public class EquipmentMenu : MonoBehaviour,IPointerEnterHandler
                 }
             }
         }
-        else if(part.PartName == "Sword")
+        else if(PA.PartName == "Sword" && sword.Isequip)
         {
             for(int i = 0; i < playerInventory.ItemList.Count ; i++)
             {
@@ -114,13 +138,15 @@ public class EquipmentMenu : MonoBehaviour,IPointerEnterHandler
                     playerInventory.ItemList[i] = Sword_Item;
                     playerInventory.hp[i] = sword.HP;
                     playerInventory.atk[i] = sword.ATK;
-                    
-
+                    playerInventory.def[i] = sword.DEF;
+                    playerInventory.speed[i] = sword.Speed;
+                    sword_Image.color = Color.black;
+                    sword.Reset();
+                    break;
                 }
             }
         }
-
-
+        
         InventoryManager.RefreshItem();
     }
 
@@ -132,16 +158,26 @@ public class EquipmentMenu : MonoBehaviour,IPointerEnterHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-
         if(eventData.pointerCurrentRaycast.gameObject.name == "Clothes")
         {
-        var item = eventData.pointerCurrentRaycast.gameObject.GetComponent<Part_Attribute>();
-        inventory.itemInfo.text ="EQUIP: "  + item.PartName + 
-                                 " HP: "    + item.PartHP +
-                                 " ATK: "   + item.PartATK +
-                                 " DEF: "    + item.PartDEF + 
-                                 " SPEED: "  + item.PartSPEED;           
+            var item = eventData.pointerCurrentRaycast.gameObject.GetComponent<Part_Attribute>();
+            inventory.itemInfo.text ="GEAR: "  + item.PartName + 
+                                    " HP: "    + item.PartHP +
+                                    " ATK: "   + item.PartATK +
+                                    " DEF: "    + item.PartDEF + 
+                                    " SPEED: "  + item.PartSPEED;           
         }
+
+        else if(eventData.pointerCurrentRaycast.gameObject.name == "Sword")
+        {
+            var item = eventData.pointerCurrentRaycast.gameObject.GetComponent<Part_Attribute>();
+            inventory.itemInfo.text ="GEAR: "  + item.PartName + 
+                                    " HP: "    + item.PartHP +
+                                    " ATK: "   + item.PartATK +
+                                    " DEF: "    + item.PartDEF + 
+                                    " SPEED: "  + item.PartSPEED;           
+        }
+
         //print(item.PartHP);
     
     }

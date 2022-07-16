@@ -95,7 +95,7 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
             }
         }
 
-        Debug.Log(eventData.pointerCurrentRaycast.gameObject.transform.parent.name);
+        //Debug.Log(eventData.pointerCurrentRaycast.gameObject.transform.parent.name);
     }
 
     public void OnEndDrag(PointerEventData eventData)
