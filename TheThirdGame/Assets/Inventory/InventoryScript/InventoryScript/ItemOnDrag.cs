@@ -8,6 +8,7 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
     public Transform originalParent;
     public InventoryList mybag;
     public GameObject player;
+    public bool rightClickOn;
 
     [Header("ItemInfo")]
     public int currentItemID;
@@ -30,8 +31,10 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
 
     private void Update() 
     {
-        if(Input.GetMouseButton(1))
-        {print("右鍵");}
+        if(Input.GetMouseButtonDown(1))
+        {
+            rightClickOn = true;
+        }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -47,6 +50,21 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
                        originalParent.GetComponent<Slot>().thisATK,
                        originalParent.GetComponent<Slot>().thisDEF,
                        originalParent.GetComponent<Slot>().thisSpeed );
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         //脫離
@@ -77,12 +95,13 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
             }
         }
 
-        Debug.Log(eventData.pointerCurrentRaycast.gameObject.transform.parent);
+        Debug.Log(eventData.pointerCurrentRaycast.gameObject.transform.parent.name);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {   
         var obj = eventData.pointerCurrentRaycast.gameObject;
+
         Vector2 newpos = new Vector2(player.transform.position.x + 0.5f,player.transform.position.y);
 
             if(obj.name == "ItemImage" && obj != null)
@@ -179,7 +198,6 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
                 GetComponent<CanvasGroup>().blocksRaycasts = true;
                 InventoryManager.RefreshItem();
             }
-        
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -190,7 +208,7 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
                                  " ATK: "   + item.thisATK +
                                  " DEF: "    + item.thisDEF + 
                                  " SPEED: "  + item.thisSpeed;
-    
+        
         //print("我選中了"+item.slotName+"HP:"+item.thisHP);
         //print(eventData.pointerCurrentRaycast.gameObject);
     }
@@ -202,7 +220,7 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
         //print("我離開了"+eventData.pointerCurrentRaycast.gameObject.name);
     }
 
-    public void original_Data(int id,string name,int hp,int atk,int def,int speed) //暫存屬性
+    public void original_Data(int id,string name,int hp,int atk,int def,int speed) //顯示點擊物件屬性
     {
         currentItemID = id;
         Itemname = name;
@@ -214,5 +232,4 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
         print("ID" +currentItemID + "name"+Itemname +"HP"+ ItemHp +"ATK"+ ItemAtk +"DEF"+ ItemDef +"SPEED"+ ItemSpeed);
         
     }
-
 }

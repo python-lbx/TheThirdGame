@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 7132df48a81058842984dcbd2eaeabba
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - head: {fileID: 11400000, guid: 52ed7f5a932abb74c8a4450c6512a12f, type: 2}
+  - weapon: {fileID: 11400000, guid: 7dc0c29bfb0f4b24dbe726719f44df94, type: 2}
+  - clothes: {fileID: 11400000, guid: fec85552d4759024f98fee0e0c1cd279, type: 2}
+  - pants: {fileID: 11400000, guid: 2db9d70793775d1448283cd0b9b028f1, type: 2}
+  - shoe: {fileID: 11400000, guid: cf6a5d4927a798f41b22b5a6e5d9fdc3, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -98,6 +98,8 @@ MonoBehaviour:
   thisATK: 0
   thisDEF: 0
   thisSpeed: 0
+  equip: {fileID: 0}
+  mybag: {fileID: 11400000, guid: 96247d6dc7aa579479bc28c8874ba08e, type: 2}
   itemInSlot: {fileID: 6263334253485183804}
 --- !u!1 &3178388162127805582
 GameObject:
@@ -349,6 +351,7 @@ MonoBehaviour:
   originalParent: {fileID: 0}
   mybag: {fileID: 11400000, guid: 96247d6dc7aa579479bc28c8874ba08e, type: 2}
   player: {fileID: 0}
+  rightClickOn: 0
   currentItemID: 0
   Itemname: 
   ItemHp: 0
@@ -395,10 +398,22 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 778631391248234530}
+  m_TargetGraphic: {fileID: 6986957044830494240}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4516067865653329523}
+        m_TargetAssemblyTypeName: Slot, Assembly-CSharp
+        m_MethodName: Equip
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!225 &111848362016080627
 CanvasGroup:
   m_ObjectHideFlags: 0
