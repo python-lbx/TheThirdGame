@@ -25,9 +25,10 @@ public class CDT : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) 
     {
-        float C_Damage = damage * (1 + (CDR/100)); // (1+ 5/100) = 1.05 暴擊傷害為105%
+        float C_Damage = Mathf.Round( damage * ( 1 + (CDR/100) ) )   ; // (1+ 5/100) = 1.05 暴擊傷害為105%
         if(other.gameObject.name == "Enemy")
         {
+            other.gameObject.GetComponentInChildren<FloatDamage>().MakeDamage();
             print(Random.value);
             if(Random.value < (CR/100)) // 5/100 = 0.05 暴擊率為5%
             {
