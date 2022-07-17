@@ -19,8 +19,11 @@ public class EquipmentMenu : MonoBehaviour,IPointerEnterHandler
     public Image Pants_Image;
     public Image Shoe_Image;
     [Header("裝備數據")]
-    public Item Clothes_Item;
+    public Item Head_Item;
     public Item Sword_Item;
+    public Item Clothes_Item;
+    public Item Pants_Item;
+    public Item Shoe_Item;
     //public EquipBoxData thishead,thisweapon,thisclothes,thispants,thisshoe;
     //public bool ehead,eweapon,eclothes,epants,eshoe;
     [Header("玩家數據")]

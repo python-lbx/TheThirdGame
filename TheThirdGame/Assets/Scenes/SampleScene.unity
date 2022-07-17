@@ -1757,8 +1757,11 @@ MonoBehaviour:
   clothes_Image: {fileID: 125207650}
   Pants_Image: {fileID: 262737195}
   Shoe_Image: {fileID: 167741538}
-  Clothes_Item: {fileID: 11400000, guid: ebc01b052e180274b986c7983521a036, type: 2}
+  Head_Item: {fileID: 11400000, guid: 349b99d79db527a4fb254ea52007fb50, type: 2}
   Sword_Item: {fileID: 11400000, guid: d879dadca00d2024c92872ab98647842, type: 2}
+  Clothes_Item: {fileID: 11400000, guid: ebc01b052e180274b986c7983521a036, type: 2}
+  Pants_Item: {fileID: 11400000, guid: cf36200602a2d3b4893ae8a0857614c2, type: 2}
+  Shoe_Item: {fileID: 11400000, guid: b055cbcbaba3532428ea2ba65f7939ff, type: 2}
   player: {fileID: 11400000, guid: ecc22032c9fd08847a7ef308a4f40210, type: 2}
   inventory: {fileID: 0}
   playerInventory: {fileID: 11400000, guid: 96247d6dc7aa579479bc28c8874ba08e, type: 2}
@@ -2305,7 +2308,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -0.00048256}
-  m_SizeDelta: {x: 849, y: 509}
+  m_SizeDelta: {x: 10000, y: 10000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &849673541
 MonoBehaviour:
@@ -2367,8 +2370,11 @@ MonoBehaviour:
   clothes_Image: {fileID: 0}
   Pants_Image: {fileID: 0}
   Shoe_Image: {fileID: 0}
-  Clothes_Item: {fileID: 0}
+  Head_Item: {fileID: 0}
   Sword_Item: {fileID: 0}
+  Clothes_Item: {fileID: 0}
+  Pants_Item: {fileID: 0}
+  Shoe_Item: {fileID: 0}
   player: {fileID: 0}
   inventory: {fileID: 0}
   playerInventory: {fileID: 0}
