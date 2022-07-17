@@ -106,17 +106,17 @@ public class ItemOnWorld : MonoBehaviour
             if(rate < 0.05f)
             {
             thisItem.ATK = Random.Range(8,10);
-            thisItem.DEF = Random.Range(4,5);
+            thisItem.Speed = Random.Range(4,5);
             }
             else if(rate < 0.3f)
             {
             thisItem.ATK = Random.Range(5,8);
-            thisItem.DEF = Random.Range(3,4);
+            thisItem.Speed = Random.Range(3,4);
             }
             else
             {   
             thisItem.ATK = Random.Range(0,5);
-            thisItem.DEF = Random.Range(0,3);
+            thisItem.Speed = Random.Range(0,3);
             }
             break;
 
@@ -143,17 +143,17 @@ public class ItemOnWorld : MonoBehaviour
             case "Pants":
             if(rate < 0.05f)
             {
-            thisItem.HP = Random.Range(4,5);
+            thisItem.HP = Random.Range(8,10);
             thisItem.Speed = -Random.Range(3,5);
             }
             else if(rate < 0.3f)
             {
-            thisItem.HP = Random.Range(2,3);
+            thisItem.HP = Random.Range(4,7);
             thisItem.Speed = -Random.Range(2,3);
             }
             else
             {   
-            thisItem.HP = Random.Range(0,1);
+            thisItem.HP = Random.Range(1,3);
             thisItem.Speed = -Random.Range(1,2);
             }
             break;

@@ -18,6 +18,6 @@ MonoBehaviour:
   equipable: 0
   HP: 0
   ATK: 0
-  DEF: 0
-  Speed: 0
+  DEF: 7
+  Speed: -3
   DropRate: 0.12

@@ -14,11 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemName: Pants
   ItemImage: {fileID: 21300030, guid: 03dd1ef6fb163214c9e1ac0242dab3ba, type: 3}
-  ItemHeld: 1
   ItemInfo: "\u4E00\u689D\u8932\u5B50"
   equipable: 0
-  HP: 5
+  HP: 0
   ATK: 0
-  DFS: 2
-  Speed: -1
+  DEF: 0
+  Speed: 0
   DropRate: 0.3

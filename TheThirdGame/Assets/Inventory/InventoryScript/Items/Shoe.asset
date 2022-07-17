@@ -14,11 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemName: Shoe
   ItemImage: {fileID: 21300034, guid: 03dd1ef6fb163214c9e1ac0242dab3ba, type: 3}
-  ItemHeld: 1
   ItemInfo: "\u4E00\u5C0D\u978B"
   equipable: 0
   HP: 0
   ATK: 0
-  DFS: 1
-  Speed: 2
+  DEF: 0
+  Speed: 0
   DropRate: 0.4

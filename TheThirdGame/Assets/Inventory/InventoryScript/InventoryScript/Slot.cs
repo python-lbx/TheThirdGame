@@ -51,8 +51,66 @@ public class Slot : MonoBehaviour
         thisSpeed = speed;
     }
 
-    public void Equip()
-    {
+    public void Equip() //裝裝備
+    {   
+        if(slotName == "Head")
+        {
+            if(!equip.head.Isequip)
+            {
+                equip.head.Isequip = true;
+                equip.head_Image.color = Color.white;
+                equip.head.HP = thisHP;
+                equip.head.ATK = thisATK;
+                equip.head.DEF = thisDEF;
+                equip.head.Speed = thisSpeed;
+
+                ResetMybagItemList();
+            }
+            else
+            {
+                var temp_HP = equip.head.HP;
+                var temp_ATK = equip.head.ATK;
+                var temp_DEF = equip.head.DEF;
+                var temp_SPEED = equip.head.Speed;
+
+                equip.head.HP = thisHP;
+                equip.head.ATK = thisATK;
+                equip.head.DEF = thisDEF;
+                equip.head.Speed = thisSpeed;
+
+                MybagDateEqualTemp(temp_HP,temp_ATK,temp_DEF,temp_SPEED);
+            }
+        }
+
+        if(slotName == "Sword")
+        {
+            if(!equip.sword.Isequip)
+            {
+                equip.sword.Isequip = true;
+                equip.sword_Image.color = Color.white;
+                equip.sword.HP = thisHP;
+                equip.sword.ATK = thisATK;
+                equip.sword.DEF = thisDEF;
+                equip.sword.Speed = thisSpeed;
+
+                ResetMybagItemList();
+            }
+            else
+            {
+                var temp_HP = equip.sword.HP;
+                var temp_ATK = equip.sword.ATK;
+                var temp_DEF = equip.sword.DEF;
+                var temp_SPEED = equip.sword.Speed;
+
+                equip.sword.HP = thisHP;
+                equip.sword.ATK = thisATK;
+                equip.sword.DEF = thisDEF;
+                equip.sword.Speed = thisSpeed;
+
+                MybagDateEqualTemp(temp_HP,temp_ATK,temp_DEF,temp_SPEED);
+            }
+        }
+
         if(slotName == "Clothes")
         {
             if(!equip.clothes.Isequip) //沒有裝備
@@ -87,34 +145,36 @@ public class Slot : MonoBehaviour
                 MybagDateEqualTemp(temp_HP,temp_ATK,temp_DEF,temp_SPEED);
             }
         }
-        else if(slotName == "Sword")
+
+        if(slotName == "Pants")
         {
-            if(!equip.sword.Isequip)
+            if(!equip.pants.Isequip)
             {
-                equip.sword.Isequip = true;
-                equip.sword_Image.color = Color.white;
-                equip.sword.HP = thisHP;
-                equip.sword.ATK = thisATK;
-                equip.sword.DEF = thisDEF;
-                equip.sword.Speed = thisSpeed;
+                equip.pants.Isequip = true;
+                equip.Pants_Image.color = Color.white;
+                equip.pants.HP = thisHP;
+                equip.pants.ATK = thisATK;
+                equip.pants.DEF = thisDEF;
+                equip.pants.Speed = thisSpeed;
 
                 ResetMybagItemList();
             }
             else
             {
-                var temp_HP = equip.sword.HP;
-                var temp_ATK = equip.sword.ATK;
-                var temp_DEF = equip.sword.DEF;
-                var temp_SPEED = equip.sword.Speed;
+                var temp_HP = equip.pants.HP;
+                var temp_ATK = equip.pants.ATK;
+                var temp_DEF = equip.pants.DEF;
+                var temp_SPEED = equip.pants.Speed;
 
-                equip.sword.HP = thisHP;
-                equip.sword.ATK = thisATK;
-                equip.sword.DEF = thisDEF;
-                equip.sword.Speed = thisSpeed;
+                equip.pants.HP = thisHP;
+                equip.pants.ATK = thisATK;
+                equip.pants.DEF = thisDEF;
+                equip.pants.Speed = thisSpeed;
 
                 MybagDateEqualTemp(temp_HP,temp_ATK,temp_DEF,temp_SPEED);
             }
         }
+
 
         InventoryManager.RefreshItem(); //所有動作最後都要刷新背包
 
@@ -136,4 +196,5 @@ public class Slot : MonoBehaviour
         mybag.def[slotID] = def;
         mybag.speed[slotID] = speed;
     }
+
 }
