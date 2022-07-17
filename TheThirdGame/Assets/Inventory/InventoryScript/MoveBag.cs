@@ -4,12 +4,15 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 public class MoveBag : MonoBehaviour,IDragHandler
 {
-    RectTransform currentRect;
+    public RectTransform currentRect;
+    public InventoryManager inventory;
+    public GameObject MyBag;
+    public bool OpenMyBag;
 
 
     private void Awake() 
     {
-        currentRect = GetComponent<RectTransform>();
+
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -17,6 +20,16 @@ public class MoveBag : MonoBehaviour,IDragHandler
         currentRect.anchoredPosition += eventData.delta;
     }
 
+    private void Update() 
+    {   
+        MyBag.SetActive(OpenMyBag);
+
+        if(Input.GetKeyDown(KeyCode.B))
+        {
+            InventoryManager.RefreshItem();
+            OpenMyBag = !OpenMyBag;
+        }
+    }
 
 
 

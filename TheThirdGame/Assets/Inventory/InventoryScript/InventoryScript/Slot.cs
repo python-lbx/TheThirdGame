@@ -19,9 +19,13 @@ public class Slot : MonoBehaviour
 
     public GameObject itemInSlot;
 
-    private void Awake() 
+
+    private void OnEnable() 
     {
         equip = FindObjectOfType<EquipmentMenu>();
+    }
+    private void Awake() 
+    {
     }
 
     public void ItemOnClicked()

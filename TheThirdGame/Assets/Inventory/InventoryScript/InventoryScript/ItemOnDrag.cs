@@ -8,7 +8,6 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
     public Transform originalParent;
     public InventoryList mybag;
     public GameObject player;
-    public bool rightClickOn;
 
     [Header("ItemInfo")]
     public int currentItemID;
@@ -31,10 +30,7 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
 
     private void Update() 
     {
-        if(Input.GetMouseButtonDown(1))
-        {
-            rightClickOn = true;
-        }
+
     }
 
     public void OnBeginDrag(PointerEventData eventData)

@@ -2793,7 +2793,7 @@ MonoBehaviour:
   Pants_Item: {fileID: 11400000, guid: cf36200602a2d3b4893ae8a0857614c2, type: 2}
   Shoe_Item: {fileID: 11400000, guid: b055cbcbaba3532428ea2ba65f7939ff, type: 2}
   player: {fileID: 11400000, guid: ecc22032c9fd08847a7ef308a4f40210, type: 2}
-  inventory: {fileID: 0}
+  inventory: {fileID: 723486634}
   playerInventory: {fileID: 11400000, guid: 96247d6dc7aa579479bc28c8874ba08e, type: 2}
   HeadButton: {fileID: 1212585962}
   SwordButton: {fileID: 1957022132}
@@ -3314,6 +3314,7 @@ GameObject:
   - component: {fileID: 849673540}
   - component: {fileID: 849673542}
   - component: {fileID: 849673541}
+  - component: {fileID: 849673543}
   m_Layer: 5
   m_Name: BagBG
   m_TagString: Untagged
@@ -3339,7 +3340,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.00048256}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10000, y: 10000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &849673541
@@ -3380,6 +3381,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 849673539}
   m_CullTransparentMesh: 1
+--- !u!114 &849673543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849673539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59d26b79ac99e9f46b962adda6afa706, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentRect: {fileID: 2084855448}
+  inventory: {fileID: 723486634}
+  MyBag: {fileID: 2084855447}
+  OpenMyBag: 0
 --- !u!1 &922868569
 GameObject:
   m_ObjectHideFlags: 0
@@ -7395,7 +7412,6 @@ GameObject:
   - component: {fileID: 2084855448}
   - component: {fileID: 2084855450}
   - component: {fileID: 2084855449}
-  - component: {fileID: 2084855451}
   m_Layer: 5
   m_Name: MYBAG
   m_TagString: Untagged
@@ -7465,18 +7481,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2084855447}
   m_CullTransparentMesh: 1
---- !u!114 &2084855451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2084855447}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59d26b79ac99e9f46b962adda6afa706, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2147207368
 GameObject:
   m_ObjectHideFlags: 0
