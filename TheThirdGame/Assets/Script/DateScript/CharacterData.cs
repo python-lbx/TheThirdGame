@@ -13,6 +13,7 @@ public class CharacterData : ScriptableObject
     public int MaxHP;
     public int AttackPower;
     public int Defense;
+    public float CriticalRate;
     public int Speed;
 
     [Header("初始值")]

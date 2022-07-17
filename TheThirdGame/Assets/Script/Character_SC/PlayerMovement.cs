@@ -25,7 +25,10 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
+        if(characterStats != null)
+        {
         speed = characterStats.Character.Speed;
+        }
         rb.velocity = new Vector2(horizontal * speed, vertical * speed);
     }
 }

@@ -16,12 +16,13 @@ MonoBehaviour:
   CurrentHP: 100
   MaxHP: 100
   AttackPower: 100
-  Defense: 5
-  Speed: 5
+  Defense: 0
+  CriticalRate: 0
+  Speed: 10
   D_MaxHP: 100
   D_AttackPower: 100
-  D_Defense: 5
-  D_Speed: 5
+  D_Defense: 0
+  D_Speed: 10
   D_KillPoint: 0
   D_MaxExp: 100
   KillPoint: 0

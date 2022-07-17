@@ -33,7 +33,7 @@ public class CharacterStats : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {            
 
     }
     public void TakeDamage(CharacterStats attacker, CharacterStats defener)
@@ -68,6 +68,20 @@ public class CharacterStats : MonoBehaviour
         target.TakeDamage(isme,target);
 
 
+        var Critical_Hit_Damage = Character.AttackPower * 1.5f;
+
+        print(Random.value);
+        
+        if(Random.value < Character.CriticalRate)
+        {   
+            print(Critical_Hit_Damage);
+
+            print("暴擊!造成傷害:" + Critical_Hit_Damage);
+        }
+        else
+        {   
+            print("造成傷害" + Character.AttackPower);
+        }
        // print("攻擊者HP" + isme.Character.CurrentHP + "防御者HP" +target.Character.CurrentHP);
         
     }
