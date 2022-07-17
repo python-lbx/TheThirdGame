@@ -170,6 +170,24 @@ public class EquipmentMenu : MonoBehaviour,IPointerEnterHandler
                 }
             }
         }
+
+        if(PA.PartName == "Shoe" && shoe.Isequip)
+        {
+            for(int i = 0; i < playerInventory.ItemList.Count ; i++)
+            {
+                if(playerInventory.ItemList[i] == null)
+                {
+                    playerInventory.ItemList[i] = Shoe_Item;
+                    playerInventory.hp[i] = shoe.HP;
+                    playerInventory.atk[i] = shoe.ATK;
+                    playerInventory.def[i] = shoe.DEF;
+                    playerInventory.speed[i] = shoe.Speed;
+                    Shoe_Image.color = Color.black;
+                    shoe.Reset();
+                    break;
+                }
+            }
+        }
         
         InventoryManager.RefreshItem();
     }
@@ -201,6 +219,11 @@ public class EquipmentMenu : MonoBehaviour,IPointerEnterHandler
         }
 
         if(eventData.pointerCurrentRaycast.gameObject.name == "Pants")
+        {
+            showPartInfo(item);
+        }
+
+        if(eventData.pointerCurrentRaycast.gameObject.name == "Shoe")
         {
             showPartInfo(item);
         }

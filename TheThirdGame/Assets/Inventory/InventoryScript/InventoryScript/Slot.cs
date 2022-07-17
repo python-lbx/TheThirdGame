@@ -175,6 +175,35 @@ public class Slot : MonoBehaviour
             }
         }
 
+        if(slotName == "Shoe")
+        {
+            if(!equip.shoe.Isequip)
+            {
+                equip.shoe.Isequip = true;
+                equip.Shoe_Image.color = Color.white;
+                equip.shoe.HP = thisHP;
+                equip.shoe.ATK = thisATK;
+                equip.shoe.DEF = thisDEF;
+                equip.shoe.Speed = thisSpeed;
+
+                ResetMybagItemList();
+            }
+            else
+            {
+                var temp_HP = equip.shoe.HP;
+                var temp_ATK = equip.shoe.ATK;
+                var temp_DEF = equip.shoe.DEF;
+                var temp_SPEED = equip.shoe.Speed;
+
+                equip.shoe.HP = thisHP;
+                equip.shoe.ATK = thisATK;
+                equip.shoe.DEF = thisDEF;
+                equip.shoe.Speed = thisSpeed;
+
+                MybagDateEqualTemp(temp_HP,temp_ATK,temp_DEF,temp_SPEED);
+            }
+        }
+
 
         InventoryManager.RefreshItem(); //所有動作最後都要刷新背包
 
