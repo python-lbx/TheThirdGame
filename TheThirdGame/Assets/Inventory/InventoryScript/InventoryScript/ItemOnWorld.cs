@@ -10,8 +10,8 @@ public class ItemOnWorld : MonoBehaviour
     //public CharacterStats Player;
     public Transform point;
 
+    [Header("裝備面板")]
     public bool IsNewItem;
-
     public int ohp;
     public int oatk;
     public int odef;
@@ -79,62 +79,86 @@ public class ItemOnWorld : MonoBehaviour
         rate = Random.value;
 
         //print(rate);
+        //數值再調
         switch (thisItem.ItemName)
-        {
-            case "Clothes":
+        {   
+            //魔力?暴擊?負重?
+            case "Head":
             if(rate < 0.05f)
             {
-            thisItem.HP = Random.Range(8,10);
-            thisItem.Speed = -Random.Range(8,10);
+            thisItem.DEF = Random.Range(10,15);
+            thisItem.Speed = -Random.Range(4,5);
             }
             else if(rate < 0.3f)
             {
-            thisItem.HP = Random.Range(5,8);
-            thisItem.Speed = -Random.Range(5,8);
+            thisItem.DEF = Random.Range(5,10);
+            thisItem.Speed = -Random.Range(3,4);
             }
             else
             {   
-            thisItem.HP = Random.Range(0,5);
-            thisItem.Speed = -Random.Range(1,5);
+            thisItem.DEF = Random.Range(0,4);
+            thisItem.Speed = -Random.Range(1,2);
             }
             break;
-
-            case "Pants":
-            if(rate < 0.05f)
-            {
-            thisItem.HP = Random.Range(8,10);
-            thisItem.Speed = -Random.Range(8,10);
-            }
-            else if(rate < 0.3f)
-            {
-            thisItem.HP = Random.Range(5,8);
-            thisItem.Speed = -Random.Range(5,8);
-            }
-            else
-            {   
-            thisItem.HP = Random.Range(0,5);
-            thisItem.Speed = -Random.Range(1,5);
-            }
-            break;
-
+            
+            //攻擊?暴擊?速度?
             case "Sword":
             if(rate < 0.05f)
             {
             thisItem.ATK = Random.Range(8,10);
-            thisItem.Speed = Random.Range(4,5);
+            thisItem.DEF = Random.Range(4,5);
             }
             else if(rate < 0.3f)
             {
             thisItem.ATK = Random.Range(5,8);
-            thisItem.Speed = Random.Range(3,4);
+            thisItem.DEF = Random.Range(3,4);
             }
             else
             {   
             thisItem.ATK = Random.Range(0,5);
-            thisItem.Speed = Random.Range(0,3);
+            thisItem.DEF = Random.Range(0,3);
             }
             break;
 
+            //血量?負重?
+            case "Clothes":
+            if(rate < 0.05f)
+            {
+            thisItem.HP = Random.Range(6,10);
+            thisItem.Speed = -Random.Range(3,5);
+            }
+            else if(rate < 0.3f)
+            {
+            thisItem.HP = Random.Range(3,6);
+            thisItem.Speed = -Random.Range(2,3);
+            }
+            else
+            {   
+            thisItem.HP = Random.Range(0,3);
+            thisItem.Speed = -Random.Range(1,2);
+            }
+            break;
+
+            //血量?負重?
+            case "Pants":
+            if(rate < 0.05f)
+            {
+            thisItem.HP = Random.Range(4,5);
+            thisItem.Speed = -Random.Range(3,5);
+            }
+            else if(rate < 0.3f)
+            {
+            thisItem.HP = Random.Range(2,3);
+            thisItem.Speed = -Random.Range(2,3);
+            }
+            else
+            {   
+            thisItem.HP = Random.Range(0,1);
+            thisItem.Speed = -Random.Range(1,2);
+            }
+            break;
+
+            //血量?速度?暴擊?
             case "Shoe":
             if(rate < 0.05f)
             {

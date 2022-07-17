@@ -51,21 +51,6 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
                        originalParent.GetComponent<Slot>().thisDEF,
                        originalParent.GetComponent<Slot>().thisSpeed );
 
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         //脫離
         transform.SetParent(transform.parent.parent);

@@ -35,6 +35,8 @@ public class EquipmentMenu : MonoBehaviour,IPointerEnterHandler
     public GameObject HeadButton;
     public GameObject SwordButton;
     public GameObject ClothesButton;
+    public GameObject PantsButton;
+    public GameObject ShoeButton;
 
     public Part_Attribute PA;
 
@@ -86,13 +88,13 @@ public class EquipmentMenu : MonoBehaviour,IPointerEnterHandler
 
     }
 
-    public void buttontest(string PartName)
+    public void ButtonCheck(string PartName)
     {
         //找到部位
         
         print(PartName);
         switch(PartName)
-        {
+        {         //名字要對到
             case "Head":
             PA = HeadButton.GetComponent<Part_Attribute>();
             break;
@@ -104,6 +106,14 @@ public class EquipmentMenu : MonoBehaviour,IPointerEnterHandler
             case "Clothes":
             PA = ClothesButton.GetComponent<Part_Attribute>();
             break;
+
+            case "Pants":
+            PA = PantsButton.GetComponent<Part_Attribute>();
+            break;
+
+            case "Shoe":
+            PA = ShoeButton.GetComponent<Part_Attribute>();
+            break;
         }
 
     }
@@ -113,6 +123,42 @@ public class EquipmentMenu : MonoBehaviour,IPointerEnterHandler
         if(FindObjectOfType<InventoryManager>().isfull)
         {
             FindObjectOfType<InventoryManager>().itemInfo.text = "背包滿了";
+        }
+
+        if(PA.PartName == "Head" && head.Isequip)
+        {
+            for(int i = 0; i<playerInventory.ItemList.Count ; i++)
+            {
+                if(playerInventory.ItemList[i] == null)
+                {
+                    playerInventory.ItemList[i] = Head_Item;
+                    playerInventory.hp[i] = head.HP;
+                    playerInventory.atk[i] = head.ATK;
+                    playerInventory.def[i] = head.DEF;
+                    playerInventory.speed[i] = sword.Speed;
+                    head_Image.color = Color.black;
+                    head.Reset();
+                    break;
+                }
+            }
+        }
+
+        if(PA.PartName == "Sword" && sword.Isequip)
+        {
+            for(int i = 0; i < playerInventory.ItemList.Count ; i++)
+            {
+                if(playerInventory.ItemList[i] == null)
+                {
+                    playerInventory.ItemList[i] = Sword_Item;
+                    playerInventory.hp[i] = sword.HP;
+                    playerInventory.atk[i] = sword.ATK;
+                    playerInventory.def[i] = sword.DEF;
+                    playerInventory.speed[i] = sword.Speed;
+                    sword_Image.color = Color.black;
+                    sword.Reset();
+                    break;
+                }
+            }
         }
 
         if(PA.PartName == "Clothes" && clothes.Isequip)
@@ -128,23 +174,6 @@ public class EquipmentMenu : MonoBehaviour,IPointerEnterHandler
                     playerInventory.speed[i] = clothes.Speed;
                     clothes_Image.color = Color.black;
                     clothes.Reset(); //脫下重置部位屬性
-                    break;
-                }
-            }
-        }
-        else if(PA.PartName == "Sword" && sword.Isequip)
-        {
-            for(int i = 0; i < playerInventory.ItemList.Count ; i++)
-            {
-                if(playerInventory.ItemList[i] == null)
-                {
-                    playerInventory.ItemList[i] = Sword_Item;
-                    playerInventory.hp[i] = sword.HP;
-                    playerInventory.atk[i] = sword.ATK;
-                    playerInventory.def[i] = sword.DEF;
-                    playerInventory.speed[i] = sword.Speed;
-                    sword_Image.color = Color.black;
-                    sword.Reset();
                     break;
                 }
             }

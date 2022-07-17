@@ -20,4 +20,4 @@ MonoBehaviour:
   ATK: 2
   DEF: 0
   Speed: 1
-  DropRate: 0.1
+  DropRate: 0.08

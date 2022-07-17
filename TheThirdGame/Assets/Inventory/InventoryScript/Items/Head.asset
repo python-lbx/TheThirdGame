@@ -16,8 +16,8 @@ MonoBehaviour:
   ItemImage: {fileID: 21300026, guid: 03dd1ef6fb163214c9e1ac0242dab3ba, type: 3}
   ItemInfo: 
   equipable: 0
-  HP: 111
-  ATK: 111
-  DEF: 11
-  Speed: 11
-  DropRate: 0
+  HP: 0
+  ATK: 0
+  DEF: 0
+  Speed: 0
+  DropRate: 0.12
