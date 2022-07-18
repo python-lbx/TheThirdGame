@@ -11,16 +11,17 @@ public class CharacterData : ScriptableObject
     [Header("屬性")]
     public int CurrentHP;
     public int MaxHP;
-    public int AttackPower;
-    public int Defense;
-    public float CriticalRate;
-    public int Speed;
+    public int ATK;
+    public float CRI;
+    public float CSD;
+    public int SPD;
 
     [Header("初始值")]
     public int D_MaxHP;
-    public int D_AttackPower;
-    public int D_Defense;
-    public int D_Speed;
+    public int D_ATK;
+    public float D_CRI;
+    public float D_CSD;
+    public int D_SPD;
     public int D_KillPoint;
     public int D_MaxExp;
     
@@ -48,9 +49,9 @@ public class CharacterData : ScriptableObject
     {
         MaxHP = D_MaxHP;
         CurrentHP = MaxHP;
-        AttackPower = D_AttackPower;
-        Defense = D_Defense;
-        Speed = D_Speed;
+        ATK = D_ATK;
+        CRI = D_CRI;
+        SPD = D_SPD;
         KillPoint = D_KillPoint;
         BaseExp = 0;
         MaxExp = D_MaxExp;

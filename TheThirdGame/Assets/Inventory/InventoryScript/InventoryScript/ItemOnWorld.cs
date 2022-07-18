@@ -83,98 +83,116 @@ public class ItemOnWorld : MonoBehaviour
         //數值再調
         switch (thisItem.ItemName)
         {   
-            //魔力?暴擊?負重?
+            //血+爆傷+負重
             case "Head":
             if(rate < 0.05f)
             {
-            thisItem.CRI = Random.Range(10,15);
-            thisItem.CSD = Random.Range(4,5);
+            thisItem.HP = Random.Range(25,40);
+            thisItem.CSD = Random.Range(12,20);
+            thisItem.SPD = -Random.Range(4,5);
             }
             else if(rate < 0.3f)
             {
-            thisItem.CRI = Random.Range(5,10);
-            thisItem.CSD = Random.Range(3,4);
+            thisItem.HP = Random.Range(10,25);
+            thisItem.CSD = Random.Range(5,12);
+            thisItem.SPD = -Random.Range(2,3);
+
             }
             else
             {   
-            thisItem.CRI = Random.Range(0,4);
-            thisItem.CSD = Random.Range(1,2);
+            thisItem.HP = Random.Range(1,10);
+            thisItem.CSD = Random.Range(1,5);
+            thisItem.SPD = -Random.Range(1,2);
+
             }
             break;
             
-            //攻擊?暴擊?速度?
+            //攻擊+爆擊+爆傷
             case "Sword":
             if(rate < 0.05f)
             {
-            thisItem.ATK = Random.Range(8,10);
-            thisItem.CRI = Random.Range(4,5);
+            thisItem.ATK = Random.Range(22,35);
+            thisItem.CRI = Random.Range(12,25);
+            thisItem.CSD = Random.Range(10,15);
             }
             else if(rate < 0.3f)
             {
-            thisItem.ATK = Random.Range(5,8);
-            thisItem.CRI = Random.Range(3,4);
+            thisItem.ATK = Random.Range(10,22);
+            thisItem.CRI = Random.Range(5,12);
+            thisItem.CSD = Random.Range(5,10);
+            
             }
             else
             {   
-            thisItem.ATK = Random.Range(0,5);
-            thisItem.CRI = Random.Range(0,3);
+            thisItem.ATK = Random.Range(1,10);
+            thisItem.CRI = Random.Range(1,5);
+            thisItem.CSD = Random.Range(1,5);
             }
             break;
 
-            //血量?負重?
+            //血+爆擊+負重
             case "Clothes":
             if(rate < 0.05f)
             {
-            thisItem.HP = Random.Range(6,10);
-            thisItem.SPD = -Random.Range(3,5);
+            thisItem.HP = Random.Range(20,30);
+            thisItem.CRI = Random.Range(15,30);
+            thisItem.SPD = -Random.Range(4,5);
             }
             else if(rate < 0.3f)
             {
-            thisItem.HP = Random.Range(3,6);
-            thisItem.SPD = -Random.Range(2,3);
+            thisItem.HP = Random.Range(10,20);
+            thisItem.CRI = Random.Range(8,15);
+            thisItem.SPD = -Random.Range(2,4);
             }
             else
             {   
-            thisItem.HP = Random.Range(0,3);
+            thisItem.HP = Random.Range(1,10);
+            thisItem.CRI = Random.Range(1,8);
             thisItem.SPD = -Random.Range(1,2);
             }
             break;
 
-            //血量?負重?
+            //血+爆傷+負重
             case "Pants":
             if(rate < 0.05f)
             {
-            thisItem.HP = Random.Range(8,10);
+            thisItem.HP = Random.Range(15,30);
+            thisItem.CSD = Random.Range(25,40);
             thisItem.SPD = -Random.Range(3,5);
             }
             else if(rate < 0.3f)
             {
-            thisItem.HP = Random.Range(4,7);
+            thisItem.HP = Random.Range(5,15);
+            thisItem.CSD = Random.Range(15,25);
             thisItem.SPD = -Random.Range(2,3);
             }
             else
             {   
-            thisItem.HP = Random.Range(1,3);
+            thisItem.HP = Random.Range(1,5);
+            thisItem.CSD = Random.Range(1,15);
             thisItem.SPD = -Random.Range(1,2);
             }
             break;
 
-            //血量?速度?暴擊?
+            //攻擊+爆擊+速度
             case "Shoe":
             if(rate < 0.05f)
             {
-            thisItem.HP = Random.Range(8,10);
-            thisItem.SPD = Random.Range(8,10);
+            thisItem.ATK = Random.Range(10,15);
+            thisItem.CRI = Random.Range(12,20);
+            thisItem.SPD = Random.Range(6,13);
             }
             else if(rate < 0.3f)
             {
-            thisItem.HP = Random.Range(5,8);
-            thisItem.SPD = Random.Range(5,8);
+            thisItem.ATK = Random.Range(5,10);
+            thisItem.CRI = Random.Range(5,12);
+            thisItem.SPD = Random.Range(3,6);
             }
             else
             {   
-            thisItem.HP = Random.Range(0,5);
-            thisItem.SPD = Random.Range(1,5);
+            thisItem.ATK = Random.Range(1,5);
+            thisItem.CRI = Random.Range(1,5);
+            thisItem.SPD = Random.Range(0,3);
             }
             break;
         }

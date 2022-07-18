@@ -36,7 +36,7 @@ public class CharacterStats : MonoBehaviour
     {            
 
     }
-    public void TakeDamage(CharacterStats attacker, CharacterStats defener)
+    /*public void TakeDamage(CharacterStats attacker, CharacterStats defener)
     {
         int damage = Mathf.Max(attacker.Character.AttackPower - defener.Character.Defense,0);
         Character.CurrentHP = Mathf.Max(Character.CurrentHP - damage,0);
@@ -85,5 +85,6 @@ public class CharacterStats : MonoBehaviour
        // print("攻擊者HP" + isme.Character.CurrentHP + "防御者HP" +target.Character.CurrentHP);
         
     }
+    */
 
 }

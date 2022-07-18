@@ -8,16 +8,16 @@ public class PlayerMovement : MonoBehaviour
     private float horizontal;
     private float vertical;
     Rigidbody2D rb;
-    CharacterStats characterStats;
+    public Player_Attributes CharacterState;
+    
     // Start is called before the first frame update
     private void Awake() 
     {
-        rb = GetComponent<Rigidbody2D>();
-        characterStats = GetComponent<CharacterStats>();
+
     }
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -25,9 +25,9 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
-        if(characterStats != null)
+        if(CharacterState != null)
         {
-        speed = characterStats.Character.Speed;
+            speed = CharacterState.Player_SPD;
         }
         rb.velocity = new Vector2(horizontal * speed, vertical * speed);
     }
