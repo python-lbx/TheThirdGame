@@ -12,8 +12,9 @@ public class PickUpAndCheckItemInfo : MonoBehaviour
     public Text _EquipName;
     public Text _EquipHP;
     public Text _EquipATK;
-    public Text _EquipDEF;
-    public Text _EquipSpeed;
+    public Text _EquipCRI;
+    public Text _EquipCSD;
+    public Text _EquipSPD;
     public bool here;
     public LayerMask item;
     public CharacterStats Player;
@@ -53,8 +54,9 @@ public class PickUpAndCheckItemInfo : MonoBehaviour
             _EquipName.text = _Equip.thisItem.ItemName;
             _EquipHP.text = _Equip.thisItem.HP.ToString();
             _EquipATK.text = _Equip.thisItem.ATK.ToString();
-            _EquipDEF.text = _Equip.thisItem.DEF.ToString();
-            _EquipSpeed.text = _Equip.thisItem.Speed.ToString();
+            _EquipCRI.text = _Equip.thisItem.CRI.ToString();
+            _EquipCSD.text = _Equip.thisItem.CSD.ToString();
+            _EquipSPD.text = _Equip.thisItem.SPD.ToString();
         }
 
         //拾取物件且強化
@@ -75,8 +77,9 @@ public class PickUpAndCheckItemInfo : MonoBehaviour
                     //array數據記錄
                     playerInventory.hp[i] = _Equip.thisItem.HP;
                     playerInventory.atk[i] = _Equip.thisItem.ATK;
-                    playerInventory.def[i] = _Equip.thisItem.DEF;
-                    playerInventory.speed[i] = _Equip.thisItem.Speed;
+                    playerInventory.cri[i] = _Equip.thisItem.CRI;
+                    playerInventory.csd[i] = _Equip.thisItem.CSD;
+                    playerInventory.spd[i] = _Equip.thisItem.SPD;
 
                     Destroy(_here.gameObject);
                     break;
@@ -94,7 +97,8 @@ public class PickUpAndCheckItemInfo : MonoBehaviour
         /*if(!playerInventory.ItemList.Contains(thisItem)){}*/ 
     }
 
-    public void showstate()
+    //能力 待重做
+    /*public void showstate()
     {
             Player.Character.AttackPower += _Equip.thisItem.ATK;
             Player.Character.Defense += _Equip.thisItem.DEF;
@@ -105,5 +109,5 @@ public class PickUpAndCheckItemInfo : MonoBehaviour
                   "攻擊力:" + Player.Character.AttackPower +
                   "防御力:" + Player.Character.Defense +
                   "移動速度:" + Player.Character.Speed);
-    }
+    }*/
 }

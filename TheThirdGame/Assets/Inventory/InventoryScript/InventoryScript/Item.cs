@@ -14,9 +14,10 @@ public class Item : ScriptableObject
     public bool equipable;
     
     [Header("物件屬性")]
-    public int HP;
-    public int ATK;
-    public int DEF; //魔力值
-    public int Speed;
+    public int HP; //血量
+    public int ATK; //攻擊力
+    public int CRI; //爆擊率
+    public int CSD; //爆擊傷害
+    public int SPD; //移動速度
     public float DropRate;
 }

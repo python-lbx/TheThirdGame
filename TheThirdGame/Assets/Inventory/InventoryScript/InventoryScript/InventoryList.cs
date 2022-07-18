@@ -9,6 +9,7 @@ public class InventoryList : ScriptableObject
     public List<Item> ItemList = new List<Item>();
     public int[] hp;
     public int[] atk;
-    public int[] def;
-    public int[] speed;
+    public int[] cri;
+    public int[] csd;
+    public int[] spd;
 }

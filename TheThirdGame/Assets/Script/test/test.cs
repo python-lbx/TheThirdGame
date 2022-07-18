@@ -54,7 +54,7 @@ public class test : MonoBehaviour
             EquipInfo.SetActive(false);
         }
 
-        if(_Equip != null)
+        /*if(_Equip != null)
         {
             _EquipName.text = _Equip.thisItem.ItemName;
             _EquipHP.text = _Equip.thisItem.HP.ToString();
@@ -75,7 +75,7 @@ public class test : MonoBehaviour
                   "防御力:" + Player.Character.Defense +
                   "移動速度:" + Player.Character.Speed);
             Destroy(_here.gameObject);
-        }
+        }*/
 
     }
 

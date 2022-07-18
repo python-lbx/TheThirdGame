@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.55754375, b: 0.042452812, a: 1}
+  m_Color: {r: 1, g: 0.5059128, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -146,6 +146,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  activeTime: 1
+  activeStart: 0
+  cdt: {fileID: 0}
+  floatdamage: {fileID: 8688421509004355456}
 --- !u!1 &8688421509920965159
 GameObject:
   m_ObjectHideFlags: 0

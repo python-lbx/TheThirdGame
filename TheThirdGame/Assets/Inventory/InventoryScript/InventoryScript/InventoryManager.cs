@@ -44,8 +44,9 @@ public class InventoryManager : MonoBehaviour
             instance.myBag.ItemList[i] = null;
             instance.myBag.hp[i] = 0;
             instance.myBag.atk[i] = 0;
-            instance.myBag.def[i] = 0;
-            instance.myBag.speed[i] = 0;
+            instance.myBag.cri[i] = 0;
+            instance.myBag.csd[i] = 0;
+            instance.myBag.spd[i] = 0;
         }
     }
 
@@ -102,8 +103,9 @@ public class InventoryManager : MonoBehaviour
             instance.slots[i].GetComponent<Slot>().SetUpSlot(instance.myBag.ItemList[i]);
             instance.slots[i].GetComponent<Slot>().setupData(instance.myBag.hp[i],
                                                              instance.myBag.atk[i],
-                                                             instance.myBag.def[i],
-                                                             instance.myBag.speed[i]);
+                                                             instance.myBag.cri[i],
+                                                             instance.myBag.csd[i],
+                                                             instance.myBag.spd[i]);
         }
     }
 }

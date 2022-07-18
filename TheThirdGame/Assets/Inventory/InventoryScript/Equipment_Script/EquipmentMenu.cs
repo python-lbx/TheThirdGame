@@ -108,8 +108,9 @@ public class EquipmentMenu : MonoBehaviour,IPointerEnterHandler
                     playerInventory.ItemList[i] = Head_Item;
                     playerInventory.hp[i] = head.HP;
                     playerInventory.atk[i] = head.ATK;
-                    playerInventory.def[i] = head.DEF;
-                    playerInventory.speed[i] = head.Speed;
+                    playerInventory.cri[i] = head.CRI;
+                    playerInventory.csd[i] = head.CSD;
+                    playerInventory.spd[i] = head.SPD;
                     head_Image.color = Color.black;
                     head.Reset();
                     break;
@@ -126,8 +127,9 @@ public class EquipmentMenu : MonoBehaviour,IPointerEnterHandler
                     playerInventory.ItemList[i] = Sword_Item;
                     playerInventory.hp[i] = sword.HP;
                     playerInventory.atk[i] = sword.ATK;
-                    playerInventory.def[i] = sword.DEF;
-                    playerInventory.speed[i] = sword.Speed;
+                    playerInventory.cri[i] = sword.CRI;
+                    playerInventory.csd[i] = sword.CSD;
+                    playerInventory.spd[i] = sword.SPD;
                     sword_Image.color = Color.black;
                     sword.Reset();
                     break;
@@ -144,8 +146,9 @@ public class EquipmentMenu : MonoBehaviour,IPointerEnterHandler
                     playerInventory.ItemList[i] = Clothes_Item;
                     playerInventory.hp[i] = clothes.HP;
                     playerInventory.atk[i] = clothes.ATK;
-                    playerInventory.def[i] = clothes.DEF;
-                    playerInventory.speed[i] = clothes.Speed;
+                    playerInventory.cri[i] = clothes.CRI;
+                    playerInventory.csd[i] = clothes.CSD;
+                    playerInventory.spd[i] = clothes.SPD;
                     clothes_Image.color = Color.black;
                     clothes.Reset(); //脫下重置部位屬性
                     break;
@@ -162,8 +165,9 @@ public class EquipmentMenu : MonoBehaviour,IPointerEnterHandler
                     playerInventory.ItemList[i] = Pants_Item;
                     playerInventory.hp[i] = pants.HP;
                     playerInventory.atk[i] = pants.ATK;
-                    playerInventory.def[i] = pants.DEF;
-                    playerInventory.speed[i] = pants.Speed;
+                    playerInventory.cri[i] = pants.CRI;
+                    playerInventory.csd[i] = pants.CSD;
+                    playerInventory.spd[i] = pants.SPD;
                     Pants_Image.color = Color.black;
                     pants.Reset();
                     break;
@@ -180,8 +184,9 @@ public class EquipmentMenu : MonoBehaviour,IPointerEnterHandler
                     playerInventory.ItemList[i] = Shoe_Item;
                     playerInventory.hp[i] = shoe.HP;
                     playerInventory.atk[i] = shoe.ATK;
-                    playerInventory.def[i] = shoe.DEF;
-                    playerInventory.speed[i] = shoe.Speed;
+                    playerInventory.cri[i] = shoe.CRI;
+                    playerInventory.csd[i] = shoe.CSD;
+                    playerInventory.spd[i] = shoe.SPD;
                     Shoe_Image.color = Color.black;
                     shoe.Reset();
                     break;
@@ -237,8 +242,9 @@ public class EquipmentMenu : MonoBehaviour,IPointerEnterHandler
         inventory.itemInfo.text = "GEAR: "  + item.PartName + 
                                   " HP: "    + item.PartHP +
                                   " ATK: "   + item.PartATK +
-                                  " DEF: "    + item.PartDEF + 
-                                  " SPEED: "  + item.PartSPEED;      
+                                  " CRI: "    + item.PartCRI + 
+                                  " CSD: "    + item.PartCSD + 
+                                  " SPD: "  + item.PartSPD;      
     }
 
     /*

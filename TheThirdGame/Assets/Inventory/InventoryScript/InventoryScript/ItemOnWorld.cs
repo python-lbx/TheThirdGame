@@ -12,10 +12,11 @@ public class ItemOnWorld : MonoBehaviour
 
     [Header("裝備面板")]
     public bool IsNewItem;
-    public int ohp;
-    public int oatk;
-    public int odef;
-    public int ospeed;
+    public int hp;
+    public int atk;
+    public int cri;
+    public int csd;
+    public int spd;
 
     float rate;
     //public LayerMask player;
@@ -86,18 +87,18 @@ public class ItemOnWorld : MonoBehaviour
             case "Head":
             if(rate < 0.05f)
             {
-            thisItem.DEF = Random.Range(10,15);
-            thisItem.Speed = -Random.Range(4,5);
+            thisItem.CRI = Random.Range(10,15);
+            thisItem.CSD = Random.Range(4,5);
             }
             else if(rate < 0.3f)
             {
-            thisItem.DEF = Random.Range(5,10);
-            thisItem.Speed = -Random.Range(3,4);
+            thisItem.CRI = Random.Range(5,10);
+            thisItem.CSD = Random.Range(3,4);
             }
             else
             {   
-            thisItem.DEF = Random.Range(0,4);
-            thisItem.Speed = -Random.Range(1,2);
+            thisItem.CRI = Random.Range(0,4);
+            thisItem.CSD = Random.Range(1,2);
             }
             break;
             
@@ -106,17 +107,17 @@ public class ItemOnWorld : MonoBehaviour
             if(rate < 0.05f)
             {
             thisItem.ATK = Random.Range(8,10);
-            thisItem.Speed = Random.Range(4,5);
+            thisItem.CRI = Random.Range(4,5);
             }
             else if(rate < 0.3f)
             {
             thisItem.ATK = Random.Range(5,8);
-            thisItem.Speed = Random.Range(3,4);
+            thisItem.CRI = Random.Range(3,4);
             }
             else
             {   
             thisItem.ATK = Random.Range(0,5);
-            thisItem.Speed = Random.Range(0,3);
+            thisItem.CRI = Random.Range(0,3);
             }
             break;
 
@@ -125,17 +126,17 @@ public class ItemOnWorld : MonoBehaviour
             if(rate < 0.05f)
             {
             thisItem.HP = Random.Range(6,10);
-            thisItem.Speed = -Random.Range(3,5);
+            thisItem.SPD = -Random.Range(3,5);
             }
             else if(rate < 0.3f)
             {
             thisItem.HP = Random.Range(3,6);
-            thisItem.Speed = -Random.Range(2,3);
+            thisItem.SPD = -Random.Range(2,3);
             }
             else
             {   
             thisItem.HP = Random.Range(0,3);
-            thisItem.Speed = -Random.Range(1,2);
+            thisItem.SPD = -Random.Range(1,2);
             }
             break;
 
@@ -144,17 +145,17 @@ public class ItemOnWorld : MonoBehaviour
             if(rate < 0.05f)
             {
             thisItem.HP = Random.Range(8,10);
-            thisItem.Speed = -Random.Range(3,5);
+            thisItem.SPD = -Random.Range(3,5);
             }
             else if(rate < 0.3f)
             {
             thisItem.HP = Random.Range(4,7);
-            thisItem.Speed = -Random.Range(2,3);
+            thisItem.SPD = -Random.Range(2,3);
             }
             else
             {   
             thisItem.HP = Random.Range(1,3);
-            thisItem.Speed = -Random.Range(1,2);
+            thisItem.SPD = -Random.Range(1,2);
             }
             break;
 
@@ -163,25 +164,26 @@ public class ItemOnWorld : MonoBehaviour
             if(rate < 0.05f)
             {
             thisItem.HP = Random.Range(8,10);
-            thisItem.Speed = Random.Range(8,10);
+            thisItem.SPD = Random.Range(8,10);
             }
             else if(rate < 0.3f)
             {
             thisItem.HP = Random.Range(5,8);
-            thisItem.Speed = Random.Range(5,8);
+            thisItem.SPD = Random.Range(5,8);
             }
             else
             {   
             thisItem.HP = Random.Range(0,5);
-            thisItem.Speed = Random.Range(1,5);
+            thisItem.SPD = Random.Range(1,5);
             }
             break;
         }
 
-        ohp = thisItem.HP;
-        oatk = thisItem.ATK;
-        odef = thisItem.DEF;
-        ospeed = thisItem.Speed;
+        hp = thisItem.HP;
+        atk = thisItem.ATK;
+        cri = thisItem.CRI;
+        csd = thisItem.CSD;
+        spd = thisItem.SPD;
     }
 
     #region  廢案

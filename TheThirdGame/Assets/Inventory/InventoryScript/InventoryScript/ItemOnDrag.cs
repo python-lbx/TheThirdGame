@@ -14,8 +14,9 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
     public string Itemname; //for生成
     public int ItemHp;
     public int ItemAtk;
-    public int ItemDef;
-    public int ItemSpeed;
+    public int ItemCRI;
+    public int ItemCSD;
+    public int ItemSPD;
     
 
     
@@ -44,8 +45,9 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
                        originalParent.GetComponent<Slot>().slotName,
                        originalParent.GetComponent<Slot>().thisHP,
                        originalParent.GetComponent<Slot>().thisATK,
-                       originalParent.GetComponent<Slot>().thisDEF,
-                       originalParent.GetComponent<Slot>().thisSpeed );
+                       originalParent.GetComponent<Slot>().thisCRI,
+                       originalParent.GetComponent<Slot>().thisCSD,
+                       originalParent.GetComponent<Slot>().thisSPD );
 
 
         //脫離
@@ -95,22 +97,25 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
                 var temp_ID = mybag.ItemList[currentItemID]; 
                 var temp_hp = mybag.hp[currentItemID];
                 var temp_atk = mybag.atk[currentItemID];
-                var temp_def = mybag.def[currentItemID];
-                var temp_speed = mybag.speed[currentItemID];
+                var temp_cri = mybag.cri[currentItemID];
+                var temp_csd = mybag.csd[currentItemID];
+                var temp_spd = mybag.spd[currentItemID];
 
                 //step 2 將物件由 0位放到1位 將ID 0 改為ID 1
                 mybag.ItemList[currentItemID] = mybag.ItemList[obj.GetComponentInParent<Slot>().slotID];
                 mybag.hp[currentItemID] = mybag.hp[obj.GetComponentInParent<Slot>().slotID];
                 mybag.atk[currentItemID] = mybag.atk[obj.GetComponentInParent<Slot>().slotID];
-                mybag.def[currentItemID] = mybag.def[obj.GetComponentInParent<Slot>().slotID];
-                mybag.speed[currentItemID] = mybag.speed[obj.GetComponentInParent<Slot>().slotID];
+                mybag.cri[currentItemID] = mybag.cri[obj.GetComponentInParent<Slot>().slotID];
+                mybag.csd[currentItemID] = mybag.csd[obj.GetComponentInParent<Slot>().slotID];
+                mybag.spd[currentItemID] = mybag.spd[obj.GetComponentInParent<Slot>().slotID];
 
                 //step 3 將物件 由1位放到0位 將ID改為暫存data
                 mybag.ItemList[obj.GetComponentInParent<Slot>().slotID] = temp_ID;
                 mybag.hp[obj.GetComponentInParent<Slot>().slotID] = temp_hp;
                 mybag.atk[obj.GetComponentInParent<Slot>().slotID] = temp_atk;
-                mybag.def[obj.GetComponentInParent<Slot>().slotID] = temp_def;
-                mybag.speed[obj.GetComponentInParent<Slot>().slotID] = temp_speed;
+                mybag.cri[obj.GetComponentInParent<Slot>().slotID] = temp_cri;
+                mybag.csd[obj.GetComponentInParent<Slot>().slotID] = temp_csd;
+                mybag.spd[obj.GetComponentInParent<Slot>().slotID] = temp_spd;
 
 
                 //換位
@@ -131,16 +136,18 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
                 mybag.ItemList[obj.GetComponentInParent<Slot>().slotID] = mybag.ItemList[currentItemID];
                 mybag.hp[obj.GetComponentInParent<Slot>().slotID] = mybag.hp[currentItemID];
                 mybag.atk[obj.GetComponentInParent<Slot>().slotID] = mybag.atk[currentItemID];
-                mybag.def[obj.GetComponentInParent<Slot>().slotID] = mybag.def[currentItemID];
-                mybag.speed[obj.GetComponentInParent<Slot>().slotID] = mybag.speed[currentItemID];
+                mybag.cri[obj.GetComponentInParent<Slot>().slotID] = mybag.cri[currentItemID];
+                mybag.csd[obj.GetComponentInParent<Slot>().slotID] = mybag.csd[currentItemID];
+                mybag.spd[obj.GetComponentInParent<Slot>().slotID] = mybag.spd[currentItemID];
 
                 if(obj.GetComponent<Slot>().slotID != currentItemID)
                 {
                     mybag.ItemList[currentItemID] = null;
                     mybag.hp[currentItemID] = 0;
                     mybag.atk[currentItemID] = 0;
-                    mybag.def[currentItemID] = 0;
-                    mybag.speed[currentItemID] = 0;
+                    mybag.cri[currentItemID] = 0;
+                    mybag.csd[currentItemID] = 0;
+                    mybag.spd[currentItemID] = 0;
                 }
 
                 GetComponent<CanvasGroup>().blocksRaycasts = true;
@@ -154,8 +161,9 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
                 //生成舊道具 且不會屬性隨機
                 inventory.objPrefab[ItemofWhichNo].GetComponent<ItemOnWorld>().tempDate.HP = mybag.hp[currentItemID];
                 inventory.objPrefab[ItemofWhichNo].GetComponent<ItemOnWorld>().tempDate.ATK = mybag.atk[currentItemID];
-                inventory.objPrefab[ItemofWhichNo].GetComponent<ItemOnWorld>().tempDate.DEF = mybag.def[currentItemID];
-                inventory.objPrefab[ItemofWhichNo].GetComponent<ItemOnWorld>().tempDate.Speed = mybag.speed[currentItemID];
+                inventory.objPrefab[ItemofWhichNo].GetComponent<ItemOnWorld>().tempDate.CRI = mybag.cri[currentItemID];
+                inventory.objPrefab[ItemofWhichNo].GetComponent<ItemOnWorld>().tempDate.CSD = mybag.csd[currentItemID];
+                inventory.objPrefab[ItemofWhichNo].GetComponent<ItemOnWorld>().tempDate.SPD = mybag.spd[currentItemID];
 
                 Instantiate(inventory.objPrefab[ItemofWhichNo],newpos,Quaternion.identity);
 
@@ -165,8 +173,9 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
                 mybag.ItemList[currentItemID] = null;
                 mybag.hp[currentItemID] = 0;
                 mybag.atk[currentItemID] = 0;
-                mybag.def[currentItemID] = 0;
-                mybag.speed[currentItemID] = 0;
+                mybag.cri[currentItemID] = 0;
+                mybag.csd[currentItemID] = 0;
+                mybag.spd[currentItemID] = 0;
 
                 GetComponent<CanvasGroup>().blocksRaycasts = true;
                 InventoryManager.RefreshItem();
@@ -187,8 +196,9 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
         inventory.itemInfo.text ="EQUIP: "  + item.slotName + 
                                  " HP: "    + item.thisHP +
                                  " ATK: "   + item.thisATK +
-                                 " DEF: "    + item.thisDEF + 
-                                 " SPEED: "  + item.thisSpeed;
+                                 " CRI: "    + item.thisCRI + 
+                                 " CSD: "    + item.thisCSD + 
+                                 " SPD: "  + item.thisSPD;
         
         //print("我選中了"+item.slotName+"HP:"+item.thisHP);
         //print(eventData.pointerCurrentRaycast.gameObject);
@@ -201,16 +211,17 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
         //print("我離開了"+eventData.pointerCurrentRaycast.gameObject.name);
     }
 
-    public void original_Data(int id,string name,int hp,int atk,int def,int speed) //顯示點擊物件屬性
+    public void original_Data(int id,string name,int hp,int atk,int cri,int csd,int spd) //顯示點擊物件屬性
     {
         currentItemID = id;
         Itemname = name;
         ItemHp = hp;
         ItemAtk = atk;
-        ItemDef = def;
-        ItemSpeed = speed;
+        ItemCRI= cri;
+        ItemCSD = csd;
+        ItemSPD = spd;
 
-        print("ID" +currentItemID + "name"+Itemname +"HP"+ ItemHp +"ATK"+ ItemAtk +"DEF"+ ItemDef +"SPEED"+ ItemSpeed);
+        print("ID" +currentItemID + "name"+Itemname +"HP"+ ItemHp +"ATK"+ ItemAtk +"CRI"+ ItemCRI +"CSD"+ ItemCSD +"SPD"+ ItemSPD);
         
     }
 }
