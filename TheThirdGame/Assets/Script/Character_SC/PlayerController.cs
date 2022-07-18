@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     [Header("機率")]
-    public int CRI;
-    public int CSD;
+    public float CRI;
+    public float CSD;
     public bool isCrit;
     public float rate;
     [Header("面板傷害")]
@@ -22,15 +22,15 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CRI_Damage = damage *  (CSD/100);
     }
 
     // Update is called once per frame
     void Update()
     {
-        CRI = CharacterState.Player_CRI;
         damage = CharacterState.Player_ATK;
-        CRI_Damage = damage *  (CSD/100);
+        CRI = CharacterState.Player_CRI;
+        CSD = CharacterState.Player_CSD;
+        CRI_Damage = Mathf.Round(damage * (CSD/100)) ;
     }
 
 
@@ -45,8 +45,7 @@ public class PlayerController : MonoBehaviour
             FloatDamagePool.instance.GetFormPool();
 
             if(rate < (CRI/100) )
-            {
-                CRI_Damage = damage *  (CSD/100);
+            {        
                 isCrit = true;
             }
             else
