@@ -102,7 +102,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5909758999224534716
 Transform:
   m_ObjectHideFlags: 0
@@ -561,17 +561,7 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 7350738526766632080}
-    m_ColliderPaths:
-    - - X: -30333334
-        Y: 90333336
-      - X: -30333334
-        Y: 49666668
-      - X: 30333334
-        Y: 49666668
-      - X: 30333334
-        Y: 90333336
+  m_ColliderPaths: []
   m_CompositePaths:
     m_Paths:
     - - {x: 3.033304, y: 4.9666667}
@@ -754,13 +744,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4334140266525546626}
   - component: {fileID: 2276262855839826454}
+  - component: {fileID: 68427679316987759}
   m_Layer: 0
   m_Name: UpDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4334140266525546626
 Transform:
   m_ObjectHideFlags: 0
@@ -805,6 +796,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.5, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &68427679316987759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209826123228346055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ba12a1bf3d068d4fa3b939bac9d536a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RoomID: 0
 --- !u!1 &1217850826473739294
 GameObject:
   m_ObjectHideFlags: 0
@@ -1054,7 +1058,10 @@ MonoBehaviour:
   doorNumber: 0
   RoomID: 0
   text: {fileID: 3659413625713391221}
+  IsNewRoom: 1
   MapGroup: {fileID: 0}
+  Enemy: {fileID: 8419070845770596499, guid: b8c13b806cafad24fb53cac7188351e7, type: 3}
+  Enemys: []
 --- !u!1 &2629692891468408360
 GameObject:
   m_ObjectHideFlags: 0
@@ -1400,7 +1407,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4034018940841342175
 Transform:
   m_ObjectHideFlags: 0
@@ -1859,17 +1866,7 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 2410763549430647093}
-    m_ColliderPaths:
-    - - X: -30333334
-        Y: -49666668
-      - X: -30333334
-        Y: -90333336
-      - X: 30333334
-        Y: -90333336
-      - X: 30333334
-        Y: -49666668
+  m_ColliderPaths: []
   m_CompositePaths:
     m_Paths:
     - - {x: 3.033304, y: -9.033334}
@@ -2052,13 +2049,14 @@ GameObject:
   m_Component:
   - component: {fileID: 535852854246693587}
   - component: {fileID: 8042747051222090964}
+  - component: {fileID: 6289639716825722722}
   m_Layer: 0
   m_Name: DownDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &535852854246693587
 Transform:
   m_ObjectHideFlags: 0
@@ -2103,6 +2101,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.5, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &6289639716825722722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3993968761434531357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ba12a1bf3d068d4fa3b939bac9d536a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RoomID: 0
 --- !u!1 &4057225737832625982
 GameObject:
   m_ObjectHideFlags: 0
@@ -2195,13 +2206,14 @@ GameObject:
   m_Component:
   - component: {fileID: 5684498122248920336}
   - component: {fileID: 174275071834323816}
+  - component: {fileID: 3027862807110227510}
   m_Layer: 0
   m_Name: LeftDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5684498122248920336
 Transform:
   m_ObjectHideFlags: 0
@@ -2246,6 +2258,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 6.5}
   m_EdgeRadius: 0
+--- !u!114 &3027862807110227510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4854459692799234878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ba12a1bf3d068d4fa3b939bac9d536a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RoomID: 0
 --- !u!1 &5019303026564462430
 GameObject:
   m_ObjectHideFlags: 0
@@ -5872,13 +5897,14 @@ GameObject:
   m_Component:
   - component: {fileID: 3043273617573707654}
   - component: {fileID: 5542613929217035490}
+  - component: {fileID: 280889960057993743}
   m_Layer: 0
   m_Name: RightDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3043273617573707654
 Transform:
   m_ObjectHideFlags: 0
@@ -5923,6 +5949,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 6.5}
   m_EdgeRadius: 0
+--- !u!114 &280889960057993743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7820019229319672147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ba12a1bf3d068d4fa3b939bac9d536a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RoomID: 0
 --- !u!1 &7868001505707412903
 GameObject:
   m_ObjectHideFlags: 0
@@ -6025,7 +6064,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1076347546970815336
 Transform:
   m_ObjectHideFlags: 0
@@ -6484,17 +6523,7 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 3797927347750066894}
-    m_ColliderPaths:
-    - - X: 89666664
-        Y: 30333334
-      - X: 89666664
-        Y: -30333334
-      - X: 130333336
-        Y: -30333334
-      - X: 130333336
-        Y: 30333334
+  m_ColliderPaths: []
   m_CompositePaths:
     m_Paths:
     - - {x: 13.033304, y: -3.0333335}
@@ -6605,7 +6634,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7984372503105187964
 Transform:
   m_ObjectHideFlags: 0
@@ -7064,17 +7093,7 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 1708688635039200680}
-    m_ColliderPaths:
-    - - X: -130333336
-        Y: 30333334
-      - X: -130333336
-        Y: -30333334
-      - X: -89666664
-        Y: -30333334
-      - X: -89666664
-        Y: 30333334
+  m_ColliderPaths: []
   m_CompositePaths:
     m_Paths:
     - - {x: -8.966696, y: -3.0333335}
@@ -7220,5 +7239,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 22.5, y: 14}
+  m_Size: {x: 17, y: 7}
   m_EdgeRadius: 0

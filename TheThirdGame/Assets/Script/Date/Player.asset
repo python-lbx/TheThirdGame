@@ -23,7 +23,7 @@ MonoBehaviour:
   D_ATK: 10
   D_CRI: 0
   D_CSD: 1.2
-  D_SPD: 5
+  D_SPD: 10
   D_KillPoint: 0
   D_MaxExp: 100
   KillPoint: 0

@@ -5,15 +5,36 @@ using UnityEngine.UI;
 
 public class Room : MonoBehaviour
 {
-    public GameObject LeftDoor,RightDoor,UpDoor,DownDoor;
-    public GameObject LeftWall,RightWall,UpWall,DownWall;
+    [Header("門")]
+    public GameObject LeftDoor;
+    public GameObject RightDoor;
+    public GameObject UpDoor;
+    public GameObject DownDoor;
+    [Header("牆")]
+    public GameObject LeftWall;
+    public GameObject RightWall;
+    public GameObject UpWall;
+    public GameObject DownWall;
 
-    public bool leftdoor,rightdoor,updoor,downdoor;
+    [Header("門跟牆判定")]
+    public bool leftdoor;
+    public bool rightdoor;
+    public bool updoor;
+    public bool downdoor;
     public int stepToStart;
     public int doorNumber;
     public int RoomID;
     public Text text;
+
+    [Header("初次戰鬥判定")]
+    public bool IsNewRoom;
+    [Header("地圖集合")]
     public GameObject MapGroup;
+    [Header("小怪集合")]
+    public GameObject Enemy;
+    public bool isClear;
+    public int totalHP;
+    public List<GameObject> Enemys = new List<GameObject>();
 
 
     private void Awake() 
@@ -25,30 +46,53 @@ public class Room : MonoBehaviour
     void Start()
     {
 
-        LeftDoor.SetActive(leftdoor);
-        RightDoor.SetActive(rightdoor);
-        UpDoor.SetActive(updoor);
-        DownDoor.SetActive(downdoor);
+        //LeftDoor.SetActive(leftdoor);
+        //RightDoor.SetActive(rightdoor);
+        //UpDoor.SetActive(updoor);
+        //DownDoor.SetActive(downdoor);
 
         LeftWall.SetActive(!leftdoor);
         RightWall.SetActive(!rightdoor);
         UpWall.SetActive(!updoor);
         DownWall.SetActive(!downdoor);
 
+        if(RoomID == 0)
+        {
+            IsNewRoom = false;
+            LeftDoor.SetActive(leftdoor);
+            RightDoor.SetActive(rightdoor);
+            UpDoor.SetActive(updoor);
+            DownDoor.SetActive(downdoor);
+        }
+        
+        print(RoomID);
     }
 
     // Update is called once per frame
     void Update()
     {
-        LeftDoor.SetActive(leftdoor);
-        RightDoor.SetActive(rightdoor);
-        UpDoor.SetActive(updoor);
-        DownDoor.SetActive(downdoor);
+        //LeftDoor.SetActive(leftdoor);
+        //RightDoor.SetActive(rightdoor);
+        //UpDoor.SetActive(updoor);
+        //DownDoor.SetActive(downdoor);
 
-        LeftWall.SetActive(!leftdoor);
-        RightWall.SetActive(!rightdoor);
-        UpWall.SetActive(!updoor);
-        DownWall.SetActive(!downdoor);
+       // LeftWall.SetActive(!leftdoor);
+        //RightWall.SetActive(!rightdoor);
+        //UpWall.SetActive(!updoor);
+        //DownWall.SetActive(!downdoor);
+        
+        if(!IsNewRoom && totalHP == 0)
+        {
+            isClear = true;
+            if(updoor)
+            UpDoor.SetActive(false);
+            if(downdoor)
+            DownDoor.SetActive(false);
+            if(leftdoor)
+            LeftDoor.SetActive(false);
+            if(rightdoor)
+            RightDoor.SetActive(false);
+        }
     }
 
     public void UpDateRoom(float xOffset,float yOffset)
@@ -68,10 +112,45 @@ public class Room : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) 
-    {
+    {   
+        //鏡頭跟隨
         if(other.gameObject.CompareTag("Player"))
         {
             FindObjectOfType<CameraController>().ChangeTarget(transform);
         }
+
+        if(other.gameObject.CompareTag("Player") && IsNewRoom && RoomID != 0) //首次進入房間會進入戰鬥
+        {
+            IsNewRoom = false; //非首次進入房間
+
+            //關門
+            LeftDoor.SetActive(leftdoor);
+            RightDoor.SetActive(rightdoor);
+            UpDoor.SetActive(updoor);
+            DownDoor.SetActive(downdoor);
+
+            //生成敵人
+            int enemynum = Random.Range(0,6);
+
+            for(int i = 0 ; i <= enemynum ;i++)
+            {
+                Enemys.Add( Instantiate(Enemy,transform.position,Quaternion.identity) );
+            }
+
+            if(Enemys != null)
+            {
+                foreach(var enemy in Enemys)
+                {
+                    totalHP += enemy.GetComponent<EnemyController>().health; //總計血
+                    enemy.GetComponent<EnemyController>().whichroom = this; //這間房
+                }
+            }
+        }
+    }
+
+    public void dead(int health)
+    {
+        print("dead");
+        totalHP -= health;
     }
 }

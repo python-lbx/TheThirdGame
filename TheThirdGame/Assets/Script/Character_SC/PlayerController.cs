@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
             rate = Random.value;
             targetpos = other.gameObject.transform.GetChild(0).gameObject;
 
-            FloatDamagePool.instance.GetFormPool();
+            //FloatDamagePool.instance.GetFormPool();
 
             if(rate < (CRI/100) )
             {        
