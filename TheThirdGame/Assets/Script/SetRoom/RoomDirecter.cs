@@ -21,15 +21,26 @@ public class RoomDirecter : MonoBehaviour
     public LayerMask roomLayer;
 
     public List<Room> rooms = new List<Room>();
+    public List<GameObject> NearEndRoom = new List<GameObject>(); //達成條件才能開通門
+    public List<GameObject> Wall = new List<GameObject>();
+    public WallType walltype;
+    public GameObject MapGroup;
+    public GameObject WallGroup;
 
     // Start is called before the first frame update
     void Start()
     {
-        for(int i =0 ; i < roomNumber ; i++)
+        for(int i =0 ; i < roomNumber ; i++) //起地圖
         {
+            
             rooms.Add(Instantiate(roomPrefab,directerPoint.position,Quaternion.identity).GetComponent<Room>());
-
+            
             ChangePos();
+        }
+
+        for(int i = 0 ; i < rooms.Count ; i++) //入ID
+        {
+            rooms[i].GetComponent<Room>().RoomID = i;
         }
 
         rooms[0].GetComponent<SpriteRenderer>().color = startColor;
@@ -55,6 +66,16 @@ public class RoomDirecter : MonoBehaviour
         endroom.SetActive(false);
 
         closeroom();
+        Wall[Wall.Count-1].SetActive(false);
+
+        /*for(int i = 0 ; i < NearEndRoom.Count ; i++)
+        {
+            print(NearEndRoom[i].GetComponent<Room>().RoomID);
+            for(int x = 0 ; x<Wall.Count ; x++)
+            {
+                Wall[NearEndRoom[i].GetComponent<Room>().RoomID].SetActive(false);
+            }
+        }*/
 
     }
 
@@ -70,6 +91,16 @@ public class RoomDirecter : MonoBehaviour
         {
             endroom.SetActive(true);
             openroom();
+            Wall[Wall.Count-1].SetActive(true);
+
+        /*for(int i = 0 ; i < NearEndRoom.Count ; i++)
+        {
+            print(NearEndRoom[i].GetComponent<Room>().RoomID);
+            for(int x = 0 ; x<Wall.Count ; x++)
+            {
+                Wall[NearEndRoom[i].GetComponent<Room>().RoomID].SetActive(true);
+            }
+        }*/
         }
     }
 
@@ -116,6 +147,7 @@ public class RoomDirecter : MonoBehaviour
                     {
                         Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<SpriteRenderer>().color = Color.grey;
                         Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<Room>().downdoor = false;
+                        NearEndRoom.Add(Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject);
                     }
                     directerPoint.position = endroom.transform.position;
                 break;
@@ -129,6 +161,7 @@ public class RoomDirecter : MonoBehaviour
                     {
                         Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<SpriteRenderer>().color = Color.grey;
                         Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<Room>().updoor = false;
+                        NearEndRoom.Add(Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject);
                     }
                     directerPoint.position = endroom.transform.position;
                 break;
@@ -141,6 +174,7 @@ public class RoomDirecter : MonoBehaviour
                     {
                         Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<SpriteRenderer>().color = Color.grey;
                         Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<Room>().leftdoor = false;
+                        NearEndRoom.Add(Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject);
                     }
                     directerPoint.position = endroom.transform.position;
                 break;
@@ -152,6 +186,7 @@ public class RoomDirecter : MonoBehaviour
                     {
                         Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<SpriteRenderer>().color = Color.grey;
                         Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<Room>().rightdoor = false;
+                        NearEndRoom.Add(Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject);
                     }
                     directerPoint.position = endroom.transform.position;
                 break;
@@ -227,6 +262,49 @@ public class RoomDirecter : MonoBehaviour
         newRoom.leftdoor = Physics2D.OverlapCircle(roomPos + new Vector3(-xOffset,0,0),0.2f,roomLayer);
         newRoom.rightdoor = Physics2D.OverlapCircle(roomPos + new Vector3(xOffset,0,0),0.2f,roomLayer);
 
-        newRoom.UpDateRoom(); //顯示步數
+        newRoom.UpDateRoom(xOffset,yOffset); //顯示步數
+
+        switch(newRoom.doorNumber)
+        {
+            case 1:
+                if(newRoom.rightdoor) { Instantiate(walltype.R,roomPos,Quaternion.identity).gameObject.transform.SetParent(WallGroup.transform); }
+                if(newRoom.leftdoor) { Instantiate(walltype.L,roomPos,Quaternion.identity).gameObject.transform.SetParent(WallGroup.transform); }
+                if(newRoom.updoor) { Instantiate(walltype.U,roomPos,Quaternion.identity).gameObject.transform.SetParent(WallGroup.transform); }
+                if(newRoom.downdoor) { Instantiate(walltype.D,roomPos,Quaternion.identity).gameObject.transform.SetParent(WallGroup.transform); }
+            break;
+
+            case 2:
+                if(newRoom.leftdoor && newRoom.rightdoor) { Instantiate(walltype.LR,roomPos,Quaternion.identity).gameObject.transform.SetParent(WallGroup.transform); }
+                if(newRoom.leftdoor && newRoom.updoor) { Instantiate(walltype.LU,roomPos,Quaternion.identity).gameObject.transform.SetParent(WallGroup.transform); }
+                if(newRoom.leftdoor && newRoom.downdoor) { Instantiate(walltype.LD,roomPos,Quaternion.identity).gameObject.transform.SetParent(WallGroup.transform); }
+                
+                if(newRoom.rightdoor && newRoom.updoor) { Instantiate(walltype.RU,roomPos,Quaternion.identity).gameObject.transform.SetParent(WallGroup.transform); }
+                if(newRoom.rightdoor && newRoom.downdoor){ Instantiate(walltype.RD,roomPos,Quaternion.identity).gameObject.transform.SetParent(WallGroup.transform); }
+
+                
+                if(newRoom.updoor && newRoom.downdoor) { Instantiate(walltype.UD,roomPos,Quaternion.identity).gameObject.transform.SetParent(WallGroup.transform); }
+            break;
+
+            case 3:
+                if(newRoom.leftdoor && newRoom.rightdoor && newRoom.updoor) { Instantiate(walltype.LRU,roomPos,Quaternion.identity).gameObject.transform.SetParent(WallGroup.transform); }
+                if(newRoom.leftdoor && newRoom.rightdoor && newRoom.downdoor) { Instantiate(walltype.LRD,roomPos,Quaternion.identity).gameObject.transform.SetParent(WallGroup.transform); }
+                if(newRoom.leftdoor && newRoom.updoor && newRoom.downdoor) { Instantiate(walltype.LUD,roomPos,Quaternion.identity).gameObject.transform.SetParent(WallGroup.transform); }
+
+                if(newRoom.rightdoor && newRoom.updoor && newRoom.downdoor) { Instantiate(walltype.RUD,roomPos,Quaternion.identity).gameObject.transform.SetParent(WallGroup.transform); }
+            break;
+
+            case 4:
+                if(newRoom.leftdoor && newRoom.rightdoor && newRoom.updoor && newRoom.downdoor) { Instantiate(walltype.LRUD,roomPos,Quaternion.identity).gameObject.transform.SetParent(WallGroup.transform); }
+            break;
+        }
+    }
+
+    [System.Serializable]
+    public class WallType
+    {
+        public GameObject L,R,U,D,
+                          LR,LU,LD,RU,RD,UD,
+                          LRU,LRD,LUD,RUD,
+                          LRUD;
     }
 }

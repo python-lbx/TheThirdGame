@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public LootArray loot;
+    public int health;
 
     // Start is called before the first frame update
     void Start()
@@ -15,7 +16,10 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(health == 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     public void lootRate(Vector2 _me)
