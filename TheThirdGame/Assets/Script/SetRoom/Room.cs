@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Room : MonoBehaviour
 {
     public GameObject LeftDoor,RightDoor,UpDoor,DownDoor;
+    public GameObject LeftWall,RightWall,UpWall,DownWall;
 
     public bool leftdoor,rightdoor,updoor,downdoor;
     public int stepToStart;
@@ -29,6 +30,11 @@ public class Room : MonoBehaviour
         UpDoor.SetActive(updoor);
         DownDoor.SetActive(downdoor);
 
+        LeftWall.SetActive(!leftdoor);
+        RightWall.SetActive(!rightdoor);
+        UpWall.SetActive(!updoor);
+        DownWall.SetActive(!downdoor);
+
     }
 
     // Update is called once per frame
@@ -38,6 +44,11 @@ public class Room : MonoBehaviour
         RightDoor.SetActive(rightdoor);
         UpDoor.SetActive(updoor);
         DownDoor.SetActive(downdoor);
+
+        LeftWall.SetActive(!leftdoor);
+        RightWall.SetActive(!rightdoor);
+        UpWall.SetActive(!updoor);
+        DownWall.SetActive(!downdoor);
     }
 
     public void UpDateRoom(float xOffset,float yOffset)
@@ -54,5 +65,13 @@ public class Room : MonoBehaviour
         doorNumber++;
         if(leftdoor)
         doorNumber++;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) 
+    {
+        if(other.gameObject.CompareTag("Player"))
+        {
+            FindObjectOfType<CameraController>().ChangeTarget(transform);
+        }
     }
 }
