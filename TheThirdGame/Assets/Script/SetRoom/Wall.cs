@@ -5,6 +5,8 @@ using UnityEngine;
 public class Wall : MonoBehaviour
 {
     public RoomDirecter roomDirecter;
+    public GameObject[] WallStyle;
+
     private void Awake() 
     {
         roomDirecter = FindObjectOfType<RoomDirecter>();

@@ -11,10 +11,10 @@ public class Room : MonoBehaviour
     public GameObject UpDoor;
     public GameObject DownDoor;
     [Header("牆")]
-    public GameObject LeftWall;
-    public GameObject RightWall;
-    public GameObject UpWall;
-    public GameObject DownWall;
+    public GameObject[] LeftWall;
+    public GameObject[] RightWall;
+    public GameObject[] UpWall;
+    public GameObject[] DownWall;
 
     [Header("門跟牆判定")]
     public bool leftdoor;
@@ -51,11 +51,13 @@ public class Room : MonoBehaviour
         //UpDoor.SetActive(updoor);
         //DownDoor.SetActive(downdoor);
 
-        LeftWall.SetActive(!leftdoor);
-        RightWall.SetActive(!rightdoor);
-        UpWall.SetActive(!updoor);
-        DownWall.SetActive(!downdoor);
 
+        LeftWall[0].SetActive(!leftdoor);
+        RightWall[0].SetActive(!rightdoor);
+        UpWall[0].SetActive(!updoor);
+        DownWall[0].SetActive(!downdoor);
+
+        //初始房間
         if(RoomID == 0)
         {
             IsNewRoom = false;
@@ -65,7 +67,7 @@ public class Room : MonoBehaviour
             DownDoor.SetActive(downdoor);
         }
         
-        print(RoomID);
+        //print(RoomID);
     }
 
     // Update is called once per frame
@@ -99,7 +101,7 @@ public class Room : MonoBehaviour
     {
         stepToStart = (int)(Mathf.Abs(transform.position.x / xOffset) + Mathf.Abs(transform.position.y / yOffset));
 
-        text.text = stepToStart.ToString();
+        //text.text = stepToStart.ToString();
 
         if(updoor)
         doorNumber++;
