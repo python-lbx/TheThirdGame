@@ -9,6 +9,7 @@ public class RandomMapBG : MonoBehaviour
     // Start is called before the first frame update
     private void Awake() 
     {
+        //控制地圖樣式
         num = Random.Range(0,2);
         switch(num)
         {
@@ -23,7 +24,7 @@ public class RandomMapBG : MonoBehaviour
     }
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame

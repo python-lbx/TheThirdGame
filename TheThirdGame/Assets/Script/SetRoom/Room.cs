@@ -11,6 +11,7 @@ public class Room : MonoBehaviour
     public GameObject UpDoor;
     public GameObject DownDoor;
     [Header("牆")]
+    public RandomMapBG RMBG;
     public GameObject[] LeftWall;
     public GameObject[] RightWall;
     public GameObject[] UpWall;
@@ -51,11 +52,23 @@ public class Room : MonoBehaviour
         //UpDoor.SetActive(updoor);
         //DownDoor.SetActive(downdoor);
 
+        switch (RMBG.num)
+        {
+            case 0:
+            LeftWall[0].SetActive(!leftdoor);
+            RightWall[0].SetActive(!rightdoor);
+            UpWall[0].SetActive(!updoor);
+            DownWall[0].SetActive(!downdoor);
+            break;
 
-        LeftWall[0].SetActive(!leftdoor);
-        RightWall[0].SetActive(!rightdoor);
-        UpWall[0].SetActive(!updoor);
-        DownWall[0].SetActive(!downdoor);
+            case 1:
+            LeftWall[1].SetActive(!leftdoor);
+            RightWall[1].SetActive(!rightdoor);
+            UpWall[1].SetActive(!updoor);
+            DownWall[1].SetActive(!downdoor);
+            break;
+        }
+
 
         //初始房間
         if(RoomID == 0)
