@@ -22,6 +22,7 @@ public class FloatDamageText : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         CRI_target = FindObjectOfType<PlayerController>();
     }
+    
     private void OnEnable() 
     {   
         if(CRI_target != null)

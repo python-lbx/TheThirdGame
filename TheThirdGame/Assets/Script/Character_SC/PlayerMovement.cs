@@ -6,25 +6,35 @@ public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D rb;
     Animator anim;
-    private float horizontal;
-    private float vertical;
 
     [Header("移動參數")]
     public int speed;
 
     [Header("跳躍參數")]
     public int jumpForce;
-    public bool jumpPressed;
     public bool isJump;
     public int jumpTime;
 
     [Header("角色狀態")]
+    public int facedirection;
     public bool faceright;
     public bool isOnGround;
     public bool canClimb;
+    public bool canDoubleJump;
+    public bool IsClimbing;
+
+    [Header("按鈕控制")]
+    private float horizontal;
+    private float vertical;
+    public bool jumpPressed;
+    public bool climbUpPressed;
+    public bool climbDownPressed;
+
 
     [Header("環境檢測")]
-    public Transform GroundCheckPoint;
+    public Transform LeftFootGroundCheckPoint;
+    public Transform RightFootGroundCheckPoint;
+    public Transform LadderCheckPoint;
     public LayerMask groundLayer;
     public LayerMask LadderLayer;
     public float GroundCheckDistance;
@@ -46,29 +56,52 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
+    private void FixedUpdate() 
+    {
+    }
     void Update()
     {   
+        if(horizontal != 0) //記錄方向改向
+        {
+            facedirection = (int)horizontal;
+        }
+
+        if(CharacterState != null) //獲取速度
+        {
+            speed = CharacterState.Player_SPD;
+        }
+
+        //print(horizontal);
+        //檢測行為
         PhysicalCheck();
         Jump();
         Climb();
         animController();
 
-        horizontal = Input.GetAxisRaw("Horizontal");
+        //按鈕判定
+        jumpPressed = Input.GetKeyDown(KeyCode.Space);
+        climbUpPressed = Input.GetKey(KeyCode.UpArrow);
+        climbDownPressed = Input.GetKey(KeyCode.DownArrow);
         
-        if(CharacterState != null)
+        //動畫控制
+        if(anim.GetCurrentAnimatorStateInfo(1).IsName("attack"))
         {
-            speed = CharacterState.Player_SPD;
+            if(facedirection != horizontal) //如果方向發生改變就不執行下列程式
+            {
+                return;
+            }
+            //原方向移動攻擊 不能反方向移動
         }
 
         movement();
-
+        flip();
     }
 
     public void animController()
     {
         anim.SetFloat("Speed",Mathf.Abs(horizontal));
 
-        if(rb.velocity.y > 0 && Input.GetKeyDown(KeyCode.Space))
+        if(rb.velocity.y > 0 && jumpPressed)
         {
             anim.SetBool("IsJump",true);
         }
@@ -81,59 +114,74 @@ public class PlayerMovement : MonoBehaviour
 
     public void flip()
     {
-        transform.Rotate(0,180,0);
-        faceright = !faceright;
+        if(horizontal < 0 && faceright)
+        {
+            faceright = false;
+            transform.Rotate(0,180,0);
+        }
+        else if(horizontal > 0 && !faceright)
+        {
+            faceright = true;
+            transform.Rotate(0,180,0);
+        }
     }
 
     public void movement()
     {
+        horizontal = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
-        if(horizontal > 0 && !faceright)
-        {
-            flip();
-        }
-        else if(horizontal < 0 && faceright)
-        {
-            flip();
-        }
-
-
     }
 
+    //需優化
     public void Jump()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && isOnGround && jumpTime >0)
+        if(isOnGround)
         {
-            rb.velocity = new Vector2(rb.velocity.x , jumpForce);
-            jumpTime --;
+            canDoubleJump = true;
         }
-        else if(Input.GetKeyDown(KeyCode.Space) && jumpTime > 0)
+
+        if(jumpPressed && isOnGround)
         {
-            rb.velocity = new Vector2(rb.velocity.x , jumpForce);
-            jumpTime --;
+            jumpPressed = false;
+            rb.velocity = new Vector2(rb.velocity.x,jumpForce);
         }
-        else if(isOnGround)
+
+        if(jumpPressed && canDoubleJump)
         {
-            jumpTime = 1;
+            jumpPressed = false;
+            canDoubleJump = false;
+            rb.velocity = new Vector2(rb.velocity.x,jumpForce);
+        }
+
+        if(jumpPressed && canDoubleJump && !isOnGround)
+        {
+            jumpPressed = false;
+            canDoubleJump = false;
+            rb.velocity = new Vector2(rb.velocity.x,jumpForce);
         }
     }
 
     public void Climb()
     {   
-        if(canClimb && Input.GetKey(KeyCode.UpArrow))
-        {
+        if(canClimb && climbUpPressed)
+        {   
+            IsClimbing = true;
             rb.velocity = new Vector2(rb.velocity.x , jumpForce / 2);
+            canDoubleJump = true;
             anim.SetBool("IsJump",false);
             anim.SetBool("IsClimb",true);
         }
-        else if(canClimb && Input.GetKey(KeyCode.DownArrow))
+        else if(canClimb && climbDownPressed)
         {
+            IsClimbing = true;
             rb.velocity = new Vector2(rb.velocity.x , -jumpForce / 2);
+            canDoubleJump = true;
             anim.SetBool("IsJump",false);
             anim.SetBool("IsClimb",true);
         }
-        else if(Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow) || !canClimb)
+        else if(!climbUpPressed || !climbDownPressed || !canClimb)
         {
+            IsClimbing = false;
             anim.SetBool("IsClimb",false);
             anim.SetBool("IsJump",true);
         }
@@ -141,12 +189,13 @@ public class PlayerMovement : MonoBehaviour
 
     void PhysicalCheck()
     {
-        RaycastHit2D groundRay = Raycast(GroundCheckPoint,Vector2.down,GroundCheckDistance,groundLayer);
-        RaycastHit2D ladderRay = Raycast(GroundCheckPoint,Vector2.up,GroundCheckDistance,LadderLayer);
+        RaycastHit2D LgroundRay = Raycast(LeftFootGroundCheckPoint,Vector2.down,GroundCheckDistance,groundLayer);
+        RaycastHit2D RgroundRay = Raycast(RightFootGroundCheckPoint,Vector2.down,GroundCheckDistance,groundLayer);
+        RaycastHit2D ladderRay = Raycast(LadderCheckPoint,Vector2.up,GroundCheckDistance,LadderLayer);
         //RaycastHit2D topRay = Raycast(TopCheckPoint,Vector2.up,TopCheckDistance,groundLayer);
 
             
-        if(groundRay)
+        if(LgroundRay || RgroundRay)
         {
             isOnGround = true;
         }

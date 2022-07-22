@@ -35,14 +35,14 @@ public class PlayerController : MonoBehaviour
 
 
     //有bug
-    private void OnCollisionEnter2D(Collision2D other) 
+    private void OnTriggerEnter2D(Collider2D other) 
     {
         if(other.gameObject.CompareTag("Enemy"))
         {
             rate = Random.value;
             targetpos = other.gameObject.transform.GetChild(0).gameObject;
 
-            //FloatDamagePool.instance.GetFormPool();
+            FloatDamagePool.instance.GetFormPool();
 
             if(rate < (CRI/100) )
             {        

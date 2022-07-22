@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class PlatformCollider : MonoBehaviour
 {
-    public Collider2D coll;
+    public GameObject currentOneWayPlatform;
+
+    public float time;
+    [SerializeField] Collider2D playerCollider;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,32 +17,37 @@ public class PlatformCollider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            if(currentOneWayPlatform != null)
+            {
+                StartCoroutine(DisableCollision(time));
+            }
+        }
     }
     
     private void OnCollisionEnter2D(Collision2D other) 
     {
-        if(other.gameObject.CompareTag("Player"))
+        if(other.gameObject.CompareTag("OneWayPlatform"))
         {
-            if(Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                coll.isTrigger = true;
-            }
+             currentOneWayPlatform = other.gameObject;
         }
     }
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if(other.gameObject.CompareTag("OneWayPlatform"))
         {
-            coll.usedByEffector = false;
-            Invoke("Reset",0.5f);
-        }
+             currentOneWayPlatform = null;
+        }    
     }
 
-    private void Reset() 
+    private IEnumerator DisableCollision(float time)
     {
-        coll.isTrigger = false;
-        coll.usedByEffector = true;
+        BoxCollider2D platformCollider = currentOneWayPlatform.GetComponent<BoxCollider2D>();
+
+        Physics2D.IgnoreCollision(playerCollider,platformCollider);
+        yield return new WaitForSeconds(time);
+        Physics2D.IgnoreCollision(playerCollider,platformCollider,false);
     }
 }
