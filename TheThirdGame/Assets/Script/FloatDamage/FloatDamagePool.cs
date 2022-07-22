@@ -7,6 +7,7 @@ public class FloatDamagePool : MonoBehaviour
     public static FloatDamagePool instance;
     public GameObject floatdamagePrefab;
     public int PrefabCount;
+    public float damageRecord;
     Queue<GameObject> availableObjects = new Queue<GameObject>();
 
 

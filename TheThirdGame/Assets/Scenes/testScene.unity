@@ -1253,6 +1253,7 @@ GameObject:
   - component: {fileID: 1597387150}
   - component: {fileID: 1597387155}
   - component: {fileID: 1597387154}
+  - component: {fileID: 1597387156}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1385,6 +1386,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  jumpForce: 0
+  isJump: 0
+  jumpTime: 0
+  facedirection: 0
+  faceright: 0
+  isOnGround: 0
+  canClimb: 0
+  canDoubleJump: 0
+  IsClimbing: 0
+  jumpPressed: 0
+  climbUpPressed: 0
+  climbDownPressed: 0
+  LeftFootGroundCheckPoint: {fileID: 1597387153}
+  RightFootGroundCheckPoint: {fileID: 1597387153}
+  LadderCheckPoint: {fileID: 1597387153}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  LadderLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  GroundCheckDistance: 0
+  CharacterState: {fileID: 0}
 --- !u!114 &1597387155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1406,6 +1430,25 @@ MonoBehaviour:
   CR_Text: {fileID: 1402223918}
   CDR_Text: {fileID: 2026561827}
   targetpos: {fileID: 0}
+--- !u!95 &1597387156
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1597387149}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 61d675a18a7962945b5288ef477d8369, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1683458966
 GameObject:
   m_ObjectHideFlags: 0

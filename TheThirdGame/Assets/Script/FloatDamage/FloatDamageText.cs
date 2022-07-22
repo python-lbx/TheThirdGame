@@ -12,41 +12,43 @@ public class FloatDamageText : MonoBehaviour
     public float activeTime;
     public float activeStart;
 
-    public PlayerController CRI_target;
+    public PlayerController playercontroller;
+    public FloatDamagePool floatdamagepool;
     public Text floatdamage;
     public Color color;
-
 
     private void OnDisable() 
     {        
         rb = GetComponent<Rigidbody2D>();
-        CRI_target = FindObjectOfType<PlayerController>();
+        playercontroller = FindObjectOfType<PlayerController>();
+        floatdamagepool = FindObjectOfType<FloatDamagePool>();
     }
     
     private void OnEnable() 
     {   
-        if(CRI_target != null)
+        if(playercontroller != null)
         {
-            if(CRI_target.isCrit) //暴擊 紅字 變大
+            if(playercontroller.isCrit) //暴擊 紅字 變大
             {
                 floatdamage.color = Color.red;
                 floatdamage.fontSize = 30;
-                floatdamage.text = CRI_target.CRI_Damage.ToString();
+                floatdamage.text = playercontroller.CRI_Damage.ToString();
             }
             else //無暴擊 橙字 正常
             {   
+                floatdamage.text = floatdamagepool.damageRecord.ToString();
                 floatdamage.color = new Color(1,0.510174811f,0.00471699238f,255);
                 floatdamage.fontSize = 20;
-                floatdamage.text = CRI_target.damage.ToString();
             }
 
         }
 
 
         activeStart = Time.time; //生成時間
-        if(CRI_target != null)
+        
+        if(playercontroller != null)
         {
-        transform.position = CRI_target.targetpos.transform.position; //生成位置
+        transform.position = playercontroller.targetpos.transform.position; //生成位置
         }
     }
 
