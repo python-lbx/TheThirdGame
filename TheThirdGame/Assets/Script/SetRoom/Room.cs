@@ -33,6 +33,7 @@ public class Room : MonoBehaviour
     public GameObject MapGroup;
     [Header("小怪集合")]
     public GameObject Enemy;
+    public int enemynum;
     public bool isClear;
     public float totalHP;
     public List<GameObject> Enemys = new List<GameObject>();
@@ -145,7 +146,7 @@ public class Room : MonoBehaviour
             DownDoor.SetActive(downdoor);
 
             //生成敵人
-            int enemynum = Random.Range(0,6);
+            enemynum = Random.Range(0,6);
 
             for(int i = 0 ; i <= enemynum ;i++)
             {

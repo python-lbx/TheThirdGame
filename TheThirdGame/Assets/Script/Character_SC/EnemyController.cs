@@ -5,19 +5,27 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public LootArray loot;
-    public float health; 
+    public float health;
+    public float currenthealth;
     public Room whichroom;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        currenthealth = health;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if(currenthealth <= 0)
+        {   
+            if(whichroom != null)
+            {
+                whichroom.dead(health); //房間總血量耗損
+            }
+            Destroy(this.gameObject);
+        }
     }
 
     public void lootRate(Vector2 _me)
@@ -37,7 +45,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other) 
+    /*private void OnCollisionEnter2D(Collision2D other) 
     {
         if(other.gameObject.CompareTag("Player"))
         {
@@ -49,10 +57,10 @@ public class EnemyController : MonoBehaviour
 
             //Destroy(this.gameObject);
         }
-    }
+    }*/
 
     public void GetDamage(float damage)
     {
-        health -= damage;
+        currenthealth -= damage;
     }
 }

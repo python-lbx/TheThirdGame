@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 8419070845770596502}
   - component: {fileID: 8419070845770596503}
   - component: {fileID: -8458085170760421592}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -129,7 +129,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loot: {fileID: 11400000, guid: ff951c523f109dc4292c944dd4cacd08, type: 2}
-  health: 1
+  health: 100
+  currenthealth: 0
+  whichroom: {fileID: 0}
 --- !u!61 &8419070845770596503
 BoxCollider2D:
   m_ObjectHideFlags: 0

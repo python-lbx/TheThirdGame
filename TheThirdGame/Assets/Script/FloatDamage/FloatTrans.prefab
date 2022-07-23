@@ -148,8 +148,8 @@ MonoBehaviour:
   speed: 1
   activeTime: 1
   activeStart: 0
-  cdt: {fileID: 0}
   floatdamage: {fileID: 8688421509004355456}
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &8688421509920965159
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,7 +207,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1342345621
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &8688421509920965153

@@ -32,6 +32,8 @@ public class Shuriken : MonoBehaviour
 
         rb.velocity = transform.right * speed;
 
+        Destroy(this.gameObject,1f);
+
     }
 
     // Update is called once per frame
