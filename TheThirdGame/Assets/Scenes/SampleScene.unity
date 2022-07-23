@@ -755,7 +755,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &177906479
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1348,7 +1348,7 @@ GameObject:
   - component: {fileID: 199521949}
   - component: {fileID: 199521948}
   - component: {fileID: 199521947}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Enemy (1)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1363,7 +1363,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 199521945}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.45, y: -4.17, z: 0}
+  m_LocalPosition: {x: 2.43, y: -4.18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 934113829}
@@ -4418,7 +4418,7 @@ GameObject:
   - component: {fileID: 946369349}
   - component: {fileID: 946369350}
   - component: {fileID: 946369351}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Z-AttackBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4477,7 +4477,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4bd1ddb3ec5aca4db6f759461c03ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagerate: 10
+  playercontroller: {fileID: 971660490}
+  ATK: 0
+  CRI: 0
+  CSD: 0
+  isCrit: 0
+  Nor_damage: 0
+  CRI_Damage: 0
+  damagerate: 1
   floatdamagetext: {fileID: 0}
 --- !u!1 &971660489
 GameObject:
@@ -4489,7 +4496,7 @@ GameObject:
   m_Component:
   - component: {fileID: 971660491}
   - component: {fileID: 971660490}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PlayerController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6762,7 +6769,7 @@ MonoBehaviour:
   Z_Attack_CD: 0.25
   Z_Last_Time: 0
   Attack_Pressed: 0
-  Shuriken_CD: 0.5
+  Shuriken_CD: 1
   Shuriken_Last_Time: 0
   Shuriken_Pressed: 0
   Shuriken: {fileID: 7233750759718454196, guid: f71d15492bf571046b9810c7dfadb996, type: 3}
@@ -7875,7 +7882,7 @@ GameObject:
   - component: {fileID: 1818824003}
   - component: {fileID: 1818824007}
   - component: {fileID: 1818824006}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -7941,7 +7948,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1818824002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.08, y: -3.93, z: 0}
+  m_LocalPosition: {x: 4.06, y: -3.9399998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 629250741}

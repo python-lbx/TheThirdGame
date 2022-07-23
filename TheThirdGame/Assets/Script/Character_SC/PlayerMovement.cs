@@ -163,7 +163,27 @@ public class PlayerMovement : MonoBehaviour
 
     public void Climb()
     {   
-        if(canClimb && climbUpPressed)
+        vertical = Input.GetAxis("Vertical");
+
+        if(canClimb && Mathf.Abs(vertical) > 0f)
+        {
+            IsClimbing = true;
+            rb.gravityScale = 0f;
+            rb.velocity = new Vector2(rb.velocity.x , vertical * jumpForce / 2);
+            canDoubleJump = true;
+            anim.SetBool("IsJump",false);
+            anim.SetBool("IsClimb",true);
+        }
+        else 
+        {   
+            rb.gravityScale = 2f;
+            IsClimbing = false;
+            anim.SetBool("IsClimb",false);
+            anim.SetBool("IsJump",true);
+        }
+
+
+        /*if(canClimb && climbUpPressed)
         {   
             IsClimbing = true;
             rb.velocity = new Vector2(rb.velocity.x , jumpForce / 2);
@@ -178,13 +198,7 @@ public class PlayerMovement : MonoBehaviour
             canDoubleJump = true;
             anim.SetBool("IsJump",false);
             anim.SetBool("IsClimb",true);
-        }
-        else if(!climbUpPressed || !climbDownPressed || !canClimb)
-        {
-            IsClimbing = false;
-            anim.SetBool("IsClimb",false);
-            anim.SetBool("IsJump",true);
-        }
+        }*/
     }
 
     void PhysicalCheck()

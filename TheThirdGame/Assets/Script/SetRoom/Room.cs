@@ -34,7 +34,7 @@ public class Room : MonoBehaviour
     [Header("小怪集合")]
     public GameObject Enemy;
     public bool isClear;
-    public int totalHP;
+    public float totalHP;
     public List<GameObject> Enemys = new List<GameObject>();
 
 
@@ -163,7 +163,7 @@ public class Room : MonoBehaviour
         }
     }
 
-    public void dead(int health)
+    public void dead(float health)
     {
         print("dead");
         totalHP -= health;

@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public LootArray loot;
-    public int health; 
+    public float health; 
     public Room whichroom;
 
     // Start is called before the first frame update
@@ -49,5 +49,10 @@ public class EnemyController : MonoBehaviour
 
             //Destroy(this.gameObject);
         }
+    }
+
+    public void GetDamage(float damage)
+    {
+        health -= damage;
     }
 }
