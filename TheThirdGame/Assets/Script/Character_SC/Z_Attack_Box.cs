@@ -4,38 +4,60 @@ using UnityEngine;
 
 public class Z_Attack_Box : MonoBehaviour
 {
-    public float damagerate;
-    public PlayerController playcontroller;
-    public FloatDamagePool floatdamagepool;
-    // Start is called before the first frame update
-    private void Awake() 
-    {
-    }
-    void Start()
-    {
-    }
+    [Header("角色屬性")]
+    public PlayerController playercontroller;
+    public float ATK;
+    public float CRI;
+    public float CSD;
+    public bool isCrit;
+    
+    [Header("手里劍面板傷害")]
+    public float Nor_damage; //基礎傷害
+    public float CRI_Damage; //爆擊傷害
+    public float damagerate; //傷害比例    
+
+    [Header("傷害浮動")]
+    public GameObject floatdamagetext;    
 
     // Update is called once per frame
     void Update()
     {
-
+        //讀取角色屬性
+        ATK = playercontroller.ATK;
+        CRI = playercontroller.CRI;
+        CSD = playercontroller.CSD;
+        //進行計算
+        Nor_damage = Mathf.Round(ATK * damagerate); //攻擊力X傷害比例
+        CRI_Damage = Mathf.Round(ATK * damagerate * (CSD/100) ); //攻擊力X傷害比例X爆擊傷害
     }
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
         if(other.gameObject.CompareTag("Enemy"))
         {   
+            floatdamagetext = FloatDamagePool.instance.GetFormPool();
 
-            floatdamagepool.damageRecord = playcontroller.damage * damagerate;
+            if(floatdamagetext != null)
+            {
+                float rate = Random.value; //隨機機率
+                print(rate);
 
-            //普攻的爆擊機率
-            float rate = Random.value;
+                floatdamagetext.transform.position = other.gameObject.transform.GetChild(0).transform.position;
+                
+                if(rate < (CRI/100))
+                {
+                    floatdamagetext.GetComponent<FloatDamageText>().floatdamage.color = Color.red;
+                    floatdamagetext.GetComponent<FloatDamageText>().floatdamage.fontSize = 30;
+                    floatdamagetext.GetComponent<FloatDamageText>().floatdamage.text = CRI_Damage.ToString();
+                }
+                else
+                {
+                    floatdamagetext.GetComponent<FloatDamageText>().floatdamage.color = new Color(1,0.510174811f,0.00471699238f,255);
+                    floatdamagetext.GetComponent<FloatDamageText>().floatdamage.fontSize = 20;
+                    floatdamagetext.GetComponent<FloatDamageText>().floatdamage.text = Nor_damage.ToString();
+                }
+            }
 
-            //打到的目標轉入
-            playcontroller.targetpos = other.gameObject.transform.GetChild(0).gameObject;
-            
-            //計算是否爆擊
-            playcontroller.showFloatDamage(rate);
         }
     }
 }

@@ -1363,7 +1363,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 199521945}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.16, y: -3.56, z: 0}
+  m_LocalPosition: {x: 1.45, y: -4.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 934113829}
@@ -1981,7 +1981,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &343273409
 Transform:
   m_ObjectHideFlags: 0
@@ -4477,9 +4477,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4bd1ddb3ec5aca4db6f759461c03ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagerate: 0.8
-  playcontroller: {fileID: 971660490}
-  floatdamagepool: {fileID: 1741818037}
+  damagerate: 10
+  floatdamagetext: {fileID: 0}
 --- !u!1 &971660489
 GameObject:
   m_ObjectHideFlags: 0
@@ -4509,12 +4508,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4b319691b7852c44928a3b0453ee1fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ATK: 0
   CRI: 0
   CSD: 0
-  isCrit: 0
-  damage: 0
-  CRI_Damage: 0
-  targetpos: {fileID: 0}
   CharacterState: {fileID: 24235441}
 --- !u!4 &971660491
 Transform:
@@ -4545,7 +4541,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1021912075
 Transform:
   m_ObjectHideFlags: 0
@@ -4554,7 +4550,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1021912074}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.45, y: 3.88, z: 0}
+  m_LocalPosition: {x: -1.87, y: 2.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1268786364}

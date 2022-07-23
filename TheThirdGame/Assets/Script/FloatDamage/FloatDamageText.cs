@@ -12,21 +12,24 @@ public class FloatDamageText : MonoBehaviour
     public float activeTime;
     public float activeStart;
 
-    public PlayerController playercontroller;
-    public FloatDamagePool floatdamagepool;
+    //public PlayerController playercontroller;
+    //public FloatDamagePool floatdamagepool;
     public Text floatdamage;
     public Color color;
 
     private void OnDisable() 
     {        
         rb = GetComponent<Rigidbody2D>();
-        playercontroller = FindObjectOfType<PlayerController>();
-        floatdamagepool = FindObjectOfType<FloatDamagePool>();
+        //playercontroller = FindObjectOfType<PlayerController>();
+        //floatdamagepool = FindObjectOfType<FloatDamagePool>();
     }
     
     private void OnEnable() 
     {   
-        if(playercontroller != null)
+        activeStart = Time.time; //生成時間
+
+    #region  廢案
+        /*if(playercontroller != null)
         {
             if(playercontroller.isCrit) //暴擊 紅字 變大
             {
@@ -41,15 +44,15 @@ public class FloatDamageText : MonoBehaviour
                 floatdamage.fontSize = 20;
             }
 
-        }
+        }*/
 
 
-        activeStart = Time.time; //生成時間
         
-        if(playercontroller != null)
+        /*if(playercontroller != null)
         {
         transform.position = playercontroller.targetpos.transform.position; //生成位置
-        }
+        }*/
+        #endregion
     }
 
     // Update is called once per frame
