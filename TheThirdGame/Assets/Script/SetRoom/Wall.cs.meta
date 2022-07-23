@@ -3,7 +3,10 @@ guid: 0a4425f9683640b42ad047d6f04bd956
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - roomDirecter: {instanceID: 0}
+  - Enemy: {fileID: 8419070845770596499, guid: b8c13b806cafad24fb53cac7188351e7, type: 3}
+  - whichroom: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

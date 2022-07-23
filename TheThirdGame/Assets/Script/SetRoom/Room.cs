@@ -32,6 +32,7 @@ public class Room : MonoBehaviour
     [Header("地圖集合")]
     public GameObject MapGroup;
     [Header("小怪集合")]
+    public Wall whichWall;
     public GameObject Enemy;
     public int enemynum;
     public bool isClear;
@@ -146,12 +147,13 @@ public class Room : MonoBehaviour
             DownDoor.SetActive(downdoor);
 
             //生成敵人
-            enemynum = Random.Range(0,6);
+            //enemynum = Random.Range(0,6);
 
-            for(int i = 0 ; i <= enemynum ;i++)
+            /*for(int i = 0 ; i <= enemynum ;i++)
             {
                 Enemys.Add( Instantiate(Enemy,transform.position,Quaternion.identity) );
-            }
+            }*/
+            whichWall.CreatEnemy();
 
             if(Enemys != null)
             {

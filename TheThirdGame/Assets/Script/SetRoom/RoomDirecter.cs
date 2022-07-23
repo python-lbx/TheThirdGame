@@ -56,7 +56,8 @@ public class RoomDirecter : MonoBehaviour
         {   
             //入ID
             rooms[i].GetComponent<Room>().RoomID = i;
-
+            Wall[i].GetComponent<Wall>().whichroom = rooms[i].GetComponent<Room>();
+            rooms[i].GetComponent<Room>().whichWall = Wall[i].GetComponent<Wall>();
 
             print(rooms[i].gameObject.GetComponent<RandomMapBG>().num);
 
@@ -109,6 +110,7 @@ public class RoomDirecter : MonoBehaviour
         }*/
         }
 
+        //全清則最終房間打開
         for(int i = 0; i < rooms.Count -1 ;i++)
         {
             if(!rooms[i].GetComponent<Room>().isClear)
