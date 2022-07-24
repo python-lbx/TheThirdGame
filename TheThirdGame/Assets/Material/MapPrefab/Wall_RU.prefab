@@ -3317,6 +3317,8 @@ MonoBehaviour:
   - {fileID: 7282472649264915774}
   - {fileID: 2243812416729271886}
   Enemy: {fileID: 8419070845770596499, guid: b8c13b806cafad24fb53cac7188351e7, type: 3}
+  Boss: {fileID: 0}
+  isEndRoom: 0
   whichroom: {fileID: 0}
   Ladder: {fileID: 1917131679091493584}
 --- !u!1 &1915795534666964317
