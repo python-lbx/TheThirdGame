@@ -16,10 +16,13 @@ public class FloatDamageText : MonoBehaviour
     //public FloatDamagePool floatdamagepool;
     public Text floatdamage;
     public Color color;
+    public Camera maincamera;
 
     private void OnDisable() 
     {        
         rb = GetComponent<Rigidbody2D>();
+        maincamera = Camera.main;
+        transform.GetChild(0).GetComponent<Canvas>().worldCamera = maincamera;
         //playercontroller = FindObjectOfType<PlayerController>();
         //floatdamagepool = FindObjectOfType<FloatDamagePool>();
     }

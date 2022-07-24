@@ -259,7 +259,7 @@ MonoBehaviour:
   ATK_Before: 0
   ATK_After: 0
   ATK_Compare: 0
-  Player_ATK: 10
+  Player_ATK: 35
   CRI_Before: 0
   CRI_Ater: 0
   CRI_Compare: 0

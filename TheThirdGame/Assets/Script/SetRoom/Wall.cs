@@ -8,7 +8,11 @@ public class Wall : MonoBehaviour
     public GameObject[] WallStyle;
     public GameObject[] EnemyPoint;
     public GameObject Enemy;
+    public GameObject Boss;
+    public bool isEndRoom;
     public Room whichroom;
+    public GameObject Ladder;
+
 
     private void Awake() 
     {
@@ -24,16 +28,29 @@ public class Wall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //Ladder.SetActive(showLadder);
     }
 
+    //怪人生成
     public void CreatEnemy()
     {
-        if(EnemyPoint != null)
+        if(isEndRoom)
         {
-            for(int i = 0 ; i<EnemyPoint.Length;i++)
+                            //未有BOSS
+
+            if(Enemy != null)
+            {   
+                whichroom.Enemys.Add(Instantiate(Enemy,transform.position,Quaternion.identity));
+            }
+        }
+        else
+        {
+            if(EnemyPoint != null)
             {
-                whichroom.Enemys.Add(Instantiate(Enemy,EnemyPoint[i].transform.position,Quaternion.identity));
+                for(int i = 0 ; i<EnemyPoint.Length;i++)
+                {
+                    whichroom.Enemys.Add(Instantiate(Enemy,EnemyPoint[i].transform.position,Quaternion.identity));
+                }
             }
         }
     }

@@ -1346,7 +1346,9 @@ MonoBehaviour:
   text: {fileID: 3659413625713391221}
   IsNewRoom: 1
   MapGroup: {fileID: 0}
+  whichWall: {fileID: 0}
   Enemy: {fileID: 8419070845770596499, guid: b8c13b806cafad24fb53cac7188351e7, type: 3}
+  enemynum: 0
   isClear: 0
   totalHP: 0
   Enemys: []
@@ -7257,7 +7259,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3145446537537032717
 Transform:
   m_ObjectHideFlags: 0

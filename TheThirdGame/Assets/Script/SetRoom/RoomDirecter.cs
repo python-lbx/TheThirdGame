@@ -80,10 +80,35 @@ public class RoomDirecter : MonoBehaviour
         directerPoint.position = endroom.transform.position;
 
         endroom.GetComponent<SpriteRenderer>().color = endColor;
-        endroom.SetActive(false);
 
+        #region  隱藏房間與牆體
+
+        endroom.SetActive(false);
         closeroom();
+
+        Wall[Wall.Count-1].GetComponent<Wall>().isEndRoom = true; //最終房間判定
         Wall[Wall.Count-1].SetActive(false);
+
+        if(Wall[Wall.Count-1].GetComponent<Wall>().Ladder != null)
+        {
+            Wall[Wall.Count-1].GetComponent<Wall>().Ladder.SetActive(false);
+        }
+
+        //int wallstylelength = Wall[Wall.Count -1].GetComponent<Wall>().WallStyle.Length;
+        //int wallchildcount = Wall[Wall.Count -1].GetComponent<Wall>().WallStyle[wallstylelength].gameObject.transform.childCount;
+        //print(Wall[Wall.Count -1].GetComponent<Wall>().WallStyle[0].gameObject.transform.childCount);
+        //Wall[Wall.Count-1].GetComponent<Wall>().WallStyle[0].gameObject.transform.GetChild(0).gameObject.SetActive(false);
+
+        //參考上面
+        for(var x = 0 ; x < Wall[Wall.Count -1].GetComponent<Wall>().WallStyle.Length ; x++)
+        {
+            for(var y = 0 ; y < Wall[Wall.Count -1].GetComponent<Wall>().WallStyle[x].gameObject.transform.childCount ; y++)
+            {
+                 Wall[Wall.Count-1].GetComponent<Wall>().WallStyle[x].gameObject.transform.GetChild(y).gameObject.SetActive(false);
+            }
+        }
+        #endregion
+
     }
 
     // Update is called once per frame
@@ -94,6 +119,21 @@ public class RoomDirecter : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }   
 
+        //全清則最終房間打開
+        for(int i = 0; i < rooms.Count -1 ;i++)
+        {
+            if(!rooms[i].GetComponent<Room>().isClear)
+            {
+                endroomCanOpen = false;
+                break;
+            }
+            else
+            {
+                endroomCanOpen = true;
+            }
+        }
+
+        
         if(endroomCanOpen || Input.GetKeyDown(KeyCode.E))
         {
             endroom.SetActive(true);
@@ -108,20 +148,6 @@ public class RoomDirecter : MonoBehaviour
                 Wall[NearEndRoom[i].GetComponent<Room>().RoomID].SetActive(true);
             }
         }*/
-        }
-
-        //全清則最終房間打開
-        for(int i = 0; i < rooms.Count -1 ;i++)
-        {
-            if(!rooms[i].GetComponent<Room>().isClear)
-            {
-                endroomCanOpen = false;
-                break;
-            }
-            else
-            {
-                endroomCanOpen = true;
-            }
         }
     }
 
@@ -174,14 +200,19 @@ public class RoomDirecter : MonoBehaviour
                 break;
 
 
+                //隱藏關卡下面房間的梯子關閉
                 case Direction.down:
                     directerPoint.position += new Vector3(0,-yOffset,0);
-                    //print(directerPoint.position);
 
                     if(Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer) != null)
                     {
-                        //Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<SpriteRenderer>().color = Color.grey;
                         Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<Room>().updoor = false;
+
+                        if(Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<Room>().whichWall.Ladder != null)
+                        {
+                            Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<Room>().whichWall.Ladder.SetActive(false);
+                        }
+
                         NearEndRoom.Add(Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject);
                     }
                     directerPoint.position = endroom.transform.position;
@@ -190,10 +221,10 @@ public class RoomDirecter : MonoBehaviour
 
                 case Direction.left:
                     directerPoint.position += new Vector3(xOffset,0,0);
-                    //print(directerPoint.position);
+
                     if(Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer) != null)
                     {
-                        //Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<SpriteRenderer>().color = Color.grey;
+
                         Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<Room>().leftdoor = false;
                         NearEndRoom.Add(Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject);
                     }
@@ -202,10 +233,10 @@ public class RoomDirecter : MonoBehaviour
 
                 case Direction.right:
                     directerPoint.position += new Vector3(-xOffset,0,0);
-                    //print(directerPoint.position);
+
                     if(Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer) != null)
                     {
-                        //Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<SpriteRenderer>().color = Color.grey;
+
                         Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<Room>().rightdoor = false;
                         NearEndRoom.Add(Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject);
                     }
@@ -230,11 +261,18 @@ public class RoomDirecter : MonoBehaviour
                     if(Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer) != null)
                     {
                         //Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<SpriteRenderer>().color = Color.grey;
-                        //關牆開門
-                        Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<Room>().downdoor = false;
+                        
+                        //Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<Room>().downdoor = false; //開門
+                        
+                        //所有牆體關閉
                         //Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<Room>().DownWall[0].SetActive(false);
+                        for(int j = 0 ; j < 2 ; j++)
+                        {
+                            Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<Room>().DownWall[j].SetActive(false);
+                        }
 
-                        switch (rooms[i].gameObject.GetComponent<RandomMapBG>().num)
+                        //選擇 無必要
+                        /*switch (rooms[i].gameObject.GetComponent<RandomMapBG>().num) //邊個隨機牆要關閉;
                             {
                                 case 0:
                                 Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<Room>().DownWall[0].SetActive(false);
@@ -243,46 +281,67 @@ public class RoomDirecter : MonoBehaviour
                                 case 1:
                                 Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<Room>().DownWall[1].SetActive(false);
                                 break;
-                            }
-                        }
+                            }*/
+                    }
+
                     directerPoint.position = endroom.transform.position;
                 break;
 
-
+                //隱藏關卡下面房間的梯子開啟
                 case Direction.down:
                     directerPoint.position += new Vector3(0,-yOffset,0);
-                    //print(directerPoint.position);
 
                     if(Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer) != null)
                     {
-                        //Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<SpriteRenderer>().color = Color.grey;
-                        Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<Room>().updoor = false;
-                        Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<Room>().UpWall[0].SetActive(false);
+                        //Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<Room>().updoor = false;
+
+                        if(Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<Room>().whichWall.Ladder != null)
+                        {
+                            Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<Room>().whichWall.Ladder.SetActive(true);
+                        }
+
+
+                        for(int j = 0 ; j < 2 ; j++)
+                        {
+                            Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<Room>().UpWall[j].SetActive(false);
+                        }
                     }
+
                     directerPoint.position = endroom.transform.position;
                 break;
 
 
                 case Direction.left:
                     directerPoint.position += new Vector3(xOffset,0,0);
-                    //print(directerPoint.position);
+
                     if(Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer) != null)
                     {
-                        //Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<SpriteRenderer>().color = Color.grey;
-                        Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<Room>().leftdoor = false;
-                        Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<Room>().LeftWall[0].SetActive(false);
+
+                        //Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<Room>().leftdoor = false;
+
+                        for(int j = 0 ; j < 2 ; j++)
+                        {
+                            Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<Room>().LeftWall[j].SetActive(false);
+                        }
+        
                     }
                     directerPoint.position = endroom.transform.position;
                 break;
 
                 case Direction.right:
                     directerPoint.position += new Vector3(-xOffset,0,0);
-                    //print(directerPoint.position);
+
                     if(Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer) != null)
                     {
-                        //Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<SpriteRenderer>().color = Color.grey;
-                        Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<Room>().rightdoor = false;
-                        Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<Room>().RightWall[0].SetActive(false);
+
+                        //Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<Room>().rightdoor = false;
+
+
+                        for(int j = 0 ; j < 2 ; j++)
+                        {
+                            Physics2D.OverlapCircle(directerPoint.position,0.2f,roomLayer).gameObject.GetComponent<Room>().RightWall[j].SetActive(false);
+                        }
+
                     }
                     directerPoint.position = endroom.transform.position;
                 break;
