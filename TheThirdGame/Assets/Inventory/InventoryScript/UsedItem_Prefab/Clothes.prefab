@@ -102,8 +102,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1342345621
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300028, guid: 03dd1ef6fb163214c9e1ac0242dab3ba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -159,10 +159,11 @@ MonoBehaviour:
   playerInventory: {fileID: 11400000, guid: 96247d6dc7aa579479bc28c8874ba08e, type: 2}
   point: {fileID: 2892917714178074064}
   IsNewItem: 0
-  ohp: 0
-  oatk: 0
-  odef: 0
-  ospeed: 0
+  hp: 0
+  atk: 0
+  cri: 0
+  csd: 0
+  spd: 0
 --- !u!50 &4607887188605062239
 Rigidbody2D:
   serializedVersion: 4

@@ -24,6 +24,7 @@ public class EnemyController : MonoBehaviour
             {
                 whichroom.dead(health); //房間總血量耗損
             }
+            lootRate(this.transform.position);
             Destroy(this.gameObject);
         }
     }
