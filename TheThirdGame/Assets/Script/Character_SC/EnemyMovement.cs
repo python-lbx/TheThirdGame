@@ -14,18 +14,23 @@ public class EnemyMovement : MonoBehaviour
     public int facedirection;
     public bool faceright;
     public bool isOnGround;
+    public bool isOnPlayer;
 
     [Header("環境檢測")]
     public Transform GroundCheckPoint;
+    public Transform PlayerCheckPoint;
     public LayerMask groundLayer;
-    public LayerMask Player;
+    public LayerMask playerLayer;
     public float GroundCheckDistance;
+    public float PlayerCheckDistance;
     public Vector2 BoxSize;
     public GameObject Target;
 
-    public enum Statue{Idle,Patorl,Chase,Battle}
+    public enum Statue{Idle,Patorl,Battle}
     public Statue statue;
     public float PhaseTime; 
+    public float Last_AttackTime;
+    public float AttackTime_CD;
 
     void Start()
     {
@@ -38,15 +43,22 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         PhysicalCheck();
+        anim.SetFloat("Speed",Mathf.Abs(rb.velocity.x));
 
-        //偵測
-        if(Physics2D.OverlapBox(transform.position,BoxSize,0,Player) && statue != Statue.Battle)
+        //前後偵測是否有玩家
+        if(Physics2D.OverlapBox(transform.position,BoxSize,0,playerLayer))
         {   
-            Target = Physics2D.OverlapBox(transform.position,BoxSize,0,Player).gameObject;
-            statue = Statue.Chase;
-        }        
+            Target = Physics2D.OverlapBox(transform.position,BoxSize,0,playerLayer).gameObject;
+        }
+        else
+        {
+            Target = null;
+        }
 
-        //偵測 有玩家 進入攻擊範圍 攻擊 距離太遠 停止追逐進入待機 -> 巡邏 ->偵測
+
+
+
+        //偵測 有玩家 往玩家方向移動 如進入攻擊範圍 停頓數秒後攻擊
         switch (statue)
         {
             case Statue.Idle:
@@ -58,7 +70,7 @@ public class EnemyMovement : MonoBehaviour
             }
             else if(PhaseTime <= 0)
             {
-                PhaseTime = Random.Range(2,6);
+                PhaseTime = Random.Range(3,6);
                 statue = Statue.Patorl;
             }
             break;
@@ -67,6 +79,16 @@ public class EnemyMovement : MonoBehaviour
             speed = 3;
             rb.velocity = transform.right * speed;
 
+            if(Target != null)
+            {
+                lookatyouropposite();
+            }
+
+            if(isOnPlayer) //玩家進入攻擊範圍
+            {
+                statue = Statue.Battle;
+            }
+            
             if(PhaseTime > 0)
             {                
                 PhaseTime -= Time.deltaTime;
@@ -79,72 +101,52 @@ public class EnemyMovement : MonoBehaviour
             }
             else if(PhaseTime <= 0)
             {
-                PhaseTime = 3f;
+                PhaseTime = 1.5f;
                 statue = Statue.Idle;
-            }
-            break;
-
-            case Statue.Chase:
-            speed = 4;
-            rb.velocity = transform.right * speed;
-
-            //範圍內追逐
-            if(Target.transform.position.x < transform.position.x && faceright)
-            {
-                faceright = false;
-                transform.Rotate(0,180,0);
-                print("on your left");
-            }
-            else if(Target.transform.position.x > transform.position.x && !faceright)
-            {
-                faceright = true;
-                transform.Rotate(0,180,0);
-                print("on your right");
-            }
-
-            //進入戰鬥範圍
-            if(Mathf.Abs(transform.position.x - Target.transform.position.x) < 1.5f)
-            {
-                statue = Statue.Battle;
-            }
-            //離開偵測範圍
-            if(Mathf.Abs(transform.position.x - Target.transform.position.x) > 3f)
-            {
-                rb.velocity = new Vector2(0,0);
-                statue = Statue.Patorl;
             }
             break;
 
             case Statue.Battle:
             rb.velocity = new Vector2(0,0);
-
-            if(Target.transform.position.x < transform.position.x && faceright)
-            {
-                faceright = false;
-                transform.Rotate(0,180,0);
-                print("on your left");
-            }
-            else if(Target.transform.position.x > transform.position.x && !faceright)
-            {
-                faceright = true;
-                transform.Rotate(0,180,0);
-                print("on your right");
-            }
             
-            if(Mathf.Abs(transform.position.x - Target.transform.position.x) > 1.5f)
+            if(Target != null)
+            {
+                lookatyouropposite();
+            }
+
+            if(Time.time > (AttackTime_CD + Last_AttackTime) && isOnPlayer) //視線前方有玩家則攻擊
+            {
+                Last_AttackTime = Time.time;
+                anim.SetTrigger("Attack");
+            }
+
+            if(!Physics2D.OverlapBox(transform.position,BoxSize,0,playerLayer)) //玩家離開了偵測範圍1
             {
                 statue = Statue.Patorl;
             }
             break;
         }
+    }
 
-
-
-
+    public void lookatyouropposite()
+    {
+        if(Target.transform.position.x < transform.position.x && faceright)
+        {
+            faceright = false;
+            transform.Rotate(0,180,0);
+            print("on your left");
+        }
+        else if(Target.transform.position.x > transform.position.x && !faceright)
+        {
+            faceright = true;
+            transform.Rotate(0,180,0);
+            print("on your right");
+        }    
     }
     void PhysicalCheck()
     {
         RaycastHit2D groundRay = Raycast(GroundCheckPoint,Vector2.down,GroundCheckDistance,groundLayer);
+        RaycastHit2D playerRay = Raycast(PlayerCheckPoint,transform.right,PlayerCheckDistance,playerLayer);
 
         if(groundRay)
         {
@@ -153,6 +155,15 @@ public class EnemyMovement : MonoBehaviour
         else
         {
             isOnGround = false;
+        }
+
+        if(playerRay)
+        {
+            isOnPlayer = true;
+        }
+        else
+        {
+            isOnPlayer = false;
         }
     }
 
@@ -168,7 +179,8 @@ public class EnemyMovement : MonoBehaviour
     }
     
     private void OnDrawGizmos() 
-    {
+    {   
+        Gizmos.color = Physics2D.OverlapBox(transform.position,BoxSize,0,playerLayer)? Color.green : Color.gray;
         Gizmos.DrawCube(transform.position,BoxSize);
     }
 }

@@ -7,6 +7,7 @@ TagManager:
   - Item
   - Enemy
   - OneWayPlatform
+  - Ground
   layers:
   - Default
   - TransparentFX
