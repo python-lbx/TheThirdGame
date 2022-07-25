@@ -12,6 +12,7 @@ public class Orc_Fly : MonoBehaviour
 
     [Header("攻擊目標")]
     public GameObject Target;
+    public GameObject FocusPoint;
     Vector2 Direction;
     Vector2 targetpos;
     public float focustime;
