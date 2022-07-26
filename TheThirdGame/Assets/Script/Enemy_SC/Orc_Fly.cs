@@ -19,7 +19,7 @@ public class Orc_Fly : MonoBehaviour
     
     [Header("無視平台")]
     [SerializeField] Collider2D playerCollider;
-    public GameObject currentOneWayPlatform;
+    public GameObject[] currentOneWayPlatform;
 
 
     [Header("階段")]
@@ -33,6 +33,18 @@ public class Orc_Fly : MonoBehaviour
         anim = GetComponent<Animator>();
         Target = GameObject.FindGameObjectWithTag("Player");
         Direction = Target.transform.position;
+
+        //多於一個
+        currentOneWayPlatform = GameObject.FindGameObjectsWithTag("OneWayPlatform");
+
+        //無視所有
+        foreach(GameObject gameObject in currentOneWayPlatform)
+        {
+            Physics2D.IgnoreCollision(playerCollider,gameObject.GetComponent<BoxCollider2D>());
+        }
+
+        //BoxCollider2D platformCollider = currentOneWayPlatform.GetComponent<BoxCollider2D>();
+        //Physics2D.IgnoreCollision(playerCollider,platformCollider);
     }
 
     // Update is called once per frame
@@ -59,13 +71,13 @@ public class Orc_Fly : MonoBehaviour
                 {
                     faceright = false;
                     GetComponent<SpriteRenderer>().flipY = true;
-                    print("on your left");
+                    //print("on your left");
                 }
                 else if(Target.transform.position.x > transform.position.x && !faceright)
                 {
                     faceright = true;
                     GetComponent<SpriteRenderer>().flipY = false;
-                    print("on your right");
+                    //print("on your right");
                 }  
             }
             else
@@ -150,13 +162,5 @@ public class Orc_Fly : MonoBehaviour
             focustime = 3f;
             statue = Statue.Focus;
         }
-
-        //無視平台
-        if(other.gameObject.CompareTag("OneWayPlatform"))
-        {
-            currentOneWayPlatform = other.gameObject;
-            BoxCollider2D platformCollider = currentOneWayPlatform.GetComponent<BoxCollider2D>();
-            Physics2D.IgnoreCollision(playerCollider,platformCollider);
-        }    
     }
 }

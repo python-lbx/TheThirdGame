@@ -1347,7 +1347,7 @@ MonoBehaviour:
   IsNewRoom: 1
   MapGroup: {fileID: 0}
   whichWall: {fileID: 0}
-  Enemy: {fileID: 8419070845770596499, guid: b8c13b806cafad24fb53cac7188351e7, type: 3}
+  Enemy: {fileID: 1810556406291689750, guid: 45c1d3d34e2cfd9469181a135d42702e, type: 3}
   enemynum: 0
   isClear: 0
   totalHP: 0

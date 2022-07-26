@@ -7,7 +7,7 @@ public class Orc_Boo : MonoBehaviour
     Rigidbody2D rb;
     Animator anim;
     [Header("狀態數值")]
-    public float speed;
+    //public float speed;
     public bool faceright;
 
     [Header("攻擊目標")]
@@ -21,7 +21,7 @@ public class Orc_Boo : MonoBehaviour
     [Header("階段")]
     public Statue statue;
     public enum Statue{Focus,Shoot};
-    public float PhaseTime;
+    //public float PhaseTime;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +47,20 @@ public class Orc_Boo : MonoBehaviour
                 focustime -= Time.deltaTime;
                 
                 shootPoint.transform.right = Direction;
+
+                if(Target.transform.position.x < transform.position.x && faceright)
+                {
+                    faceright = false;
+                    transform.Rotate(0,180,0);
+                    //print("on your left");
+                }
+                else if(Target.transform.position.x > transform.position.x && !faceright)
+                {
+                    faceright = true;
+                    transform.Rotate(0,180,0);
+                    //print("on your right");
+                }  
+
             }
             else
             {
@@ -57,7 +71,7 @@ public class Orc_Boo : MonoBehaviour
 
             case Statue.Shoot:
             anim.SetTrigger("Attack");
-            focustime = 3f;
+            focustime = 2f;
             statue = Statue.Focus;
             break;
         }

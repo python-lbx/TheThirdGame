@@ -11,7 +11,7 @@ public class Boomerang : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        Destroy(this.gameObject,1f);
+        Destroy(this.gameObject,2f);
     }
 
     // Update is called once per frame

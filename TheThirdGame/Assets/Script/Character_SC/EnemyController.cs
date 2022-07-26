@@ -5,14 +5,27 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public LootArray loot;
+    public EnemyData tempDate; //正本
+    public EnemyData thisData; //副本
     public float health;
     public float currenthealth;
     public Room whichroom;
+    public int RoomStep;
 
+    private void OnEnable() 
+    {
+        if(tempDate != null)
+        {
+            thisData = Instantiate(tempDate);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
-        currenthealth = health;
+            thisData.CurrentLevel = whichroom.roomDirecter.roomClear;//當前房間步數
+            thisData.LevelUp();
+            currenthealth = health = thisData.MaxHP;
+
     }
 
     // Update is called once per frame

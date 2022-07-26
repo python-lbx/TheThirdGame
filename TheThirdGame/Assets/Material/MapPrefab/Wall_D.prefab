@@ -1944,7 +1944,7 @@ MonoBehaviour:
   - {fileID: 1780304093983198111}
   - {fileID: 9209623122280232738}
   Enemy: {fileID: 8419070845770596499, guid: b8c13b806cafad24fb53cac7188351e7, type: 3}
-  Boss: {fileID: 0}
+  Boss: {fileID: 8419070845770596499, guid: b8c13b806cafad24fb53cac7188351e7, type: 3}
   isEndRoom: 0
   whichroom: {fileID: 0}
   Ladder: {fileID: 5518104371974308622}

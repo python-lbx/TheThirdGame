@@ -29,6 +29,7 @@ public class Room : MonoBehaviour
 
     [Header("初次戰鬥判定")]
     public bool IsNewRoom;
+    public RoomDirecter roomDirecter;
     [Header("地圖集合")]
     public GameObject MapGroup;
     [Header("小怪集合")]
@@ -44,6 +45,7 @@ public class Room : MonoBehaviour
     {
         MapGroup = GameObject.Find("MapGroup");
         this.gameObject.transform.SetParent(MapGroup.transform);
+        roomDirecter = FindObjectOfType<RoomDirecter>();
     }
     // Start is called before the first frame update
     void Start()
@@ -98,7 +100,7 @@ public class Room : MonoBehaviour
         //UpWall.SetActive(!updoor);
         //DownWall.SetActive(!downdoor);
         
-        if(!IsNewRoom && totalHP == 0)
+        if(!IsNewRoom && totalHP <= 0)
         {
             isClear = true;
             if(updoor)
@@ -139,6 +141,8 @@ public class Room : MonoBehaviour
         if(other.gameObject.CompareTag("Player") && IsNewRoom && RoomID != 0) //首次進入房間會進入戰鬥
         {
             IsNewRoom = false; //非首次進入房間
+            roomDirecter.roomClear +=1;
+
 
             //關門
             LeftDoor.SetActive(leftdoor);

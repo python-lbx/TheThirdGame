@@ -139,13 +139,13 @@ public class Orc_Blade : MonoBehaviour
         {
             faceright = false;
             transform.Rotate(0,180,0);
-            print("on your left");
+            //print("on your left");
         }
         else if(Target.transform.position.x > transform.position.x && !faceright)
         {
             faceright = true;
             transform.Rotate(0,180,0);
-            print("on your right");
+            //print("on your right");
         }    
     }
 

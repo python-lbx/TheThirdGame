@@ -2,26 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FloatDamagePool : MonoBehaviour
+public class Orc_Bullet_Pool : MonoBehaviour
 {
-    public static FloatDamagePool instance;
-    public GameObject floatdamagePrefab;
+    public static Orc_Bullet_Pool instance;
+    public GameObject BulletPrefab;
     public int PrefabCount;
     Queue<GameObject> availableObjects = new Queue<GameObject>();
 
-
-    private void Awake() 
+    private void Awake()
     {
         instance = this;
 
         FillPool();
     }
-
     public void FillPool()
     {
         for(int i = 0 ; i < PrefabCount ; i++)
         {
-            var newPrefab = Instantiate(floatdamagePrefab);
+            var newPrefab = Instantiate(BulletPrefab);
             newPrefab.transform.SetParent(transform);
 
             ReturnPool(newPrefab);
@@ -33,8 +31,7 @@ public class FloatDamagePool : MonoBehaviour
         gameObject.SetActive(false);
         availableObjects.Enqueue(gameObject);
     }
-
-    public GameObject GetFormPool() //在目標位置生成
+    public GameObject GetFormPool(Transform point) //在目標位置生成
     {
         if(availableObjects.Count == 0)
         {
@@ -45,6 +42,7 @@ public class FloatDamagePool : MonoBehaviour
         var outPrefab = availableObjects.Dequeue();
 
         outPrefab.SetActive(true);
+        outPrefab.transform.position = point.position;
 
         return outPrefab;
     }   

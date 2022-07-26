@@ -42,7 +42,7 @@ public class Z_Attack_Box : MonoBehaviour
                 float rate = Random.value; //隨機機率
                 print(rate);
 
-                floatdamagetext.transform.position = other.gameObject.transform.GetChild(0).transform.position;
+                floatdamagetext.transform.position = other.gameObject.transform.Find("FloatDamagePoint").transform.position;
                 
                 if(rate < (CRI/100))
                 {
