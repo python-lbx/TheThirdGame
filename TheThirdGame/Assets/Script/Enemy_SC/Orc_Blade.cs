@@ -31,6 +31,7 @@ public class Orc_Blade : MonoBehaviour
     public Statue statue;
     public enum Statue{Idle,Patorl,Battle}
     public float PhaseTime; 
+    public GameObject Attack_Box;
     public float Last_AttackTime;
     public float AttackTime_CD;
 
@@ -203,4 +204,15 @@ public class Orc_Blade : MonoBehaviour
         Gizmos.color = Physics2D.OverlapBox(transform.position,BoxSize,0,playerLayer)? Color.green : Color.clear;
         Gizmos.DrawCube(transform.position,BoxSize);
     }
+
+    void ZboxActive()
+    {
+        Attack_Box.GetComponent<BoxCollider2D>().enabled = true;
+    }
+
+    void ZboxUnActive()
+    {
+        Attack_Box.GetComponent<BoxCollider2D>().enabled = false;
+    }
+
 }

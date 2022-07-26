@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     [Header("角色屬性")]
+    public float HP;
+    public float CurrentHP;
     public float ATK;
     public float CRI;
     public float CSD;
@@ -25,7 +27,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        HP = CharacterState.Player_HP;
+        CurrentHP = HP;
     }
 
     // Update is called once per frame
@@ -34,6 +37,7 @@ public class PlayerController : MonoBehaviour
 
         //傷害先進行計算
         //damage = CharacterState.Player_ATK;
+        HP = CharacterState.Player_HP;
         ATK = CharacterState.Player_ATK;
         CRI = CharacterState.Player_CRI;
         CSD = CharacterState.Player_CSD;
@@ -41,41 +45,8 @@ public class PlayerController : MonoBehaviour
     
     }
 
-    //顯示傷害數字與判定是否爆擊
-    public void showFloatDamage(float rate)
+    public void GetDamage(float damage)
     {
-        FloatDamagePool.instance.GetFormPool();
-
-        if(rate < (CRI/100) )
-        {        
-            //isCrit = true;
-        }
-        else
-        {
-            //isCrit = false;
-        }
+        CurrentHP -= damage;
     }
-
-
-
-    //供參考
-    /*private void OnTriggerEnter2D(Collider2D other) 
-    {
-        if(other.gameObject.CompareTag("Enemy"))
-        {
-            rate = Random.value;
-            targetpos = other.gameObject.transform.GetChild(0).gameObject;
-
-            FloatDamagePool.instance.GetFormPool();
-
-            if(rate < (CRI/100) )
-            {        
-                isCrit = true;
-            }
-            else
-            {
-                isCrit = false;
-            }
-        }
-    }*/
 }

@@ -1553,8 +1553,12 @@ MonoBehaviour:
   - {fileID: 8946516976710700835}
   - {fileID: 2508870589622788396}
   - {fileID: 7363772476805136550}
-  Enemy: {fileID: 8419070845770596499, guid: b8c13b806cafad24fb53cac7188351e7, type: 3}
-  Boss: {fileID: 0}
+  Enemy:
+  - {fileID: 334752856793952381, guid: 45c1d3d34e2cfd9469181a135d42702e, type: 3}
+  - {fileID: 8357011561030099669, guid: 7b2e59863fdd02d45a741638a4225697, type: 3}
+  - {fileID: 4421844518568483574, guid: 19b50d1f052ee4542a4a645bc457ef6a, type: 3}
+  - {fileID: 7415262566053411425, guid: 96e36bc05f789e045bdc34eb372c14c9, type: 3}
+  Boss: {fileID: 334752856793952381, guid: 45c1d3d34e2cfd9469181a135d42702e, type: 3}
   isEndRoom: 0
   whichroom: {fileID: 0}
   Ladder: {fileID: 8135575012562457517}

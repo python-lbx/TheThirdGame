@@ -43,6 +43,7 @@ public class Orc_Bullet : MonoBehaviour
 
             var proj = Orc_Bullet_Pool.instance.GetFormPool(startPoint.transform);
 
+            proj.GetComponent<Orc_Bullet_Prefab>().enemycontroller = GetComponent<EnemyController>();
             proj.GetComponent<Rigidbody2D>().velocity =
             new Vector2 (projectileMoveDirection.x , projectileMoveDirection.y);
             proj.GetComponent<Transform>().transform.right = 

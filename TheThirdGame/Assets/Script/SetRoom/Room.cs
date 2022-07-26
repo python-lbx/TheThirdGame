@@ -34,8 +34,8 @@ public class Room : MonoBehaviour
     public GameObject MapGroup;
     [Header("小怪集合")]
     public Wall whichWall;
-    public GameObject Enemy;
-    public int enemynum;
+    //public GameObject Enemy;
+    //public int enemynum;
     public bool isClear;
     public float totalHP;
     public List<GameObject> Enemys = new List<GameObject>();
@@ -163,7 +163,7 @@ public class Room : MonoBehaviour
             {
                 foreach(var enemy in Enemys)
                 {
-                    totalHP += enemy.GetComponent<EnemyController>().health; //總計血
+                    //totalHP += enemy.GetComponent<EnemyController>().health; //總計血
                     enemy.GetComponent<EnemyController>().whichroom = this; //這間房
                 }
             }

@@ -2,30 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Orc_Bullet_Prefab : MonoBehaviour
+public class Orc_Blade_Attack_Box : MonoBehaviour
 {
-    public float activeTime;
-    public float activeStart;
-
+    [Header("角色屬性")]
     public EnemyController enemycontroller;
-    // Start is called before the first frame update
 
-    private void OnEnable() 
-    {
-        activeStart = Time.time;
-    }
+    // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Time.time >= activeStart + activeTime) //生成時間過後消失
-        {
-            Orc_Bullet_Pool.instance.ReturnPool(this.gameObject);
-        }    
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other) 
@@ -40,5 +31,4 @@ public class Orc_Bullet_Prefab : MonoBehaviour
             floatdamage.GetComponent<FloatDamageText>().floatdamage.text = enemycontroller.ATK.ToString(); //傷害浮動點數輸出數字
         }
     }
-
 }

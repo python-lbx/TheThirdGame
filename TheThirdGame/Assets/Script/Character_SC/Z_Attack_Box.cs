@@ -11,7 +11,7 @@ public class Z_Attack_Box : MonoBehaviour
     public float CSD;
     public bool isCrit;
     
-    [Header("手里劍面板傷害")]
+    [Header("普攻面板傷害")]
     public float Nor_damage; //基礎傷害
     public float CRI_Damage; //爆擊傷害
     public float damagerate; //傷害比例    

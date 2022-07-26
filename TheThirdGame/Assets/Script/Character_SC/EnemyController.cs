@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    [Header("掉寶")]
     public LootArray loot;
+    [Header("資料庫")]
     public EnemyData tempDate; //正本
     public EnemyData thisData; //副本
+    [Header("角色屬性")]
     public float health;
     public float currenthealth;
+    public float ATK;
+    [Header("房間信息")]
     public Room whichroom;
-    public int RoomStep;
 
     private void OnEnable() 
     {
@@ -22,10 +26,12 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-            thisData.CurrentLevel = whichroom.roomDirecter.roomClear;//當前房間步數
-            thisData.LevelUp();
-            currenthealth = health = thisData.MaxHP;
+        thisData.CurrentLevel = whichroom.roomDirecter.roomClear; //當前已清房間次數
+        thisData.LevelUp();
+        currenthealth = health = thisData.MaxHP;
+        ATK = Mathf.Round(thisData.ATK);
 
+        whichroom.totalHP += thisData.MaxHP;
     }
 
     // Update is called once per frame

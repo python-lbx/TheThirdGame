@@ -16,6 +16,8 @@ public class Orc_Fly : MonoBehaviour
     Vector2 Direction;
     Vector2 targetpos;
     public float focustime;
+    public GameObject Attack_Box;
+
     
     [Header("無視平台")]
     [SerializeField] Collider2D playerCollider;
@@ -162,5 +164,15 @@ public class Orc_Fly : MonoBehaviour
             focustime = 3f;
             statue = Statue.Focus;
         }
+    }
+
+    void ZboxActive()
+    {
+        Attack_Box.GetComponent<BoxCollider2D>().enabled = true;
+    }
+
+    void ZboxUnActive()
+    {
+        Attack_Box.GetComponent<BoxCollider2D>().enabled = false;
     }
 }

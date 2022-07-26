@@ -79,7 +79,8 @@ public class Orc_Boo : MonoBehaviour
 
     public void shootboo()
     {
-        var boo = Instantiate(boomerang,shootPoint.transform.position,Quaternion.identity);
+        var boo = Orc_Boomerang_Pool.instance.GetFormPool(shootPoint.transform);
+        boo.GetComponent<Boomerang>().enemycontroller = GetComponent<EnemyController>();
         boo.GetComponent<Rigidbody2D>().velocity = shootPoint.transform.right * boo.GetComponent<Boomerang>().speed;
     }
 }

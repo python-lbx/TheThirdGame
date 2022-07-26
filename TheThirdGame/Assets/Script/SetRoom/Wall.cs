@@ -7,7 +7,7 @@ public class Wall : MonoBehaviour
     public RoomDirecter roomDirecter;
     public GameObject[] WallStyle;
     public GameObject[] EnemyPoint;
-    public GameObject Enemy;
+    public GameObject[] Enemy;
     public GameObject Boss;
     public bool isEndRoom;
     public Room whichroom;
@@ -40,7 +40,7 @@ public class Wall : MonoBehaviour
 
             if(Enemy != null)
             {   
-                whichroom.Enemys.Add(Instantiate(Enemy,transform.position,Quaternion.identity));
+                whichroom.Enemys.Add(Instantiate(Boss,transform.position,Quaternion.identity));
             }
         }
         else
@@ -49,7 +49,11 @@ public class Wall : MonoBehaviour
             {
                 for(int i = 0 ; i<EnemyPoint.Length;i++)
                 {
-                    whichroom.Enemys.Add(Instantiate(Enemy,EnemyPoint[i].transform.position,Quaternion.identity));
+
+                        var num = Random.Range(0,4);
+                        var whichEnemy = Instantiate(Enemy[num],EnemyPoint[i].transform.position,Quaternion.identity);
+                        whichroom.Enemys.Add(whichEnemy);
+                    
                 }
             }
         }
