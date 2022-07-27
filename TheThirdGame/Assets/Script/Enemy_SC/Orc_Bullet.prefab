@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2783651584110485351}
   - component: {fileID: -2474955818503674018}
   - component: {fileID: 3070640560619077093}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Orc_Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

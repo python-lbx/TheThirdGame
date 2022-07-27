@@ -17,6 +17,7 @@ public class Orc_Boo : MonoBehaviour
     Vector2 Direction;
     Vector2 targetpos;
     public float focustime;
+    public float RechargeTime;
     
     [Header("階段")]
     public Statue statue;
@@ -71,7 +72,7 @@ public class Orc_Boo : MonoBehaviour
 
             case Statue.Shoot:
             anim.SetTrigger("Attack");
-            focustime = 2f;
+            focustime = RechargeTime;
             statue = Statue.Focus;
             break;
         }

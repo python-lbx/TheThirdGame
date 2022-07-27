@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24718c6755f8dc847a71297bd66d33c3, type: 3}
   m_Name: Orc_Boo
   m_EditorClassIdentifier: 
-  CurrentHP: 80
-  MaxHP: 80
-  ATK: 15
+  CurrentHP: 50
+  MaxHP: 50
+  ATK: 10
   SPD: 0
   CurrentLevel: 0
-  LevelBuff: 0.15
+  LevelBuff: 0.08

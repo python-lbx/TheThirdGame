@@ -10,6 +10,14 @@ public class PlayerMovement : MonoBehaviour
     [Header("移動參數")]
     public int speed;
 
+    [Header("衝刺參數")]
+    public float DashTime;//dash時長
+    private float DashTimeLeft; //dash剩余時間
+    public float LastDash; //上一次dash時間點
+    public float DashCD;
+    public float DashSpeed;
+    public bool Dashing;
+
     [Header("跳躍參數")]
     public int jumpForce;
     public bool isJump;
@@ -29,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     public bool jumpPressed;
     public bool climbUpPressed;
     public bool climbDownPressed;
+    public bool DashPressed;
 
 
     [Header("環境檢測")]
@@ -82,6 +91,7 @@ public class PlayerMovement : MonoBehaviour
         jumpPressed = Input.GetKeyDown(KeyCode.Space);
         climbUpPressed = Input.GetKey(KeyCode.UpArrow);
         climbDownPressed = Input.GetKey(KeyCode.DownArrow);
+        DashPressed = Input.GetKeyDown(KeyCode.C);
         
         //動畫控制
         if(anim.GetCurrentAnimatorStateInfo(1).IsName("attack"))
@@ -93,8 +103,12 @@ public class PlayerMovement : MonoBehaviour
             //原方向移動攻擊 不能反方向移動
         }
 
-        movement();
-        flip();
+        Dash();
+        if(!Dashing)
+        {
+            movement();
+            flip();
+        }
     }
 
     public void animController()
@@ -182,7 +196,7 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("IsJump",true);
         }
 
-
+        #region 廢案
         /*if(canClimb && climbUpPressed)
         {   
             IsClimbing = true;
@@ -199,6 +213,41 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("IsJump",false);
             anim.SetBool("IsClimb",true);
         }*/
+        #endregion
+    }
+
+    void Dash()
+    {
+        if(DashPressed)
+        {
+            if(Time.time > (DashCD +LastDash))
+            {
+                DashPressed = false;
+                LastDash = Time.time;
+                DashTimeLeft = DashTime;
+                Dashing = true;
+            }
+        }
+
+        if(Dashing)
+        {
+            if(DashTimeLeft > 0)
+            {                
+                gameObject.layer = LayerMask.NameToLayer("Invincible");
+                rb.gravityScale = 0;
+                rb.velocity = new Vector2(DashSpeed * facedirection,0);
+                DashTimeLeft -= Time.deltaTime;
+            }
+            else if(DashTimeLeft < 0)
+            {                
+                Dashing = false;
+            }
+        }
+
+        if(Time.time >= (LastDash + 0.5f))
+        {
+            gameObject.layer = LayerMask.NameToLayer("Player");
+        }
     }
 
     void PhysicalCheck()

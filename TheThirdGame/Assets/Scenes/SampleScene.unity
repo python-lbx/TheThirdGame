@@ -255,19 +255,19 @@ MonoBehaviour:
   HP_Before: 0
   HP_After: 0
   HP_Compare: 0
-  Player_HP: 100
+  Player_HP: 150
   ATK_Before: 0
   ATK_After: 0
   ATK_Compare: 0
-  Player_ATK: 35
+  Player_ATK: 25
   CRI_Before: 0
   CRI_Ater: 0
   CRI_Compare: 0
-  Player_CRI: 50
+  Player_CRI: 0
   CSD_Before: 0
   CSD_After: 0
   CSD_Compare: 0
-  Player_CSD: 150
+  Player_CSD: 120
   SPD_Before: 0
   SPD_After: 0
   SPD_Compare: 0
@@ -580,6 +580,7 @@ MonoBehaviour:
   Target: {fileID: 0}
   statue: 0
   PhaseTime: 4
+  RechargeTime: 0
 --- !u!114 &70305203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1214,7 +1215,41 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 194623419}
+    m_ColliderPaths:
+    - - X: 90333336
+        Y: -50333332
+      - X: 100333336
+        Y: -50333332
+      - X: 100333336
+        Y: 60333332
+      - X: 90333336
+        Y: 60333332
+      - X: 90333336
+        Y: 70333336
+      - X: -90333336
+        Y: 70333336
+      - X: -90333336
+        Y: 60333332
+      - X: -100333336
+        Y: 60333332
+      - X: -100333336
+        Y: -50333332
+      - X: -90333336
+        Y: -50333332
+      - X: -90333336
+        Y: -60333332
+      - X: 90333336
+        Y: -60333332
+    - - X: -89666664
+        Y: -49666668
+      - X: -89666664
+        Y: 59666668
+      - X: 89666664
+        Y: 59666668
+      - X: 89666664
+        Y: -49666668
   m_CompositePaths:
     m_Paths:
     - - {x: 9.033304, y: -6.0333333}
@@ -2284,7 +2319,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!156049354 &213532358
 Grid:
   m_ObjectHideFlags: 0
@@ -8103,6 +8138,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
+  DashTime: 0.1
+  LastDash: 0
+  DashCD: 1
+  DashSpeed: 20
+  Dashing: 0
   jumpForce: 8
   isJump: 0
   jumpTime: 1
@@ -8115,6 +8155,7 @@ MonoBehaviour:
   jumpPressed: 0
   climbUpPressed: 0
   climbDownPressed: 0
+  DashPressed: 0
   LeftFootGroundCheckPoint: {fileID: 2115060440}
   RightFootGroundCheckPoint: {fileID: 362945992}
   LadderCheckPoint: {fileID: 1220673036}
@@ -10834,6 +10875,7 @@ MonoBehaviour:
   boomerang: {fileID: 4549106863739137577, guid: 39c446f87e1ffdd478c86999f6b85500, type: 3}
   shootPoint: {fileID: 2133548499}
   focustime: 3
+  RechargeTime: 0
   statue: 0
 --- !u!114 &2035576455
 MonoBehaviour:

@@ -17,4 +17,4 @@ MonoBehaviour:
   ATK: 5
   SPD: 0
   CurrentLevel: 0
-  LevelBuff: 0.2
+  LevelBuff: 0.1

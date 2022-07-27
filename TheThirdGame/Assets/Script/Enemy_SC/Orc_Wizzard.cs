@@ -14,6 +14,7 @@ public class Orc_Wizzard : MonoBehaviour
     public Statue statue;
     public enum Statue{Idle,Spell};
     public float PhaseTime;
+    public float RechargeTime;
 
 
     // Start is called before the first frame update
@@ -56,7 +57,7 @@ public class Orc_Wizzard : MonoBehaviour
 
             case Statue.Spell:
             anim.SetTrigger("Attack");
-            PhaseTime = 3f;
+            PhaseTime = RechargeTime;
             statue = Statue.Idle;
             break;
         }

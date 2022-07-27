@@ -123,7 +123,7 @@ MonoBehaviour:
   PhaseTime: 0
   Attack_Box: {fileID: 334752857617440895}
   Last_AttackTime: 0
-  AttackTime_CD: 2
+  AttackTime_CD: 2.5
 --- !u!212 &334752856793952380
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 334752857617440894}
   - component: {fileID: 334752857617440893}
   - component: {fileID: 334752857617440892}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: AttackBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}

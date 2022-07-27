@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4421844518045819663}
   - component: {fileID: 4421844518045819662}
   - component: {fileID: 4421844518045819661}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: AttackBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ MonoBehaviour:
   playerCollider: {fileID: 4421844518568483569}
   currentOneWayPlatform: []
   statue: 0
-  PhaseTime: 5
+  PhaseTime: 4
 --- !u!212 &4421844518568483570
 SpriteRenderer:
   m_ObjectHideFlags: 0

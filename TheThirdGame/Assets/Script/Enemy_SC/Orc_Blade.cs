@@ -46,6 +46,10 @@ public class Orc_Blade : MonoBehaviour
     void Update()
     {
         PhysicalCheck();
+        if(anim.GetNextAnimatorStateInfo(0).IsName("Attack"))
+        {
+            return;
+        }
         anim.SetFloat("Speed",Mathf.Abs(rb.velocity.x));
 
         //前後偵測是否有玩家
