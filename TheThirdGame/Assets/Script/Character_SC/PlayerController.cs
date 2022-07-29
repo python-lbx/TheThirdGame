@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [Header("角色屬性")]
     public float HP;
     public float CurrentHP;
+    public int MPBall;
     public float ATK;
     public float CRI;
     public float CSD;
@@ -25,10 +26,14 @@ public class PlayerController : MonoBehaviour
     //public GameObject targetpos;
     public Player_Attributes CharacterState;
     // Start is called before the first frame update
-    void Start()
+    private void Awake() 
     {
         HP = CharacterState.Player_HP;
         CurrentHP = HP;
+    }
+    void Start()
+    {
+
     }
 
     // Update is called once per frame
@@ -47,6 +52,6 @@ public class PlayerController : MonoBehaviour
 
     public void GetDamage(float damage)
     {
-        CurrentHP -= damage;
+        CurrentHP = Mathf.Clamp(CurrentHP - damage,0,HP);
     }
 }

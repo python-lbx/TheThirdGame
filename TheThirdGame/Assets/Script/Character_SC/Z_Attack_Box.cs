@@ -60,6 +60,10 @@ public class Z_Attack_Box : MonoBehaviour
                 }
             }
 
+            if(playercontroller.MPBall <5)
+            {
+                playercontroller.MPBall ++;
+            }
         }
     }
 }

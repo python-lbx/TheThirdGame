@@ -6,6 +6,7 @@ public class PlayerAttackController : MonoBehaviour
 {
     Animator anim;
     PlayerMovement playermovement;
+    PlayerController playercontroller;
 
     [Header("發射點")]
     public Transform ShootPoint;
@@ -22,11 +23,15 @@ public class PlayerAttackController : MonoBehaviour
     public bool Shuriken_Pressed;
     public GameObject Shuriken;
 
+    [Header("雷切")]
+    public GameObject lightning;
+
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         playermovement = GetComponent<PlayerMovement>();
+        playercontroller = GetComponentInChildren<PlayerController>();
     }
 
     // Update is called once per frame
@@ -36,20 +41,23 @@ public class PlayerAttackController : MonoBehaviour
         Shuriken_Pressed = Input.GetKeyDown(KeyCode.F);
 
 
+
         if(Attack_Pressed && !playermovement.IsClimbing)
         {
             if(Time.time >= (Z_Last_Time + Z_Attack_CD) )
             {
                 Attack_Pressed = false;
                 Z_Last_Time = Time.time;
+                lightning.SetActive(true);
                 anim.SetTrigger("IsAttack");
             }
         }
 
-        if(Shuriken_Pressed && !playermovement.IsClimbing)
+        if(Shuriken_Pressed && !playermovement.IsClimbing && playercontroller.MPBall > 0)
         {
             if(Time.time >= (Shuriken_Last_Time + Shuriken_CD) )
             {
+                playercontroller.MPBall -= 1;
                 Shuriken_Pressed = false;
                 Shuriken_Last_Time = Time.time;
                 anim.SetTrigger("IsShoot");
