@@ -39,6 +39,9 @@ public class Room : MonoBehaviour
     public bool isClear;
     public float totalHP;
     public List<GameObject> Enemys = new List<GameObject>();
+    [Header("寶箱")]
+    public GameObject Tresure;
+    public GameObject TresurePoint;
 
 
     private void Awake() 
@@ -82,6 +85,8 @@ public class Room : MonoBehaviour
             RightDoor.SetActive(rightdoor);
             UpDoor.SetActive(updoor);
             DownDoor.SetActive(downdoor);
+
+            Instantiate(Tresure,TresurePoint.transform.position,Quaternion.identity);
         }
         
         //print(RoomID);

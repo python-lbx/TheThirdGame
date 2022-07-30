@@ -69,7 +69,7 @@ public class PlayerAttackController : MonoBehaviour
             }
         }
 
-        if(Shuriken_Pressed && !playermovement.IsClimbing && playercontroller.MPBall > Shuriken_Cost )
+        if(Shuriken_Pressed && !playermovement.IsClimbing && playercontroller.MPBall >= Shuriken_Cost )
         {
             Shuriken_Pressed = false;
             if(Time.time >= (Shuriken_Last_Time + Shuriken_CD) )
@@ -84,7 +84,7 @@ public class PlayerAttackController : MonoBehaviour
         if(Time.time >= (Lightning_Last_Time + Lightning_CD))
         {
             Lightning_Icon.SetActive(true);
-            if(Lightning_Pressed && !playermovement.IsClimbing && playercontroller.MPBall == Lightning_Cost)
+            if(Lightning_Pressed && !playermovement.IsClimbing && playercontroller.MPBall >= Lightning_Cost)
             {                
                 Lightning_Pressed = false;
                 Lightning_Icon.SetActive(false);

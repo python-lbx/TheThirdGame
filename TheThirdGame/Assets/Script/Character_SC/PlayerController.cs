@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public float ATK;
     public float CRI;
     public float CSD;
+
+    public bool BattleStart;
     //public bool isCrit;
     //public float rate;
     //[Header("面板傷害")]
@@ -39,19 +41,24 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        //傷害先進行計算
-        //damage = CharacterState.Player_ATK;
+        if(!BattleStart)
+        {
         HP = CharacterState.Player_HP;
         ATK = CharacterState.Player_ATK;
         CRI = CharacterState.Player_CRI;
         CSD = CharacterState.Player_CSD;
-        //CRI_Damage = Mathf.Round(damage * (CSD/100)) ;
-    
+        CurrentHP = HP; //準備戰鬥
+        }
+
+        HP = CharacterState.Player_HP;
+        ATK = CharacterState.Player_ATK;
+        CRI = CharacterState.Player_CRI;
+        CSD = CharacterState.Player_CSD;
     }
 
     public void GetDamage(float damage)
-    {
+    {   
+        BattleStart = true;
         CurrentHP = Mathf.Clamp(CurrentHP - damage,0,HP);
     }
 }
