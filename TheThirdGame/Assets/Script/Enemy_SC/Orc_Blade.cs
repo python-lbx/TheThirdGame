@@ -48,6 +48,7 @@ public class Orc_Blade : MonoBehaviour
         PhysicalCheck();
         if(anim.GetNextAnimatorStateInfo(0).IsName("Attack"))
         {
+            rb.velocity = new Vector2(0,0);
             return;
         }
         anim.SetFloat("Speed",Mathf.Abs(rb.velocity.x));
@@ -130,9 +131,12 @@ public class Orc_Blade : MonoBehaviour
                 anim.SetTrigger("Attack");
             }
 
-            if(!Physics2D.OverlapBox(transform.position,BoxSize,0,playerLayer)) //玩家離開了偵測範圍1
+            if(Time.time > Last_AttackTime + 1f)
             {
-                statue = Statue.Patorl;
+                if(!Physics2D.OverlapBox(transform.position,BoxSize,0,playerLayer)) //玩家離開了偵測範圍1
+                {
+                    statue = Statue.Patorl;
+                }
             }
             break;
         }

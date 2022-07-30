@@ -81,6 +81,6 @@ public class EnemyController : MonoBehaviour
 
     public void GetDamage(float damage)
     {
-        currenthealth -= damage;
+        currenthealth = Mathf.Clamp(currenthealth - damage,0,health);
     }
 }

@@ -77,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(CharacterState != null) //獲取速度
         {
-            speed = CharacterState.Player_SPD;
+            DashSpeed = CharacterState.Player_SPD;
         }
 
         //print(horizontal);
@@ -92,15 +92,25 @@ public class PlayerMovement : MonoBehaviour
         climbUpPressed = Input.GetKey(KeyCode.UpArrow);
         climbDownPressed = Input.GetKey(KeyCode.DownArrow);
         DashPressed = Input.GetKeyDown(KeyCode.C);
+
+        AnimatorStateInfo stateinfo = anim.GetCurrentAnimatorStateInfo(1);
         
         //動畫控制
-        if(anim.GetCurrentAnimatorStateInfo(1).IsName("attack"))
+        if(stateinfo.IsName("Attack"))
         {
             if(facedirection != horizontal) //如果方向發生改變就不執行下列程式
             {
                 return;
             }
             //原方向移動攻擊 不能反方向移動
+        }
+        if(stateinfo.IsName("Lightning"))
+        {
+            if(facedirection != horizontal) //如果方向發生改變就不執行下列程式
+            {
+                rb.velocity = new Vector2(0,0);
+                return;
+            }
         }
 
         Dash();

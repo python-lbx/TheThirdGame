@@ -61,7 +61,7 @@ public class Shuriken : MonoBehaviour
                 float rate = Random.value;
                 print(rate);
 
-                floatdamagetext.transform.position = other.gameObject.transform.GetChild(0).transform.position;
+                floatdamagetext.transform.position = other.gameObject.transform.Find("FloatDamagePoint").transform.position;
                 
                 //floatdamagetext.GetComponent<FloatDamageText>().floatdamage.text = damagerate.ToString();
 
