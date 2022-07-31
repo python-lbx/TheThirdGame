@@ -20,11 +20,16 @@ public class GroundWave : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+ 
+    }
+
+    public void Ground_Wave()
+    {
         if(wavetime > 0)
         {
             wavetime -= Time.deltaTime;
         }
-        else if(wavetime <= 0 && time < 4)
+        else if(wavetime <= 0 && time < 3)
         {
             for(var j =0 ; j < Shooted.Length ; j++)
             {
