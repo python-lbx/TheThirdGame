@@ -48,7 +48,8 @@ public class Orc_Chase_Bullet : MonoBehaviour
 
 
             //proj.transform.position = new Vector2(projectileMoveDirection.x,projectileMoveDirection.y);
-            proj.GetComponent<Boss_Orc_Wizzard_Bullet>().focustime = i+3f;
+            proj.GetComponent<Boss_Orc_Wizzard_Bullet>().focustime = i+1f;
+            Destroy(proj,5f);
 
             angle += angleStep;
         }
