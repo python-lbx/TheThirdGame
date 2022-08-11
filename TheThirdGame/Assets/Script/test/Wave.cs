@@ -8,9 +8,10 @@ public class Wave : MonoBehaviour
     public GameObject Ground;
     public float damage;
     // Start is called before the first frame update
-    void Start()
-    {
-        Invoke("Cancel",1f);
+
+    private void OnEnable() {
+                Invoke("Cancel",1f);
+
     }
 
     // Update is called once per frame

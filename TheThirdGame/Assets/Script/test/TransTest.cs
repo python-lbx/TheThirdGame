@@ -22,9 +22,14 @@ public class TransTest : MonoBehaviour
     {
         if(other.gameObject.name == "TransPoint")
         {
-            print("A");
+            //print("A");
                     transform.position = new Vector2(Random.Range(LDPos.position.x,RUPos.position.x),Random.Range(LDPos.position.y,RUPos.position.y));
 
         }
+    }
+
+    public void ChangePos()
+    {
+        transform.position = new Vector2(Random.Range(LDPos.position.x,RUPos.position.x),Random.Range(LDPos.position.y,RUPos.position.y));
     }
 }

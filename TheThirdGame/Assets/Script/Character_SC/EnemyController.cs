@@ -10,6 +10,7 @@ public class EnemyController : MonoBehaviour
     public EnemyData tempDate; //正本
     public EnemyData thisData; //副本
     [Header("角色屬性")]
+    public bool IsBoss;
     public float health;
     public float currenthealth;
     public float ATK;
@@ -18,7 +19,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnEnable() 
     {
-        if(tempDate != null)
+        if(tempDate != null && !IsBoss)
         {
             thisData = Instantiate(tempDate);
         }
@@ -26,18 +27,21 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(!IsBoss)
+        {
         thisData.CurrentLevel = whichroom.roomDirecter.roomClear; //當前已清房間次數
         thisData.LevelUp();
         currenthealth = health = thisData.MaxHP;
         ATK = Mathf.Round(thisData.ATK);
 
         whichroom.totalHP += thisData.MaxHP;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(currenthealth <= 0)
+        if(!IsBoss && currenthealth <= 0)
         {   
             if(whichroom != null)
             {

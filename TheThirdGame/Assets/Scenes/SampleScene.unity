@@ -725,6 +725,7 @@ MonoBehaviour:
   loot: {fileID: 11400000, guid: ff951c523f109dc4292c944dd4cacd08, type: 2}
   tempDate: {fileID: 11400000, guid: 893a3888559681e49bad78a5578bd6ce, type: 2}
   thisData: {fileID: 0}
+  IsBoss: 0
   health: 10000
   currenthealth: 10000
   ATK: 20
@@ -2424,6 +2425,7 @@ MonoBehaviour:
   loot: {fileID: 11400000, guid: ff951c523f109dc4292c944dd4cacd08, type: 2}
   tempDate: {fileID: 11400000, guid: e6af8d46887aa744999a14bf1b57c87b, type: 2}
   thisData: {fileID: 0}
+  IsBoss: 0
   health: 100
   currenthealth: 100
   ATK: 5
@@ -5722,6 +5724,8 @@ Transform:
   - {fileID: 169779497}
   - {fileID: 985162816}
   - {fileID: 270304160}
+  - {fileID: 1804627240}
+  - {fileID: 681836549}
   m_Father: {fileID: 1881748687}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6099,6 +6103,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &681836548
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 681836549}
+  m_Layer: 0
+  m_Name: TransToAir
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &681836549
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681836548}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.73, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 646657760}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &712286366
 GameObject:
   m_ObjectHideFlags: 0
@@ -7595,7 +7629,6 @@ GameObject:
   m_Component:
   - component: {fileID: 883587041}
   - component: {fileID: 883587040}
-  - component: {fileID: 883587039}
   m_Layer: 0
   m_Name: TestGrid (1)
   m_TagString: Untagged
@@ -7603,26 +7636,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &883587039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 883587038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a25905c076d386241b93e2d95335dc5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Wave:
-  - {fileID: 1431409645}
-  - {fileID: 998280272}
-  - {fileID: 255288656}
-  - {fileID: 1463279972}
-  Shooted: 00000000
-  time: 0
-  wavetime: 0
 --- !u!156049354 &883587040
 Grid:
   m_ObjectHideFlags: 0
@@ -9237,8 +9250,8 @@ MonoBehaviour:
   - {fileID: 875619469}
   - {fileID: 2019388572}
   Shooted: 00000000
-  time: 0
-  wavetime: 0
+  NumOfWave: 0
+  WaveCD: 0
 --- !u!1 &1031576896
 GameObject:
   m_ObjectHideFlags: 0
@@ -14455,6 +14468,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1797970542}
   m_CullTransparentMesh: 1
+--- !u!1 &1804627239
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1804627240}
+  m_Layer: 0
+  m_Name: BackToGround
+  m_TagString: Untagged
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1804627240
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804627239}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -4.26165, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 646657760}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1818089240
 GameObject:
   m_ObjectHideFlags: 0
@@ -14691,6 +14734,7 @@ MonoBehaviour:
   loot: {fileID: 11400000, guid: ff951c523f109dc4292c944dd4cacd08, type: 2}
   tempDate: {fileID: 11400000, guid: 3511febc7c10e154e8aa8213c0ea1aff, type: 2}
   thisData: {fileID: 0}
+  IsBoss: 0
   health: 10000
   currenthealth: 10000
   ATK: 10
@@ -16318,6 +16362,7 @@ MonoBehaviour:
   loot: {fileID: 11400000, guid: ff951c523f109dc4292c944dd4cacd08, type: 2}
   tempDate: {fileID: 11400000, guid: fc3a081fefe0c3e4c8b759e99817f346, type: 2}
   thisData: {fileID: 0}
+  IsBoss: 0
   health: 1000
   currenthealth: 1000
   ATK: 15
@@ -18392,7 +18437,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5115615275436969428}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.71, y: -3.82, z: 0.8891833}
+  m_LocalPosition: {x: 0, y: -3.82, z: 0.8891833}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5115615275780981640}
@@ -18461,6 +18506,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5115615275436969425}
+  - component: {fileID: 5115615275436969432}
   - component: {fileID: 5115615275436969422}
   - component: {fileID: 5115615275436969431}
   - component: {fileID: 5115615275436969430}
@@ -18506,15 +18552,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f36b2f7f4297294dba7b9befcc58e9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  DiffusionBullet: {fileID: 5115615275436969422}
   TransPoint:
   - {fileID: 526506139}
   - {fileID: 656808887}
   - {fileID: 1583496133}
   - {fileID: 165697373}
   - {fileID: 169779496}
-  TransTime: 0
-  time: 10
-  DiffusionBullet: {fileID: 70305201}
+  NumOfTrans: 0
+  TransCD: 0
+  BackToGround: {fileID: 1804627239}
+  GroundWave: {fileID: 1029368365}
+  TransToAir: {fileID: 681836548}
   OrcChaseBullet: {fileID: 5115615275436969431}
   faceright: 1
   speed: 0
@@ -18544,6 +18594,26 @@ MonoBehaviour:
   startPoint: {fileID: 605551556}
   radius: 5
   moveSpeed: 5
+--- !u!114 &5115615275436969432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5115615275436969428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5a99cc7f2c30fd48bbf484c16676fb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loot: {fileID: 0}
+  tempDate: {fileID: 0}
+  thisData: {fileID: 0}
+  IsBoss: 1
+  health: 0
+  currenthealth: 1000
+  ATK: 25
+  whichroom: {fileID: 0}
 --- !u!4 &5115615275780981640
 Transform:
   m_ObjectHideFlags: 0
