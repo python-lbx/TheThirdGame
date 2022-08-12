@@ -43,9 +43,9 @@ public class Orc_Chase_Bullet : MonoBehaviour
 
             var proj = Instantiate (Bullet,startPoint.transform.position,Quaternion.identity);
             
+            proj.GetComponent<Boss_Orc_Wizzard_Bullet>().enemycontroller = GetComponent<EnemyController>();
             proj.GetComponent<Rigidbody2D>().velocity =
             new Vector2 (projectileMoveDirection.x , projectileMoveDirection.y);
-
 
             //proj.transform.position = new Vector2(projectileMoveDirection.x,projectileMoveDirection.y);
             proj.GetComponent<Boss_Orc_Wizzard_Bullet>().focustime = i+1f;
