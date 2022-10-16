@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class Boss_Orc_Wizzard : MonoBehaviour
 {
@@ -38,6 +40,12 @@ public class Boss_Orc_Wizzard : MonoBehaviour
     public float SKillCD;
     public Statue Next_Skill_Statue;
     public bool canShoot;
+
+    [Header("對話框")]
+    public GameObject DialogTable;
+    public GameObject TextPoint;
+    public Text Dialog;
+
     // Start is called before the first frame update
 
     private void OnEnable() 
@@ -46,6 +54,9 @@ public class Boss_Orc_Wizzard : MonoBehaviour
     }
     void Start()
     {
+        DialogTable.SetActive(true);
+        Dialog.text = "驅逐入侵者";
+
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -53,6 +64,8 @@ public class Boss_Orc_Wizzard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        DialogTable.transform.position = TextPoint.transform.position;
+
         switch (SkillPhase)
         {
             case 0:
@@ -83,6 +96,9 @@ public class Boss_Orc_Wizzard : MonoBehaviour
             }
             else if(PhaseTime <= 0)
             {
+                DialogTable.SetActive(false);
+                Dialog.text = "";
+
                 PhaseTime = 2f;
                 current_Statue = Next_Skill_Statue;
             }
@@ -98,7 +114,10 @@ public class Boss_Orc_Wizzard : MonoBehaviour
                 Movement();
             }
             else if(PhaseTime <= 0)
-            {                   
+            {        
+                DialogTable.SetActive(true);
+                Dialog.text = "滾開";
+
                 anim.SetBool("Run",false);
                 rb.velocity = new Vector2(0,0);
 
@@ -120,6 +139,9 @@ public class Boss_Orc_Wizzard : MonoBehaviour
             break;
 
             case Statue.TransAndShoot: //5
+            DialogTable.SetActive(true);
+            Dialog.text = "無處可逃";
+
             rb.gravityScale = 0;
             TransShoot();
             break;
@@ -135,6 +157,9 @@ public class Boss_Orc_Wizzard : MonoBehaviour
             }
             else if(PhaseTime <= 0)
             {
+                DialogTable.SetActive(true);
+                Dialog.text = "感受我的憤怒";
+
                 GroundWave.Ground_Wave();
             } 
 
@@ -152,6 +177,10 @@ public class Boss_Orc_Wizzard : MonoBehaviour
             }
             else if(PhaseTime <= 0)
             {
+                DialogTable.SetActive(false);
+                Dialog.text = "";
+
+
                 PhaseTime = 2f; //巡邏時間
                 canShoot = true; //可以射擊
                 current_Statue = Next_Skill_Statue; //回到當前階段
