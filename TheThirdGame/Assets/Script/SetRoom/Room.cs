@@ -17,6 +17,10 @@ public class Room : MonoBehaviour
     public GameObject[] UpWall;
     public GameObject[] DownWall;
 
+    [Header("傳送門")]
+    public GameObject Portal;
+    public bool PortalActive;
+
     [Header("門跟牆判定")]
     public bool leftdoor;
     public bool rightdoor;
@@ -105,7 +109,7 @@ public class Room : MonoBehaviour
         //UpWall.SetActive(!updoor);
         //DownWall.SetActive(!downdoor);
         
-        if(!IsNewRoom && totalHP <= 0)
+        if(!IsNewRoom && totalHP <= 0 && !PortalActive)
         {
             isClear = true;
             if(updoor)
@@ -146,7 +150,7 @@ public class Room : MonoBehaviour
         if(other.gameObject.CompareTag("Player") && IsNewRoom && RoomID != 0) //首次進入房間會進入戰鬥
         {
             IsNewRoom = false; //非首次進入房間
-            roomDirecter.roomClear +=1;
+            roomDirecter.RoomLever +=1;
 
 
             //關門
@@ -171,6 +175,18 @@ public class Room : MonoBehaviour
                     //totalHP += enemy.GetComponent<EnemyController>().health; //總計血
                     enemy.GetComponent<EnemyController>().whichroom = this; //這間房
                 }
+            }
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other) 
+    {
+        if(other.gameObject.CompareTag("Player") && roomDirecter.RoomLever == 5)
+        {   
+            PortalActive = true;
+            if(totalHP <= 0)
+            {
+                Portal.SetActive(PortalActive);
             }
         }
     }

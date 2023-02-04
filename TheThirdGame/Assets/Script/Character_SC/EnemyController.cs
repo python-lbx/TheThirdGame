@@ -29,7 +29,7 @@ public class EnemyController : MonoBehaviour
     {
         if(!IsBoss)
         {
-        thisData.CurrentLevel = whichroom.roomDirecter.roomClear; //當前已清房間次數
+        thisData.CurrentLevel = whichroom.roomDirecter.RoomLever; //當前房間等級
         thisData.LevelUp();
         currenthealth = health = thisData.MaxHP;
         ATK = Mathf.Round(thisData.ATK);
