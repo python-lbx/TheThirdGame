@@ -8,12 +8,14 @@ public class Chest : MonoBehaviour
     public Vector2 BoxSize;
     public LayerMask PlayerLayer;
     public bool Here;
+    public GameObject FirstRoom;
     [Header("掉寶")]
     public GameObject[] Tresure;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+        FirstRoom = GameObject.Find("RoomDirecter");
     }
 
     // Update is called once per frame
@@ -26,6 +28,7 @@ public class Chest : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.Y))
             {
                 anim.SetBool("Open",true);
+                FirstRoom.GetComponent<RoomDirecter>().rooms[0].PortalActive = false;
             }
         }
 

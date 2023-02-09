@@ -6,13 +6,22 @@ public class Portal : MonoBehaviour
 {
     public bool IsPlayer;
     public GameObject Player;
-    public GameObject Boss_Orc_Wizzard_Portal;
+    public GameObject Boss_One_Portal;
+    public GameObject Boss_Two_Portal;
+    public Vector3 RoomPos;
+    public int RoomLevel;
     // Start is called before the first frame update
     private void OnEnable() 
     {
-        Boss_Orc_Wizzard_Portal = GameObject.Find("BackToLevel");
+        Boss_One_Portal = GameObject.Find("BossOnePos");
+        Boss_Two_Portal = GameObject.Find("BossTwoPos");
     }
 
+    private void Start() 
+    {
+        RoomPos = transform.position;
+        RoomLevel = FindObjectOfType<RoomDirecter>().RoomLevel;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -20,7 +29,18 @@ public class Portal : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.Y))
             {
-                Player.transform.position = Boss_Orc_Wizzard_Portal.transform.position;
+                if(RoomLevel == 5)
+                {
+                    Boss_One_Portal.GetComponentInChildren<BackToLevel>().OriginalRoomPos = RoomPos;
+                    Boss_One_Portal.SetActive(false);
+                    Player.transform.position = Boss_One_Portal.transform.position;
+                }
+                else if(RoomLevel == 10)
+                {
+                    Boss_Two_Portal.GetComponentInChildren<BackToLevel>().OriginalRoomPos = RoomPos;
+                    Boss_Two_Portal.SetActive(false);
+                    Player.transform.position = Boss_Two_Portal.transform.position;
+                }
             }
         }
     }

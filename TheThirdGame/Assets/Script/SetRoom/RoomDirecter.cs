@@ -14,7 +14,7 @@ public class RoomDirecter : MonoBehaviour
     public Color startColor,endColor;
     public GameObject endroom;
     public bool endroomCanOpen;
-    public int RoomLever;
+    public int RoomLevel;
 
     [Header("位置控制")]
     public Transform directerPoint;

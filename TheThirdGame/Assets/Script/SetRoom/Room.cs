@@ -18,7 +18,8 @@ public class Room : MonoBehaviour
     public GameObject[] DownWall;
 
     [Header("傳送門")]
-    public GameObject Portal;
+    public GameObject Portal_V;
+    public GameObject Portal_X;
     public bool PortalActive;
 
     [Header("門跟牆判定")]
@@ -84,6 +85,7 @@ public class Room : MonoBehaviour
         //初始房間
         if(RoomID == 0)
         {
+            PortalActive = true;
             IsNewRoom = false;
             LeftDoor.SetActive(leftdoor);
             RightDoor.SetActive(rightdoor);
@@ -145,12 +147,20 @@ public class Room : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             FindObjectOfType<CameraController>().ChangeTarget(transform);
+            //FindObjectOfType<CameraController>().Immediate = false;
         }
 
+        //戰鬥判定
         if(other.gameObject.CompareTag("Player") && IsNewRoom && RoomID != 0) //首次進入房間會進入戰鬥
         {
+            roomDirecter.RoomLevel +=1;
+
+            if(roomDirecter.RoomLevel == 5 || roomDirecter.RoomLevel == 10)
+            {
+                PortalActive = true;
+            }
+            
             IsNewRoom = false; //非首次進入房間
-            roomDirecter.RoomLever +=1;
 
 
             //關門
@@ -181,12 +191,21 @@ public class Room : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other) 
     {
-        if(other.gameObject.CompareTag("Player") && roomDirecter.RoomLever == 5)
+        //第5關
+        if(other.gameObject.CompareTag("Player") && roomDirecter.RoomLevel == 5 && PortalActive)
         {   
-            PortalActive = true;
             if(totalHP <= 0)
             {
-                Portal.SetActive(PortalActive);
+                Portal_V.SetActive(true);
+            }
+        }
+        
+        //第10關
+        if(other.gameObject.CompareTag("Player") && roomDirecter.RoomLevel == 10 && PortalActive)
+        {   
+            if(totalHP <= 0)
+            {
+                Portal_X.SetActive(true);
             }
         }
     }
