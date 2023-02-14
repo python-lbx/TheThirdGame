@@ -39,6 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7415262566053411428}
+  - component: {fileID: 5864764893005934326}
   - component: {fileID: 7415262566053411449}
   - component: {fileID: 7415262566053411448}
   - component: {fileID: 7415262566053411451}
@@ -69,6 +70,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5864764893005934326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7415262566053411425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ad53c570cd051a458d905d1d7693ce7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  current_Statue: 0
+  fade: 0
+  whichCharacter: 2
+  orc_Blade: {fileID: 0}
+  orc_Boo: {fileID: 0}
+  orc_Wizzard: {fileID: 7415262566053411448}
+  orc_Fly: {fileID: 0}
+  enemyController: {fileID: 7415262566053411449}
+  material: {fileID: 2100000, guid: f7e7af2969d384948b2dc3c4c6989616, type: 2}
 --- !u!114 &7415262566053411449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,9 +106,11 @@ MonoBehaviour:
   loot: {fileID: 11400000, guid: ff951c523f109dc4292c944dd4cacd08, type: 2}
   tempDate: {fileID: 11400000, guid: 893a3888559681e49bad78a5578bd6ce, type: 2}
   thisData: {fileID: 0}
+  IsBoss: 0
   health: 10000
   currenthealth: 10000
   ATK: 20
+  dead: 0
   whichroom: {fileID: 0}
 --- !u!114 &7415262566053411448
 MonoBehaviour:
@@ -141,7 +165,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f7e7af2969d384948b2dc3c4c6989616, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

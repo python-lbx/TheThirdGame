@@ -14,6 +14,7 @@ public class EnemyController : MonoBehaviour
     public float health;
     public float currenthealth;
     public float ATK;
+    public bool dead;
     [Header("房間信息")]
     public Room whichroom;
 
@@ -45,10 +46,16 @@ public class EnemyController : MonoBehaviour
         {   
             if(whichroom != null)
             {
-                whichroom.dead(health); //房間總血量耗損
+                if(!dead)
+                {
+                    whichroom.dead(health); //房間總血量耗損
+                    lootRate(this.transform.position);
+                    dead = true;
+                }
             }
-            lootRate(this.transform.position);
-            Destroy(this.gameObject);
+
+
+            //Destroy(this.gameObject);
         }
     }
 

@@ -51,11 +51,11 @@ public class Boss_Orc_Wizzard : MonoBehaviour
     private void OnEnable() 
     {
         Player = GameObject.Find("Player");
+        DialogTable.SetActive(true);
+        Dialog.text = "驅逐入侵者";
     }
     void Start()
     {
-        DialogTable.SetActive(true);
-        Dialog.text = "驅逐入侵者";
 
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();

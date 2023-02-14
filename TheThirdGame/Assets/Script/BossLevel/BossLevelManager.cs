@@ -5,6 +5,7 @@ using UnityEngine;
 public class BossLevelManager : MonoBehaviour
 {
     // Start is called before the first frame update
+    public GameObject Boss;
     void Start()
     {
         
@@ -20,7 +21,11 @@ public class BossLevelManager : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            FindObjectOfType<CameraController>().ChangeTarget(transform);
+            if(Boss != null)
+            {
+                FindObjectOfType<CameraController>().ChangeTarget(transform);
+                Boss.SetActive(true);
+            }
         }
     }
 }
