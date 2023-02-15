@@ -11,6 +11,7 @@ public class Chest : MonoBehaviour
     public GameObject FirstRoom;
     [Header("掉寶")]
     public GameObject[] Tresure;
+    public int DropTime;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +43,7 @@ public class Chest : MonoBehaviour
 
     public void DropTresure()
     {
-        for(var j = 0 ; j < 3 ; j++)
+        for(var j = 0 ; j < DropTime ; j++)
         {
             int num = Random.Range(0,5);
             print(num);

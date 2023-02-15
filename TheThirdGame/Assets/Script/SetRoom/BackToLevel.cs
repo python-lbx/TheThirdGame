@@ -7,6 +7,7 @@ public class BackToLevel : MonoBehaviour
     public bool IsPlayer;
     public GameObject Player;
     public Vector3 OriginalRoomPos;
+    public GameObject WhichBoss;
 
     // Start is called before the first frame update
     void Start()

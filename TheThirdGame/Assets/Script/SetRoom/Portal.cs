@@ -10,9 +10,11 @@ public class Portal : MonoBehaviour
     public GameObject Boss_Two_Portal;
     public Vector3 RoomPos;
     public int RoomLevel;
+    public Room room;
     // Start is called before the first frame update
     private void OnEnable() 
     {
+        room = GetComponentInParent<Room>();
         Boss_One_Portal = GameObject.Find("BossOnePos");
         Boss_Two_Portal = GameObject.Find("BossTwoPos");
     }
@@ -25,6 +27,18 @@ public class Portal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(RoomLevel == 5)
+        {
+            //有待加強
+            if(Boss_One_Portal.GetComponentInChildren<BackToLevel>().WhichBoss.GetComponent<EnemyController>().currenthealth <= 0)
+            {
+                room.PortalActive = false;
+            }
+        }
+
+
+
+
         if(IsPlayer)
         {
             if(Input.GetKeyDown(KeyCode.Y))
@@ -32,13 +46,13 @@ public class Portal : MonoBehaviour
                 if(RoomLevel == 5)
                 {
                     Boss_One_Portal.GetComponentInChildren<BackToLevel>().OriginalRoomPos = RoomPos;
-                    Boss_One_Portal.SetActive(false);
+                    //Boss_One_Portal.SetActive(false);
                     Player.transform.position = Boss_One_Portal.transform.position;
                 }
                 else if(RoomLevel == 10)
                 {
                     Boss_Two_Portal.GetComponentInChildren<BackToLevel>().OriginalRoomPos = RoomPos;
-                    Boss_Two_Portal.SetActive(false);
+                    //Boss_Two_Portal.SetActive(false);
                     Player.transform.position = Boss_Two_Portal.transform.position;
                 }
             }

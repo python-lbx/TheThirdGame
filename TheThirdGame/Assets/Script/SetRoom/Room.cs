@@ -46,7 +46,6 @@ public class Room : MonoBehaviour
     public List<GameObject> Enemys = new List<GameObject>();
     [Header("寶箱")]
     public GameObject Tresure;
-    public GameObject TresurePoint;
 
 
     private void Awake() 
@@ -92,7 +91,8 @@ public class Room : MonoBehaviour
             UpDoor.SetActive(updoor);
             DownDoor.SetActive(downdoor);
 
-            Instantiate(Tresure,TresurePoint.transform.position,Quaternion.identity);
+            Tresure.GetComponent<Chest>().DropTime = 3;
+            Tresure.SetActive(true);
         }
         
         //print(RoomID);
