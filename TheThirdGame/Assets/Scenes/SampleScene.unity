@@ -7527,8 +7527,8 @@ Transform:
   m_Children:
   - {fileID: 1205556287}
   - {fileID: 1167518094}
-  - {fileID: 1401153211}
   - {fileID: 1716803799}
+  - {fileID: 1401153211}
   - {fileID: 866848167}
   m_Father: {fileID: 1505607494}
   m_RootOrder: 3
@@ -7896,19 +7896,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bfb450bf5cd0854790dc58a17f73629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 10
   FireBall: {fileID: 8588590848539280433, guid: cbdcc53670b5b4441ab78425800f0d66, type: 3}
   shootTime: 1
   shootcd: 1
-  teleportcd: 1
-  teleporttime: 0
+  teleportcd: 10
+  teleporttime: 10
+  i: 0
+  amout: 0
   num: 0
-  lastnum: 0
+  numbers: 00000000010000000200000003000000
   Teleport:
   - {fileID: 1205556287}
   - {fileID: 1167518094}
-  - {fileID: 1401153211}
   - {fileID: 1716803799}
+  - {fileID: 1401153211}
+  End: {fileID: 0}
+  direction: 0
 --- !u!4 &866848167
 Transform:
   m_ObjectHideFlags: 0
@@ -14961,7 +14965,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 808098010}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1404729095
 GameObject:
@@ -17708,7 +17712,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 808098010}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1718368016
 GameObject:
