@@ -15,6 +15,11 @@ public class Boss_Level_2 : MonoBehaviour
     public float SKillCD;
     public Statue Next_Skill_Statue;
     public bool canShoot;
+
+    public Transform left;
+    public Transform right;
+    public float speed;
+    public GameObject movewave;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +29,14 @@ public class Boss_Level_2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.A))
+        {
+            var movewaveleft = MoveWave_Pool.instance.GetFormPool(left);
+            movewaveleft.GetComponent<Rigidbody2D>().velocity = new Vector2(-speed,0);
+            var movewaveright= MoveWave_Pool.instance.GetFormPool(right);
+            movewaveright.GetComponent<Rigidbody2D>().velocity = new Vector2(speed,0);
+
+        }
         //待機
         //移動
         //地熱波
