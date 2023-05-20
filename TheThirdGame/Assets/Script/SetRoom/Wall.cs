@@ -50,7 +50,7 @@ public class Wall : MonoBehaviour
                 for(int i = 0 ; i<EnemyPoint.Length;i++)
                 {
 
-                        var num = Random.Range(0,4);
+                        var num = Random.Range(0,Enemy.Length);
                         var whichEnemy = Instantiate(Enemy[num],EnemyPoint[i].transform.position,Quaternion.identity);
                         whichroom.Enemys.Add(whichEnemy);
                     

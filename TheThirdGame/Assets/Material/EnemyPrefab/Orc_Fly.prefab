@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 4421844518568483571}
   - component: {fileID: 4421844518568483568}
   - component: {fileID: 4421844518568483570}
+  - component: {fileID: 5384905724209994958}
   - component: {fileID: 4421844518568483569}
   - component: {fileID: 4421844518568483572}
   - component: {fileID: 4421844518568483535}
@@ -200,7 +201,7 @@ MonoBehaviour:
   FocusPoint: {fileID: 0}
   focustime: 4
   Attack_Box: {fileID: 4421844518045819696}
-  playerCollider: {fileID: 4421844518568483569}
+  playerCollider: {fileID: 5384905724209994958}
   currentOneWayPlatform: []
   statue: 0
   PhaseTime: 4
@@ -255,6 +256,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &5384905724209994958
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4421844518568483574}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.12, y: 5.12}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!58 &4421844518568483569
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -262,7 +289,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4421844518568483574}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
