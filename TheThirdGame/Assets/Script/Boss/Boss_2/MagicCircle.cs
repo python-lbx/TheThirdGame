@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MagicCircle : MonoBehaviour
 {
-    public Transform Ball;
+    public GameObject Ball;
     SpriteRenderer SR;
     public Color Set_Color;
     public Color Not_Set_Color;
@@ -21,7 +21,6 @@ public class MagicCircle : MonoBehaviour
     void Update()
     {
         transform.Rotate(0, 0, speed * Time.deltaTime);
-        Ball = transform.Find("MagicBall");
 
         if(Ball != null)
         {
