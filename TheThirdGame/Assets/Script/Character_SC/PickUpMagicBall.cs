@@ -8,15 +8,19 @@ public class PickUpMagicBall : MonoBehaviour
     public GameObject currentBall;
     public GameObject tempBall;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(currentBall != null)
+        {
+            currentBall.transform.position = Point.transform.position;
+
+            if(currentBall.GetComponent<MagicBall>().touchable == false)
+            {
+                currentBall = null;
+            }
+        }
     }
 
     private void OnTriggerStay2D(Collider2D other) 
@@ -28,7 +32,6 @@ public class PickUpMagicBall : MonoBehaviour
                 if(currentBall == null)
                 {
                     currentBall = other.gameObject;
-                    currentBall.transform.position = Point.transform.position;
                 }
                 else
                 {
@@ -38,7 +41,6 @@ public class PickUpMagicBall : MonoBehaviour
                     tempBall = null;
                     
                     currentBall = other.gameObject;
-                    currentBall.transform.position = Point.transform.position;
                 }
             }
         }

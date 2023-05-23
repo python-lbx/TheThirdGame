@@ -35,6 +35,12 @@ public class MagicBall_Random_Color : MonoBehaviour
                 magicball[i].GetComponent<MagicBall>().Key = "Green";
             }
         }
+
+        for(int i = 0 ; i < magicball.Length ; i++)
+        {
+            magicball[i].GetComponent<MagicBall>().resetPos();
+            magicball[i].GetComponent<MagicBall>().touchable = true;
+        }
     }
 
     public void shuffleArray<T>(T[] array)

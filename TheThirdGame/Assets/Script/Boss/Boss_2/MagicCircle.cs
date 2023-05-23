@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class MagicCircle : MonoBehaviour
 {
-    public GameObject Ball;
     SpriteRenderer SR;
     public Color Set_Color;
     public Color Not_Set_Color;
     public string Lock;
     public float speed;
+    public bool Shutdowned;
     // Start is called before the first frame update
     void Start()
     {
         SR = GetComponent<SpriteRenderer>();
         speed = 50f;
+        Shutdowned = false;
     }
 
     // Update is called once per frame
@@ -22,7 +23,7 @@ public class MagicCircle : MonoBehaviour
     {
         transform.Rotate(0, 0, speed * Time.deltaTime);
 
-        if(Ball != null)
+        if(Shutdowned)
         {
             SR.color = Set_Color;
             speed = 0f;
@@ -30,6 +31,7 @@ public class MagicCircle : MonoBehaviour
         else
         {
             SR.color = Not_Set_Color;
+            speed = 10f;
         }
     }
 
