@@ -199,13 +199,13 @@ public class Boss_Orc_Wizzard : MonoBehaviour
         //Movement();
     }
 
-    void flip()
+    void flip() //轉向
     {
         faceright = !faceright;
         transform.Rotate(0,180,0);
     }
 
-    void Movement()
+    void Movement() //移動
     {
         speed = 6f;
         if(faceright)
