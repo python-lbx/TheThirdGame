@@ -6,6 +6,10 @@ public class Magic_Circle_PS : MonoBehaviour
 {
     public GameObject laser;
     // Start is called before the first frame update
+    void OnEnable()
+    {
+        laser.GetComponent<Rotate_Laser_Controller>().allshutdown = false;
+    }
     void Start()
     {
         var main = GetComponent<ParticleSystem>().main;
@@ -22,5 +26,6 @@ public class Magic_Circle_PS : MonoBehaviour
     {
         Debug.Log("System has stopped!");
         laser.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 }

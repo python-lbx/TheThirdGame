@@ -32,6 +32,8 @@ public class Boss_Level_2 : MonoBehaviour
     public GameObject TransToAir;
     public GameObject BackToGround;
     public GameObject Laser;
+    public GameObject Laser_Trigger_PS;
+    public GameObject shield;
 
     [Header("角色移動")]
     public bool faceright;
@@ -119,6 +121,7 @@ public class Boss_Level_2 : MonoBehaviour
             case Statue.WalkAndWave:
             if(PhaseTime > 0)
             {   
+                anim.SetBool("Run",true);
                 SkillEnterCD = 3f; //地動熱波間隔
                 PhaseTime -= Time.deltaTime;
                 Movement();
@@ -126,6 +129,8 @@ public class Boss_Level_2 : MonoBehaviour
             else if(PhaseTime <= 0)
             {
                 rb.velocity = new Vector2(0,0);
+
+                anim.SetBool("Run",false);
 
                 MoveFrameWave();
 
@@ -150,10 +155,14 @@ public class Boss_Level_2 : MonoBehaviour
             case Statue.WalkAndFire:
             quartetflame.SetActive(true);
 
+            anim.SetBool("Run",true);
+
             Movement();
 
             if(quartetflame.GetComponent<Random_Fire>().finished)
-            {
+            {   
+                anim.SetBool("Run",false);
+
                 quartetflame.SetActive(false);
                 SkillPhase++;
                 PhaseTime = 3f; //待機時間
@@ -170,23 +179,37 @@ public class Boss_Level_2 : MonoBehaviour
             }
             else if(PhaseTime <= 0)
             {
-                Laser.SetActive(true);
+                anim.SetBool("Spelling",true);
+                shield.SetActive(true);
+
+                Laser_Trigger_PS.SetActive(true);
                 SkillPhase++;
                 current_Statue = Next_Skill_Statue;
             }
             break;
 
             case Statue.Laser:
-            if(!Laser.activeSelf)
+            if(Laser.GetComponent<Rotate_Laser_Controller>().allshutdown)
             {
+                anim.SetBool("Spelling",false);
+                shield.SetActive(false);
                 PhaseTime = 3f;
                 SkillPhase = 0;
-                transform.position = BackToGround.transform.position;
-                current_Statue = Statue.Idle;
+                current_Statue = Statue.skillCD;
             }
             break;
 
             case Statue.skillCD:
+            if(PhaseTime > 0)
+            {
+                PhaseTime -= Time.deltaTime;
+            }
+            else if(PhaseTime <= 0)
+            {
+                PhaseTime = 1f;
+                transform.position = BackToGround.transform.position;
+                current_Statue = Statue.Idle;
+            }
             break;
 
         }
@@ -231,6 +254,7 @@ public class Boss_Level_2 : MonoBehaviour
             }
             else if(SkillCD <= 0)
             {
+                anim.SetTrigger("Attack");
                 var movewaveleft = MoveWave_Pool.instance.GetFormPool(left);
                 movewaveleft.GetComponent<Rigidbody2D>().velocity = new Vector2(-FlameMoveSpeed,0);
                 var movewaveright= MoveWave_Pool.instance.GetFormPool(right);

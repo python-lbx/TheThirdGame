@@ -8,6 +8,7 @@ public class RotateLaser : MonoBehaviour
     public float speed;
     public float rotatedelay;
     public float rotatedelaytime;
+    public Transform[] laser_Scale;
     void OnEnable()
     {
         if(trans == null)
@@ -18,8 +19,21 @@ public class RotateLaser : MonoBehaviour
         {
             trans.Rotate(0,0,Random.Range(-120,240));
         }
+
         
         rotatedelaytime = rotatedelay;
+        speed = 0.3f;
+    }
+
+    private void OnDisable() 
+    {
+        foreach(Transform scale in laser_Scale)
+        {
+            scale.GetComponent<Transform>().localScale = new Vector3(3,2,1);
+        }
+        
+        
+
     }
     // Start is called before the first frame update
 

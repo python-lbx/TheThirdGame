@@ -9,6 +9,7 @@ public class Rotate_Laser_Controller : MonoBehaviour
     public GameObject laser;
 
     public bool[] shutdown;
+    public bool allshutdown;
     void OnEnable()
     {
         shutdown = new bool [3];
@@ -49,11 +50,11 @@ public class Rotate_Laser_Controller : MonoBehaviour
         for(int i = 0 ; i < magic_circle.Length; i++)
         {
             shutdown[i] = magic_circle[i].GetComponent<MagicCircle>().Shutdowned;
-            
         }
 
         if(shutdown[0] && shutdown[1] && shutdown[2])
         {
+            allshutdown = true;
             laser.SetActive(false);
             this.gameObject.SetActive(false);
         }
