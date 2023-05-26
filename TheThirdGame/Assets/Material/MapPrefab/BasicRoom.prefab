@@ -1545,7 +1545,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 1602141735546293391, guid: e41c940432cf61b428c509b9c0bd3e1f, type: 3}
-  m_Color: {r: 0.990566, g: 0.990566, b: 0.990566, a: 1}
+  m_Color: {r: 0.990566, g: 0.990566, b: 0.990566, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1664,7 +1664,7 @@ MonoBehaviour:
   whichWall: {fileID: 0}
   isClear: 0
   totalHP: 0
-  clearColor: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
+  Color: {r: 1, g: 1, b: 1, a: 1}
   Enemys: []
   Tresure: {fileID: 522050363147180632}
 --- !u!1 &2629692891468408360

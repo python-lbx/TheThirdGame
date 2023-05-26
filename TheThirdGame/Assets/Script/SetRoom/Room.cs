@@ -43,7 +43,7 @@ public class Room : MonoBehaviour
     //public int enemynum;
     public bool isClear;
     public float totalHP;
-    public Color clearColor;
+    public Color Color;
     public List<GameObject> Enemys = new List<GameObject>();
     [Header("寶箱")]
     public GameObject Tresure;
@@ -124,11 +124,6 @@ public class Room : MonoBehaviour
             if(rightdoor)
             RightDoor.SetActive(false);
         }
-
-        if(isClear && RoomID != 0 && RoomID != 11)
-        {
-            this.gameObject.GetComponent<SpriteRenderer>().color = clearColor;
-        }
     }
 
     public void UpDateRoom(float xOffset,float yOffset)
@@ -153,6 +148,13 @@ public class Room : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             FindObjectOfType<CameraController>().ChangeTarget(transform);
+
+            whichWall.GetComponent<Wall>().MapWall.SetActive(true);
+            
+            if(RoomID != 0 && RoomID != 11)
+            {
+                this.gameObject.GetComponent<SpriteRenderer>().color = Color;
+            }
             //FindObjectOfType<CameraController>().Immediate = false;
         }
 

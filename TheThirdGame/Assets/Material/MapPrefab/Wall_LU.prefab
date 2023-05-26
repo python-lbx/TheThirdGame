@@ -1561,6 +1561,7 @@ MonoBehaviour:
   isEndRoom: 0
   whichroom: {fileID: 0}
   Ladder: {fileID: 8135575012562457517}
+  MapWall: {fileID: 5729602340934695750}
 --- !u!1 &2270599233779789521
 GameObject:
   m_ObjectHideFlags: 0
@@ -3976,7 +3977,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4932209929913469500
 Transform:
   m_ObjectHideFlags: 0

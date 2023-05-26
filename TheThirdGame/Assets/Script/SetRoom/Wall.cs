@@ -12,6 +12,7 @@ public class Wall : MonoBehaviour
     public bool isEndRoom;
     public Room whichroom;
     public GameObject Ladder;
+    public GameObject MapWall;
 
 
     private void Awake() 
