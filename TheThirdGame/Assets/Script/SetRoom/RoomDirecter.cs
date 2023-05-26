@@ -11,7 +11,7 @@ public class RoomDirecter : MonoBehaviour
     [Header("房間信息")]
     public GameObject roomPrefab;
     public int roomNumber;
-    public Color startColor,endColor,clearColor;
+    public Color startColor,endColor;
     public GameObject endroom;
     public GameObject startroom;
     public bool endroomCanOpen;

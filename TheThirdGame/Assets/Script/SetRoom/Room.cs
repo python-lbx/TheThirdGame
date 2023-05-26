@@ -43,6 +43,7 @@ public class Room : MonoBehaviour
     //public int enemynum;
     public bool isClear;
     public float totalHP;
+    public Color clearColor;
     public List<GameObject> Enemys = new List<GameObject>();
     [Header("寶箱")]
     public GameObject Tresure;
@@ -122,6 +123,11 @@ public class Room : MonoBehaviour
             LeftDoor.SetActive(false);
             if(rightdoor)
             RightDoor.SetActive(false);
+        }
+
+        if(isClear && RoomID != 0 && RoomID != 11)
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().color = clearColor;
         }
     }
 

@@ -1664,6 +1664,7 @@ MonoBehaviour:
   whichWall: {fileID: 0}
   isClear: 0
   totalHP: 0
+  clearColor: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
   Enemys: []
   Tresure: {fileID: 522050363147180632}
 --- !u!1 &2629692891468408360
