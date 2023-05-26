@@ -35,6 +35,14 @@ public class Portal : MonoBehaviour
                 room.PortalActive = false;
             }
         }
+        else if(RoomLevel == 10)
+        {
+            if(Boss_Two_Portal.GetComponentInChildren<BackToLevel>().WhichBoss.GetComponent<EnemyController>().currenthealth <= 0)
+            {
+                room.PortalActive = false;
+            }
+
+        }
 
 
 

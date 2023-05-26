@@ -11,8 +11,9 @@ public class RoomDirecter : MonoBehaviour
     [Header("房間信息")]
     public GameObject roomPrefab;
     public int roomNumber;
-    public Color startColor,endColor;
+    public Color startColor,endColor,clearColor;
     public GameObject endroom;
+    public GameObject startroom;
     public bool endroomCanOpen;
     public int RoomLevel;
 
@@ -75,7 +76,8 @@ public class RoomDirecter : MonoBehaviour
             }
         }
 
-        rooms[0].GetComponent<SpriteRenderer>().color = startColor;
+        startroom = rooms[0].gameObject;
+        startroom.GetComponent<SpriteRenderer>().color = startColor;
 
         endroom = rooms[roomNumber -1 ].gameObject;
         directerPoint.position = endroom.transform.position;
@@ -150,6 +152,7 @@ public class RoomDirecter : MonoBehaviour
             }
         }*/
         }
+
     }
 
     public void ChangePos()
