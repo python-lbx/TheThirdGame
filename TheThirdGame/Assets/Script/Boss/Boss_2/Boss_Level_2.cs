@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Boss_Level_2 : MonoBehaviour
 {
     Animator anim;
     Rigidbody2D rb;
+
+    public GameObject Player;
 
     [Header("當前階段")]
     public Statue current_Statue;
@@ -41,7 +44,22 @@ public class Boss_Level_2 : MonoBehaviour
     public Transform leftPoint;
     public Transform rightPoint;
 
+    [Header("對話框")]
+    public GameObject DialogTable;
+    public GameObject TextPoint;
+    public Text Dialog;
+
     // Start is called before the first frame update
+
+    private void OnEnable() 
+    {
+        Player = GameObject.Find("Player");
+        DialogTable.transform.position = TextPoint.transform.position;
+        DialogTable.SetActive(true);
+        Dialog.text = "這次沒那麼好運";
+    }
+
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -52,6 +70,8 @@ public class Boss_Level_2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //角色迴圈思路
+        #region 
         //待機
         //移動 數秒後原地放技能
         //地熱波 施放三次 每次2-3波 三次後進入待機
@@ -67,6 +87,11 @@ public class Boss_Level_2 : MonoBehaviour
         //傳送地面
         //待機
         //迴圈繼續
+        #endregion
+
+        //對話框位置
+        DialogTable.transform.position = TextPoint.transform.position;
+
         switch (SkillPhase)
         {
             case 0:
@@ -127,15 +152,32 @@ public class Boss_Level_2 : MonoBehaviour
                 Movement();
             }
             else if(PhaseTime <= 0)
-            {
-                rb.velocity = new Vector2(0,0);
+            {   
+                //地動熱波對話開始
+                DialogTable.SetActive(true);
+                Dialog.text = "快逃吧";
 
                 anim.SetBool("Run",false);
+                rb.velocity = new Vector2(0,0);
+
+                //轉向
+                if(faceright && transform.position.x > Player.transform.position.x )
+                {
+                    flip();
+                }
+                else if(!faceright && transform.position.x < Player.transform.position.x)
+                {
+                    flip();
+                }
 
                 MoveFrameWave();
 
                 if(NumberOfSkillCasts == 3) //第三次
-                {
+                {   
+                    //地動熱波對話結束
+                    DialogTable.SetActive(false);
+                    Dialog.text = "";
+
                     NumberOfPhase ++; //波數+1
                     PhaseTime = 2f; //待機 Idle時間
                     NumberOfSkillCasts = 0;
@@ -159,6 +201,18 @@ public class Boss_Level_2 : MonoBehaviour
 
             Movement();
 
+            //烽火連城對話
+            if(quartetflame.GetComponent<Random_Fire>().canshoot)
+            {
+                DialogTable.SetActive(true);
+                Dialog.text = "開火!!射擊!!";
+            }
+            else
+            {
+                DialogTable.SetActive(false);
+                Dialog.text = "";
+            }
+
             if(quartetflame.GetComponent<Random_Fire>().finished)
             {   
                 anim.SetBool("Run",false);
@@ -167,18 +221,26 @@ public class Boss_Level_2 : MonoBehaviour
                 SkillPhase++;
                 PhaseTime = 3f; //待機時間
                 current_Statue = Statue.Idle;
-            }
+            }            
             break;
 
             case Statue.Teleport:
             transform.position = TransToAir.transform.position;
             
             if(PhaseTime > 0)
-            {
+            {   
+                //傳送對話
+                DialogTable.SetActive(true);
+                Dialog.text = "還沒完";
+
                 PhaseTime -= Time.deltaTime;
             }
             else if(PhaseTime <= 0)
             {
+                //施法對話
+                DialogTable.SetActive(true);
+                Dialog.text = "更強的力量...";
+
                 anim.SetBool("Spelling",true);
                 shield.SetActive(true);
 
@@ -189,6 +251,10 @@ public class Boss_Level_2 : MonoBehaviour
             break;
 
             case Statue.Laser:
+
+            //死光時無敵
+            gameObject.layer = LayerMask.NameToLayer("Invincible");
+
             if(Laser.GetComponent<Rotate_Laser_Controller>().allshutdown)
             {
                 anim.SetBool("Spelling",false);
@@ -200,19 +266,36 @@ public class Boss_Level_2 : MonoBehaviour
             break;
 
             case Statue.skillCD:
+
+            //無敵直至切換到Idle;
+            gameObject.layer = LayerMask.NameToLayer("Invincible");
+
             if(PhaseTime > 0)
             {
+                DialogTable.SetActive(true);
+                Dialog.text = "可惡...";
+
                 PhaseTime -= Time.deltaTime;
             }
             else if(PhaseTime <= 0)
             {
+                DialogTable.SetActive(false);
+                Dialog.text = "";
+
                 PhaseTime = 1f;
                 transform.position = BackToGround.transform.position;
+
+                //落地解除無敵
                 current_Statue = Statue.Idle;
             }
             break;
-
         }
+
+        if(this.gameObject.GetComponent<Boss_Wizzard_State>().current_Statue == Boss_Wizzard_State.Statue.Dead)
+        {
+            quartetflame.SetActive(false);
+        }
+
     }
 
     
@@ -246,6 +329,7 @@ public class Boss_Level_2 : MonoBehaviour
 
     void MoveFrameWave()
     {
+
         for(int i = 0 ; i < 3 ; i++)
         {
             if(SkillCD > 0)
@@ -255,15 +339,19 @@ public class Boss_Level_2 : MonoBehaviour
             else if(SkillCD <= 0)
             {
                 anim.SetTrigger("Attack");
-                var movewaveleft = MoveWave_Pool.instance.GetFormPool(left);
-                movewaveleft.GetComponent<Rigidbody2D>().velocity = new Vector2(-FlameMoveSpeed,0);
-                var movewaveright= MoveWave_Pool.instance.GetFormPool(right);
-                movewaveright.GetComponent<Rigidbody2D>().velocity = new Vector2(FlameMoveSpeed,0);
 
+                var movewaveleft = MoveWave_Pool.instance.GetFormPool(left);
+                var movewaveright= MoveWave_Pool.instance.GetFormPool(right);
+
+                movewaveleft.GetComponent<Rigidbody2D>().velocity = new Vector2(-FlameMoveSpeed,0);
+                movewaveright.GetComponent<Rigidbody2D>().velocity = new Vector2(FlameMoveSpeed,0);
+    
                 SkillCD = SkillEnterCD;
 
                 NumberOfSkillCasts++;
             }
         }
+
+
     }
 }

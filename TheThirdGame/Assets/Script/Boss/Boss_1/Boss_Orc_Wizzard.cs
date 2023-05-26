@@ -51,6 +51,7 @@ public class Boss_Orc_Wizzard : MonoBehaviour
     private void OnEnable() 
     {
         Player = GameObject.Find("Player");
+        DialogTable.transform.position = TextPoint.transform.position;
         DialogTable.SetActive(true);
         Dialog.text = "驅逐入侵者";
     }
