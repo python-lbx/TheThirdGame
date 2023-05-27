@@ -12,6 +12,7 @@ public class Shuriken : MonoBehaviour
 
     [Header("角色屬性")]
     public PlayerController playercontroller;
+    public PlayerMovement playerMovement;
     public float ATK;
     public float CRI;
     public float CSD;
@@ -29,7 +30,10 @@ public class Shuriken : MonoBehaviour
     {
         activeStart = Time.time;
 
+        rb = GetComponent<Rigidbody2D>();
+
         playercontroller = FindObjectOfType<PlayerController>();    
+        playerMovement = FindObjectOfType<PlayerMovement>();
 
         //讀取角色屬性
         ATK = playercontroller.ATK;
@@ -39,16 +43,15 @@ public class Shuriken : MonoBehaviour
         Nor_damage = Mathf.Round(ATK * damagerate); //攻擊力X傷害比例
         CRI_Damage = Mathf.Round(ATK * damagerate * (CSD/100) ); //攻擊力X傷害比例X爆擊傷害
 
+        rb.velocity = new Vector2(playerMovement.facedirection * speed,0);
     }
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        rb.velocity = transform.right * speed;
 
         if(Time.time >= activeStart + activeTime) //生成時間過後消失
         {
