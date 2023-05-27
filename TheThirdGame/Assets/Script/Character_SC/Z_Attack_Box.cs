@@ -36,6 +36,7 @@ public class Z_Attack_Box : MonoBehaviour
         if(other.gameObject.CompareTag("Enemy"))
         {   
             floatdamagetext = FloatDamagePool.instance.GetFormPool();
+            Cut_Pool.instance.GetFormPool(other.gameObject.transform);
 
             if(floatdamagetext != null)
             {

@@ -232,6 +232,8 @@ public class PlayerMovement : MonoBehaviour
         {
             if(Time.time > (DashCD +LastDash))
             {
+                GetComponent<PlayerAttackController>().newtime = 0.5f;//無敵時間
+
                 DashPressed = false;
                 LastDash = Time.time;
                 DashTimeLeft = DashTime;
@@ -254,10 +256,10 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if(Time.time >= (LastDash + 0.5f))
-        {
-            gameObject.layer = LayerMask.NameToLayer("Player");
-        }
+        // if(Time.time >= (LastDash + 0.5f))
+        // {
+        //     gameObject.layer = LayerMask.NameToLayer("Player");
+        // }
     }
 
     void PhysicalCheck()

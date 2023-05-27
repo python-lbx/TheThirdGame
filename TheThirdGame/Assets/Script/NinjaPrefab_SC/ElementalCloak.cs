@@ -29,6 +29,16 @@ public class ElementalCloak : MonoBehaviour
             {
                 Orc_Bullet_Pool.instance.ReturnPool(other.gameObject);
             }
+
+            if(other.gameObject.name == "FireBall 1(Clone)")
+            {
+                FireBall_Pool.instance.ReturnPool(other.gameObject);
+            }
+
+            if(other.gameObject.name == "Boss_Orc_Bullet(Clone)")
+            {
+                Destroy(other.gameObject);
+            }
         }
     }
 }

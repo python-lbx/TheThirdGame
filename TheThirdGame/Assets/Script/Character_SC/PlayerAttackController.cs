@@ -42,6 +42,10 @@ public class PlayerAttackController : MonoBehaviour
     public GameObject Cloak;
     public GameObject Cloak_Icon;
 
+    [Header("無敵")]
+    public float currentTime;
+    public float newtime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -98,8 +102,9 @@ public class PlayerAttackController : MonoBehaviour
         if(Time.time >= (Cloak_Last_Time + Cloak_CD))
         {
             Cloak_Icon.SetActive(true);
-            if(Cloak_Pressed && !playermovement.IsClimbing && playercontroller.MPBall == Cloak_Cost)
+            if(Cloak_Pressed && playercontroller.MPBall == Cloak_Cost)
             {
+                newtime = 2f;
                 Cloak_Pressed = false;
                 Cloak_Icon.SetActive(false);
                 playercontroller.MPBall -= Cloak_Cost;
@@ -111,6 +116,22 @@ public class PlayerAttackController : MonoBehaviour
         if(Time.time >= (Cloak_Last_Time + 2f))
         {
             Cloak.SetActive(false);
+        }
+
+        if(newtime > currentTime) //時間更新
+        {
+            currentTime = newtime;
+            newtime = 0;
+        }
+
+        if(currentTime > 0) //無敵中
+        {
+            gameObject.layer = LayerMask.NameToLayer("Invincible");
+            currentTime -= Time.deltaTime;
+        }
+        else if(currentTime <= 0) //結束無敵
+        {
+            gameObject.layer = LayerMask.NameToLayer("Player");
         }
     }
 
