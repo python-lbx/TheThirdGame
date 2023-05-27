@@ -3,7 +3,22 @@ guid: 340fe7947cc88f9439f0f034d30d4aba
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Player: {instanceID: 0}
+  - left: {instanceID: 0}
+  - right: {instanceID: 0}
+  - movewave: {fileID: 8390504156412908703, guid: 2d809afed89a5544bb402b1354817bb2, type: 3}
+  - quartetflame: {instanceID: 0}
+  - TransToAir: {instanceID: 0}
+  - BackToGround: {instanceID: 0}
+  - Laser: {instanceID: 0}
+  - Laser_Trigger_PS: {instanceID: 0}
+  - shield: {instanceID: 0}
+  - leftPoint: {instanceID: 0}
+  - rightPoint: {instanceID: 0}
+  - DialogTable: {instanceID: 0}
+  - TextPoint: {instanceID: 0}
+  - Dialog: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

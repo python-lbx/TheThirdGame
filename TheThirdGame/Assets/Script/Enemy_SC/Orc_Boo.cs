@@ -12,7 +12,6 @@ public class Orc_Boo : MonoBehaviour
 
     [Header("攻擊目標")]
     public GameObject Target;
-    public GameObject boomerang;
     public GameObject shootPoint;
     Vector2 Direction;
     Vector2 targetpos;
