@@ -124,7 +124,7 @@ MonoBehaviour:
   isCrit: 0
   Nor_damage: 0
   CRI_Damage: 0
-  damagerate: 2.5
+  damagerate: 3.2
   floatdamagetext: {fileID: 0}
   L_Attack_Box: {fileID: 2008160598267350347}
 --- !u!61 &2008160598267350347

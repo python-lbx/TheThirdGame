@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  activeTime: 1
+  activeStart: 0
   playercontroller: {fileID: 0}
   ATK: 0
   CRI: 0
@@ -106,7 +108,7 @@ MonoBehaviour:
   isCrit: 0
   Nor_damage: 0
   CRI_Damage: 0
-  damagerate: 0.5
+  damagerate: 0.2
   floatdamagetext: {fileID: 0}
 --- !u!50 &7233750759718454184
 Rigidbody2D:

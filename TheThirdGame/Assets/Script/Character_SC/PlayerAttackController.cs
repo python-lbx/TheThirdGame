@@ -81,7 +81,8 @@ public class PlayerAttackController : MonoBehaviour
                 playercontroller.MPBall -= Shuriken_Cost;
                 Shuriken_Last_Time = Time.time;
                 anim.SetTrigger("IsShoot");
-                Instantiate(Shuriken,ShootPoint.position,transform.rotation);
+                //Instantiate(Shuriken,ShootPoint.position,transform.rotation);
+                Shuriken_Pool.instance.GetFormPool(ShootPoint.transform); //改成對象池生成
             }
         }
 

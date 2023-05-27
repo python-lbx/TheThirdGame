@@ -6,6 +6,10 @@ public class Shuriken : MonoBehaviour
 {
     Rigidbody2D rb;
     public int speed;
+
+    public float activeTime;
+    public float activeStart;
+
     [Header("角色屬性")]
     public PlayerController playercontroller;
     public float ATK;
@@ -21,24 +25,12 @@ public class Shuriken : MonoBehaviour
     [Header("傷害浮動")]
     public GameObject floatdamagetext;
 
-    private void Awake() 
+    private void OnEnable() 
     {
-        //很重要
-        playercontroller = FindObjectOfType<PlayerController>();        
-    }
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
+        activeStart = Time.time;
 
-        rb.velocity = transform.right * speed;
+        playercontroller = FindObjectOfType<PlayerController>();    
 
-        Destroy(this.gameObject,1f);
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         //讀取角色屬性
         ATK = playercontroller.ATK;
         CRI = playercontroller.CRI;
@@ -46,6 +38,22 @@ public class Shuriken : MonoBehaviour
         //進行計算
         Nor_damage = Mathf.Round(ATK * damagerate); //攻擊力X傷害比例
         CRI_Damage = Mathf.Round(ATK * damagerate * (CSD/100) ); //攻擊力X傷害比例X爆擊傷害
+
+    }
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    void Update()
+    {
+        rb.velocity = transform.right * speed;
+
+        if(Time.time >= activeStart + activeTime) //生成時間過後消失
+        {
+            Shuriken_Pool.instance.ReturnPool(this.gameObject); //改名
+        }    
     }
 
     private void OnTriggerEnter2D(Collider2D other) 
