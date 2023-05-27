@@ -686,7 +686,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &70305196
 Animator:
   serializedVersion: 3
@@ -1059,7 +1059,8 @@ GameObject:
   m_Component:
   - component: {fileID: 92103176}
   - component: {fileID: 92103175}
-  m_Layer: 0
+  - component: {fileID: 92103177}
+  m_Layer: 6
   m_Name: idle01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1103,8 +1104,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1342345621
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 16c2c15c8130c554eb8df0afd219e957, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1125,12 +1126,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 92103174}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.863266, y: -1.7387543, z: -0.56514615}
+  m_LocalPosition: {x: -1.87, y: -3.94, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 702886702}
   m_Father: {fileID: 824051565}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &92103177
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92103174}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &125207648
 GameObject:
   m_ObjectHideFlags: 0
@@ -2023,25 +2041,7 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 194623419}
-    m_ColliderPaths:
-    - - X: 89666664
-        Y: 60333332
-      - X: 89666664
-        Y: -49666668
-      - X: -89666664
-        Y: -49666668
-      - X: -89666664
-        Y: 60333332
-      - X: -100333336
-        Y: 60333332
-      - X: -100333336
-        Y: -60333332
-      - X: 100333336
-        Y: -60333332
-      - X: 100333336
-        Y: 60333332
+  m_ColliderPaths: []
   m_CompositePaths:
     m_Paths:
     - - {x: 10.033304, y: -6.0333333}
@@ -2708,7 +2708,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &199521946
 Transform:
   m_ObjectHideFlags: 0
@@ -7995,11 +7995,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 702886698}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.07789612, y: 2.565979, z: -8.423934}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 824051565}
-  m_RootOrder: 3
+  m_Father: {fileID: 92103176}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &712286366
 GameObject:
@@ -9135,7 +9135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &824051565
 Transform:
   m_ObjectHideFlags: 0
@@ -9150,7 +9150,6 @@ Transform:
   - {fileID: 1558240850}
   - {fileID: 1021912075}
   - {fileID: 883587041}
-  - {fileID: 702886702}
   - {fileID: 92103176}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -10045,7 +10044,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 883587038}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 200.0779, y: -197.43402, z: -0.56514615}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2081050620}
@@ -11511,7 +11510,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1021912075
 Transform:
   m_ObjectHideFlags: 0
@@ -11520,7 +11519,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1021912074}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 198.2079, y: -194.60402, z: -0.56514615}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1268786364}
@@ -13780,7 +13779,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1301166468
 Transform:
   m_ObjectHideFlags: 0
@@ -19302,7 +19301,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1558240850
 Transform:
   m_ObjectHideFlags: 0
@@ -19311,7 +19310,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1558240849}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 200.0779, y: -197.43402, z: -0.56514615}
+  m_LocalPosition: {x: 0, y: 0, z: -0.56514615}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1818824004}
@@ -19847,25 +19846,7 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 1595056642}
-    m_ColliderPaths:
-    - - X: 89666664
-        Y: 60333332
-      - X: 89666664
-        Y: -49666668
-      - X: -89666664
-        Y: -49666668
-      - X: -89666664
-        Y: 60333332
-      - X: -100333336
-        Y: 60333332
-      - X: -100333336
-        Y: -60333332
-      - X: 100333336
-        Y: -60333332
-      - X: 100333336
-        Y: 60333332
+  m_ColliderPaths: []
   m_CompositePaths:
     m_Paths:
     - - {x: 10.033304, y: -6.0333333}
@@ -21954,7 +21935,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1818824002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.48, y: -4.35, z: 0}
+  m_LocalPosition: {x: 3.51, y: -4.04, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children:
   - {fileID: 1031576897}
@@ -21992,7 +21973,7 @@ MonoBehaviour:
     m_Bits: 64
   GroundCheckDistance: 0.5
   PlayerCheckDistance: 0.6
-  BoxSize: {x: 3, y: 1}
+  BoxSize: {x: 6, y: 1}
   Target: {fileID: 0}
   statue: 0
   PhaseTime: 0
@@ -28300,7 +28281,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!58 &2035576449
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -28760,7 +28741,25 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 2081050623}
+    m_ColliderPaths:
+    - - X: 109666664
+        Y: 60333332
+      - X: 109666664
+        Y: -49666668
+      - X: -109666664
+        Y: -49666668
+      - X: -109666664
+        Y: 60333332
+      - X: -120333336
+        Y: 60333332
+      - X: -120333336
+        Y: -60333332
+      - X: 120333336
+        Y: -60333332
+      - X: 120333336
+        Y: 60333332
   m_CompositePaths:
     m_Paths:
     - - {x: 12.033304, y: -6.0333333}

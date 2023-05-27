@@ -139,7 +139,10 @@ public class RoomDirecter : MonoBehaviour
         
         if(endroomCanOpen || Input.GetKeyDown(KeyCode.E))
         {
+            //最終房間開啟
             endroom.SetActive(true);
+            //最終房間在地圖上顯示牆壁
+            endroom.GetComponent<Room>().whichWall.MapWall.SetActive(true);
             openroom();
             Wall[Wall.Count-1].SetActive(true);
 

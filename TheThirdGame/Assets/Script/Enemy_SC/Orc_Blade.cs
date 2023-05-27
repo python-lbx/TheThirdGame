@@ -81,6 +81,8 @@ public class Orc_Blade : MonoBehaviour
             break;
 
             case Statue.Patorl:
+            
+            //移動
             speed = 3;
             rb.velocity = transform.right * speed;
 
@@ -118,15 +120,20 @@ public class Orc_Blade : MonoBehaviour
             break;
 
             case Statue.Battle:
-            rb.velocity = new Vector2(0,0);
-            
-            if(Target != null)
+            if(!isOnPlayer)
             {
-                lookatyouropposite();
+                PhaseTime = 1f;
+                statue = Statue.Idle;
             }
+
+            // if(Target != null)
+            // {
+            //     lookatyouropposite();
+            // }
 
             if(Time.time > (AttackTime_CD + Last_AttackTime) && isOnPlayer) //視線前方有玩家則攻擊
             {
+                rb.velocity = new Vector2(0,0);
                 Last_AttackTime = Time.time;
                 anim.SetTrigger("Attack");
             }
@@ -139,9 +146,17 @@ public class Orc_Blade : MonoBehaviour
                 }
             }
             break;
+
+            //偵測範圍內有玩家
+            //則向玩家方向移動
+            //如進入攻擊範圍
+            //則進行準備攻擊動作
+            //短暫延遲後攻擊
         }
     }
 
+
+    //向目標移動
     public void lookatyouropposite()
     {
         if(Target.transform.position.x < transform.position.x && faceright)

@@ -149,8 +149,10 @@ public class Room : MonoBehaviour
         {
             FindObjectOfType<CameraController>().ChangeTarget(transform);
 
+            //在地圖顯示牆邊
             whichWall.GetComponent<Wall>().MapWall.SetActive(true);
             
+            //非初始非最終房間第一次進入會染上顏色
             if(RoomID != 0 && RoomID != 11)
             {
                 this.gameObject.GetComponent<SpriteRenderer>().color = Color;
