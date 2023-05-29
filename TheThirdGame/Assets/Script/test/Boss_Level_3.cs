@@ -14,6 +14,7 @@ public class Boss_Level_3 : MonoBehaviour
 
     [Header("死光破盾")]
     public GameObject[] shieldList = new GameObject[4];
+    public int active_shield_amount;
     public GameObject Target;
     public GameObject shootPoint;
     public GameObject bullet;
@@ -84,6 +85,7 @@ public class Boss_Level_3 : MonoBehaviour
 
             focustime = RechargeTime; //重新充能
             shoottime = 0; //射擊次數歸0
+            active_shield_amount = 0;
         }    
 
 
@@ -107,6 +109,14 @@ public class Boss_Level_3 : MonoBehaviour
             }
             else if(focustime <= 0)
             {
+                foreach(var shield in shieldList)
+                {
+                    if(shield.activeSelf)
+                    {
+                        active_shield_amount++;
+                    }
+                }
+
                 for(int i = 0 ; i < shieldList.Length ; i++)
                 {
                     if(shieldList[i].activeSelf)
@@ -115,6 +125,8 @@ public class Boss_Level_3 : MonoBehaviour
                         shieldList[i].SetActive(false);
                     }
                 }
+                
+                print(active_shield_amount);
 
                 shoottime = 5;           
             }

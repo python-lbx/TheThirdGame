@@ -7,7 +7,7 @@ public class CircleForTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //子彈與死光是不一樣的
     }
 
     // Update is called once per frame
@@ -26,6 +26,11 @@ public class CircleForTest : MonoBehaviour
         if(other.gameObject.name == "shield")
         {
             other.gameObject.SetActive(false);
+        }
+
+        if(other.gameObject.name == "NPC")
+        {
+            other.GetComponent<NPC>().HP --;
         }
     }
 }

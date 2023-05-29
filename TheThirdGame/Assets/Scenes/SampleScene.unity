@@ -7682,7 +7682,7 @@ MonoBehaviour:
   Bullet: {fileID: 6574762226633573374, guid: b5d0998761b0b3941ab18fe436538bf2, type: 3}
   startPoint: {fileID: 586719159}
   radius: 360
-  moveSpeed: 5
+  moveSpeed: 3
 --- !u!212 &586719161
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7741,7 +7741,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 586719159}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -10122,7 +10122,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 781429312}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -10145,7 +10145,7 @@ MonoBehaviour:
   Bullet: {fileID: 6574762226633573374, guid: b5d0998761b0b3941ab18fe436538bf2, type: 3}
   startPoint: {fileID: 781429312}
   radius: 360
-  moveSpeed: 5
+  moveSpeed: 3
 --- !u!212 &781429315
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11409,8 +11409,8 @@ MonoBehaviour:
   Player: {fileID: 92103174}
   i: 0
   j: 0
-  FourSideShootTime: 2
-  FourSideShootTimeCD: 2
+  FourSideShootTime: 2.5
+  FourSideShootTimeCD: 2.5
   deltaTime: 1
 --- !u!1 &859478306
 GameObject:
@@ -12462,8 +12462,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 924506935}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.05, y: -0.01, z: 0}
+  m_LocalScale: {x: 3.0078, y: 3.0078, z: 3.0078}
   m_Children: []
   m_Father: {fileID: 2116460062}
   m_RootOrder: 1
@@ -12847,7 +12847,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 955735929}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -12870,7 +12870,7 @@ MonoBehaviour:
   Bullet: {fileID: 6574762226633573374, guid: b5d0998761b0b3941ab18fe436538bf2, type: 3}
   startPoint: {fileID: 955735929}
   radius: 360
-  moveSpeed: 5
+  moveSpeed: 3
 --- !u!212 &955735932
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20835,7 +20835,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1407243702}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -20858,7 +20858,7 @@ MonoBehaviour:
   Bullet: {fileID: 6574762226633573374, guid: b5d0998761b0b3941ab18fe436538bf2, type: 3}
   startPoint: {fileID: 1407243702}
   radius: 360
-  moveSpeed: 5
+  moveSpeed: 3
 --- !u!212 &1407243705
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -35315,6 +35315,7 @@ MonoBehaviour:
   - {fileID: 766515732}
   - {fileID: 102341324}
   - {fileID: 1831908374}
+  active_shield_amount: 0
   Target: {fileID: 0}
   shootPoint: {fileID: 894366781}
   bullet: {fileID: 6574762226633573374, guid: b5d0998761b0b3941ab18fe436538bf2, type: 3}

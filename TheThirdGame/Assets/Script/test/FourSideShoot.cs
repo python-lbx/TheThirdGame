@@ -18,6 +18,10 @@ public class FourSideShoot : MonoBehaviour
 
     private void OnEnable() 
     {
+        foreach(var shoot in ShootList)
+        {
+            shoot.SetActive(false);
+        }
         FourSideShootTime = FourSideShootTimeCD;
         i = 0;
         j = 0;
@@ -60,6 +64,16 @@ public class FourSideShoot : MonoBehaviour
 
         if(i == 4)
         {
+            //取消延遲呼叫
+            CancelInvoke("delayshoot");
+
+            //取消顯示
+            foreach(var shoot in ShootList)
+            {
+                shoot.SetActive(false);
+            }
+
+            //發射結束不顯示
             this.gameObject.SetActive(false);
         }
     }
