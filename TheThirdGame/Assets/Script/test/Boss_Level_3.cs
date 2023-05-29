@@ -6,9 +6,14 @@ public class Boss_Level_3 : MonoBehaviour
 {
 
     public bool faceright;
+    
+    [Header("階段")]
+    public Statue statue;
+    public enum Statue{Focus,Shoot};
 
 
-    [Header("攻擊目標")]
+    [Header("死光破盾")]
+    public GameObject[] shieldList = new GameObject[4];
     public GameObject Target;
     public GameObject shootPoint;
     public GameObject bullet;
@@ -16,20 +21,22 @@ public class Boss_Level_3 : MonoBehaviour
     Vector2 targetpos;
     public float focustime;
     public float RechargeTime;
+    public int shoottime;
     public float speed;
 
-    public int shoottime;
-
+    [Header("魔法陣承受傷害")]
+    public GameObject[] magic_circle_List = new GameObject[4];
     public float magic_appear_time;
     public float magic_appear_time_CD;
-
-    [Header("階段")]
-    public Statue statue;
-    public enum Statue{Focus,Shoot};
-
-    public GameObject[] shieldList = new GameObject[4];
-    public GameObject[] magic_circle_List = new GameObject[4];
     public int i;
+
+    [Header("吃球防炸")]
+    public int ballamount;
+    public GameObject eigh_ball;
+    public GameObject crushwave;
+
+    [Header("彈幕排位")]
+    public GameObject FourSideShoot;
 
 
     public int[] numbers = { 0, 1, 2, 3 };
@@ -40,43 +47,80 @@ public class Boss_Level_3 : MonoBehaviour
         Target = GameObject.FindGameObjectWithTag("Player");
         Direction = Target.transform.position;
 
-                    shuffleArray(numbers);
-            Debug.Log(string.Join(", ", numbers));
+        shuffleArray(numbers);
+        Debug.Log(string.Join(", ", numbers));
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.A))
+        if(Input.GetKeyDown(KeyCode.Z)) //彈幕排位
+        {
+            FourSideShoot.SetActive(true);
+        }
+
+        if(Input.GetKeyDown(KeyCode.X)) //吃球
+        {
+            crushwave.SetActive(true);
+            eigh_ball.SetActive(true);
+        }
+
+        if(Input.GetKeyDown(KeyCode.C)) //魔法陣
+        {
+            shuffleArray(numbers);
+            Debug.Log(string.Join(", ", numbers));
+
+            magic_appear_time = 0; //重新施法
+            i = 0; //次數歸0
+        }
+
+        if(Input.GetKeyDown(KeyCode.V)) //死光破盾
         {
             for(int i = 0 ; i < shieldList.Length ; i++)
             {
                 shieldList[i].SetActive(true);
             }
+
+            focustime = RechargeTime; //重新充能
+            shoottime = 0; //射擊次數歸0
         }    
 
-        if(Input.GetKeyDown(KeyCode.X))
+
+
+
+
+        //吃球達次數則施放衝擊波
+        if(ballamount == 4)
         {
-            shuffleArray(numbers);
-            Debug.Log(string.Join(", ", numbers));
+            eigh_ball.SetActive(false);
+            crushwave.GetComponent<SpriteRenderer>().color = Color.red;
         }
 
+
+        //護盾存在則受傷
         if(shoottime == 4)
         {
-            for(int i = 0 ; i < shieldList.Length ; i++)
+            if(focustime > 0)
             {
-                if(shieldList[i].activeSelf)
-                {
-                    shieldList[i].GetComponentInParent<NPC>().HP --;
-                    shieldList[i].SetActive(false);
-                }
+                focustime -= Time.deltaTime;
             }
+            else if(focustime <= 0)
+            {
+                for(int i = 0 ; i < shieldList.Length ; i++)
+                {
+                    if(shieldList[i].activeSelf)
+                    {
+                        shieldList[i].GetComponentInParent<NPC>().HP --;
+                        shieldList[i].SetActive(false);
+                    }
+                }
 
-            shoottime = 5;
+                shoottime = 5;           
+            }
         }
 
-
+        //魔法陣
         if(magic_appear_time > 0 & i < 4)
         {
             magic_appear_time -= Time.deltaTime;
@@ -117,7 +161,7 @@ public class Boss_Level_3 : MonoBehaviour
                 }  
 
             }
-            else if(focustime <= 0)
+            else if(focustime <= 0 && shoottime < 4)
             {
                 statue = Statue.Shoot;
             }

@@ -16,7 +16,7 @@ public class BulletForTest : MonoBehaviour
     // Start is called before the first frame update
     void OnEnable() 
     {
-        SpawnProjectiles();
+        Invoke("SpawnProjectiles",1f);
     }
     void Start()
     {
