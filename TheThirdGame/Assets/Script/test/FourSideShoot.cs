@@ -82,7 +82,7 @@ public class FourSideShoot : MonoBehaviour
     {
         for(j = 0 ; j < i ; j++)
         {
-            ShootList[j].GetComponent<BulletForTest>().SpawnProjectiles();
+            ShootList[j].GetComponent<ShootTrigger>().SpawnProjectiles();
         }
 
         i++;
