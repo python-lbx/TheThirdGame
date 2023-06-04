@@ -9,7 +9,7 @@ public class ShootTrigger : MonoBehaviour
 
     [SerializeField]
     public GameObject startPoint;
-    public CircleCollider2D coll;
+    // public CircleCollider2D coll;
     public Animator anim;
     public float radius;
     public float moveSpeed;
@@ -20,7 +20,7 @@ public class ShootTrigger : MonoBehaviour
     void OnEnable() 
     {
         Invoke("SpawnProjectiles",delaytime);
-        coll = GetComponent<CircleCollider2D>();
+        // coll = GetComponent<CircleCollider2D>();
         anim = GetComponent<Animator>();
     }
 
@@ -61,13 +61,13 @@ public class ShootTrigger : MonoBehaviour
         }
     }
 
-    public void activecoll()
-    {
-        coll.enabled = true;
-    }
+    // public void activecoll()
+    // {
+    //     coll.enabled = true;
+    // }
 
-    public void unactivecoll()
-    {
-        coll.enabled = false;
-    }
+    // public void unactivecoll()
+    // {
+    //     coll.enabled = false;
+    // }
 }

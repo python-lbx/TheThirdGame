@@ -27,9 +27,13 @@ public class Boss_Level_3 : MonoBehaviour
 
     [Header("魔法陣承受傷害")]
     public GameObject[] magic_circle_List = new GameObject[4];
+    public GameObject[] bomb_List = new GameObject[4];
     public float magic_appear_time;
     public float magic_appear_time_CD;
+    public float bomb_appear_time;
+    public float bomb_appear_time_CD;
     public int i;
+    public int j;
 
     [Header("吃球防炸")]
     public int ballamount;
@@ -67,13 +71,14 @@ public class Boss_Level_3 : MonoBehaviour
             eigh_ball.SetActive(true);
         }
 
-        if(Input.GetKeyDown(KeyCode.C)) //魔法陣
+        if(Input.GetKeyDown(KeyCode.N)) //魔法陣
         {
             shuffleArray(numbers);
             Debug.Log(string.Join(", ", numbers));
 
             magic_appear_time = 0; //重新施法
             i = 0; //次數歸0
+            j = 0;
         }
 
         if(Input.GetKeyDown(KeyCode.V)) //死光破盾
@@ -133,7 +138,7 @@ public class Boss_Level_3 : MonoBehaviour
         }
 
         //魔法陣
-        if(magic_appear_time > 0 & i < 4)
+        if(magic_appear_time > 0 && i < 4) //0,1,2,3
         {
             magic_appear_time -= Time.deltaTime;
         }
@@ -144,6 +149,19 @@ public class Boss_Level_3 : MonoBehaviour
             magic_appear_time = magic_appear_time_CD;
         }
 
+ 
+
+        if(bomb_appear_time > 0 && j < 4 && i == 4)
+        {
+            bomb_appear_time -= Time.deltaTime;
+        }
+        else if(bomb_appear_time <= 0)
+        {
+            bomb_List[numbers[j]].SetActive(true);
+            j++;
+            bomb_appear_time = bomb_appear_time_CD;
+        }
+        
 
         switch (statue)
         {
