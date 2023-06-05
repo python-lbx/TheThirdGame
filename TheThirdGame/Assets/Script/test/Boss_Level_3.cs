@@ -60,18 +60,18 @@ public class Boss_Level_3 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Z)) //彈幕排位
+        if(Input.GetKeyDown(KeyCode.Keypad1)) //彈幕排位
         {
             FourSideShoot.SetActive(true);
         }
 
-        if(Input.GetKeyDown(KeyCode.X)) //吃球
+        if(Input.GetKeyDown(KeyCode.Keypad2)) //吃球
         {
             crushwave.SetActive(true);
             eigh_ball.SetActive(true);
         }
 
-        if(Input.GetKeyDown(KeyCode.N)) //魔法陣
+        if(Input.GetKeyDown(KeyCode.Keypad3)) //魔法陣
         {
             shuffleArray(numbers);
             Debug.Log(string.Join(", ", numbers));
@@ -81,7 +81,7 @@ public class Boss_Level_3 : MonoBehaviour
             j = 0;
         }
 
-        if(Input.GetKeyDown(KeyCode.V)) //死光破盾
+        if(Input.GetKeyDown(KeyCode.Keypad4)) //死光破盾
         {
             for(int i = 0 ; i < shieldList.Length ; i++)
             {
@@ -101,7 +101,7 @@ public class Boss_Level_3 : MonoBehaviour
         if(ballamount == 4)
         {
             eigh_ball.SetActive(false);
-            crushwave.GetComponent<SpriteRenderer>().color = Color.red;
+            //crushwave.GetComponent<SpriteRenderer>().color = Color.red;
         }
 
 
