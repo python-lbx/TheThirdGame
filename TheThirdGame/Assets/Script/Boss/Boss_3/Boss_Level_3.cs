@@ -15,8 +15,10 @@ public class Boss_Level_3 : MonoBehaviour
     [Header("死光破盾")]
     public GameObject[] shieldList = new GameObject[4];
     public int active_shield_amount;
-    public GameObject Target;
+    public Transform centerPoint; // 旋轉中心點
+    public Transform AimPoint; // 瞄準點
     public GameObject shootPoint;
+    public GameObject Target;
     public GameObject bullet;
     Vector2 Direction;
     Vector2 targetpos;
@@ -24,6 +26,10 @@ public class Boss_Level_3 : MonoBehaviour
     public float RechargeTime;
     public int shoottime;
     public float speed;
+
+    public float radius; // 圓形運動的半徑
+    public float distanceBD; // 瞄準點與發射點距離
+
 
     [Header("魔法陣承受傷害")]
     public GameObject[] magic_circle_List = new GameObject[4];
@@ -93,9 +99,7 @@ public class Boss_Level_3 : MonoBehaviour
             active_shield_amount = 0;
         }    
 
-
-
-
+        magic_circle_countdown(); //魔法陣
 
         //吃球達次數則施放衝擊波
         if(ballamount == 4)
@@ -137,17 +141,7 @@ public class Boss_Level_3 : MonoBehaviour
             }
         }
 
-        //魔法陣
-        if(magic_appear_time > 0 && i < 4) //0,1,2,3
-        {
-            magic_appear_time -= Time.deltaTime;
-        }
-        else if(magic_appear_time <= 0)
-        {
-            magic_circle_List[numbers[i]].SetActive(true);
-            i++;
-            magic_appear_time = magic_appear_time_CD;
-        }
+
 
  
 
@@ -219,5 +213,19 @@ public class Boss_Level_3 : MonoBehaviour
             array[j] = array[randomIndex];
             array[randomIndex] = temp;
         }    
+    }
+
+    void magic_circle_countdown()
+    {
+        if(magic_appear_time > 0 && i < 4) //0,1,2,3
+        {
+            magic_appear_time -= Time.deltaTime;
+        }
+        else if(magic_appear_time <= 0)
+        {
+            magic_circle_List[numbers[i]].SetActive(true);
+            i++;
+            magic_appear_time = magic_appear_time_CD;
+        }
     }
 }
