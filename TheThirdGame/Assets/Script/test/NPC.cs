@@ -5,10 +5,11 @@ using UnityEngine;
 public class NPC : MonoBehaviour
 {
     SpriteRenderer SR;
-    public Color FullHP;
-    public Color HalfHP;
-    public Color EmptyHP;
-    public Color stuck;
+    Animator anim;
+    // public Color FullHP;
+    // public Color HalfHP;
+    // public Color EmptyHP;
+    // public Color stuck;
     public GameObject shield;
     public bool bestuck;
 
@@ -18,36 +19,43 @@ public class NPC : MonoBehaviour
     void Start()
     {
         SR = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        anim.SetBool("Stuck",shield.activeSelf);
 
+
+        if(!shield.activeSelf)
+        {
+            anim.SetInteger("HP",HP);
+        }
         
-        if(shield.activeSelf)
-        {
-            SR.color = stuck;
-        }
-        else
-        {
-            shield.SetActive(false);
+        // if(shield.activeSelf)
+        // {
+        //     SR.color = stuck;
+        // }
+        // else
+        // {
+        //     shield.SetActive(false);
 
-            switch (HP)
-            {
-                case 2:
-                SR.color = FullHP;
-                break;
+        //     switch (HP)
+        //     {
+        //         case 2:
+        //         SR.color = FullHP;
+        //         break;
 
-                case 1:
-                SR.color = HalfHP;
-                break;
+        //         case 1:
+        //         SR.color = HalfHP;
+        //         break;
 
-                case 0:
-                SR.color = EmptyHP;
-                break;
-            }
-        }
+        //         case 0:
+        //         SR.color = EmptyHP;
+        //         break;
+        //     }
+        // }
 
 
     }
