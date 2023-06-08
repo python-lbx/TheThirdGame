@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class Boss_Level_3 : MonoBehaviour
 {
-
+    Animator anim;
     public bool faceright;
     
-    // [Header("階段")]
-    // public Statue statue;
-    // public enum Statue{Focus,Shoot};
+    [Header("階段")]
+    public Statue current_Statue;
+    public Statue Next_Skill_Statue;
+    public enum Statue{Idle,FourSideShoot,EightBall,MagicCircle,LaserShield};
+    public float PhaseTime;
+    public int SkillPhase;
 
 
     [Header("死光破盾")]
@@ -18,7 +21,7 @@ public class Boss_Level_3 : MonoBehaviour
     public GameObject Target; //目標
     public GameObject originObject; // 圓心 object
     public GameObject Laser; //發射物
-    public GameObject ownSheild; //自身護盾
+    public GameObject LaserShield; //自身護盾
     public float radius = 5f; // 圓的半徑
     Vector2 Direction; //方向
     Vector2 targetpos; //目標位置
@@ -51,6 +54,7 @@ public class Boss_Level_3 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         Target = GameObject.FindGameObjectWithTag("Player");
         origin = originObject.transform.position; // 取得圓心位置    
 
@@ -87,24 +91,142 @@ public class Boss_Level_3 : MonoBehaviour
         {
             for(int i = 0 ; i < shieldList.Length ; i++)
             {
-                shieldList[i].SetActive(true);
+                if(shieldList[i].GetComponentInParent<NPC>().HP > 0) //NPC存活才會觸發
+                {
+                    shieldList[i].SetActive(true);
+                }
             }
 
-            ownSheild.SetActive(true);
+            LaserShield.SetActive(true);
             focustime = RechargeTime; //重新充能
             shoottime = 0; //射擊次數歸0
             active_shield_amount = 0;
         }    
 
-        //技能2
-        //吃球達次數則施放衝擊波
-        if(ballamount == 4)
+        switch (SkillPhase)
         {
-            eigh_ball.SetActive(false);
-            //crushwave.GetComponent<SpriteRenderer>().color = Color.red;
+            case 0:
+            Next_Skill_Statue = Statue.FourSideShoot;
+
+            if(!FourSideShoot.activeSelf) //未激活才觸發
+            {
+                FourSideShoot.SetActive(true); 
+            }
+
+            if(FourSideShoot.GetComponent<FourSideShoot>().i == 4) //4次後轉階段
+            {
+                PhaseTime = 3;
+                SkillPhase++;
+                current_Statue = Statue.Idle;
+            }
+    
+            break;
+
+            case 1:
+            Next_Skill_Statue= Statue.EightBall;
+            
+            var balls = eigh_ball.GetComponent<EightBall>();
+
+            if(!crushwave.activeSelf) //未激活才觸發
+            {
+                crushwave.SetActive(true);
+            }
+
+            if(!eigh_ball.activeSelf) //未激活才觸發
+            {
+                eigh_ball.SetActive(true);
+            }
+
+            //球達8個且 都被打破
+            //吃達4個且 爆炸後
+            //轉階段
+            if(ballamount == 4)
+            {
+                eigh_ball.SetActive(false);
+            }
+
+            foreach(var ball in balls.ballpoint)
+            {
+                if(ball.activeSelf)
+                {
+                    return;
+                }
+
+                // if(!ball.activeSelf && balls.i == 8) 
+                // {
+                //     PhaseTime = 3;
+                //     SkillPhase++;
+                //     ownSheild.SetActive(false);
+                //     current_Statue = Statue.Idle;
+                // }
+            }
+
+            if(balls.i == 8) 
+            { 
+                crushwave.SetActive(false);
+                PhaseTime = 3;
+                SkillPhase++;
+                current_Statue = Statue.Idle;
+            }
+ 
+            break;
+
+            case 2:
+            Next_Skill_Statue = Statue.MagicCircle;
+            magic_circle_countdown(); //魔法陣
+
+            foreach(var bomb in bomb_List)
+            {
+                if(bomb.activeSelf)
+                {
+                    return;
+                }
+            }
+
+            if(j == 4)
+            {
+                PhaseTime = 3;
+                SkillPhase++;
+                current_Statue = Statue.Idle;
+            }
+
+            break;
+
+            case 3:
+            Next_Skill_Statue = Statue.LaserShield;
+            break;
         }
 
-        magic_circle_countdown(); //魔法陣
+        switch (current_Statue)
+        {
+            case Statue.Idle:
+            if(PhaseTime > 0)
+            {
+                PhaseTime -= Time.deltaTime;
+            }
+            else if(PhaseTime <= 0)
+            {
+                if(Next_Skill_Statue == Statue.MagicCircle) //魔法陣重置
+                {
+                    shuffleArray(numbers);
+                    Debug.Log(string.Join(", ", numbers));
+
+                    magic_appear_time = 0; //重新施法
+                    i = 0; //次數歸0
+                    j = 0; //次數歸0
+                }
+
+                current_Statue = Next_Skill_Statue;
+
+
+            }
+            break;
+        }
+
+        //技能2
+        //吃球達次數則施放衝擊波
+   
+
 
         //死光破盾
         if(shoottime < 4)
@@ -148,20 +270,20 @@ public class Boss_Level_3 : MonoBehaviour
                 {
                     if(shieldList[i].activeSelf)
                     {
-                        shieldList[i].GetComponentInParent<NPC>().HP --;
+                        shieldList[i].GetComponentInParent<NPC>().GetDamage(1);
                         shieldList[i].SetActive(false);
                     }
                 }
                 
-                ownSheild.SetActive(false);
-
                 print(active_shield_amount);
+
+                LaserShield.SetActive(false);
 
                 shoottime = 5;           
             }
         }
 
-
+        faceside();
         
 
         // switch (statue)
@@ -247,6 +369,11 @@ public class Boss_Level_3 : MonoBehaviour
         }
     }
 
+    void magic_circle_reset()
+    {
+        
+    }
+
     void flamelaser()
     {
         targetpos = Target.transform.position;
@@ -268,5 +395,19 @@ public class Boss_Level_3 : MonoBehaviour
 
         Laser.transform.position = circlePos;
         Laser.transform.up = Direction.normalized;
+    }
+
+    void faceside()
+    {
+        if(faceright && transform.position.x > Target.transform.position.x )
+        {
+            faceright = !faceright;
+            transform.Rotate(0,180,0);        
+        }
+        else if(!faceright && transform.position.x < Target.transform.position.x)
+        {
+            faceright = !faceright;
+            transform.Rotate(0,180,0);        
+        }
     }
 }

@@ -57,6 +57,10 @@ public class NPC : MonoBehaviour
         //     }
         // }
 
+    }
 
+    public void GetDamage(int damage)
+    {
+        HP = Mathf.Clamp(HP - damage,0,HP);
     }
 }

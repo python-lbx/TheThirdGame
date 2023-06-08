@@ -6,7 +6,7 @@ public class CrushWave : MonoBehaviour
 {
     Animator anim;
     SpriteRenderer SR;
-    public GameObject Boss3;
+    public Boss_Level_3 Boss3;
     public Color r0;
     public Color r1;
     public Color r2;
@@ -15,16 +15,24 @@ public class CrushWave : MonoBehaviour
     public float damage;
 
     // Start is called before the first frame update
+
+    void OnEnable() 
+    {
+        Boss3.ballamount = 0; //吃球數歸0
+        transform.localScale = new Vector3(0.6f,0.6f,1); //尺寸重置 避免二次傷害
+    }
+
     void Start()
     {
         SR = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        switch(Boss3.GetComponent<Boss_Level_3>().ballamount)
+        switch(Boss3.ballamount)
         {
             case 0:
             SR.color = r0;
@@ -47,7 +55,7 @@ public class CrushWave : MonoBehaviour
             break;
         }
 
-        if(Boss3.GetComponent<Boss_Level_3>().ballamount == 4)
+        if(Boss3.ballamount == 4)
         {
             anim.SetBool("Start",true);
         }
@@ -56,7 +64,15 @@ public class CrushWave : MonoBehaviour
     public void Reset() 
     {   
         anim.SetBool("Start",false);
-        Boss3.GetComponent<Boss_Level_3>().ballamount = 0;
+
+        //歸0
+        Boss3.ballamount = 0;
+
+        //轉階段
+        Boss3.PhaseTime = 3;
+        Boss3.SkillPhase ++;
+        Boss3.current_Statue = Boss_Level_3.Statue.Idle;
+
         this.gameObject.SetActive(false);
     }
 
@@ -64,7 +80,7 @@ public class CrushWave : MonoBehaviour
     {
         if(other.gameObject.name == "NPC")
         {
-            other.GetComponent<NPC>().HP--;
+            other.GetComponent<NPC>().GetDamage(1);
         }
 
 

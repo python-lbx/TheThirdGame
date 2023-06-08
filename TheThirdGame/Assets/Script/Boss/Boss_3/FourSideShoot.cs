@@ -62,7 +62,7 @@ public class FourSideShoot : MonoBehaviour
             }
         }
 
-        if(i == 4)
+        if(i == 4) //射擊結束
         {
             //取消延遲呼叫
             CancelInvoke("delayshoot");

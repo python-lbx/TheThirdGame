@@ -37,7 +37,7 @@ public class ShootBullet : MonoBehaviour
         //待優化
         if(other.gameObject.name == "NPC")
         {
-            other.GetComponent<NPC>().HP--;
+            other.GetComponent<NPC>().GetDamage(1);
         }
     }
 }

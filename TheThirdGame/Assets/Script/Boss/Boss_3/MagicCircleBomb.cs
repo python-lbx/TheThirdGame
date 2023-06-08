@@ -40,7 +40,7 @@ public class MagicCircleBomb : MonoBehaviour
         }
         else
         {
-            _NPC.GetComponent<NPC>().HP --;
+            _NPC.GetComponent<NPC>().GetDamage(1);
         }
 
         Circle.SetActive(false);
