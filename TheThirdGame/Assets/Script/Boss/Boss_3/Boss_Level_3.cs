@@ -61,6 +61,7 @@ public class Boss_Level_3 : MonoBehaviour
 
         PhaseTime = 2f;
 
+        faceright = true;
     }
 
     // Update is called once per frame
@@ -109,6 +110,9 @@ public class Boss_Level_3 : MonoBehaviour
         switch (current_Statue)
         {
             case Statue.Idle: //轉階段 一切以此為先
+
+            faceside();
+
             if(PhaseTime > 0)
             {
                 PhaseTime -= Time.deltaTime;
@@ -168,6 +172,8 @@ public class Boss_Level_3 : MonoBehaviour
             case 0:
             Next_Skill_Statue = Statue.FourSideShoot;
 
+            faceside();
+
             if(FourSideShoot.GetComponent<FourSideShoot>().i == 4) //4次後轉階段
             {
                 PhaseTime = 2f;
@@ -183,6 +189,8 @@ public class Boss_Level_3 : MonoBehaviour
             //吃球達次數則施放衝擊波
             Next_Skill_Statue= Statue.EightBall;
             
+            faceside();
+
             var balls = eigh_ball.GetComponent<EightBall>();
 
             //吃達4個且 爆炸後
@@ -228,6 +236,8 @@ public class Boss_Level_3 : MonoBehaviour
             case 2:
             Next_Skill_Statue = Statue.MagicCircle;
 
+            faceside();
+            
             if(PhaseTime <= 0)
             {
                 magic_circle_countdown(); //魔法陣
@@ -266,6 +276,7 @@ public class Boss_Level_3 : MonoBehaviour
                     Laser.SetActive(true);
 
                     flamelaserfocus();  //瞄準
+                    faceside();
                 }
                 else if(focustime <= 0)
                 {
@@ -379,7 +390,8 @@ public class Boss_Level_3 : MonoBehaviour
         //     }
         // }
         #endregion
-        //faceside();
+        
+
         
     }
 
