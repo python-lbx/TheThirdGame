@@ -55,10 +55,10 @@ public class CrushWave : MonoBehaviour
             break;
         }
 
-        if(Boss3.ballamount == 4)
-        {
-            anim.SetBool("Start",true);
-        }
+        // if(Boss3.ballamount == 4)
+        // {
+        //     anim.SetBool("Start",true);
+        // }
     }
 
     public void Reset() 

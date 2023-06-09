@@ -27,6 +27,17 @@ public class FourSideShoot : MonoBehaviour
         j = 0;
     }
 
+    private void OnDisable() 
+    {
+        foreach(var shoot in ShootList)
+        {
+            shoot.SetActive(false);
+        }
+        FourSideShootTime = FourSideShootTimeCD;
+        i = 0;
+        j = 0;    
+    }
+
     // Update is called once per frame
     void Update()
     {

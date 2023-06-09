@@ -24,11 +24,19 @@ public class EightBall : MonoBehaviour
 
     private void OnDisable() 
     {
+        print("D");
         foreach(var ball in ballpoint)
         {
             ball.GetComponent<Energy_Ball>().ResPos(); //重置位置
             ball.SetActive(false); //上一個迴圈的球顯示要關掉 很重要
         }
+
+        shuffleArray(numbers);
+        Debug.Log(string.Join(", ", numbers));
+
+        i = 0;
+        activetime = activetimecd;
+        print(ballpoint[numbers[i]]);
     }
 
     // Update is called once per frame

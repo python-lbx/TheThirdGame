@@ -14,6 +14,24 @@ public class Boss_Level_3 : MonoBehaviour
     public float PhaseTime;
     public int SkillPhase;
 
+    [Header("彈幕排位")]
+    public GameObject FourSideShoot; //擴散射擊
+
+    [Header("吃球防炸")]
+    public int ballamount; //吃球數
+    public GameObject eigh_ball; //能量球
+    public GameObject crushwave; //衝擊波
+
+    [Header("魔法陣承受傷害")]
+    public int[] numbers = { 0, 1, 2, 3 }; //隨機數
+    public int i; //魔法陣i
+    public int j; //爆炸j
+    public GameObject[] magic_circle_List = new GameObject[4]; //魔法陣
+    public GameObject[] bomb_List = new GameObject[4]; //魔法陣爆炸
+    public float magic_appear_time; //魔法陣出現
+    public float magic_appear_time_CD; //魔法陣冷卻
+    public float  bomb_appear_time; //爆炸出現
+    public float bomb_appear_time_CD; //爆炸冷卻
 
     [Header("死光破盾")]
     public GameObject[] shieldList = new GameObject[4];
@@ -31,26 +49,6 @@ public class Boss_Level_3 : MonoBehaviour
     public float RechargeTime; //充填時間
     public int shoottime; //射擊次數
 
-    [Header("魔法陣承受傷害")]
-    public GameObject[] magic_circle_List = new GameObject[4]; //魔法陣
-    public GameObject[] bomb_List = new GameObject[4]; //魔法陣爆炸
-    public float magic_appear_time; //魔法陣出現
-    public float magic_appear_time_CD; //魔法陣冷卻
-    public float bomb_appear_time; //爆炸出現
-    public float bomb_appear_time_CD; //爆炸冷卻
-    public int i; //魔法陣i
-    public int j; //爆炸j
-
-    [Header("吃球防炸")]
-    public int ballamount; //吃球數
-    public GameObject eigh_ball; //能量球
-    public GameObject crushwave; //衝擊波
-
-    [Header("彈幕排位")]
-    public GameObject FourSideShoot; //擴散射擊
-
-    public int[] numbers = { 0, 1, 2, 3 }; //隨機數
-
     // Start is called before the first frame update
     void Start()
     {
@@ -61,119 +59,179 @@ public class Boss_Level_3 : MonoBehaviour
         shuffleArray(numbers);
         Debug.Log(string.Join(", ", numbers));
 
+        PhaseTime = 2f;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Keypad1)) //彈幕排位
-        {
-            FourSideShoot.SetActive(true); 
-        }
+        #region  可控技能
+        // if(Input.GetKeyDown(KeyCode.Keypad1)) //彈幕排位
+        // {
+        //     FourSideShoot.SetActive(true); 
+        // }
 
-        if(Input.GetKeyDown(KeyCode.Keypad2)) //吃球
-        {
-            crushwave.SetActive(true);
-            eigh_ball.SetActive(true);
-        }
+        // if(Input.GetKeyDown(KeyCode.Keypad2)) //吃球
+        // {
+        //     crushwave.SetActive(true);
+        //     eigh_ball.SetActive(true);
+        // }
 
-        if(Input.GetKeyDown(KeyCode.Keypad3)) //魔法陣
-        {
-            shuffleArray(numbers);
-            Debug.Log(string.Join(", ", numbers));
+        // if(Input.GetKeyDown(KeyCode.Keypad3)) //魔法陣
+        // {
+        //     shuffleArray(numbers);
+        //     Debug.Log(string.Join(", ", numbers));
 
-            magic_appear_time = 0; //重新施法
-            i = 0; //次數歸0
-            j = 0; //次數歸0
-        }
+        //     magic_appear_time = 0; //重新施法
+        //     i = 0; //次數歸0
+        //     j = 0; //次數歸0
+        // }
 
-        if(Input.GetKeyDown(KeyCode.Keypad4)) //死光破盾
+        // if(Input.GetKeyDown(KeyCode.Keypad4)) //死光破盾
+        // {
+        //     for(int i = 0 ; i < shieldList.Length ; i++) //監禁開始
+        //     {
+        //         if(shieldList[i].GetComponentInParent<NPC>().HP > 0) //NPC存活才會觸發
+        //         {
+        //             shieldList[i].SetActive(true);
+        //         }
+        //     }
+
+        //     LaserShield.SetActive(true); //自身護盾
+        //     focustime = RechargeTime; //重新充能
+        //     shoottime = 0; //射擊次數歸0
+        //     active_shield_amount = 0;
+        // }    
+        #endregion
+
+
+        switch (current_Statue)
         {
-            for(int i = 0 ; i < shieldList.Length ; i++)
+            case Statue.Idle: //轉階段 一切以此為先
+            if(PhaseTime > 0)
             {
-                if(shieldList[i].GetComponentInParent<NPC>().HP > 0) //NPC存活才會觸發
-                {
-                    shieldList[i].SetActive(true);
-                }
+                PhaseTime -= Time.deltaTime;
             }
+            else if(PhaseTime <= 0) //倒數結束後才轉階段    
+            {
+                if(Next_Skill_Statue == Statue.FourSideShoot)
+                {
+                    if(!FourSideShoot.activeSelf) //未激活才觸發
+                    {
+                        FourSideShoot.SetActive(true); 
+                    }
+                }
 
-            LaserShield.SetActive(true);
-            focustime = RechargeTime; //重新充能
-            shoottime = 0; //射擊次數歸0
-            active_shield_amount = 0;
-        }    
+                else if(Next_Skill_Statue == Statue.EightBall)
+                {
+                    if(!crushwave.activeSelf) //未激活才觸發
+                    {
+                        crushwave.SetActive(true);
+                    }
+
+                    if(!eigh_ball.activeSelf) //未激活才觸發
+                    {
+                        eigh_ball.SetActive(true);
+                    }
+                }
+
+                else if(Next_Skill_Statue == Statue.MagicCircle) //魔法陣重置
+                {
+                    magic_circle_reset();
+                }
+
+                else if(Next_Skill_Statue == Statue.LaserShield) //死光重置
+                {
+                    focustime = RechargeTime; //重新充能
+                    shoottime = 0; //射擊次數歸0
+
+                    active_shield_amount = 0;
+
+                    for(int i = 0 ; i < shieldList.Length ; i++) //監禁開始
+                    {
+                        if(shieldList[i].GetComponentInParent<NPC>().HP > 0) //NPC存活才會觸發
+                        {
+                            shieldList[i].SetActive(true);
+                        }
+                    }
+                }
+
+                current_Statue = Next_Skill_Statue;
+
+            }
+            break;
+        }
 
         switch (SkillPhase)
         {
             case 0:
             Next_Skill_Statue = Statue.FourSideShoot;
 
-            if(!FourSideShoot.activeSelf) //未激活才觸發
-            {
-                FourSideShoot.SetActive(true); 
-            }
-
             if(FourSideShoot.GetComponent<FourSideShoot>().i == 4) //4次後轉階段
             {
-                PhaseTime = 3;
+                PhaseTime = 2f;
                 SkillPhase++;
-                current_Statue = Statue.Idle;
+
+                current_Statue = Statue.Idle; //待機
             }
     
             break;
 
             case 1:
+            //技能2
+            //吃球達次數則施放衝擊波
             Next_Skill_Statue= Statue.EightBall;
             
             var balls = eigh_ball.GetComponent<EightBall>();
 
-            if(!crushwave.activeSelf) //未激活才觸發
-            {
-                crushwave.SetActive(true);
-            }
-
-            if(!eigh_ball.activeSelf) //未激活才觸發
-            {
-                eigh_ball.SetActive(true);
-            }
-
-            //球達8個且 都被打破
             //吃達4個且 爆炸後
             //轉階段
             if(ballamount == 4)
             {
                 eigh_ball.SetActive(false);
+                crushwave.GetComponent<Animator>().SetBool("Start",true);
+                //ballamount = 0
+                //phasetime = 3
+                //skillphase ++
+                //statue.idle
             }
 
-            foreach(var ball in balls.ballpoint)
-            {
-                if(ball.activeSelf)
+            //球達8個且 都被打破
+            //轉階段
+     
+            
+            //吃到4個球後球都消失了 直接跳階段 有bug!
+            if(balls.i == 8 && ballamount != 4) 
+            { 
+                foreach(var ball in balls.ballpoint)
                 {
-                    return;
+                    if(ball.activeSelf)
+                    {
+                        return;
+                    }
                 }
 
-                // if(!ball.activeSelf && balls.i == 8) 
-                // {
-                //     PhaseTime = 3;
-                //     SkillPhase++;
-                //     ownSheild.SetActive(false);
-                //     current_Statue = Statue.Idle;
-                // }
-            }
+                eigh_ball.SetActive(false);
 
-            if(balls.i == 8) 
-            { 
                 crushwave.SetActive(false);
-                PhaseTime = 3;
+
+                PhaseTime = 2f;
                 SkillPhase++;
+
                 current_Statue = Statue.Idle;
+
             }
  
             break;
 
             case 2:
             Next_Skill_Statue = Statue.MagicCircle;
-            magic_circle_countdown(); //魔法陣
+
+            if(PhaseTime <= 0)
+            {
+                magic_circle_countdown(); //魔法陣
+            }
 
             foreach(var bomb in bomb_List)
             {
@@ -185,152 +243,144 @@ public class Boss_Level_3 : MonoBehaviour
 
             if(j == 4)
             {
-                PhaseTime = 3;
+                PhaseTime = 2f;
                 SkillPhase++;
-                current_Statue = Statue.Idle;
+                magic_circle_reset();
+
+                current_Statue = Statue.Idle; //待機
             }
 
             break;
 
             case 3:
             Next_Skill_Statue = Statue.LaserShield;
-            break;
-        }
-
-        switch (current_Statue)
-        {
-            case Statue.Idle:
-            if(PhaseTime > 0)
-            {
-                PhaseTime -= Time.deltaTime;
-            }
-            else if(PhaseTime <= 0)
-            {
-                if(Next_Skill_Statue == Statue.MagicCircle) //魔法陣重置
-                {
-                    shuffleArray(numbers);
-                    Debug.Log(string.Join(", ", numbers));
-
-                    magic_appear_time = 0; //重新施法
-                    i = 0; //次數歸0
-                    j = 0; //次數歸0
-                }
-
-                current_Statue = Next_Skill_Statue;
-
-
-            }
-            break;
-        }
-
-        //技能2
-        //吃球達次數則施放衝擊波
-   
-
-
-        //死光破盾
-        if(shoottime < 4)
-        {
-            if(focustime > 0)
-            {
-                focustime -= Time.deltaTime;
-                Laser.SetActive(true);
-                flamelaser();
-            }
-            else if(focustime <= 0)
-            {
-                // var obj = Instantiate(Laser,shootPoint.transform.position,Quaternion.identity);
-                // obj.transform.up = Direction;
-
-                // focustime = RechargeTime; //重新充能
-                // shoottime++;
-
-                Laser.GetComponent<Animator>().SetBool("Start",true);
-            }
-        }
-
-        //護盾存在則受傷
-        if(shoottime == 4)
-        {
-            if(focustime > 0)
-            {
-                focustime -= Time.deltaTime;
-            }
-            else if(focustime <= 0)
-            {
-                foreach(var shield in shieldList)
-                {
-                    if(shield.activeSelf)
-                    {
-                        active_shield_amount++;
-                    }
-                }
-
-                for(int i = 0 ; i < shieldList.Length ; i++)
-                {
-                    if(shieldList[i].activeSelf)
-                    {
-                        shieldList[i].GetComponentInParent<NPC>().GetDamage(1);
-                        shieldList[i].SetActive(false);
-                    }
-                }
-                
-                print(active_shield_amount);
-
-                LaserShield.SetActive(false);
-
-                shoottime = 5;           
-            }
-        }
-
-        faceside();
-        
-
-        // switch (statue)
-        // {
-        //     case Statue.Focus:
-        //     targetpos = Target.transform.position;
-
-        //     Direction = targetpos - (Vector2)shootPoint.transform.position;
             
+            LaserShield.SetActive(true); //自身護盾
 
-        //     if(focustime > 0 && shoottime < 4)
+            //死光破盾
+            if(shoottime < 4)
+            {
+                if(focustime > 0)
+                {
+                    focustime -= Time.deltaTime;
+                    Laser.SetActive(true);
+
+                    flamelaserfocus();  //瞄準
+                }
+                else if(focustime <= 0)
+                {
+                    Laser.GetComponent<Animator>().SetBool("Start",true);
+                    //碰撞取消
+                    //重新充能
+                    //射擊次數+1
+                    //動畫結束
+                    
+                }
+            }
+
+            //護盾存在則NPC受傷
+            if(shoottime == 4)
+            {
+                if(focustime > 0)
+                {
+                    focustime -= Time.deltaTime;
+                }
+                else if(focustime <= 0)
+                {
+                    foreach(var shield in shieldList)
+                    {
+                        if(shield.activeSelf)
+                        {
+                            active_shield_amount++;
+                        }
+                    }
+
+                    for(int i = 0 ; i < shieldList.Length ; i++)
+                    {
+                        if(shieldList[i].activeSelf)
+                        {
+                            shieldList[i].GetComponentInParent<NPC>().GetDamage(1);
+                            shieldList[i].SetActive(false);
+                        }
+                    }
+                    
+                    print(active_shield_amount);
+
+                    LaserShield.SetActive(false); //自身護盾
+                    
+                    PhaseTime = 2f;
+                    SkillPhase = 0; //迴圈重置
+
+                    focustime = RechargeTime; //重新充能
+                    shoottime = 0; //射擊次數歸0
+                    active_shield_amount = 0;
+
+                    current_Statue = Statue.Idle; //待機
+                    //shoottime = 5;           
+                }
+            }
+
+            break;
+        }
+
+        #region 死光破盾原始碼
+        // //死光破盾
+        // if(shoottime < 4)
+        // {
+        //     if(focustime > 0)
         //     {
         //         focustime -= Time.deltaTime;
-                
-        //         shootPoint.transform.right = Direction;
-
-        //         if(Target.transform.position.x < transform.position.x && faceright)
-        //         {
-        //             faceright = false;
-        //             transform.Rotate(0,180,0);
-        //             print("on your left");
-        //         }
-        //         else if(Target.transform.position.x > transform.position.x && !faceright)
-        //         {
-        //             faceright = true;
-        //             transform.Rotate(0,180,0);
-        //             print("on your right");
-        //         }  
-
+        //         Laser.SetActive(true);
+        //         flamelaserfocus();
         //     }
-        //     else if(focustime <= 0 && shoottime < 4)
+        //     else if(focustime <= 0)
         //     {
-        //         statue = Statue.Shoot;
+        //         // var obj = Instantiate(Laser,shootPoint.transform.position,Quaternion.identity);
+        //         // obj.transform.up = Direction;
+
+        //         // focustime = RechargeTime; //重新充能
+        //         // shoottime++;
+
+        //         Laser.GetComponent<Animator>().SetBool("Start",true);
         //     }
-
-        //     break;
-
-        //     case Statue.Shoot:
-        //     var bulletshoot = Instantiate(bullet,shootPoint.transform.position,Quaternion.identity);
-        //     bulletshoot.GetComponent<Rigidbody2D>().velocity = shootPoint.transform.right * speed;
-        //     focustime = RechargeTime;
-
-        //     shoottime ++;
-
-        //     statue = Statue.Focus;
-        //     break;
         // }
+
+        // //護盾存在則受傷
+        // if(shoottime == 4)
+        // {
+        //     if(focustime > 0)
+        //     {
+        //         focustime -= Time.deltaTime;
+        //     }
+        //     else if(focustime <= 0)
+        //     {
+        //         foreach(var shield in shieldList)
+        //         {
+        //             if(shield.activeSelf)
+        //             {
+        //                 active_shield_amount++;
+        //             }
+        //         }
+
+        //         for(int i = 0 ; i < shieldList.Length ; i++)
+        //         {
+        //             if(shieldList[i].activeSelf)
+        //             {
+        //                 shieldList[i].GetComponentInParent<NPC>().GetDamage(1);
+        //                 shieldList[i].SetActive(false);
+        //             }
+        //         }
+                
+        //         print(active_shield_amount);
+
+        //         LaserShield.SetActive(false); //自身護盾
+
+        //         shoottime = 5;           
+        //     }
+        // }
+        #endregion
+        //faceside();
+        
     }
 
     void shuffleArray<T>(T[] array)
@@ -346,35 +396,50 @@ public class Boss_Level_3 : MonoBehaviour
 
     void magic_circle_countdown()
     {
-        if(magic_appear_time > 0 && i < 4) //0,1,2,3
+        //i是魔法陣次數
+        //j是爆炸次數
+        if(i < 4) //魔法陣未達4個
         {
-            magic_appear_time -= Time.deltaTime;
-        }
-        else if(magic_appear_time <= 0)
-        {
-            magic_circle_List[numbers[i]].SetActive(true);
-            i++;
-            magic_appear_time = magic_appear_time_CD;
+            if(magic_appear_time > 0) //0,1,2,3
+            {
+                magic_appear_time -= Time.deltaTime;
+            }
+            else if(magic_appear_time <= 0)
+            {
+                magic_circle_List[numbers[i]].SetActive(true);
+                i++;
+                magic_appear_time = magic_appear_time_CD;
+            }
         }
 
-        if(bomb_appear_time > 0 && j < 4 && i == 4)
+        if(i == 4 && j < 4) //魔法陣達4個 且爆炸未達4次
         {
-            bomb_appear_time -= Time.deltaTime;
+            if(bomb_appear_time > 0)
+            {
+                bomb_appear_time -= Time.deltaTime;
+            }
+            else if(bomb_appear_time <= 0)
+            {
+                bomb_List[numbers[j]].SetActive(true);
+                j++;
+                bomb_appear_time = bomb_appear_time_CD;
+            }        
         }
-        else if(bomb_appear_time <= 0)
-        {
-            bomb_List[numbers[j]].SetActive(true);
-            j++;
-            bomb_appear_time = bomb_appear_time_CD;
-        }
+
     }
 
     void magic_circle_reset()
     {
-        
+        bomb_appear_time = bomb_appear_time_CD;
+        magic_appear_time = magic_appear_time_CD; //重新施法
+        i = 0; //次數歸0
+        j = 0; //次數歸0
+
+        shuffleArray(numbers);
+        Debug.Log(string.Join(", ", numbers));    
     }
 
-    void flamelaser()
+    void flamelaserfocus()
     {
         targetpos = Target.transform.position;
 

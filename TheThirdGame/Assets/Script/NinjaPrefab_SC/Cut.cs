@@ -19,7 +19,6 @@ public class Cut : MonoBehaviour
 
     void OnParticleSystemStopped()
     {
-        Debug.Log("System has stopped!");
         Cut_Pool.instance.ReturnPool(this.gameObject);
     }
 }
