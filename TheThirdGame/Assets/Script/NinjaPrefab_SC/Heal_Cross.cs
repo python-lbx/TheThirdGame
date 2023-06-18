@@ -2,9 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cut : MonoBehaviour
+public class Heal_Cross : MonoBehaviour
 {
+    public GameObject player;
     // Start is called before the first frame update
+    private void Awake() 
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    void Update()
+    {
+        transform.position = player.transform.position;
+    }
     void Start()
     {
         var main = GetComponent<ParticleSystem>().main;
@@ -13,6 +23,6 @@ public class Cut : MonoBehaviour
 
     void OnParticleSystemStopped()
     {
-        Cut_Pool.instance.ReturnPool(this.gameObject);
+        Heal_Cross_Pool.instance.ReturnPool(this.gameObject);
     }
 }

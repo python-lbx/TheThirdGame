@@ -61,4 +61,9 @@ public class PlayerController : MonoBehaviour
         BattleStart = true;
         CurrentHP = Mathf.Clamp(CurrentHP - damage,0,HP);
     }
+
+    public void GetHeal(float heal)
+    {
+        CurrentHP = Mathf.Clamp(CurrentHP + heal,0,HP);
+    }
 }

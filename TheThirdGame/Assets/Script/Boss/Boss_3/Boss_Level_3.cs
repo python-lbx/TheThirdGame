@@ -313,6 +313,11 @@ public class Boss_Level_3 : MonoBehaviour
                             shieldList[i].GetComponentInParent<NPC>().GetDamage(1);
                             shieldList[i].SetActive(false);
                         }
+
+                        if(shieldList[i].GetComponentInParent<NPC>().HP > 0)
+                        {
+                            Cherry_Pool.instance.GetFormPool(shieldList[i].GetComponentInParent<Transform>().Find("Point"));
+                        }
                     }
                     
                     print(active_shield_amount);
