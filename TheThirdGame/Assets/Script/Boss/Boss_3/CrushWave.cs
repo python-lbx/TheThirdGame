@@ -69,7 +69,7 @@ public class CrushWave : MonoBehaviour
         Boss3.ballamount = 0;
 
         //轉階段
-        Boss3.PhaseTime = 3;
+        Boss3.PhaseTime = 3.5f;
         Boss3.SkillPhase ++;
         Boss3.current_Statue = Boss_Level_3.Statue.Idle;
 

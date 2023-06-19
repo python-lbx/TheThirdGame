@@ -6,6 +6,7 @@ public class FourSideShoot : MonoBehaviour
 {
     public GameObject[] ShootList = new GameObject[4];
     public GameObject Player;
+    public Animator anim;
     public int i;
     public int j;
 
@@ -62,6 +63,7 @@ public class FourSideShoot : MonoBehaviour
             }
             else if(FourSideShootTime <= 0)
             {
+                anim.SetTrigger("Attack");
 
                 ShootList[i].transform.position = Player.transform.position;
 

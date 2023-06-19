@@ -10,6 +10,12 @@ public class Cherry : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             other.gameObject.GetComponentInChildren<PlayerController>().GetHeal(heal);
+            var floatdamage = FloatDamagePool.instance.GetFormPool(); //生成治療浮動點數
+            floatdamage.transform.position = other.gameObject.transform.Find("FloatDamagePoint").transform.position; //傷害浮動點數位置
+            floatdamage.GetComponent<FloatDamageText>().floatdamage.color = Color.green; //設定顏色
+            floatdamage.GetComponent<FloatDamageText>().floatdamage.fontSize = 20;
+            floatdamage.GetComponent<FloatDamageText>().floatdamage.text = heal.ToString(); //治療浮動點數輸出數字 
+
             Heal_Cross_Pool.instance.GetFormPool(other.gameObject.transform);
             Cherry_Pool.instance.ReturnPool(this.gameObject);
         }

@@ -50,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("角色數值")]
     public Player_Attributes CharacterState;
+    public PlayerAttackController playerAttack;
     
     // Start is called before the first frame update
     private void Awake() 
@@ -60,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        playerAttack = GetComponent<PlayerAttackController>();
         
         faceright = true;
     }
@@ -118,6 +120,11 @@ public class PlayerMovement : MonoBehaviour
         {
             movement();
             flip();
+            playerAttack.enabled = true;
+        }
+        else
+        {
+            playerAttack.enabled = false;
         }
     }
 
@@ -228,12 +235,13 @@ public class PlayerMovement : MonoBehaviour
 
     void Dash()
     {
-        if(DashPressed)
+        if(DashPressed && Mathf.Abs(horizontal) > 0)
         {
             if(Time.time > (DashCD +LastDash))
             {
                 GetComponent<PlayerAttackController>().newtime = 0.5f;//無敵時間
-
+                anim.SetTrigger("IsDashing");
+                
                 DashPressed = false;
                 LastDash = Time.time;
                 DashTimeLeft = DashTime;

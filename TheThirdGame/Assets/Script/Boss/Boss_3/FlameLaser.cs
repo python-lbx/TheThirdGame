@@ -5,6 +5,7 @@ using UnityEngine;
 public class FlameLaser : MonoBehaviour
 {
     Animator anim;
+    public Animator b_anim;
     Collider2D coll;
     public Boss_Level_3 Boss;
     public float damage;
@@ -60,5 +61,10 @@ public class FlameLaser : MonoBehaviour
     void activecoll()
     {
         coll.enabled = true;
+    }
+
+    void Attack_anim_Trigger()
+    {
+        b_anim.SetTrigger("Attack");
     }
 }

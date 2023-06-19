@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8688421509004355457}
   - component: {fileID: 8688421509004355459}
   - component: {fileID: 8688421509004355456}
+  - component: {fileID: 5516334318877127127}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -58,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.5059128, b: 0, a: 1}
+  m_Color: {r: 0.08235294, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -79,6 +80,25 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 100
+--- !u!95 &5516334318877127127
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8688421509004355462}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a83a945bfd6d46c47b91fbd2f30490fe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8688421509115518050
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,6 +170,7 @@ MonoBehaviour:
   activeStart: 0
   floatdamage: {fileID: 8688421509004355456}
   color: {r: 0, g: 0, b: 0, a: 0}
+  maincamera: {fileID: 0}
 --- !u!1 &8688421509920965159
 GameObject:
   m_ObjectHideFlags: 0

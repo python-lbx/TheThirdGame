@@ -11370,6 +11370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d089dd2f9a16c48b8da9304fc45291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  b_anim: {fileID: 2116460067}
   Boss: {fileID: 2116460063}
   damage: 10
 --- !u!1 &83856712
@@ -46167,6 +46168,7 @@ MonoBehaviour:
   - {fileID: 102723334}
   - {fileID: 758876326}
   Player: {fileID: 1550486266}
+  anim: {fileID: 2116460067}
   i: 0
   j: 0
   FourSideShootTime: 3
@@ -48201,6 +48203,7 @@ MonoBehaviour:
   CSD: 0
   BattleStart: 0
   CharacterState: {fileID: 24235441}
+  anim: {fileID: 1550486273}
 --- !u!4 &971660491
 Transform:
   m_ObjectHideFlags: 0
@@ -97662,6 +97665,7 @@ MonoBehaviour:
     m_Bits: 1024
   GroundCheckDistance: 0.5
   CharacterState: {fileID: 24235441}
+  playerAttack: {fileID: 1550486274}
 --- !u!212 &1550486269
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -97721,7 +97725,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1550486266}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.59, y: -3.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 971660491}
@@ -111872,7 +111876,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1948532916
 Transform:
   m_ObjectHideFlags: 0
@@ -115097,7 +115101,7 @@ MonoBehaviour:
   current_Statue: 0
   Next_Skill_Statue: 0
   PhaseTime: 2
-  SkillPhase: 3
+  SkillPhase: 0
   FourSideShoot: {fileID: 858418765}
   ballamount: 0
   eigh_ball: {fileID: 1078651300}

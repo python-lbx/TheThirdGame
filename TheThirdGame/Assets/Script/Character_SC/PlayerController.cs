@@ -26,7 +26,11 @@ public class PlayerController : MonoBehaviour
 
     //[Header("目標物件")]
     //public GameObject targetpos;
-    public Player_Attributes CharacterState;
+    [SerializeField]
+    Player_Attributes CharacterState;
+    [SerializeField]
+    Animator anim;
+
     // Start is called before the first frame update
     private void Awake() 
     {
@@ -35,7 +39,7 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
-
+        anim = GetComponentInParent<Animator>();
     }
 
     // Update is called once per frame
@@ -58,8 +62,10 @@ public class PlayerController : MonoBehaviour
 
     public void GetDamage(float damage)
     {   
+        
         BattleStart = true;
         CurrentHP = Mathf.Clamp(CurrentHP - damage,0,HP);
+        anim.SetTrigger("IsHurting");
     }
 
     public void GetHeal(float heal)

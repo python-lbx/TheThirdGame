@@ -54,7 +54,9 @@ public class Boss_Level_3 : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         Target = GameObject.FindGameObjectWithTag("Player");
-        origin = originObject.transform.position; // 取得圓心位置    
+        origin = originObject.transform.position; // 取得圓心位置
+        FourSideShoot.GetComponent<FourSideShoot>().anim = this.anim; 
+        Laser.GetComponent<FlameLaser>().b_anim = this.anim;
 
         shuffleArray(numbers);
         Debug.Log(string.Join(", ", numbers));
@@ -111,6 +113,8 @@ public class Boss_Level_3 : MonoBehaviour
         {
             case Statue.Idle: //轉階段 一切以此為先
 
+            anim.SetBool("Spelling",false);
+
             faceside();
 
             if(PhaseTime > 0)
@@ -138,6 +142,8 @@ public class Boss_Level_3 : MonoBehaviour
                     {
                         eigh_ball.SetActive(true);
                     }
+
+                    anim.SetBool("Spelling",true);
                 }
 
                 else if(Next_Skill_Statue == Statue.MagicCircle) //魔法陣重置
@@ -176,7 +182,7 @@ public class Boss_Level_3 : MonoBehaviour
 
             if(FourSideShoot.GetComponent<FourSideShoot>().i == 4) //4次後轉階段
             {
-                PhaseTime = 2f;
+                PhaseTime = 3.5f;
                 SkillPhase++;
 
                 current_Statue = Statue.Idle; //待機
@@ -224,8 +230,9 @@ public class Boss_Level_3 : MonoBehaviour
 
                 crushwave.SetActive(false);
 
-                PhaseTime = 2f;
+                PhaseTime = 3.5f;
                 SkillPhase++;
+
 
                 current_Statue = Statue.Idle;
 
@@ -240,6 +247,7 @@ public class Boss_Level_3 : MonoBehaviour
             
             if(PhaseTime <= 0)
             {
+                anim.SetBool("Spelling",true);
                 magic_circle_countdown(); //魔法陣
             }
 
@@ -253,7 +261,7 @@ public class Boss_Level_3 : MonoBehaviour
 
             if(j == 4)
             {
-                PhaseTime = 2f;
+                PhaseTime = 3.5f;
                 SkillPhase++;
                 magic_circle_reset();
 
@@ -280,6 +288,7 @@ public class Boss_Level_3 : MonoBehaviour
                 }
                 else if(focustime <= 0)
                 {
+
                     Laser.GetComponent<Animator>().SetBool("Start",true);
                     //碰撞取消
                     //重新充能
@@ -324,7 +333,7 @@ public class Boss_Level_3 : MonoBehaviour
 
                     LaserShield.SetActive(false); //自身護盾
                     
-                    PhaseTime = 2f;
+                    PhaseTime = 3.5f;
                     SkillPhase = 0; //迴圈重置
 
                     focustime = RechargeTime; //重新充能
