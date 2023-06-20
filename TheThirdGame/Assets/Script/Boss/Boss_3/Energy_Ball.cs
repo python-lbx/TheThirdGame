@@ -37,10 +37,10 @@ public class Energy_Ball : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) 
     {   
         //要改
-        if(other.gameObject.name == "Boss")
+        if(other.gameObject.name == "CrushWave")
         {
             print("Boss");
-            other.GetComponent<Boss_Level_3>().ballamount ++;
+            other.GetComponentInParent<Boss_Level_3>().ballamount ++;
             ResPos();
         }
 

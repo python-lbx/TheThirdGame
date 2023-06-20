@@ -12,9 +12,10 @@ public class Boss_Wizzard_State : MonoBehaviour
     [Header("角色腳本")]
     //public Boss_Orc_Wizzard boss_Orc_Wizzard; 一開始的寫法
     public boss Boss; //新的
-    public enum boss {One,Two}; //新的
+    public enum boss {One,Two,Three}; //新的
     public Boss_Orc_Wizzard boss_I; //新的
     public Boss_Level_2 boss_II; //新的
+    public Boss_Level_3 boss_III; //新的
     public EnemyController enemyController;
 
     [Header("角色渲染")]
@@ -44,6 +45,10 @@ public class Boss_Wizzard_State : MonoBehaviour
 
             case boss.Two:
             boss_II.enabled = false;
+            break;
+
+            case boss.Three:
+            boss_III.enabled = false;
             break;
         }
         
@@ -87,6 +92,10 @@ public class Boss_Wizzard_State : MonoBehaviour
                 case boss.Two:
                 boss_II.enabled = true;
                 break;
+
+                case boss.Three:
+                boss_III.enabled = true;
+                break;
             }
 
             if(enemyController.currenthealth <= 0)
@@ -109,12 +118,20 @@ public class Boss_Wizzard_State : MonoBehaviour
             switch(Boss)
             {
                 case boss.One:
+                anim.SetBool("Run",false);
                 boss_I.current_Statue = Boss_Orc_Wizzard.Statue.Idle;
                 boss_I.PhaseTime = 10f;
                 boss_I.speed = 0;
                 break;
 
                 case boss.Two:
+                anim.SetBool("Run",false);
+                boss_II.current_Statue = Boss_Level_2.Statue.Idle;
+                boss_II.PhaseTime = 10f;
+                boss_II.speed = 0;
+                break;
+
+                case boss.Three:
                 boss_II.current_Statue = Boss_Level_2.Statue.Idle;
                 boss_II.PhaseTime = 10f;
                 boss_II.speed = 0;
@@ -124,7 +141,6 @@ public class Boss_Wizzard_State : MonoBehaviour
 
 
             rb.velocity = new Vector2(0,0);
-            anim.SetBool("Run",false);
 
             //對話內容 一開始的寫法
             // boss_Orc_Wizzard.DialogTable.SetActive(true);
@@ -141,6 +157,10 @@ public class Boss_Wizzard_State : MonoBehaviour
                 case boss.Two:
                 boss_II.DialogTable.SetActive(true);
                 boss_II.Dialog.text = "虛無在呼喚你...";
+                break;
+
+                case boss.Three:
+                //未完
                 break;
             }
 
@@ -167,6 +187,10 @@ public class Boss_Wizzard_State : MonoBehaviour
                     boss_II.DialogTable.SetActive(false);
                     boss_II.Dialog.text = "";
                     break;
+
+                    case boss.Three:
+                    //未完
+                    break;
                 }
 
                 //腳本停止 一開始的寫法
@@ -181,6 +205,10 @@ public class Boss_Wizzard_State : MonoBehaviour
 
                     case boss.Two:
                     boss_II.enabled = false;
+                    break;
+
+                    case boss.Three:
+                    //未完
                     break;
                 }
 
