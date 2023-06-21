@@ -4,7 +4,21 @@ using UnityEngine;
 
 public class Cherry : MonoBehaviour
 {   
+    public float activeTime;
+    public float activeStart;
     public float heal;
+
+    private void OnEnable() 
+    {
+        activeStart = Time.time;
+    }
+    private void Update() 
+    {
+        if(Time.time >= activeStart + activeTime) //生成時間過後消失
+        {
+            Cherry_Pool.instance.ReturnPool(this.gameObject); //改名
+        }  
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.CompareTag("Player"))

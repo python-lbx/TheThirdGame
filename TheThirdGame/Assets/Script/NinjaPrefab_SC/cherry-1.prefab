@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cca44051a73cc3949839a251e762df3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeTime: 5
+  activeStart: 0
   heal: 15
 --- !u!212 &2115691964704523265
 SpriteRenderer:

@@ -20,6 +20,7 @@ public class Room : MonoBehaviour
     [Header("傳送門")]
     public GameObject Portal_V;
     public GameObject Portal_X;
+    public GameObject Portal_Final;
     public bool PortalActive;
 
     [Header("門跟牆判定")]

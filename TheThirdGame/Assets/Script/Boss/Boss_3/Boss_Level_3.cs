@@ -154,8 +154,8 @@ public class Boss_Level_3 : MonoBehaviour
 
                 else if(Next_Skill_Statue == Statue.LaserShield) //死光重置
                 {
-                    focustime = RechargeTime; //重新充能
-                    shoottime = 0; //射擊次數歸0
+
+                    LaserShield.SetActive(true); //自身護盾
 
                     for(int i = 0 ; i < shieldList.Length ; i++) //監禁開始
                     {
@@ -164,6 +164,9 @@ public class Boss_Level_3 : MonoBehaviour
                             shieldList[i].SetActive(true);
                         }
                     }
+
+                    focustime = RechargeTime; //重新充能
+                    shoottime = 0; //射擊次數歸0
                 }
 
                 current_Statue = Next_Skill_Statue;
@@ -271,8 +274,6 @@ public class Boss_Level_3 : MonoBehaviour
 
             case 3:
             Next_Skill_Statue = Statue.LaserShield;
-            
-            LaserShield.SetActive(true); //自身護盾
 
             //死光破盾
             if(shoottime < 4)
@@ -314,6 +315,9 @@ public class Boss_Level_3 : MonoBehaviour
                         }
                     }
 
+                    //回血
+                    recover();
+
                     for(int i = 0 ; i < shieldList.Length ; i++)
                     {
                         if(shieldList[i].activeSelf)
@@ -328,8 +332,6 @@ public class Boss_Level_3 : MonoBehaviour
                         }
                     }
                     
-                    //回血
-                    recover();
 
                     LaserShield.SetActive(false); //自身護盾
                     
