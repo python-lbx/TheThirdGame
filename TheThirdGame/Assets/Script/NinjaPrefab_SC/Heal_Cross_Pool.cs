@@ -29,21 +29,25 @@ public class Heal_Cross_Pool : MonoBehaviour
 
     public void ReturnPool(GameObject gameObject)
     {
+        heal_cross_prefab.GetComponent<Heal_Cross>().obj = null;
         gameObject.SetActive(false);
         availableObjects.Enqueue(gameObject);
     }
     
-    public GameObject GetFormPool(Transform point) //在目標位置生成
+    public GameObject GetFormPool(Transform point, GameObject obj) //在目標位置生成
     {
+        //heal_cross_prefab.GetComponent<Heal_Cross>().o = obj;
+
         if(availableObjects.Count == 0)
         {
             FillPool();
         }
 
-
+        //這個才是生成物
         var outPrefab = availableObjects.Dequeue();
 
         outPrefab.SetActive(true);
+        outPrefab.GetComponent<Heal_Cross>().obj = obj;
         outPrefab.transform.position = point.position;
 
         return outPrefab;

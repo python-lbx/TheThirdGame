@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class Heal_Cross : MonoBehaviour
 {
-    public GameObject player;
+    public GameObject obj;
+
+
     // Start is called before the first frame update
-    private void Awake() 
-    {
-        player = GameObject.FindGameObjectWithTag("Player");
-    }
 
     void Update()
     {
-        transform.position = player.transform.position;
+        if(obj != null)
+        {
+            transform.position = obj.transform.position;
+        }
     }
     void Start()
     {

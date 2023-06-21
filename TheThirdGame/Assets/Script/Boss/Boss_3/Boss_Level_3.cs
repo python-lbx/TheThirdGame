@@ -35,7 +35,8 @@ public class Boss_Level_3 : MonoBehaviour
 
     [Header("死光破盾")]
     public GameObject[] shieldList = new GameObject[4];
-    public int active_shield_amount; //存活護盾數
+    public float active_shield_amount; //存活護盾數
+    public float heal;
     public GameObject Target; //目標
     public GameObject originObject; // 圓心 object
     public GameObject Laser; //發射物
@@ -155,8 +156,6 @@ public class Boss_Level_3 : MonoBehaviour
                 {
                     focustime = RechargeTime; //重新充能
                     shoottime = 0; //射擊次數歸0
-
-                    active_shield_amount = 0;
 
                     for(int i = 0 ; i < shieldList.Length ; i++) //監禁開始
                     {
@@ -329,7 +328,8 @@ public class Boss_Level_3 : MonoBehaviour
                         }
                     }
                     
-                    print(active_shield_amount);
+                    //回血
+                    recover();
 
                     LaserShield.SetActive(false); //自身護盾
                     
@@ -500,5 +500,21 @@ public class Boss_Level_3 : MonoBehaviour
             faceright = !faceright;
             transform.Rotate(0,180,0);        
         }
+    }
+
+    void recover()
+    {
+        print(active_shield_amount);
+        GetComponent<EnemyController>().GetHeal( ( heal *= active_shield_amount ) );
+
+        var floatdamage = FloatDamagePool.instance.GetFormPool(); //生成治療浮動點數
+
+        floatdamage.transform.position = transform.Find("FloatDamagePoint").transform.position;
+        floatdamage.GetComponent<FloatDamageText>().floatdamage.color = Color.green; //設定顏色
+        floatdamage.GetComponent<FloatDamageText>().floatdamage.fontSize = 20;
+        floatdamage.GetComponent<FloatDamageText>().floatdamage.text = heal.ToString(); //治療浮動點數輸出數字 
+
+        //生成特效
+        Heal_Cross_Pool.instance.GetFormPool(this.gameObject.transform,this.gameObject);
     }
 }

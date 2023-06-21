@@ -94,4 +94,9 @@ public class EnemyController : MonoBehaviour
     {
         currenthealth = Mathf.Clamp(currenthealth - damage,0,health);
     }
+
+    public void GetHeal(float heal)
+    {
+        currenthealth = Mathf.Clamp(currenthealth + heal,0,health);
+    }
 }

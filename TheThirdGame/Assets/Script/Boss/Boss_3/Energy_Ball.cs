@@ -5,10 +5,12 @@ using UnityEngine;
 public class Energy_Ball : MonoBehaviour
 {
     public GameObject boss;
-    public GameObject FloatDamagePoint;
+    public GameObject ThisFloatDamagePoint;
+    public GameObject BossFloatDamagePoint;
     public float speed;
     public Vector3 startPos;
     public float damage;
+    public float heal;
     public int HP;
 
     private void Start() 
@@ -40,7 +42,23 @@ public class Energy_Ball : MonoBehaviour
         if(other.gameObject.name == "CrushWave")
         {
             print("Boss");
+            //球遞增
             other.GetComponentInParent<Boss_Level_3>().ballamount ++;
+
+            //王回血
+            other.GetComponentInParent<EnemyController>().GetHeal(heal);
+
+            var floatdamage = FloatDamagePool.instance.GetFormPool(); //生成治療浮動點數
+
+            floatdamage.transform.position = BossFloatDamagePoint.transform.position;
+            floatdamage.GetComponent<FloatDamageText>().floatdamage.color = Color.green; //設定顏色
+            floatdamage.GetComponent<FloatDamageText>().floatdamage.fontSize = 20;
+            floatdamage.GetComponent<FloatDamageText>().floatdamage.text = heal.ToString(); //治療浮動點數輸出數字 
+
+            //生成特效
+            Heal_Cross_Pool.instance.GetFormPool(other.gameObject.transform,other.gameObject);
+            //Heal_Cross_Pool.instance.heal_cross_prefab.GetComponent<Heal_Cross>().obj = other.gameObject;
+            
             ResPos();
         }
 
@@ -52,7 +70,7 @@ public class Energy_Ball : MonoBehaviour
 
             var floatdamagetext = FloatDamagePool.instance.GetFormPool();
 
-            floatdamagetext.transform.position = FloatDamagePoint.transform.position;
+            floatdamagetext.transform.position = ThisFloatDamagePoint.transform.position;
             floatdamagetext.GetComponent<FloatDamageText>().floatdamage.color = Color.red;
             floatdamagetext.GetComponent<FloatDamageText>().floatdamage.fontSize = 30;
             floatdamagetext.GetComponent<FloatDamageText>().floatdamage.text = "1".ToString();

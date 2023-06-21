@@ -16,7 +16,10 @@ public class Cherry : MonoBehaviour
             floatdamage.GetComponent<FloatDamageText>().floatdamage.fontSize = 20;
             floatdamage.GetComponent<FloatDamageText>().floatdamage.text = heal.ToString(); //治療浮動點數輸出數字 
 
-            Heal_Cross_Pool.instance.GetFormPool(other.gameObject.transform);
+            //生成特效
+            Heal_Cross_Pool.instance.GetFormPool(other.gameObject.transform,other.gameObject);
+            
+            //回收
             Cherry_Pool.instance.ReturnPool(this.gameObject);
         }
     }
