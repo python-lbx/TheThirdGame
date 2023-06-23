@@ -166,7 +166,7 @@ public class Room : MonoBehaviour
         {
             roomDirecter.RoomLevel +=1;
 
-            if(roomDirecter.RoomLevel == 5 || roomDirecter.RoomLevel == 10)
+            if(roomDirecter.RoomLevel == 5 || roomDirecter.RoomLevel == 10 || roomDirecter.RoomLevel == 11)
             {
                 PortalActive = true;
             }
@@ -217,6 +217,14 @@ public class Room : MonoBehaviour
             if(totalHP <= 0)
             {
                 Portal_X.SetActive(true);
+            }
+        }
+        
+        if(other.gameObject.CompareTag("Player") && roomDirecter.RoomLevel == 11 && PortalActive)
+        {
+            if(totalHP <= 0)
+            {
+                Portal_Final.SetActive(true);
             }
         }
     }

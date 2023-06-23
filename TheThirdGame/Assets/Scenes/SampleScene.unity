@@ -29671,7 +29671,7 @@ MonoBehaviour:
   endroom: {fileID: 0}
   startroom: {fileID: 0}
   endroomCanOpen: 0
-  RoomLevel: 5
+  RoomLevel: 11
   directerPoint: {fileID: 446091309}
   xOffset: 22
   yOffset: 14
@@ -80702,7 +80702,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1369239874}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 200, y: -200, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1550486270}
@@ -120414,7 +120414,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2116460062
 Transform:
   m_ObjectHideFlags: 0
@@ -120636,7 +120636,7 @@ MonoBehaviour:
   boss_III: {fileID: 2116460063}
   enemyController: {fileID: 2116460068}
   material: {fileID: 2100000, guid: 65e0fcf3cd61f59469a201bc8649126c, type: 2}
-  portal: {fileID: 658176096}
+  portal: {fileID: 1611925262}
   chest: {fileID: 1542092752}
 --- !u!1001 &2119685351
 PrefabInstance:

@@ -8,6 +8,7 @@ public class Portal : MonoBehaviour
     public GameObject Player;
     public GameObject Boss_One_Portal;
     public GameObject Boss_Two_Portal;
+    public GameObject Boss_Three_Portal;
     public Vector3 RoomPos;
     public int RoomLevel;
     public Room room;
@@ -17,6 +18,7 @@ public class Portal : MonoBehaviour
         room = GetComponentInParent<Room>();
         Boss_One_Portal = GameObject.Find("BossOnePos");
         Boss_Two_Portal = GameObject.Find("BossTwoPos");
+        Boss_Three_Portal = GameObject.Find("BossThreePos");
     }
 
     private void Start() 
@@ -41,7 +43,13 @@ public class Portal : MonoBehaviour
             {
                 room.PortalActive = false;
             }
-
+        }
+        else if(RoomLevel == 11)
+        {
+            if(Boss_Three_Portal.GetComponentInChildren<BackToLevel>().WhichBoss.GetComponent<EnemyController>().currenthealth <= 0)
+            {
+                room.PortalActive = false;
+            }
         }
 
 
@@ -62,6 +70,12 @@ public class Portal : MonoBehaviour
                     Boss_Two_Portal.GetComponentInChildren<BackToLevel>().OriginalRoomPos = RoomPos;
                     //Boss_Two_Portal.SetActive(false);
                     Player.transform.position = Boss_Two_Portal.transform.position;
+                }
+                else if(RoomLevel == 11)
+                {
+                    Boss_Three_Portal.GetComponentInChildren<BackToLevel>().OriginalRoomPos = RoomPos;
+                    //Boss_Two_Portal.SetActive(false);
+                    Player.transform.position = Boss_Three_Portal.transform.position;
                 }
             }
         }
