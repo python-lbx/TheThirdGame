@@ -113,11 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   current_Statue: 0
   fade: 0
-  whichCharacter: 1
-  orc_Blade: {fileID: 0}
-  orc_Boo: {fileID: 8357011561030099667}
-  orc_Wizzard: {fileID: 0}
-  orc_Fly: {fileID: 0}
+  LayerName: Enemy
   enemyController: {fileID: 8357011561030099666}
   material: {fileID: 2100000, guid: bd3382cc38c9a3d4fbcd6fbec2e595bb, type: 2}
 --- !u!114 &8357011561030099666
@@ -155,10 +151,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   faceright: 1
   Target: {fileID: 0}
-  boomerang: {fileID: 4549106863739137577, guid: 39c446f87e1ffdd478c86999f6b85500, type: 3}
   shootPoint: {fileID: 8357011560936706438}
   focustime: 3
   RechargeTime: 2.5
+  enemy_State: {fileID: 1552004519165601737}
   statue: 0
 --- !u!212 &8357011561030099670
 SpriteRenderer:

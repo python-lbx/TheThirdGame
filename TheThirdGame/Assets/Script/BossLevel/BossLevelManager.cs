@@ -8,12 +8,13 @@ public class BossLevelManager : MonoBehaviour
     //control portal active or not when boss was dead;
     // Start is called before the first frame update
     public BossResourceUI bossUI;
+    public GameObject UI;
     public int level;
     public GameObject Boss;
     public GameObject portal;
     void Start()
     {
-        bossUI = FindObjectOfType<BossResourceUI>();
+        //bossUI = FindObjectOfType<BossResourceUI>();
     }
 
     // Update is called once per frame
@@ -25,7 +26,9 @@ public class BossLevelManager : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) 
     {
         if(other.gameObject.CompareTag("Player"))
-        {
+        {   
+            UI.SetActive(true);
+            bossUI = UI.GetComponent<BossResourceUI>();
             switch(level)
             {
                 case 1:
@@ -51,6 +54,14 @@ public class BossLevelManager : MonoBehaviour
                     Boss.SetActive(true);
                 }
             }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other) 
+    {
+        if(other.gameObject.CompareTag("Player"))
+        {
+            UI.SetActive(false);
         }
     }
 }

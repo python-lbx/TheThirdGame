@@ -74,6 +74,11 @@ public class EnemyController : MonoBehaviour
                 break;
             }
         }
+
+        if(num >= 0.65f)
+        {
+            Cherry_Pool.instance.GetFormPool(this.transform);
+        }
     }
 
     /*private void OnCollisionEnter2D(Collision2D other) 

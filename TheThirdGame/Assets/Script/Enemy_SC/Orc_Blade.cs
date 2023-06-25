@@ -27,6 +27,9 @@ public class Orc_Blade : MonoBehaviour
     public Vector2 BoxSize;
     public GameObject Target;
 
+    [Header("狀態")]
+    public Enemy_State enemy_State;
+
     [Header("階段")]
     public Statue statue;
     public enum Statue{Idle,Patorl,Battle}
@@ -35,10 +38,15 @@ public class Orc_Blade : MonoBehaviour
     public float Last_AttackTime;
     public float AttackTime_CD;
 
+    private void Awake() 
+    {
+        this.enabled = true;
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        enemy_State = GetComponent<Enemy_State>();
         faceright = true;
     }
 
@@ -62,6 +70,19 @@ public class Orc_Blade : MonoBehaviour
         {
             Target = null;
         }
+
+        switch(enemy_State.current_Statue)
+        {
+            case Enemy_State.Statue.Fight:
+            enemy_State.current_Statue = Enemy_State.Statue.Idle; //跳出迴圈
+            statue = Statue.Idle; //開始戰鬥
+            break;
+
+            case Enemy_State.Statue.Dead:
+            this.enabled = false; //停止腳本
+            break;
+        }
+
 
         //偵測 有玩家 往玩家方向移動 如進入攻擊範圍 停頓數秒後攻擊
         switch (statue)

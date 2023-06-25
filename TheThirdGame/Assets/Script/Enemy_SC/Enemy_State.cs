@@ -7,14 +7,15 @@ public class Enemy_State : MonoBehaviour
     [Header("當前階段")]
     public Statue current_Statue;
     public float fade = 0f;
-    public enum Statue{Ready,Fight,Dead}
+    public enum Statue{Ready,Fight,Dead,Idle}
+    public string LayerName;
     [Header("角色腳本")]
-    public ScriptStatue whichCharacter;
-    public enum ScriptStatue{Blade,Boo,Wizzard,Fly}
-    public Orc_Blade orc_Blade;
-    public Orc_Boo orc_Boo;
-    public Orc_Wizzard orc_Wizzard;
-    public Orc_Fly orc_Fly;
+    //public ScriptStatue whichCharacter;
+    //public enum ScriptStatue{Blade,Boo,Wizzard,Fly}
+    // public Orc_Blade orc_Blade;
+    // public Orc_Boo orc_Boo;
+    // public Orc_Wizzard orc_Wizzard;
+    // public Orc_Fly orc_Fly;
     public EnemyController enemyController;
     [Header("角色渲染")]
     public Material material;
@@ -27,25 +28,25 @@ public class Enemy_State : MonoBehaviour
 
         current_Statue = Statue.Ready;
 
-        switch (whichCharacter)
-        {
-            case ScriptStatue.Blade:
-            orc_Blade = GetComponent<Orc_Blade>();
-            orc_Blade.enabled = false;
-            break;
-            case ScriptStatue.Boo:
-            orc_Boo = GetComponent<Orc_Boo>();
-            orc_Boo.enabled = false;
-            break;
-            case ScriptStatue.Wizzard:
-            orc_Wizzard = GetComponent<Orc_Wizzard>();
-            orc_Wizzard.enabled = false;
-            break;
-            case ScriptStatue.Fly:
-            orc_Fly = GetComponent<Orc_Fly>();
-            orc_Fly.enabled = false;
-            break;
-        }
+        // switch (whichCharacter)
+        // {
+        //     case ScriptStatue.Blade:
+        //     orc_Blade = GetComponent<Orc_Blade>();
+        //     orc_Blade.enabled = false;
+        //     break;
+        //     case ScriptStatue.Boo:
+        //     orc_Boo = GetComponent<Orc_Boo>();
+        //     orc_Boo.enabled = false;
+        //     break;
+        //     case ScriptStatue.Wizzard:
+        //     orc_Wizzard = GetComponent<Orc_Wizzard>();
+        //     orc_Wizzard.enabled = false;
+        //     break;
+        //     case ScriptStatue.Fly:
+        //     orc_Fly = GetComponent<Orc_Fly>();
+        //     orc_Fly.enabled = false;
+        //     break;
+        // }
     }
 
     // Update is called once per frame
@@ -69,32 +70,32 @@ public class Enemy_State : MonoBehaviour
             break;
 
             case Statue.Fight:
-            gameObject.layer = LayerMask.NameToLayer("Enemy");
+            //gameObject.layer = LayerMask.NameToLayer("Enemy");
 
-            switch (whichCharacter)
-            {
-                case ScriptStatue.Blade:
-                orc_Blade = GetComponent<Orc_Blade>();
-                orc_Blade.enabled = true;
-                break;
-                case ScriptStatue.Boo:
-                orc_Boo = GetComponent<Orc_Boo>();
-                orc_Boo.enabled = true;
-                break;
-                case ScriptStatue.Wizzard:
-                orc_Wizzard = GetComponent<Orc_Wizzard>();
-                orc_Wizzard.enabled = true;
-                break;
-                case ScriptStatue.Fly:
-                orc_Fly = GetComponent<Orc_Fly>();
-                orc_Fly.enabled = true;
-                break;
-            }
+            // switch (whichCharacter)
+            // {
+            //     case ScriptStatue.Blade:
+            //     orc_Blade = GetComponent<Orc_Blade>();
+            //     orc_Blade.enabled = true;
+            //     break;
+            //     case ScriptStatue.Boo:
+            //     orc_Boo = GetComponent<Orc_Boo>();
+            //     orc_Boo.enabled = true;
+            //     break;
+            //     case ScriptStatue.Wizzard:
+            //     orc_Wizzard = GetComponent<Orc_Wizzard>();
+            //     orc_Wizzard.enabled = true;
+            //     break;
+            //     case ScriptStatue.Fly:
+            //     orc_Fly = GetComponent<Orc_Fly>();
+            //     orc_Fly.enabled = true;
+            //     break;
+            // }
 
-            if(enemyController.currenthealth <= 0)
-            {
-                current_Statue = Statue.Dead;
-            }
+            // if(enemyController.currenthealth <= 0)
+            // {
+            //     current_Statue = Statue.Dead;
+            // }
 
             break;
 
@@ -102,25 +103,25 @@ public class Enemy_State : MonoBehaviour
 
             gameObject.layer = LayerMask.NameToLayer("Invincible");
 
-            switch (whichCharacter)
-            {
-                case ScriptStatue.Blade:
-                orc_Blade = GetComponent<Orc_Blade>();
-                orc_Blade.enabled = false;
-                break;
-                case ScriptStatue.Boo:
-                orc_Boo = GetComponent<Orc_Boo>();
-                orc_Boo.enabled = false;
-                break;
-                case ScriptStatue.Wizzard:
-                orc_Wizzard = GetComponent<Orc_Wizzard>();
-                orc_Wizzard.enabled = false;
-                break;
-                case ScriptStatue.Fly:
-                orc_Fly = GetComponent<Orc_Fly>();
-                orc_Fly.enabled = false;
-                break;
-            }
+            // switch (whichCharacter)
+            // {
+            //     case ScriptStatue.Blade:
+            //     orc_Blade = GetComponent<Orc_Blade>();
+            //     orc_Blade.enabled = false;
+            //     break;
+            //     case ScriptStatue.Boo:
+            //     orc_Boo = GetComponent<Orc_Boo>();
+            //     orc_Boo.enabled = false;
+            //     break;
+            //     case ScriptStatue.Wizzard:
+            //     orc_Wizzard = GetComponent<Orc_Wizzard>();
+            //     orc_Wizzard.enabled = false;
+            //     break;
+            //     case ScriptStatue.Fly:
+            //     orc_Fly = GetComponent<Orc_Fly>();
+            //     orc_Fly.enabled = false;
+            //     break;
+            // }
 
             fade -= Time.deltaTime;
 
@@ -128,6 +129,16 @@ public class Enemy_State : MonoBehaviour
             {
                 fade = 0;
                 Destroy(this.gameObject);
+            }
+
+            break;
+
+            case Statue.Idle:
+            gameObject.layer = LayerMask.NameToLayer(LayerName);
+            
+            if(enemyController.currenthealth <= 0)
+            {
+                current_Statue = Statue.Dead;
             }
 
             break;

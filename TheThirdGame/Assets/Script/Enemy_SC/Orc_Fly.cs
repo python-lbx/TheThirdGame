@@ -19,31 +19,40 @@ public class Orc_Fly : MonoBehaviour
     public GameObject Attack_Box;
 
     
-    [Header("無視平台")]
-    [SerializeField] Collider2D playerCollider;
-    public GameObject[] currentOneWayPlatform;
+    // [Header("無視平台")]
+    // [SerializeField] Collider2D playerCollider;
+    // public GameObject[] currentOneWayPlatform;
 
+    [Header("狀態")]
+    public Enemy_State enemy_State;
 
     [Header("階段")]
     public Statue statue;
     public enum Statue{Focus,Rush};
     public float PhaseTime;
     // Start is called before the first frame update
+    private void Awake() 
+    {
+        this.enabled = true;
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        enemy_State = GetComponent<Enemy_State>();
+
         Target = GameObject.FindGameObjectWithTag("Player");
         Direction = Target.transform.position;
 
-        //多於一個
-        currentOneWayPlatform = GameObject.FindGameObjectsWithTag("OneWayPlatform");
+        // //多於一個
+        // currentOneWayPlatform = GameObject.FindGameObjectsWithTag("OneWayPlatform");
 
-        //無視所有
-        foreach(GameObject gameObject in currentOneWayPlatform)
-        {
-            Physics2D.IgnoreCollision(playerCollider,gameObject.GetComponent<BoxCollider2D>());
-        }
+        // //無視所有
+        // foreach(GameObject gameObject in currentOneWayPlatform)
+        // {
+        //     Physics2D.IgnoreCollision(playerCollider,gameObject.GetComponent<BoxCollider2D>());
+        // }
 
         //BoxCollider2D platformCollider = currentOneWayPlatform.GetComponent<BoxCollider2D>();
         //Physics2D.IgnoreCollision(playerCollider,platformCollider);
@@ -52,7 +61,19 @@ public class Orc_Fly : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        
+        switch(enemy_State.current_Statue)
+        {
+            case Enemy_State.Statue.Fight:
+            enemy_State.current_Statue = Enemy_State.Statue.Idle; //跳出迴圈
+            statue = Statue.Focus; //開始戰鬥
+            break;
+
+            case Enemy_State.Statue.Dead:
+            this.enabled = false; //停止腳本
+            break;
+        }
+
+
         switch (statue)
         {
             case Statue.Focus:
@@ -162,8 +183,12 @@ public class Orc_Fly : MonoBehaviour
         {
             rb.velocity = new Vector2(0,0);
             focustime = 3f;
+            PhaseTime = 0f;
             statue = Statue.Focus;
+            //print("A");
         }
+
+        //print(other.gameObject.name);
     }
 
     void ZboxActive()

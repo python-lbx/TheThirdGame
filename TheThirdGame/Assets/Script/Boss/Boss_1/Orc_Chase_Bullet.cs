@@ -22,10 +22,10 @@ public class Orc_Chase_Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.G))
-        {
-            ChaseBullet();
-        }
+        // if(Input.GetKeyDown(KeyCode.G))
+        // {
+        //     ChaseBullet();
+        // }
     }
 
     public void ChaseBullet()

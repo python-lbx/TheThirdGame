@@ -85,11 +85,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   current_Statue: 0
   fade: 0
-  whichCharacter: 0
-  orc_Blade: {fileID: 334752856793952378}
-  orc_Boo: {fileID: 0}
-  orc_Wizzard: {fileID: 0}
-  orc_Fly: {fileID: 0}
+  LayerName: Enemy
   enemyController: {fileID: 334752856793952376}
   material: {fileID: 2100000, guid: bbb5431633774644e912614d091aea61, type: 2}
 --- !u!114 &334752856793952376
@@ -143,6 +139,7 @@ MonoBehaviour:
   PlayerCheckDistance: 0.6
   BoxSize: {x: 3, y: 1}
   Target: {fileID: 0}
+  enemy_State: {fileID: 2314514110471543924}
   statue: 0
   PhaseTime: 0
   Attack_Box: {fileID: 334752857617440895}

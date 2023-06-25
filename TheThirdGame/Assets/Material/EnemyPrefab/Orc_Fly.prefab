@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4421844518045819663}
   - component: {fileID: 4421844518045819662}
   - component: {fileID: 4421844518045819661}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: AttackBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 4421844518568483569}
   - component: {fileID: 4421844518568483572}
   - component: {fileID: 4421844518568483535}
-  m_Layer: 11
+  m_Layer: 17
   m_Name: Orc_Fly
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -155,11 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   current_Statue: 0
   fade: 0
-  whichCharacter: 3
-  orc_Blade: {fileID: 0}
-  orc_Boo: {fileID: 0}
-  orc_Wizzard: {fileID: 0}
-  orc_Fly: {fileID: 4421844518568483568}
+  LayerName: Bird
   enemyController: {fileID: 4421844518568483571}
   material: {fileID: 2100000, guid: aa3656a9a9cae4041b62562423e3cb8a, type: 2}
 --- !u!114 &4421844518568483571
@@ -201,8 +197,7 @@ MonoBehaviour:
   FocusPoint: {fileID: 0}
   focustime: 4
   Attack_Box: {fileID: 4421844518045819696}
-  playerCollider: {fileID: 5384905724209994958}
-  currentOneWayPlatform: []
+  enemy_State: {fileID: 5483730416134531485}
   statue: 0
   PhaseTime: 4
 --- !u!212 &4421844518568483570

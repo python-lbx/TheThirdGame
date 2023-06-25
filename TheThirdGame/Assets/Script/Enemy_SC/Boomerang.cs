@@ -28,7 +28,11 @@ public class Boomerang : MonoBehaviour
         if(Time.time >= activeStart + activeTime) //生成時間過後消失
         {
             Orc_Boomerang_Pool.instance.ReturnPool(this.gameObject);
-        }    
+        }
+        else if(enemycontroller.currenthealth <= 0)
+        {
+            Orc_Boomerang_Pool.instance.ReturnPool(this.gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other) 

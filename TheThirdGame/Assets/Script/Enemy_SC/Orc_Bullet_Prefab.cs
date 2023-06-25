@@ -22,6 +22,10 @@ public class Orc_Bullet_Prefab : MonoBehaviour
         {
             Orc_Bullet_Pool.instance.ReturnPool(this.gameObject);
         }    
+        else if(enemycontroller.currenthealth <= 0)
+        {
+            Orc_Bullet_Pool.instance.ReturnPool(this.gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other) 

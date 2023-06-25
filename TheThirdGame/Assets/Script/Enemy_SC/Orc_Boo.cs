@@ -17,16 +17,24 @@ public class Orc_Boo : MonoBehaviour
     Vector2 targetpos;
     public float focustime;
     public float RechargeTime;
+
+    [Header("狀態")]
+    public Enemy_State enemy_State;
     
     [Header("階段")]
     public Statue statue;
     public enum Statue{Focus,Shoot};
     //public float PhaseTime;
 
+    private void Awake() 
+    {
+        this.enabled = true;
+    }
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+        enemy_State = GetComponent<Enemy_State>();
         Target = GameObject.FindGameObjectWithTag("Player");
         Direction = Target.transform.position;
     }
@@ -34,6 +42,19 @@ public class Orc_Boo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        switch(enemy_State.current_Statue)
+        {
+            case Enemy_State.Statue.Fight:
+            enemy_State.current_Statue = Enemy_State.Statue.Idle; //跳出迴圈
+            statue = Statue.Focus; //開始戰鬥
+            break;
+
+            case Enemy_State.Statue.Dead:
+            this.enabled = false; //停止腳本
+            break;
+        }
+
         switch (statue)
         {
             case Statue.Focus:

@@ -10,17 +10,25 @@ public class Orc_Wizzard : MonoBehaviour
     public bool faceright;
     [Header("攻擊目標")]
     public GameObject Target;
+
+    [Header("狀態")]
+    public Enemy_State enemy_State;
+
     [Header("階段")]
     public Statue statue;
     public enum Statue{Idle,Spell};
     public float PhaseTime;
     public float RechargeTime;
 
-
+    private void Awake() 
+    {
+        this.enabled = true;
+    }
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+        enemy_State = GetComponent<Enemy_State>();
         Target = GameObject.FindGameObjectWithTag("Player");
 
     }
@@ -41,6 +49,18 @@ public class Orc_Wizzard : MonoBehaviour
             transform.Rotate(0,180,0);
             //print("on your right");
         }        
+        
+        switch(enemy_State.current_Statue)
+        {
+            case Enemy_State.Statue.Fight:
+            enemy_State.current_Statue = Enemy_State.Statue.Idle; //跳出迴圈
+            statue = Statue.Idle; //開始戰鬥
+            break;
+
+            case Enemy_State.Statue.Dead:
+            this.enabled = false; //停止腳本
+            break;
+        }
         
         switch (statue)
         {
