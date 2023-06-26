@@ -15,7 +15,7 @@ public class Wall : MonoBehaviour
     public GameObject MapWall;
 
 
-    private void Awake() 
+    private void Awake()
     {
         roomDirecter = FindObjectOfType<RoomDirecter>();
         roomDirecter.Wall.Add(this.gameObject);
@@ -39,10 +39,10 @@ public class Wall : MonoBehaviour
         {
                             //未有BOSS
 
-            if(Enemy != null)
-            {   
-                whichroom.Enemys.Add(Instantiate(Boss,transform.position,Quaternion.identity));
-            }
+            // if(Enemy != null)
+            // {
+            //     whichroom.Enemys.Add(Instantiate(Boss,transform.position,Quaternion.identity));
+            // }
         }
         else
         {
@@ -54,7 +54,7 @@ public class Wall : MonoBehaviour
                         var num = Random.Range(0,Enemy.Length);
                         var whichEnemy = Instantiate(Enemy[num],EnemyPoint[i].transform.position,Quaternion.identity);
                         whichroom.Enemys.Add(whichEnemy);
-                    
+
                 }
             }
         }

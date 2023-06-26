@@ -28,7 +28,7 @@ public class PlayerState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        material.SetFloat("_Fade",fade);//控制數值
+        // material.SetFloat("_Fade",fade);//控制數值
 
         switch (current_Statue)
         {
@@ -59,10 +59,10 @@ public class PlayerState : MonoBehaviour
             playerAttackController.enabled = false;
             playerMovement.enabled = false;
             
-            if(fade > 0f)
-            {
-                fade -= Time.deltaTime;
-            }
+            // if(fade > 0f)
+            // {
+            //     fade -= Time.deltaTime;
+            // }
             break;
         }
     }

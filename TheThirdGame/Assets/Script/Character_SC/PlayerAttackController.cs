@@ -33,6 +33,7 @@ public class PlayerAttackController : MonoBehaviour
     public int Lightning_Cost;
     public GameObject Lightning;
     public GameObject Lightning_Icon;
+    public GameObject Lightning_Text;
 
     [Header("元素披風")]
     public float Cloak_CD;
@@ -41,6 +42,7 @@ public class PlayerAttackController : MonoBehaviour
     public int Cloak_Cost;
     public GameObject Cloak;
     public GameObject Cloak_Icon;
+    public GameObject Cloak_Text;
 
     [Header("無敵")]
     public float currentTime;
@@ -52,6 +54,12 @@ public class PlayerAttackController : MonoBehaviour
         anim = GetComponent<Animator>();
         playermovement = GetComponent<PlayerMovement>();
         playercontroller = GetComponentInChildren<PlayerController>();
+
+        Lightning_Icon.SetActive(false);
+        Lightning_Text.SetActive(false);
+
+        Cloak_Icon.SetActive(false);
+        Cloak_Text.SetActive(false);
     }
 
     // Update is called once per frame
@@ -86,13 +94,30 @@ public class PlayerAttackController : MonoBehaviour
             }
         }
 
+        if(playercontroller.MPBall < Lightning_Cost)
+        {
+            Lightning_Icon.SetActive(false);
+            Lightning_Text.SetActive(false);        
+        }
+
+        if(playercontroller.MPBall < Cloak_Cost)
+        {
+            Cloak_Icon.SetActive(false);
+            Cloak_Text.SetActive(false);
+        }
+
         if(Time.time >= (Lightning_Last_Time + Lightning_CD))
         {
-            Lightning_Icon.SetActive(true);
+            if(playercontroller.MPBall >= Lightning_Cost)
+            {
+                Lightning_Icon.SetActive(true);
+                Lightning_Text.SetActive(true);
+            }
+
             if(Lightning_Pressed && !playermovement.IsClimbing && playercontroller.MPBall >= Lightning_Cost)
             {                
                 Lightning_Pressed = false;
-                Lightning_Icon.SetActive(false);
+
                 playercontroller.MPBall -= Lightning_Cost;
                 Lightning_Last_Time = Time.time;
                 anim.SetTrigger("IsLightning");
@@ -102,12 +127,17 @@ public class PlayerAttackController : MonoBehaviour
 
         if(Time.time >= (Cloak_Last_Time + Cloak_CD))
         {
-            Cloak_Icon.SetActive(true);
+            if(playercontroller.MPBall >= Cloak_Cost)
+            {
+                Cloak_Icon.SetActive(true);
+                Cloak_Text.SetActive(true);
+            }
+
             if(Cloak_Pressed && playercontroller.MPBall == Cloak_Cost)
             {
                 newtime = 2f;
                 Cloak_Pressed = false;
-                Cloak_Icon.SetActive(false);
+
                 playercontroller.MPBall -= Cloak_Cost;
                 Cloak_Last_Time = Time.time;
                 Cloak.SetActive(true);

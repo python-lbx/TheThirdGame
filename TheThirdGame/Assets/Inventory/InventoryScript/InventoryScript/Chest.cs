@@ -11,6 +11,7 @@ public class Chest : MonoBehaviour
     public GameObject FirstRoom;
     [Header("掉寶")]
     public GameObject[] Tresure;
+    public GameObject[] cherrypoint;
     public int DropTime;
     // Start is called before the first frame update
     void Start()
@@ -52,6 +53,11 @@ public class Chest : MonoBehaviour
                 Instantiate(Tresure[num],transform.position,Quaternion.identity);
                 break;  
             }
+        }
+
+        for(var i = 0 ; i < cherrypoint.Length ; i++)
+        {
+            Cherry_Pool.instance.GetFormPool(cherrypoint[i].transform);
         }
     }
 }

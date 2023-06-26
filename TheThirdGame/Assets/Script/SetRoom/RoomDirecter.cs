@@ -15,7 +15,7 @@ public class RoomDirecter : MonoBehaviour
     public GameObject endroom;
     public GameObject startroom;
     public bool endroomCanOpen;
-    public int RoomLevel;
+    public int RoomLevel; //由0開始
 
     [Header("位置控制")]
     public Transform directerPoint;

@@ -70,6 +70,7 @@ public class Boss_Level_3 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        StopEveryThing();
         #region  可控技能
         // if(Input.GetKeyDown(KeyCode.Keypad1)) //彈幕排位
         // {
@@ -108,7 +109,6 @@ public class Boss_Level_3 : MonoBehaviour
         //     active_shield_amount = 0;
         // }    
         #endregion
-
 
         switch (current_Statue)
         {
@@ -328,7 +328,7 @@ public class Boss_Level_3 : MonoBehaviour
 
                         if(shieldList[i].GetComponentInParent<NPC>().HP > 0)
                         {
-                            Cherry_Pool.instance.GetFormPool(shieldList[i].GetComponentInParent<Transform>().Find("Point"));
+                            Cherry_Pool.instance.GetFormPool(shieldList[i].GetComponentInParent<Transform>().Find("Cherry_Point"));
                         }
                     }
                     
@@ -518,5 +518,32 @@ public class Boss_Level_3 : MonoBehaviour
 
         //生成特效
         Heal_Cross_Pool.instance.GetFormPool(this.gameObject.transform,this.gameObject);
+    }
+
+    public void StopEveryThing()
+    {
+        if(GetComponent<Boss_Wizzard_State>().current_Statue ==  Boss_Wizzard_State.Statue.Dead)
+        {
+            FourSideShoot.SetActive(false);
+            eigh_ball.SetActive(false);
+            crushwave.SetActive(false);
+            anim.SetBool("Spelling",false);
+
+            foreach(var magic_C in magic_circle_List)
+            {
+                magic_C.SetActive(false);
+            }
+            foreach(var magic_B in bomb_List)
+            {
+                magic_B.SetActive(false);
+            }
+            foreach(var LS in shieldList)
+            {
+                LS.SetActive(false);
+            }
+
+            Laser.SetActive(false);
+            LaserShield.SetActive(false);
+        }
     }
 }
