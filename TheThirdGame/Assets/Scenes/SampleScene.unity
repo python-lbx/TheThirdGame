@@ -14081,7 +14081,7 @@ Animator:
   m_GameObject: {fileID: 211575513}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e3e5ea0fea4494041a28cd48bfbd054d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8ef75659bb1d0fc47be7ddffcac0f495, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -14102,7 +14102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2a811d6b1d71b741a74689f5f07684d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 5
 --- !u!1 &213532357
 GameObject:
   m_ObjectHideFlags: 0
@@ -37082,7 +37082,7 @@ Animator:
   m_GameObject: {fileID: 616826721}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e3e5ea0fea4494041a28cd48bfbd054d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 080581495a60d284080fba8c2d89f86e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -37103,7 +37103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2a811d6b1d71b741a74689f5f07684d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 5
 --- !u!1 &629250740
 GameObject:
   m_ObjectHideFlags: 0
@@ -37385,6 +37385,7 @@ GameObject:
   - component: {fileID: 640004325}
   - component: {fileID: 640004327}
   - component: {fileID: 640004326}
+  - component: {fileID: 640004328}
   m_Layer: 15
   m_Name: Level_Two_Boss_CameralControl
   m_TagString: Untagged
@@ -37449,6 +37450,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 25, y: 12}
   m_EdgeRadius: 0
+--- !u!114 &640004328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640004324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f29cf3f6558ad6b4897779ae8054e784, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Boss: {fileID: 825556122}
+  Player: {fileID: 1550486266}
 --- !u!1 &640782687
 GameObject:
   m_ObjectHideFlags: 0
@@ -50157,18 +50172,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   current_Statue: 0
-  PhaseTime: 1
+  PhaseTime: 4
   SkillPhase: 2
   NumberOfSkillCasts: 0
   NumberOfPhase: 0
   SkillEnterCD: 3
   SkillCD: 0
   Next_Skill_Statue: 0
-  canShoot: 0
   left: {fileID: 1728131787}
   right: {fileID: 1025409585}
   FlameMoveSpeed: 3
-  movewave: {fileID: 8390504156412908703, guid: 2d809afed89a5544bb402b1354817bb2, type: 3}
   quartetflame: {fileID: 866848165}
   TransToAir: {fileID: 799493843}
   BackToGround: {fileID: 1523842463}
@@ -50684,7 +50697,7 @@ MonoBehaviour:
   anim: {fileID: 2116460067}
   i: 0
   j: 0
-  FourSideShootTime: 3
+  FourSideShootTime: 1
   FourSideShootTimeCD: 3
   deltaTime: 2
 --- !u!1 &859478306
@@ -69792,7 +69805,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -400.07788, y: 397.43402}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1182256593
@@ -102027,7 +102040,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1516191724
 Transform:
   m_ObjectHideFlags: 0
@@ -102952,8 +102965,9 @@ MonoBehaviour:
   fade: 0
   playerAttackController: {fileID: 1550486274}
   playerMovement: {fileID: 1550486268}
-  playerController: {fileID: 971660490}
   platformCollider: {fileID: 1550486271}
+  map: {fileID: 631035700}
+  moveBag: {fileID: 849673543}
   material: {fileID: 2100000, guid: 8076581cab35c4a449190f89ec5786dc, type: 2}
 --- !u!1 &1555188976
 GameObject:
@@ -112737,7 +112751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2a811d6b1d71b741a74689f5f07684d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 5
 --- !u!1001 &1930701702
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -121173,6 +121187,9 @@ MonoBehaviour:
   focustime: 5
   RechargeTime: 2
   shoottime: 4
+  DialogTable: {fileID: 1182256591}
+  TextPoint: {fileID: 1717255699}
+  Dialog: {fileID: 697233293}
 --- !u!212 &2116460064
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -128165,7 +128182,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &7068246438306569713
 MonoBehaviour:
   m_ObjectHideFlags: 0

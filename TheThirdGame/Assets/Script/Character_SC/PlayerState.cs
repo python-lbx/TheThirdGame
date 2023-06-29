@@ -11,8 +11,10 @@ public class PlayerState : MonoBehaviour
     [Header("角色腳本")]
     public PlayerAttackController playerAttackController; //攻擊
     public PlayerMovement playerMovement; //移動
-    public PlayerController playerController; //角色數值
+    //public PlayerController playerController; //角色數值
     public PlatformCollider platformCollider; //穿層
+    public Map map; //地圖
+    public MoveBag moveBag; //背包
     [Header("角色渲染")]
     public Material material;
 
@@ -56,8 +58,15 @@ public class PlayerState : MonoBehaviour
             break;
 
             case Statue.Dead:
+            GetComponent<Animator>().SetBool("Died",true);
+
             playerAttackController.enabled = false;
             playerMovement.enabled = false;
+            platformCollider.enabled = false;
+            map.enabled = false;
+            moveBag.enabled = false;
+
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
             
             // if(fade > 0f)
             // {

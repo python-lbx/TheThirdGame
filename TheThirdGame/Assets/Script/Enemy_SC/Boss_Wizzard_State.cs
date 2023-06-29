@@ -22,7 +22,7 @@ public class Boss_Wizzard_State : MonoBehaviour
     public Material material;
     public GameObject portal;
     public GameObject chest;
-    Rigidbody2D rb;
+    //Rigidbody2D rb;
     Animator anim;
 
     // Start is called before the first frame update
@@ -30,7 +30,7 @@ public class Boss_Wizzard_State : MonoBehaviour
     {
         material = GetComponent<SpriteRenderer>().material;
         enemyController = GetComponent<EnemyController>();
-        rb = GetComponent<Rigidbody2D>();
+        //rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
 
 
@@ -118,29 +118,25 @@ public class Boss_Wizzard_State : MonoBehaviour
             switch(Boss)
             {
                 case boss.One:
-                anim.SetBool("Run",false);
+                //anim.SetBool("Run",false); 各自腳本處理
                 boss_I.current_Statue = Boss_Orc_Wizzard.Statue.Idle;
                 boss_I.PhaseTime = 10f;
                 boss_I.speed = 0;
                 break;
 
                 case boss.Two:
-                anim.SetBool("Run",false);
+                //anim.SetBool("Run",false);
                 boss_II.current_Statue = Boss_Level_2.Statue.Idle;
                 boss_II.PhaseTime = 10f;
                 boss_II.speed = 0;
                 break;
 
                 case boss.Three:
-                boss_II.current_Statue = Boss_Level_2.Statue.Idle;
-                boss_II.PhaseTime = 10f;
-                boss_II.speed = 0;
+                boss_III.current_Statue = Boss_Level_3.Statue.GameOver;
                 break;
             }
 
-
-
-            rb.velocity = new Vector2(0,0);
+            //rb.velocity = new Vector2(0,0);
 
             //對話內容 一開始的寫法
             // boss_Orc_Wizzard.DialogTable.SetActive(true);
@@ -160,7 +156,8 @@ public class Boss_Wizzard_State : MonoBehaviour
                 break;
 
                 case boss.Three:
-                //未完
+                boss_III.DialogTable.SetActive(true);
+                boss_III.Dialog.text = "虛無...背叛...了我";                
                 break;
             }
 
@@ -189,7 +186,8 @@ public class Boss_Wizzard_State : MonoBehaviour
                     break;
 
                     case boss.Three:
-                    //未完
+                    boss_III.DialogTable.SetActive(false);
+                    boss_III.Dialog.text = "";
                     break;
                 }
 
@@ -208,7 +206,7 @@ public class Boss_Wizzard_State : MonoBehaviour
                     break;
 
                     case boss.Three:
-                    //未完
+                    boss_III.enabled = false;
                     break;
                 }
 

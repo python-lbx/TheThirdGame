@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Boss_Level_3 : MonoBehaviour
 {
     Animator anim;
+    Rigidbody2D rb;
     public bool faceright;
     
     [Header("階段")]
     public Statue current_Statue;
     public Statue Next_Skill_Statue;
-    public enum Statue{Idle,FourSideShoot,EightBall,MagicCircle,LaserShield};
+    public enum Statue{Idle,FourSideShoot,EightBall,MagicCircle,LaserShield,GameOver};
     public float PhaseTime;
     public int SkillPhase;
 
@@ -50,10 +52,22 @@ public class Boss_Level_3 : MonoBehaviour
     public float RechargeTime; //充填時間
     public int shoottime; //射擊次數
 
+    [Header("對話框")]
+    public GameObject DialogTable;
+    public GameObject TextPoint;
+    public Text Dialog;
+
     // Start is called before the first frame update
+    private void OnEnable() 
+    {
+        DialogTable.transform.position = TextPoint.transform.position;
+        DialogTable.SetActive(true);
+        Dialog.text = "放棄爭扎吧";
+    }
     void Start()
     {
         anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
         Target = GameObject.FindGameObjectWithTag("Player");
         origin = originObject.transform.position; // 取得圓心位置
         FourSideShoot.GetComponent<FourSideShoot>().anim = this.anim; 
@@ -70,7 +84,8 @@ public class Boss_Level_3 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        StopEveryThing();
+        DialogTable.transform.position = TextPoint.transform.position;
+
         #region  可控技能
         // if(Input.GetKeyDown(KeyCode.Keypad1)) //彈幕排位
         // {
@@ -172,6 +187,10 @@ public class Boss_Level_3 : MonoBehaviour
                 current_Statue = Next_Skill_Statue;
 
             }
+            break;
+
+            case Statue.GameOver:
+                StopEveryThing();
             break;
         }
 
@@ -522,28 +541,32 @@ public class Boss_Level_3 : MonoBehaviour
 
     public void StopEveryThing()
     {
-        if(GetComponent<Boss_Wizzard_State>().current_Statue ==  Boss_Wizzard_State.Statue.Dead)
+        //技能關
+        FourSideShoot.SetActive(false);
+        eigh_ball.SetActive(false);
+        crushwave.SetActive(false);
+
+        foreach(var magic_C in magic_circle_List)
         {
-            FourSideShoot.SetActive(false);
-            eigh_ball.SetActive(false);
-            crushwave.SetActive(false);
-            anim.SetBool("Spelling",false);
-
-            foreach(var magic_C in magic_circle_List)
-            {
-                magic_C.SetActive(false);
-            }
-            foreach(var magic_B in bomb_List)
-            {
-                magic_B.SetActive(false);
-            }
-            foreach(var LS in shieldList)
-            {
-                LS.SetActive(false);
-            }
-
-            Laser.SetActive(false);
-            LaserShield.SetActive(false);
+            magic_C.SetActive(false);
         }
+        foreach(var magic_B in bomb_List)
+        {
+            magic_B.SetActive(false);
+        }
+        foreach(var LS in shieldList)
+        {
+            LS.SetActive(false);
+        }
+
+        Laser.SetActive(false);
+        LaserShield.SetActive(false);
+
+        //動畫關
+        anim.SetBool("Spelling",false);
+
+        //動量關
+        rb.velocity = new Vector2(0,0);
+
     }
 }

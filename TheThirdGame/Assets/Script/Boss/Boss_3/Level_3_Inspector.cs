@@ -9,10 +9,6 @@ public class Level_3_Inspector : MonoBehaviour
     public bool allalive;
     public GameObject Boss;
     public GameObject Player;
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
 
     // Update is called once per frame
     void Update()
@@ -47,13 +43,37 @@ public class Level_3_Inspector : MonoBehaviour
             }
         }
 
-        if(!allalive)
+        //遊戲結束
+        if(!allalive) //居民全滅 
         {
-            Boss.GetComponent<Boss_Level_3>().StopEveryThing();
-            Boss.GetComponent<Boss_Level_3>().enabled = false;
-            Boss.GetComponent<Boss_Wizzard_State>().enabled = false;
-            Boss.layer = LayerMask.NameToLayer("Invincible");        
+            Boss.GetComponent<Boss_Level_3>().current_Statue = Boss_Level_3.Statue.GameOver;
+
+            Boss.GetComponent<Boss_Level_3>().DialogTable.SetActive(true);
+            Boss.GetComponent<Boss_Level_3>().Dialog.text = "你一個都救不了";
+            
+            Player.GetComponent<PlayerState>().current_Statue = PlayerState.Statue.Dead;
+
+            Invoke("stopthisScript",2f);
         }
+        else if(Player.GetComponent<PlayerState>().current_Statue == PlayerState.Statue.Dead) //玩家死亡 
+        {
+            Boss.GetComponent<Boss_Level_3>().current_Statue = Boss_Level_3.Statue.GameOver;
+
+            Boss.GetComponent<Boss_Level_3>().DialogTable.SetActive(true);
+            Boss.GetComponent<Boss_Level_3>().Dialog.text = "屈服於力量吧";
+
+            Invoke("stopthisScript",2f);
+        }
+
+        
+    }
+
+    void stopthisScript()
+    {
+        Boss.GetComponent<Boss_Level_3>().enabled = false;
+        Boss.GetComponent<Boss_Wizzard_State>().enabled = false;
+
+        this.enabled = false;
     }
 
 

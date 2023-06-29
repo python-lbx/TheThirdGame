@@ -13,7 +13,7 @@ public class Boss_Level_2 : MonoBehaviour
     [Header("當前階段")]
     public Statue current_Statue;
     public float PhaseTime;
-    public enum Statue{Idle,WalkAndWave,WalkAndFire,Teleport,Laser,skillCD}
+    public enum Statue{Idle,WalkAndWave,WalkAndFire,Teleport,Laser,skillCD,GameOver}
 
     [Header("下個技能階段")]
     public int SkillPhase;
@@ -22,13 +22,11 @@ public class Boss_Level_2 : MonoBehaviour
     public float SkillEnterCD; 
     public float SkillCD;
     public Statue Next_Skill_Statue;
-    public bool canShoot;
 
     [Header("地動熱波")]
     public Transform left;
     public Transform right;
     public float FlameMoveSpeed;
-    public GameObject movewave;
     [Header("烽火連城")]
     public GameObject quartetflame;
     [Header("熔岩死光")]
@@ -289,6 +287,21 @@ public class Boss_Level_2 : MonoBehaviour
                 current_Statue = Statue.Idle;
             }
             break;
+
+            case Statue.GameOver:
+                //動畫關
+                anim.SetBool("Run",false);
+                anim.SetBool("Spelling",false);
+                //技能關
+                quartetflame.SetActive(false);
+                Laser.SetActive(false);
+                Laser_Trigger_PS.SetActive(false);
+                shield.SetActive(false);
+                //對白關
+                Dialog.text = "";
+                //動量歸零
+                GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+            break;
         }
 
         if(this.gameObject.GetComponent<Boss_Wizzard_State>().current_Statue == Boss_Wizzard_State.Statue.Dead)
@@ -351,7 +364,5 @@ public class Boss_Level_2 : MonoBehaviour
                 NumberOfSkillCasts++;
             }
         }
-
-
     }
 }
