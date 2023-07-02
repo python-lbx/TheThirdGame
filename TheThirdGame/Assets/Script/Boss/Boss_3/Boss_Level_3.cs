@@ -130,6 +130,8 @@ public class Boss_Level_3 : MonoBehaviour
             case Statue.Idle: //轉階段 一切以此為先
 
             anim.SetBool("Spelling",false);
+            DialogTable.SetActive(false);
+            Dialog.text = "";
 
             faceside();
 
@@ -217,7 +219,7 @@ public class Boss_Level_3 : MonoBehaviour
             Next_Skill_Statue= Statue.EightBall;
             
             faceside();
-
+            
             var balls = eigh_ball.GetComponent<EightBall>();
 
             //吃達4個且 爆炸後
@@ -226,6 +228,10 @@ public class Boss_Level_3 : MonoBehaviour
             {
                 eigh_ball.SetActive(false);
                 crushwave.GetComponent<Animator>().SetBool("Start",true);
+
+                DialogTable.SetActive(true);
+                Dialog.text = "爆炸!!";
+
                 //ballamount = 0
                 //phasetime = 3
                 //skillphase ++
@@ -235,9 +241,8 @@ public class Boss_Level_3 : MonoBehaviour
             //球達8個且 都被打破
             //轉階段
      
-            
-            //吃到4個球後球都消失了 直接跳階段 有bug!
-            if(balls.i == 8 && ballamount != 4) 
+            //吃到4個球後球都消失了
+            else if(balls.i == 8 && ballamount != 4) 
             { 
                 foreach(var ball in balls.ballpoint)
                 {
@@ -251,14 +256,20 @@ public class Boss_Level_3 : MonoBehaviour
 
                 crushwave.SetActive(false);
 
-                PhaseTime = 3.5f;
+                PhaseTime = 2f;
                 SkillPhase++;
 
+                DialogTable.SetActive(true);
+                Dialog.text = "該死的蟲子";
 
-                current_Statue = Statue.Idle;
-
+                //current_Statue = Statue.Idle;
+                Invoke("IdleDelay",1.5f);
             }
- 
+            else
+            {
+                DialogTable.SetActive(true);
+                Dialog.text = "更多的力量";
+            }
             break;
 
             case 2:
@@ -268,6 +279,9 @@ public class Boss_Level_3 : MonoBehaviour
             
             if(PhaseTime <= 0)
             {
+                DialogTable.SetActive(true);
+                Dialog.text = "下一個換誰?";
+
                 anim.SetBool("Spelling",true);
                 magic_circle_countdown(); //魔法陣
             }
@@ -282,11 +296,15 @@ public class Boss_Level_3 : MonoBehaviour
 
             if(j == 4)
             {
-                PhaseTime = 3.5f;
+                PhaseTime = 2f;
                 SkillPhase++;
                 magic_circle_reset();
 
-                current_Statue = Statue.Idle; //待機
+                DialogTable.SetActive(true);
+                Dialog.text = "不錯的表演";
+
+                //current_Statue = Statue.Idle;
+                Invoke("IdleDelay",1.5f);
             }
 
             break;
@@ -294,9 +312,13 @@ public class Boss_Level_3 : MonoBehaviour
             case 3:
             Next_Skill_Statue = Statue.LaserShield;
 
+            
             //死光破盾
             if(shoottime < 4)
             {
+                DialogTable.SetActive(true);
+                Dialog.text = "痛苦!絕望!尖叫!";
+
                 if(focustime > 0)
                 {
                     focustime -= Time.deltaTime;
@@ -568,5 +590,10 @@ public class Boss_Level_3 : MonoBehaviour
         //動量關
         rb.velocity = new Vector2(0,0);
 
+    }
+
+    void IdleDelay()
+    {
+        current_Statue = Statue.Idle;
     }
 }

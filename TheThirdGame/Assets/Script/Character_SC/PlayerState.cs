@@ -59,6 +59,8 @@ public class PlayerState : MonoBehaviour
 
             case Statue.Dead:
             GetComponent<Animator>().SetBool("Died",true);
+            gameObject.layer = LayerMask.NameToLayer("Invincible");   
+
 
             playerAttackController.enabled = false;
             playerMovement.enabled = false;

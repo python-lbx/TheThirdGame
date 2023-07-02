@@ -33,7 +33,7 @@ public class Boss_Orc_Wizzard : MonoBehaviour
     [Header("當前階段")]
     public Statue current_Statue;
     public float PhaseTime;
-    public enum Statue{Idle,PatrolAndShoot,TransAndShoot,Wave,SKillCD}
+    public enum Statue{Idle,PatrolAndShoot,TransAndShoot,Wave,SKillCD,GameOver}
     [Header("下個技能階段")]
     public int SkillPhase;
     public int SkillTime;
@@ -194,6 +194,10 @@ public class Boss_Orc_Wizzard : MonoBehaviour
                 }
             }
             break;
+            
+            case Statue.GameOver:
+                StopEveryThing();
+            break;
         }
 
 
@@ -295,5 +299,11 @@ public class Boss_Orc_Wizzard : MonoBehaviour
         GroundWave.NumOfWave = 0; //地熱波次數清零
         PhaseTime = 2; //待機時間
         current_Statue = Statue.Idle; //待機狀態
+    }
+
+    public void StopEveryThing()
+    {
+        anim.SetBool("Run",false);
+        rb.velocity = new Vector2(0,0);
     }
 }

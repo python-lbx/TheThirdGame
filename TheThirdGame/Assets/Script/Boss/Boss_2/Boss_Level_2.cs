@@ -289,26 +289,9 @@ public class Boss_Level_2 : MonoBehaviour
             break;
 
             case Statue.GameOver:
-                //動畫關
-                anim.SetBool("Run",false);
-                anim.SetBool("Spelling",false);
-                //技能關
-                quartetflame.SetActive(false);
-                Laser.SetActive(false);
-                Laser_Trigger_PS.SetActive(false);
-                shield.SetActive(false);
-                //對白關
-                Dialog.text = "";
-                //動量歸零
-                GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+                StopEveryThing();
             break;
         }
-
-        if(this.gameObject.GetComponent<Boss_Wizzard_State>().current_Statue == Boss_Wizzard_State.Statue.Dead)
-        {
-            quartetflame.SetActive(false);
-        }
-
     }
 
     
@@ -364,5 +347,22 @@ public class Boss_Level_2 : MonoBehaviour
                 NumberOfSkillCasts++;
             }
         }
+    }
+
+    public void StopEveryThing()
+    {
+        //動畫關
+        anim.SetBool("Run",false);
+        anim.SetBool("Spelling",false);
+        //技能關
+        quartetflame.SetActive(false);
+
+        Laser_Trigger_PS.SetActive(false);
+        Laser.GetComponent<Rotate_Laser_Controller>().laser.SetActive(false);
+        Laser.SetActive(false);
+
+        shield.SetActive(false);
+        //動量歸零
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
     }
 }

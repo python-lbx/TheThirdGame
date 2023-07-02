@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FourSideShoot : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class FourSideShoot : MonoBehaviour
     public float FourSideShootTime;
     public float FourSideShootTimeCD;
     public float deltaTime;
+
+    [Header("對話框")]
+    public GameObject DialogTable;
+    public Text Dialog;
 
     
     // Start is called before the first frame update
@@ -64,6 +69,10 @@ public class FourSideShoot : MonoBehaviour
             else if(FourSideShootTime <= 0)
             {
                 anim.SetTrigger("Attack");
+
+                DialogTable.SetActive(true);
+                Dialog.text = "受死吧";
+
 
                 ShootList[i].transform.position = Player.transform.position;
 

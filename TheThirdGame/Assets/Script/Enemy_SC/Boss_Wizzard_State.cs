@@ -61,7 +61,7 @@ public class Boss_Wizzard_State : MonoBehaviour
         material.SetFloat("_Fade",fade);//控制數值
 
         switch (current_Statue)
-        {
+        {   
             case Statue.Ready:
             gameObject.layer = LayerMask.NameToLayer("Invincible");
 
@@ -75,12 +75,13 @@ public class Boss_Wizzard_State : MonoBehaviour
 
             break;
 
+
+
+
             case Statue.Fight:
             gameObject.layer = LayerMask.NameToLayer("Enemy");
 
-            
             //boss_Orc_Wizzard.enabled = true; 一開始的寫法
-
 
             //新的
             switch(Boss)
@@ -105,6 +106,9 @@ public class Boss_Wizzard_State : MonoBehaviour
 
             break;
 
+
+
+
             case Statue.Dead:
             //無法指定
             gameObject.layer = LayerMask.NameToLayer("Invincible");
@@ -114,7 +118,7 @@ public class Boss_Wizzard_State : MonoBehaviour
             // boss_Orc_Wizzard.PhaseTime = 10f;
             // boss_Orc_Wizzard.speed = 0;
 
-            //新的
+            //王狀態為死亡
             switch(Boss)
             {
                 case boss.One:
@@ -125,10 +129,7 @@ public class Boss_Wizzard_State : MonoBehaviour
                 break;
 
                 case boss.Two:
-                //anim.SetBool("Run",false);
-                boss_II.current_Statue = Boss_Level_2.Statue.Idle;
-                boss_II.PhaseTime = 10f;
-                boss_II.speed = 0;
+                boss_II.current_Statue = Boss_Level_2.Statue.GameOver;
                 break;
 
                 case boss.Three:
@@ -142,7 +143,7 @@ public class Boss_Wizzard_State : MonoBehaviour
             // boss_Orc_Wizzard.DialogTable.SetActive(true);
             // boss_Orc_Wizzard.Dialog.text = "我在虛無等你...";
 
-             //新的
+             //王對死亡對白
             switch(Boss)
             {
                 case boss.One:
@@ -162,6 +163,7 @@ public class Boss_Wizzard_State : MonoBehaviour
             }
 
             //漸變
+            //漸變結束後關閉對話框
             fade -= Time.deltaTime * 0.5f;
 
             if(fade <= 0)
