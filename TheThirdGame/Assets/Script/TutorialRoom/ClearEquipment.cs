@@ -23,46 +23,36 @@ public class ClearEquipment : MonoBehaviour
     public InventoryList myBag;
     InventoryManager inventory;
 
-    // Start is called before the first frame update
-    void Start()
+    public void ClearEquip()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Keypad0))
+        if(head & sword & clothes & pants & shoe != null)
         {
-            if(head & sword & clothes & pants & shoe != null)
-            {
-                head.Reset();
-                head_Image.color = Color.black;
+            head.Reset();
+            head_Image.color = Color.black;
 
-                sword.Reset();
-                sword_Image.color = Color.black;
+            sword.Reset();
+            sword_Image.color = Color.black;
 
-                clothes.Reset();
-                clothes_Image.color = Color.black;
+            clothes.Reset();
+            clothes_Image.color = Color.black;
 
-                pants.Reset();
-                Pants_Image.color = Color.black;
+            pants.Reset();
+            Pants_Image.color = Color.black;
 
-                shoe.Reset();
-                Shoe_Image.color = Color.black;
-            }
-
-            for(int i = 0; i < myBag.ItemList.Count ; i++)
-            {
-                myBag.ItemList[i] = null;
-                myBag.hp[i] = 0;
-                myBag.atk[i] = 0;
-                myBag.cri[i] = 0;
-                myBag.csd[i] = 0;
-                myBag.spd[i] = 0;
-            }
-
-            InventoryManager.RefreshItem();
+            shoe.Reset();
+            Shoe_Image.color = Color.black;
         }
+
+        for(int i = 0; i < myBag.ItemList.Count ; i++)
+        {
+            myBag.ItemList[i] = null;
+            myBag.hp[i] = 0;
+            myBag.atk[i] = 0;
+            myBag.cri[i] = 0;
+            myBag.csd[i] = 0;
+            myBag.spd[i] = 0;
+        }
+
+        InventoryManager.RefreshItem();
     }
 }

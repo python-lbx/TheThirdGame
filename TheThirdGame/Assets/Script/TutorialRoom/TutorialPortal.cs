@@ -7,6 +7,7 @@ public class TutorialPortal : MonoBehaviour
     public bool IsPlayer;
     public GameObject Player;
     public Transform BackToLevel;
+    public ClearEquipment clearEquipment;
 
     // Update is called once per frame
     void Update()
@@ -16,6 +17,7 @@ public class TutorialPortal : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.Y))
             {
                 Player.transform.position = BackToLevel.position;
+                clearEquipment.ClearEquip();
             }
         }    
     }

@@ -12,16 +12,6 @@ public class BossLevelManager : MonoBehaviour
     public int level;
     public GameObject Boss;
     public GameObject portal;
-    void Start()
-    {
-        //bossUI = FindObjectOfType<BossResourceUI>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
