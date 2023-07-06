@@ -27,7 +27,7 @@ public class Chest : MonoBehaviour
 
         if(Here)
         {
-            if(Input.GetKeyDown(KeyCode.Y))
+            if(Input.GetKeyDown(GameManager.GM.interactive))
             {
                 anim.SetBool("Open",true);
                 FirstRoom.GetComponent<RoomDirecter>().rooms[0].PortalActive = false;

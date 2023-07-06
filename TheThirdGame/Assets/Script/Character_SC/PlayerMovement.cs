@@ -52,11 +52,6 @@ public class PlayerMovement : MonoBehaviour
     public Player_Attributes CharacterState;
     public PlayerAttackController playerAttack;
     
-    // Start is called before the first frame update
-    private void Awake() 
-    {
-
-    }
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -66,10 +61,6 @@ public class PlayerMovement : MonoBehaviour
         faceright = true;
     }
 
-    // Update is called once per frame
-    private void FixedUpdate() 
-    {
-    }
     void Update()
     {   
         if(horizontal != 0) //記錄方向改向
@@ -89,11 +80,16 @@ public class PlayerMovement : MonoBehaviour
         Climb();
         animController();
 
-        //按鈕判定
-        jumpPressed = Input.GetKeyDown(KeyCode.Space);
-        climbUpPressed = Input.GetKey(KeyCode.UpArrow);
-        climbDownPressed = Input.GetKey(KeyCode.DownArrow);
-        DashPressed = Input.GetKeyDown(KeyCode.C);
+        // //按鈕判定
+        // jumpPressed = Input.GetKeyDown(KeyCode.Space);
+        // climbUpPressed = Input.GetKey(KeyCode.UpArrow);
+        // climbDownPressed = Input.GetKey(KeyCode.DownArrow);
+        // DashPressed = Input.GetKeyDown(KeyCode.C);
+
+        jumpPressed = Input.GetKeyDown(GameManager.GM.jump);
+        climbUpPressed = Input.GetKey(GameManager.GM.up);
+        climbDownPressed = Input.GetKey(GameManager.GM.down);
+        DashPressed = Input.GetKeyDown(GameManager.GM.dash);
 
         AnimatorStateInfo stateinfo = anim.GetCurrentAnimatorStateInfo(1);
         
@@ -159,7 +155,21 @@ public class PlayerMovement : MonoBehaviour
 
     public void movement()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
+        //horizontal = Input.GetAxisRaw("Horizontal");
+
+        if(Input.GetKey(GameManager.GM.left))
+        {
+            horizontal = -1;
+        }
+        else if(Input.GetKey(GameManager.GM.right))
+        {
+            horizontal = 1;
+        }
+        else
+        {
+            horizontal = 0;
+        }
+
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
     }
 
@@ -194,7 +204,19 @@ public class PlayerMovement : MonoBehaviour
 
     public void Climb()
     {   
-        vertical = Input.GetAxis("Vertical");
+        //vertical = Input.GetAxis("Vertical");
+        if(climbUpPressed)
+        {
+            vertical = 1;
+        }
+        else if(climbDownPressed)
+        {
+            vertical = -1;
+        }
+        else
+        {
+            vertical = 0;
+        }
 
         if(canClimb && Mathf.Abs(vertical) > 0f)
         {

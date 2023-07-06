@@ -8,16 +8,18 @@ public class TutorialPortal : MonoBehaviour
     public GameObject Player;
     public Transform BackToLevel;
     public ClearEquipment clearEquipment;
+    public Player_Attributes player_Attributes;
 
     // Update is called once per frame
     void Update()
     {
         if(IsPlayer)
         {
-            if(Input.GetKeyDown(KeyCode.Y))
+            if(Input.GetKeyDown(GameManager.GM.interactive))
             {
                 Player.transform.position = BackToLevel.position;
                 clearEquipment.ClearEquip();
+                player_Attributes.updateAtt();
             }
         }    
     }

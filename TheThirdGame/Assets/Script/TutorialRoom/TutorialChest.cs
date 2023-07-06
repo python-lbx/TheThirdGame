@@ -25,7 +25,7 @@ public class TutorialChest : MonoBehaviour
 
         if(Here)
         {
-            if(Input.GetKeyDown(KeyCode.Y))
+            if(Input.GetKeyDown(GameManager.GM.interactive))
             {
                 anim.SetBool("Open",true);
             }

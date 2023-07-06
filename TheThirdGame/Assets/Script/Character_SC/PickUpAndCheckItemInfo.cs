@@ -60,7 +60,7 @@ public class PickUpAndCheckItemInfo : MonoBehaviour
         }
 
         //拾取物件且強化
-        if(here && Input.GetKeyDown(KeyCode.Z))
+        if(here && Input.GetKeyDown(GameManager.GM.interactive))
         {
             if(FindObjectOfType<InventoryManager>().isfull)
             {

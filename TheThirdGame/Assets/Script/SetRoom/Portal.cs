@@ -57,7 +57,7 @@ public class Portal : MonoBehaviour
 
         if(IsPlayer)
         {
-            if(Input.GetKeyDown(KeyCode.Y))
+            if(Input.GetKeyDown(GameManager.GM.interactive))
             {
                 if(RoomLevel == 5)
                 {
