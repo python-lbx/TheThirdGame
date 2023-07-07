@@ -16,7 +16,8 @@ public class GameManager : MonoBehaviour
     public KeyCode s_attack{get;set;}
     public KeyCode shield{get;set;}
     public KeyCode dash{get;set;}
-    public KeyCode escape{get;set;}
+    public KeyCode map{get;set;}
+    public KeyCode bag{get;set;}
     public KeyCode interactive{get;set;}
 
     void Awake() 
@@ -43,7 +44,8 @@ public class GameManager : MonoBehaviour
         s_attack = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("s_attackKey","X"));
         shield = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("shieldKey","R"));
         dash = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("dashKey","C"));
-        escape = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("escapeKey","Escape"));
+        map = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("mapKey","M"));
+        bag = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("bagKey","B"));
         interactive = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("interactiveKey","Y"));
     }
 }

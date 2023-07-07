@@ -65,10 +65,15 @@ public class PlayerAttackController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Attack_Pressed = Input.GetKeyDown(KeyCode.Z);
-        Shuriken_Pressed = Input.GetKeyDown(KeyCode.F);
-        Lightning_Pressed = Input.GetKeyDown(KeyCode.X);
-        Cloak_Pressed = Input.GetKeyDown(KeyCode.R);
+        // Attack_Pressed = Input.GetKeyDown(KeyCode.Z);
+        // Shuriken_Pressed = Input.GetKeyDown(KeyCode.F);
+        // Lightning_Pressed = Input.GetKeyDown(KeyCode.X);
+        // Cloak_Pressed = Input.GetKeyDown(KeyCode.R);
+
+        Attack_Pressed = Input.GetKeyDown(GameManager.GM.attack);
+        Shuriken_Pressed = Input.GetKeyDown(GameManager.GM.shuriken);
+        Lightning_Pressed = Input.GetKeyDown(GameManager.GM.s_attack);
+        Cloak_Pressed = Input.GetKeyDown(GameManager.GM.shield);
 
 
         if(Attack_Pressed && !playermovement.IsClimbing)

@@ -15,9 +15,17 @@ public class Map : MonoBehaviour
     void Update()
     {
         this.gameObject.transform.GetChild(0).gameObject.SetActive(openMap);
-        if(Input.GetKeyDown(KeyCode.M))
+        if(Input.GetKeyDown(GameManager.GM.map))
         {
             openMap = !openMap;
+        }
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(this.gameObject.transform.GetChild(0).gameObject.activeSelf)
+            {
+                openMap = false;
+            }
         }
     }
 }

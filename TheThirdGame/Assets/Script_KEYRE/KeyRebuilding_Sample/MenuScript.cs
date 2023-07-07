@@ -61,9 +61,13 @@ public class MenuScript : MonoBehaviour
             {
                 menuPanel.GetChild(i).GetComponentInChildren<Text>().text = GameManager.GM.shield.ToString();
             }            
-            else if(menuPanel.GetChild(i).name == "EscapeKey")
+            else if(menuPanel.GetChild(i).name == "BagKey")
             {
-                menuPanel.GetChild(i).GetComponentInChildren<Text>().text = GameManager.GM.escape.ToString();
+                menuPanel.GetChild(i).GetComponentInChildren<Text>().text = GameManager.GM.bag.ToString();
+            }
+            else if(menuPanel.GetChild(i).name == "MapKey")
+            {
+                menuPanel.GetChild(i).GetComponentInChildren<Text>().text = GameManager.GM.map.ToString();
             }
             else if(menuPanel.GetChild(i).name == "InteractiveKey")
             {
@@ -183,10 +187,16 @@ public class MenuScript : MonoBehaviour
             PlayerPrefs.SetString("shieldKey",GameManager.GM.shield.ToString());
             break;
 
-            case "escape":
-            GameManager.GM.escape = newKey;
-            buttonText.text = GameManager.GM.escape.ToString();
-            PlayerPrefs.SetString("escapeKey",GameManager.GM.escape.ToString());
+            case "map":
+            GameManager.GM.map = newKey;
+            buttonText.text = GameManager.GM.map.ToString();
+            PlayerPrefs.SetString("mapKey",GameManager.GM.map.ToString());
+            break;
+
+            case "bag":
+            GameManager.GM.bag = newKey;
+            buttonText.text = GameManager.GM.bag.ToString();
+            PlayerPrefs.SetString("bagKey",GameManager.GM.bag.ToString());
             break;
             
             case "interactive":
@@ -265,11 +275,18 @@ public class MenuScript : MonoBehaviour
             PlayerPrefs.SetString("shieldKey",GameManager.GM.shield.ToString());
             break;
 
-            case "escape":
-            GameManager.GM.escape = KeyCode.Escape;
-            buttonText.text = GameManager.GM.escape.ToString();
-            PlayerPrefs.SetString("escapeKey",GameManager.GM.escape.ToString());
+            case "map":
+            GameManager.GM.map = KeyCode.M;
+            buttonText.text = GameManager.GM.map.ToString();
+            PlayerPrefs.SetString("mapKey",GameManager.GM.map.ToString());
             break;
+
+            case "bag":
+            GameManager.GM.bag = KeyCode.B;
+            buttonText.text = GameManager.GM.bag.ToString();
+            PlayerPrefs.SetString("bagKey",GameManager.GM.bag.ToString());
+            break;
+
 
             case "interactive":
             GameManager.GM.interactive = KeyCode.Y;
