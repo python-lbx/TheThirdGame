@@ -15,6 +15,7 @@ public class LevelManagerUI : MonoBehaviour
     {
         levelpackage.SetActive(true);
         settingpackage.SetActive(false);    
+        AVmanager.instance.Play("Menu");
     }
 
     // Update is called once per frame
@@ -40,6 +41,8 @@ public class LevelManagerUI : MonoBehaviour
     public void gamestart()
     {
         SceneManager.LoadScene(levelname);
+        AVmanager.instance.Stop("Menu");
+        AVmanager.instance.Play("Tutorial");
     }
 
     public void QTG()

@@ -30421,7 +30421,7 @@ MonoBehaviour:
   endroom: {fileID: 0}
   startroom: {fileID: 0}
   endroomCanOpen: 0
-  RoomLevel: 5
+  RoomLevel: 0
   directerPoint: {fileID: 446091309}
   xOffset: 22
   yOffset: 14

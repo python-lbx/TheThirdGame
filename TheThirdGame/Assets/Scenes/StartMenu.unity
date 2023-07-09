@@ -2178,7 +2178,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &500543039
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2195,7 +2195,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 123.99997, y: -23.10001}
+  m_AnchoredPosition: {x: 123.99997, y: -130}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &500543040
@@ -3128,6 +3128,165 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &734385532
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 734385534}
+  - component: {fileID: 734385533}
+  m_Layer: 0
+  m_Name: AVM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &734385533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734385532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4a931d9d5c7ffe4ea8bd926a50cc289, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Menu
+    clip: {fileID: 8300000, guid: 56cb759417d010249908aa96a155e65a, type: 3}
+    volume: 1
+    ptich: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Tutorial
+    clip: {fileID: 8300000, guid: bc00814f3524fe9429b18d21f9677198, type: 3}
+    volume: 1
+    ptich: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Level
+    clip: {fileID: 8300000, guid: cc1879769316cc24d875770fd5360516, type: 3}
+    volume: 1
+    ptich: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Boss1
+    clip: {fileID: 8300000, guid: bad166023d9b9d7499569266b8ae0e0d, type: 3}
+    volume: 1
+    ptich: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Boss2
+    clip: {fileID: 8300000, guid: 14a1cf915de1c2448b200ab123c01445, type: 3}
+    volume: 1
+    ptich: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Boss3
+    clip: {fileID: 8300000, guid: b6c10ee2c79ceff45949b1a621113ac3, type: 3}
+    volume: 1
+    ptich: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: GameOver
+    clip: {fileID: 8300000, guid: 0f22d70baa2032f4495b7892069ba5e6, type: 3}
+    volume: 1
+    ptich: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Z_Hit
+    clip: {fileID: 8300000, guid: f5309188fd30481438ca200aa4a04984, type: 3}
+    volume: 1
+    ptich: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Z_Crit
+    clip: {fileID: 8300000, guid: 3087f12d883caa041b37f919150d29ce, type: 3}
+    volume: 1
+    ptich: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Recover
+    clip: {fileID: 8300000, guid: b9ec5be49c59d024b873f50c57affdf3, type: 3}
+    volume: 1
+    ptich: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: X_Spell
+    clip: {fileID: 8300000, guid: 42bd7f990bf604049bff965808cfb70b, type: 3}
+    volume: 1
+    ptich: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: R_Spell
+    clip: {fileID: 8300000, guid: 155b0019a3b707c4f970710772901993, type: 3}
+    volume: 1
+    ptich: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: F_Shoot
+    clip: {fileID: 8300000, guid: a9a9d05c9291f2743960c831af52aefe, type: 3}
+    volume: 1
+    ptich: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: F_Hit
+    clip: {fileID: 8300000, guid: 4621df6c4c7703f438d01a721b9e3749, type: 3}
+    volume: 1
+    ptich: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Boo_Shoot
+    clip: {fileID: 8300000, guid: a161318bb63fa394eadd3c6929d39390, type: 3}
+    volume: 1
+    ptich: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Fly_Rush
+    clip: {fileID: 8300000, guid: 7e87fcf374f0b7d4f9afede5508ef569, type: 3}
+    volume: 1
+    ptich: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Blade_Hit
+    clip: {fileID: 8300000, guid: 91de4821226cb85499a9c8988688f0f1, type: 3}
+    volume: 1
+    ptich: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Wizard_Spell_1
+    clip: {fileID: 8300000, guid: fff61c855d5035e449209337a1c09c2e, type: 3}
+    volume: 1
+    ptich: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Chest_Open
+    clip: {fileID: 8300000, guid: cd4c0884dcb453a43b33dfc6281d832c, type: 3}
+    volume: 1
+    ptich: 1
+    loop: 0
+    source: {fileID: 0}
+  Totalvolume: 1
+--- !u!4 &734385534
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734385532}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 269.59824, y: 108.78711, z: -43.60647}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &736354205
 GameObject:
   m_ObjectHideFlags: 0
@@ -3739,7 +3898,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1087051903
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3759,7 +3918,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 251, y: -23.10001}
+  m_AnchoredPosition: {x: 251, y: -130}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1087051904
@@ -7471,7 +7630,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2130680566
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -78,6 +78,7 @@ public class Shuriken : MonoBehaviour
 
                 if(rate < (CRI/100))
                 {
+                    AVmanager.instance.Play("Z_Crit");
                     other.gameObject.GetComponent<EnemyController>().GetDamage(CRI_Damage);
                     floatdamagetext.GetComponent<FloatDamageText>().floatdamage.color = Color.red;
                     floatdamagetext.GetComponent<FloatDamageText>().floatdamage.fontSize = 30;
@@ -85,6 +86,7 @@ public class Shuriken : MonoBehaviour
                 }
                 else
                 {
+                    AVmanager.instance.Play("F_Hit");
                     other.gameObject.GetComponent<EnemyController>().GetDamage(Nor_damage);
                     floatdamagetext.GetComponent<FloatDamageText>().floatdamage.color = new Color(1,0.510174811f,0.00471699238f,255);
                     floatdamagetext.GetComponent<FloatDamageText>().floatdamage.fontSize = 20;

@@ -28,6 +28,7 @@ public class TutorialChest : MonoBehaviour
             if(Input.GetKeyDown(GameManager.GM.interactive))
             {
                 anim.SetBool("Open",true);
+                AVmanager.instance.Play("Chest_Open");
             }
         }
 

@@ -107,6 +107,7 @@ public class Orc_Fly : MonoBehaviour
             {
                 rb.velocity = transform.right * speed;
                 PhaseTime = 2f;
+                AVmanager.instance.Play("Fly_Rush");
                 statue = Statue.Rush;
             }
             break;

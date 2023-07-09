@@ -156,6 +156,8 @@ public class Orc_Blade : MonoBehaviour
             {
                 rb.velocity = new Vector2(0,0);
                 Last_AttackTime = Time.time;
+
+                AVmanager.instance.Play("Blade_Hit");
                 anim.SetTrigger("Attack");
             }
 

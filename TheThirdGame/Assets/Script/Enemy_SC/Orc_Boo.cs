@@ -92,6 +92,7 @@ public class Orc_Boo : MonoBehaviour
 
             case Statue.Shoot:
             anim.SetTrigger("Attack");
+            AVmanager.instance.Play("Boo_Shoot");
             focustime = RechargeTime;
             statue = Statue.Focus;
             break;

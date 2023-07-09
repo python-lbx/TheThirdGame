@@ -23,6 +23,7 @@ public class Cherry : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            AVmanager.instance.Play("Recover");
             other.gameObject.GetComponentInChildren<PlayerController>().GetHeal(heal);
             var floatdamage = FloatDamagePool.instance.GetFormPool(); //生成治療浮動點數
             floatdamage.transform.position = other.gameObject.transform.Find("FloatDamagePoint").transform.position; //傷害浮動點數位置

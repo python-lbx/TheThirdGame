@@ -91,6 +91,7 @@ public class PlayerAttackController : MonoBehaviour
             Shuriken_Pressed = false;
             if(Time.time >= (Shuriken_Last_Time + Shuriken_CD) )
             {                
+                AVmanager.instance.Play("F_Shoot");
                 playercontroller.MPBall -= Shuriken_Cost;
                 Shuriken_Last_Time = Time.time;
                 anim.SetTrigger("IsShoot");
@@ -122,7 +123,7 @@ public class PlayerAttackController : MonoBehaviour
             if(Lightning_Pressed && !playermovement.IsClimbing && playercontroller.MPBall >= Lightning_Cost)
             {                
                 Lightning_Pressed = false;
-
+                AVmanager.instance.Play("X_Spell");
                 playercontroller.MPBall -= Lightning_Cost;
                 Lightning_Last_Time = Time.time;
                 anim.SetTrigger("IsLightning");
@@ -143,6 +144,7 @@ public class PlayerAttackController : MonoBehaviour
                 newtime = 2f;
                 Cloak_Pressed = false;
 
+                AVmanager.instance.Play("R_Spell");
                 playercontroller.MPBall -= Cloak_Cost;
                 Cloak_Last_Time = Time.time;
                 Cloak.SetActive(true);
