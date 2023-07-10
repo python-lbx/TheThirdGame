@@ -42,7 +42,6 @@ public class LevelManagerUI : MonoBehaviour
     {
         SceneManager.LoadScene(levelname);
         AVmanager.instance.Stop("Menu");
-        AVmanager.instance.Play("Tutorial");
     }
 
     public void QTG()

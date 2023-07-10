@@ -17,20 +17,24 @@ public class BossLevelManager : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {   
+            AVmanager.instance.Stop("Level");
             UI.SetActive(true);
             bossUI = UI.GetComponent<BossResourceUI>();
             switch(level)
             {
                 case 1:
                 bossUI.Boss = BossResourceUI.boss.One;
+                AVmanager.instance.Play("Boss1");
                 break;
 
                 case 2:
                 bossUI.Boss = BossResourceUI.boss.Two;
+                AVmanager.instance.Play("Boss2");
                 break;
 
                 case 3:
                 bossUI.Boss = BossResourceUI.boss.Three;
+                AVmanager.instance.Play("Boss3");
                 break;
             }
 
@@ -52,6 +56,11 @@ public class BossLevelManager : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             UI.SetActive(false);
+            AVmanager.instance.Stop("Boss1");
+            AVmanager.instance.Stop("Boss2");
+            AVmanager.instance.Stop("Boss3");
+            
+            AVmanager.instance.Play("Level");
         }
     }
 }

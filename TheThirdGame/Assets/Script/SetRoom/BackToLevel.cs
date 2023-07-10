@@ -22,13 +22,6 @@ public class BackToLevel : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.Y))
             {
-                AVmanager.instance.Stop("Boss1");
-                AVmanager.instance.Stop("Boss2");
-                AVmanager.instance.Stop("Boss3");
-
-                AVmanager.instance.Play("Level");
-
-
                 Player.transform.position = OriginalRoomPos;
             }
         }

@@ -47,8 +47,10 @@ public class Room : MonoBehaviour
     public Color Color;
     public List<GameObject> Enemys = new List<GameObject>();
     [Header("寶箱")]
-    public GameObject Tresure;
-
+    public GameObject Treasure;
+    [Header("路標")]
+    public GameObject StartSign;
+    public GameObject EndSign;
 
     private void Awake() 
     {
@@ -93,8 +95,8 @@ public class Room : MonoBehaviour
             UpDoor.SetActive(updoor);
             DownDoor.SetActive(downdoor);
 
-            Tresure.GetComponent<Chest>().DropTime = 3;
-            Tresure.SetActive(true);
+            Treasure.SetActive(true);
+            StartSign.SetActive(true);
         }
         
         //print(RoomID);

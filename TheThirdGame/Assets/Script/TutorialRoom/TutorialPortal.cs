@@ -17,8 +17,6 @@ public class TutorialPortal : MonoBehaviour
         {
             if(Input.GetKeyDown(GameManager.GM.interactive))
             {
-                AVmanager.instance.Stop("Tutorial");
-                AVmanager.instance.Play("Level");
                 Player.transform.position = BackToLevel.position;
                 clearEquipment.ClearEquip();
                 player_Attributes.updateAtt();

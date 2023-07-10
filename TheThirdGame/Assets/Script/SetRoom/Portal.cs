@@ -49,6 +49,7 @@ public class Portal : MonoBehaviour
             if(Boss_Three_Portal.GetComponentInChildren<BackToLevel>().WhichBoss.GetComponent<EnemyController>().currenthealth <= 0)
             {
                 room.PortalActive = false;
+                room.EndSign.SetActive(true);
             }
         }
 
@@ -61,24 +62,18 @@ public class Portal : MonoBehaviour
             {
                 if(RoomLevel == 5)
                 {
-                    AVmanager.instance.Stop("Level");
-                    AVmanager.instance.Play("Boss1");
                     Boss_One_Portal.GetComponentInChildren<BackToLevel>().OriginalRoomPos = RoomPos;
                     //Boss_One_Portal.SetActive(false);
                     Player.transform.position = Boss_One_Portal.transform.position;
                 }
                 else if(RoomLevel == 10)
                 {
-                    AVmanager.instance.Stop("Level");
-                    AVmanager.instance.Play("Boss2");
                     Boss_Two_Portal.GetComponentInChildren<BackToLevel>().OriginalRoomPos = RoomPos;
                     //Boss_Two_Portal.SetActive(false);
                     Player.transform.position = Boss_Two_Portal.transform.position;
                 }
                 else if(RoomLevel == 11)
                 {
-                    AVmanager.instance.Stop("Level");
-                    AVmanager.instance.Play("Boss3");
                     Boss_Three_Portal.GetComponentInChildren<BackToLevel>().OriginalRoomPos = RoomPos;
                     //Boss_Two_Portal.SetActive(false);
                     Player.transform.position = Boss_Three_Portal.transform.position;

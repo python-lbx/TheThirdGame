@@ -17,6 +17,8 @@ public class PlayerState : MonoBehaviour
     public MoveBag moveBag; //背包
     [Header("角色渲染")]
     public Material material;
+    [Header("UI")]
+    public GameObject GameOverUI;
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +60,7 @@ public class PlayerState : MonoBehaviour
             break;
 
             case Statue.Dead:
+            GameOverUI.SetActive(true);
             GetComponent<Animator>().SetBool("Died",true);
             gameObject.layer = LayerMask.NameToLayer("Invincible");   
 

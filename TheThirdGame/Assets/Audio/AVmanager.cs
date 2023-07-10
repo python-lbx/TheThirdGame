@@ -61,7 +61,7 @@ public class AVmanager : MonoBehaviour
 
             PlayerPrefs.SetFloat("Audio",s.source.volume);
 
-            print(s.source.volume);
+            //print(s.source.volume);
         }
 
         
