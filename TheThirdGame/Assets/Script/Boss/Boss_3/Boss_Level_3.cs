@@ -76,7 +76,7 @@ public class Boss_Level_3 : MonoBehaviour
         shuffleArray(numbers);
         Debug.Log(string.Join(", ", numbers));
 
-        PhaseTime = 2f;
+        PhaseTime = 0f;
 
         faceright = true;
     }
@@ -205,7 +205,7 @@ public class Boss_Level_3 : MonoBehaviour
 
             if(FourSideShoot.GetComponent<FourSideShoot>().i == 4) //4次後轉階段
             {
-                PhaseTime = 3.5f;
+                PhaseTime = 2f;
                 SkillPhase++;
 
                 current_Statue = Statue.Idle; //待機
@@ -231,6 +231,7 @@ public class Boss_Level_3 : MonoBehaviour
 
                 DialogTable.SetActive(true);
                 Dialog.text = "爆炸!!";
+
 
                 //ballamount = 0
                 //phasetime = 3
@@ -376,7 +377,7 @@ public class Boss_Level_3 : MonoBehaviour
 
                     LaserShield.SetActive(false); //自身護盾
                     
-                    PhaseTime = 3.5f;
+                    PhaseTime = 0f;
                     SkillPhase = 0; //迴圈重置
 
                     focustime = RechargeTime; //重新充能

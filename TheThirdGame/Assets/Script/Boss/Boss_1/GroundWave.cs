@@ -59,6 +59,7 @@ public class GroundWave : MonoBehaviour
     IEnumerator DelayWave(GameObject obj)
     {
         yield return new WaitForSeconds(3f);
+        AVmanager.instance.Play("Wizard_FireSpell_3");
         obj.transform.GetChild(0).gameObject.SetActive(true);
     }
 }

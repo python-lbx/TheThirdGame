@@ -185,7 +185,7 @@ public class Boss_Level_2 : MonoBehaviour
                 if(NumberOfPhase == 3)//第三波
                 {
                     SkillPhase++;
-                    PhaseTime = 4f; //待機 Idle時間
+                    PhaseTime = 2f; //待機 Idle時間
                     NumberOfPhase = 0;
                 }
             }
@@ -217,7 +217,7 @@ public class Boss_Level_2 : MonoBehaviour
 
                 quartetflame.SetActive(false);
                 SkillPhase++;
-                PhaseTime = 3f; //待機時間
+                PhaseTime = 2f; //待機時間
                 current_Statue = Statue.Idle;
             }            
             break;
@@ -280,7 +280,7 @@ public class Boss_Level_2 : MonoBehaviour
                 DialogTable.SetActive(false);
                 Dialog.text = "";
 
-                PhaseTime = 1f;
+                PhaseTime = 2f;
                 transform.position = BackToGround.transform.position;
 
                 //落地解除無敵
@@ -335,6 +335,7 @@ public class Boss_Level_2 : MonoBehaviour
             else if(SkillCD <= 0)
             {
                 anim.SetTrigger("Attack");
+                AVmanager.instance.Play("Wizard_FireSpell_4");
 
                 var movewaveleft = MoveWave_Pool.instance.GetFormPool(left);
                 var movewaveright= MoveWave_Pool.instance.GetFormPool(right);

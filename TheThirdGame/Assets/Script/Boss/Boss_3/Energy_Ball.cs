@@ -38,7 +38,6 @@ public class Energy_Ball : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) 
     {   
-        //要改
         if(other.gameObject.name == "CrushWave")
         {
             print("Boss");
@@ -46,6 +45,7 @@ public class Energy_Ball : MonoBehaviour
             other.GetComponentInParent<Boss_Level_3>().ballamount ++;
 
             //王回血
+            AVmanager.instance.Play("Recover");
             other.GetComponentInParent<EnemyController>().GetHeal(heal);
 
             var floatdamage = FloatDamagePool.instance.GetFormPool(); //生成治療浮動點數

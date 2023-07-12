@@ -68,5 +68,10 @@ public class Z_Attack_Box : MonoBehaviour
                 playercontroller.MPBall ++;
             }
         }
+
+        if(other.gameObject.CompareTag("EnemyWeapon"))
+        {
+            AVmanager.instance.Play("Z_Hit");
+        }
     }
 }

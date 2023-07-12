@@ -62,7 +62,7 @@ MonoBehaviour:
   Boss: {fileID: 334752856793952381, guid: 45c1d3d34e2cfd9469181a135d42702e, type: 3}
   isEndRoom: 0
   whichroom: {fileID: 0}
-  Ladder: {fileID: 0}
+  Ladder: {fileID: 6113697727470420246}
   MapWall: {fileID: 5729602340934695750}
 --- !u!1 &2046464049693004050
 GameObject:

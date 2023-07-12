@@ -110,7 +110,7 @@ public class Random_Fire : MonoBehaviour
         else if(shootTime <= 0)
         {
             shootTime = shootcd;
-
+            AVmanager.instance.Play("Wizard_FireSpell_1");
             var fireball = FireBall_Pool.instance.GetFormPool(this.transform);
 
             switch (SD)

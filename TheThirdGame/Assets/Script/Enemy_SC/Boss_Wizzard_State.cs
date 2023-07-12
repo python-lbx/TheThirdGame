@@ -122,10 +122,7 @@ public class Boss_Wizzard_State : MonoBehaviour
             switch(Boss)
             {
                 case boss.One:
-                //anim.SetBool("Run",false); 各自腳本處理
-                boss_I.current_Statue = Boss_Orc_Wizzard.Statue.Idle;
-                boss_I.PhaseTime = 10f;
-                boss_I.speed = 0;
+                boss_I.current_Statue = Boss_Orc_Wizzard.Statue.GameOver;
                 break;
 
                 case boss.Two:

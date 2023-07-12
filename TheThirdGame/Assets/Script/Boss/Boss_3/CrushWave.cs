@@ -76,6 +76,11 @@ public class CrushWave : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
+    public void voice()
+    {
+        AVmanager.instance.Play("Wizard_FireSpell_5");
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.name == "NPC")

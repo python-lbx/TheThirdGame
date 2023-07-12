@@ -18,6 +18,7 @@ public class BossLevelManager : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {   
             AVmanager.instance.Stop("Level");
+            AVmanager.instance.Play("BossStart");
             UI.SetActive(true);
             bossUI = UI.GetComponent<BossResourceUI>();
             switch(level)

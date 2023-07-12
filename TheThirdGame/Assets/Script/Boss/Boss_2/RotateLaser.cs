@@ -18,6 +18,7 @@ public class RotateLaser : MonoBehaviour
         else
         {
             trans.Rotate(0,0,Random.Range(-120,240));
+            AVmanager.instance.Play("Wizard_FireSpell_2");
         }
 
         
@@ -32,8 +33,7 @@ public class RotateLaser : MonoBehaviour
             scale.GetComponent<Transform>().localScale = new Vector3(3,2,1);
         }
         
-        
-
+        AVmanager.instance.Stop("Wizard_FireSpell_2");
     }
     // Start is called before the first frame update
 

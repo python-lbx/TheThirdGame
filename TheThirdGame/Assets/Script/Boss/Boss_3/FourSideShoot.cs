@@ -105,6 +105,7 @@ public class FourSideShoot : MonoBehaviour
         for(j = 0 ; j < i ; j++)
         {
             ShootList[j].GetComponent<ShootTrigger>().SpawnProjectiles();
+            AVmanager.instance.Play("Wizard_FireSpell_1");
         }
 
         i++;

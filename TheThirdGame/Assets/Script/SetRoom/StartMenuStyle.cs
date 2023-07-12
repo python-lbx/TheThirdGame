@@ -28,11 +28,11 @@ public class StartMenuStyle : MonoBehaviour
         }
     }
 
-    private void Update() 
-    {
-        if(Input.GetKeyDown(KeyCode.Keypad0))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-    }
+    // private void Update() 
+    // {
+    //     if(Input.GetKeyDown(KeyCode.Keypad0))
+    //     {
+    //         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    //     }
+    // }
 }

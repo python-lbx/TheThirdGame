@@ -117,10 +117,10 @@ public class RoomDirecter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }   
+        // if(Input.GetKeyDown(KeyCode.Q))
+        // {
+        //     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        // }   
 
         //全清則最終房間打開
         for(int i = 0; i < rooms.Count -1 ;i++)
@@ -137,7 +137,7 @@ public class RoomDirecter : MonoBehaviour
         }
 
         
-        if(endroomCanOpen || Input.GetKeyDown(KeyCode.E))
+        if(endroomCanOpen)
         {
             //最終房間開啟
             endroom.SetActive(true);

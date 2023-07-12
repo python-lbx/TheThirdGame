@@ -118,6 +118,7 @@ public class Boss_Orc_Wizzard : MonoBehaviour
             {        
                 DialogTable.SetActive(true);
                 Dialog.text = "滾開";
+                AVmanager.instance.Play("Wizard_FireSpell_1");
 
                 anim.SetBool("Run",false);
                 rb.velocity = new Vector2(0,0);
@@ -252,6 +253,9 @@ public class Boss_Orc_Wizzard : MonoBehaviour
             }
     
             anim.SetTrigger("Attack");//攻擊
+
+            AVmanager.instance.Play("Wizard_FireSpell_1");
+
             TransCD = 1.5f; //傳送間隔
             NumOfTrans++; //傳送次數
         }

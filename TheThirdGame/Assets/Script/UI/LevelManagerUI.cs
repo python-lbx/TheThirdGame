@@ -20,15 +20,19 @@ public class LevelManagerUI : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if(settingpackage.activeSelf && settingpackage != null)
+    {   
+        if(settingpackage != null)
         {
-            levelpackage.SetActive(false);
+            if(settingpackage.activeSelf)
+            {
+                levelpackage.SetActive(false);
+            }
+            else
+            {
+                levelpackage.SetActive(true);
+            }        
         }
-        else
-        {
-            levelpackage.SetActive(true);
-        }
+
 
         if(Input.GetKeyDown(KeyCode.Escape))
         {

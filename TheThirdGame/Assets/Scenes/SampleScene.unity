@@ -623,7 +623,7 @@ MonoBehaviour:
   ATK_Before: 0
   ATK_After: 0
   ATK_Compare: 0
-  Player_ATK: 10000
+  Player_ATK: 25
   CRI_Before: 0
   CRI_Ater: 0
   CRI_Compare: 0
@@ -51418,8 +51418,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -17.9379}
-  m_SizeDelta: {x: -313.6411, y: -140.6218}
+  m_AnchoredPosition: {x: 0, y: -0.000015258789}
+  m_SizeDelta: {x: -499.4204, y: -258.6095}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &801924112
 MonoBehaviour:
@@ -52247,8 +52247,8 @@ MonoBehaviour:
   tempDate: {fileID: 0}
   thisData: {fileID: 0}
   IsBoss: 1
-  health: 3000
-  currenthealth: 3000
+  health: 7500
+  currenthealth: 7500
   ATK: 10
   dead: 0
   whichroom: {fileID: 0}
@@ -53650,7 +53650,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -42.3}
+  m_AnchoredPosition: {x: 0, y: -48.9}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &909558487
@@ -53696,7 +53696,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 909558488}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1550486275}
+        m_TargetAssemblyTypeName: PlayerState, Assembly-CSharp
+        m_MethodName: QTG
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &909558488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53717,8 +53729,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -3753825769889500098, guid: 2518b402e75cde54294fafcea54c9b06, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -55465,7 +55477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -73164,8 +73176,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1233462353}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.34480584, y: -16.783726, z: -13.594372}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 144296007}
@@ -73335,7 +73347,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1237636490}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1550486275}
+        m_TargetAssemblyTypeName: PlayerState, Assembly-CSharp
+        m_MethodName: Restart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1237636490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73356,8 +73380,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -3753825769889500098, guid: 2518b402e75cde54294fafcea54c9b06, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -73764,7 +73788,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1266651426
 Transform:
   m_ObjectHideFlags: 0
@@ -84665,7 +84689,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 20.5, y: 19}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1360839681
@@ -106045,7 +106069,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -10.8, y: 15.8}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1535156782
@@ -106711,6 +106735,7 @@ MonoBehaviour:
   GroundCheckDistance: 0.5
   CharacterState: {fileID: 24235441}
   playerAttack: {fileID: 1550486274}
+  Player: {fileID: 1073932099}
 --- !u!212 &1550486269
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -106770,7 +106795,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1550486266}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -200, y: -200, z: 0}
+  m_LocalPosition: {x: -207.72, y: -204.29, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 971660491}
@@ -106891,6 +106916,7 @@ MonoBehaviour:
   current_Statue: 0
   fade: 0
   playerAttackController: {fileID: 1550486274}
+  playerController: {fileID: 0}
   playerMovement: {fileID: 1550486268}
   platformCollider: {fileID: 1550486271}
   map: {fileID: 631035700}
@@ -132130,7 +132156,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 40}
+  m_AnchoredPosition: {x: 0, y: 61.3}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2049600126
@@ -133775,7 +133801,7 @@ MonoBehaviour:
   faceright: 1
   current_Statue: 0
   Next_Skill_Statue: 0
-  PhaseTime: 2
+  PhaseTime: 0
   SkillPhase: 0
   FourSideShoot: {fileID: 858418765}
   ballamount: 0
@@ -140955,8 +140981,8 @@ MonoBehaviour:
   tempDate: {fileID: 0}
   thisData: {fileID: 0}
   IsBoss: 1
-  health: 2000
-  currenthealth: 2000
+  health: 4000
+  currenthealth: 4000
   ATK: 10
   dead: 0
   whichroom: {fileID: 0}

@@ -51,6 +51,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("角色數值")]
     public Player_Attributes CharacterState;
     public PlayerAttackController playerAttack;
+    [Header("角色位置")]
+    public GameObject Player;
     
     void Start()
     {
@@ -59,6 +61,10 @@ public class PlayerMovement : MonoBehaviour
         playerAttack = GetComponent<PlayerAttackController>();
         
         faceright = true;
+        if(!Player.activeSelf)
+        {
+            Player.SetActive(true);
+        }
     }
 
     void Update()

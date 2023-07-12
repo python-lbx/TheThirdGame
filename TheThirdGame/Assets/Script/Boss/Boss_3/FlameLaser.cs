@@ -61,10 +61,11 @@ public class FlameLaser : MonoBehaviour
     void activecoll()
     {
         coll.enabled = true;
+        b_anim.SetTrigger("Attack");
     }
 
     void Attack_anim_Trigger()
     {
-        b_anim.SetTrigger("Attack");
+        AVmanager.instance.Play("Wizard_FireSpell_3");
     }
 }

@@ -10,6 +10,7 @@ public class TutorialRoom_CameralContorl : MonoBehaviour
         {   
             FindObjectOfType<CameraController>().ChangeTarget(transform);
             AVmanager.instance.Play("Tutorial");
+            AVmanager.instance.Play("GameStart");
         }
     }
 
