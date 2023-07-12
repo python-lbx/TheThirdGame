@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EightBall : MonoBehaviour
 {
@@ -9,6 +10,11 @@ public class EightBall : MonoBehaviour
     public int i;
     public float activetime;
     public float activetimecd;
+    
+    [Header("對話框")]
+    public GameObject DialogTable;
+    public GameObject TextPoint;
+    public Text Dialog;
 
     // Start is called before the first frame update
     private void OnEnable() 
@@ -42,6 +48,9 @@ public class EightBall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+                //對話框位置
+        DialogTable.transform.position = TextPoint.transform.position;
+
         if(i < numbers.Length)
         {
             if(activetime > 0)
@@ -50,6 +59,8 @@ public class EightBall : MonoBehaviour
             }
             else if(activetime <= 0)
             {   
+                DialogTable.SetActive(false);
+                Dialog.text = "";
                 print(ballpoint[numbers[i]]);
                 ballpoint[numbers[i]].SetActive(true);
                 activetime = activetimecd;

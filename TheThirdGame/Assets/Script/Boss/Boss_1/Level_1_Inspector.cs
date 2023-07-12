@@ -16,7 +16,7 @@ public class Level_1_Inspector : MonoBehaviour
 
             Boss.layer = LayerMask.NameToLayer("Invincible");   
             Boss.GetComponent<Boss_Orc_Wizzard>().DialogTable.SetActive(true);
-            Boss.GetComponent<Boss_Orc_Wizzard>().Dialog.text = "結束了";
+            Boss.GetComponent<Boss_Orc_Wizzard>().Dialog.text = "It's over";
 
             Invoke("stopthisScript",2f);
         }   

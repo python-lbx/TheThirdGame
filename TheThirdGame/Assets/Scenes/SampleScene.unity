@@ -30640,7 +30640,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 32.224}
+  m_SizeDelta: {x: 180, y: 32.224}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &456363341
 MonoBehaviour:
@@ -45167,7 +45167,7 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 10
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
@@ -45176,7 +45176,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u9A45\u9010\u4FB5\u5165\u8005!"
+  m_Text: Rotate_Laser_Controller
 --- !u!222 &697233294
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -53569,7 +53569,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 32.224}
+  m_SizeDelta: {x: 180, y: 32.224}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &906180878
 MonoBehaviour:
@@ -71646,6 +71646,9 @@ MonoBehaviour:
   i: 0
   activetime: 2.25
   activetimecd: 2.25
+  DialogTable: {fileID: 1182256591}
+  TextPoint: {fileID: 1717255699}
+  Dialog: {fileID: 697233293}
 --- !u!4 &1079852206 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4607887188605062236, guid: 4369b6d6b3dd7714ab902c451b136ceb, type: 3}
@@ -106629,7 +106632,7 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 10
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
@@ -106638,7 +106641,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u9A45\u9010\u4FB5\u5165\u8005!"
+  m_Text: Pain! Despair! Screams!
 --- !u!222 &1546062944
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -108515,7 +108518,7 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 10
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
@@ -108524,7 +108527,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u9A45\u9010\u4FB5\u5165\u8005!"
+  m_Text: Pain! Despair! Screams!
 --- !u!222 &1600543997
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -134085,7 +134088,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 32.224}
+  m_SizeDelta: {x: 180, y: 32.224}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2121667196
 MonoBehaviour:

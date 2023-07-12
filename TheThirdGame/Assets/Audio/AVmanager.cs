@@ -29,7 +29,7 @@ public class AVmanager : MonoBehaviour
         foreach(Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
-            Totalvolume =  PlayerPrefs.GetFloat("Audio");//必須
+            Totalvolume =  PlayerPrefs.GetFloat("Audio",0);//必須
 
             s.source.clip  = s.clip;
 

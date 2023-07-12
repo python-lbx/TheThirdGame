@@ -16,7 +16,7 @@ public class Level_2_Inspector : MonoBehaviour
 
             Boss.layer = LayerMask.NameToLayer("Invincible");   
             Boss.GetComponent<Boss_Level_2>().DialogTable.SetActive(true);
-            Boss.GetComponent<Boss_Level_2>().Dialog.text = "弱小的存在";
+            Boss.GetComponent<Boss_Level_2>().Dialog.text = "Weak existence";
 
             Invoke("stopthisScript",2f);
         }    

@@ -70,9 +70,8 @@ public class FourSideShoot : MonoBehaviour
             {
                 anim.SetTrigger("Attack");
 
-                DialogTable.SetActive(true);
-                Dialog.text = "受死吧";
-
+                DialogTable.SetActive(false);
+                Dialog.text = "";
 
                 ShootList[i].transform.position = Player.transform.position;
 

@@ -145,17 +145,17 @@ public class Boss_Wizzard_State : MonoBehaviour
             {
                 case boss.One:
                 boss_I.DialogTable.SetActive(true);
-                boss_I.Dialog.text = "我在虛無等你...";
+                boss_I.Dialog.text = "waiting for you in nothingness...";
                 break;
 
                 case boss.Two:
                 boss_II.DialogTable.SetActive(true);
-                boss_II.Dialog.text = "虛無在呼喚你...";
+                boss_II.Dialog.text = "Nothingness is summoning you...";
                 break;
 
                 case boss.Three:
                 boss_III.DialogTable.SetActive(true);
-                boss_III.Dialog.text = "虛無...背叛...了我";                
+                boss_III.Dialog.text = "The void...betrayed...me";                
                 break;
             }
 

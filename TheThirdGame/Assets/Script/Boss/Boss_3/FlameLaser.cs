@@ -29,6 +29,7 @@ public class FlameLaser : MonoBehaviour
     {
         if(other.gameObject.name == "shield")
         {
+            AVmanager.instance.Play("ShieldBroken");
             other.gameObject.SetActive(false);
         }
 

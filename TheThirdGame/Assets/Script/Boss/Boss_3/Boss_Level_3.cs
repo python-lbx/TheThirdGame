@@ -62,7 +62,7 @@ public class Boss_Level_3 : MonoBehaviour
     {
         DialogTable.transform.position = TextPoint.transform.position;
         DialogTable.SetActive(true);
-        Dialog.text = "放棄爭扎吧";
+        Dialog.text = "Stop resisting";
     }
     void Start()
     {
@@ -76,7 +76,7 @@ public class Boss_Level_3 : MonoBehaviour
         shuffleArray(numbers);
         Debug.Log(string.Join(", ", numbers));
 
-        PhaseTime = 0f;
+        PhaseTime = 1f;
 
         faceright = true;
     }
@@ -143,6 +143,10 @@ public class Boss_Level_3 : MonoBehaviour
             {
                 if(Next_Skill_Statue == Statue.FourSideShoot)
                 {
+                    
+                    DialogTable.SetActive(true);
+                    Dialog.text = "Die";
+
                     if(!FourSideShoot.activeSelf) //未激活才觸發
                     {
                         FourSideShoot.SetActive(true); 
@@ -151,6 +155,9 @@ public class Boss_Level_3 : MonoBehaviour
 
                 else if(Next_Skill_Statue == Statue.EightBall)
                 {
+                    DialogTable.SetActive(true);
+                    Dialog.text = "More power";
+
                     if(!crushwave.activeSelf) //未激活才觸發
                     {
                         crushwave.SetActive(true);
@@ -166,13 +173,18 @@ public class Boss_Level_3 : MonoBehaviour
 
                 else if(Next_Skill_Statue == Statue.MagicCircle) //魔法陣重置
                 {
+                    DialogTable.SetActive(true);
+                    Dialog.text = "Who's next?";
+
                     magic_circle_reset();
                 }
 
                 else if(Next_Skill_Statue == Statue.LaserShield) //死光重置
                 {
-
                     LaserShield.SetActive(true); //自身護盾
+                    DialogTable.SetActive(true);
+                    Dialog.text = "Pain! Despair! Screams!";
+
 
                     for(int i = 0 ; i < shieldList.Length ; i++) //監禁開始
                     {
@@ -205,7 +217,7 @@ public class Boss_Level_3 : MonoBehaviour
 
             if(FourSideShoot.GetComponent<FourSideShoot>().i == 4) //4次後轉階段
             {
-                PhaseTime = 2f;
+                PhaseTime = 2.5f;
                 SkillPhase++;
 
                 current_Statue = Statue.Idle; //待機
@@ -230,7 +242,7 @@ public class Boss_Level_3 : MonoBehaviour
                 crushwave.GetComponent<Animator>().SetBool("Start",true);
 
                 DialogTable.SetActive(true);
-                Dialog.text = "爆炸!!";
+                Dialog.text = "Explosion!!";
 
 
                 //ballamount = 0
@@ -261,15 +273,10 @@ public class Boss_Level_3 : MonoBehaviour
                 SkillPhase++;
 
                 DialogTable.SetActive(true);
-                Dialog.text = "該死的蟲子";
+                Dialog.text = "Cursed insects";
 
                 //current_Statue = Statue.Idle;
                 Invoke("IdleDelay",1.5f);
-            }
-            else
-            {
-                DialogTable.SetActive(true);
-                Dialog.text = "更多的力量";
             }
             break;
 
@@ -280,8 +287,6 @@ public class Boss_Level_3 : MonoBehaviour
             
             if(PhaseTime <= 0)
             {
-                DialogTable.SetActive(true);
-                Dialog.text = "下一個換誰?";
 
                 anim.SetBool("Spelling",true);
                 magic_circle_countdown(); //魔法陣
@@ -302,7 +307,7 @@ public class Boss_Level_3 : MonoBehaviour
                 magic_circle_reset();
 
                 DialogTable.SetActive(true);
-                Dialog.text = "不錯的表演";
+                Dialog.text = "Nice show";
 
                 //current_Statue = Statue.Idle;
                 Invoke("IdleDelay",1.5f);
@@ -317,8 +322,6 @@ public class Boss_Level_3 : MonoBehaviour
             //死光破盾
             if(shoottime < 4)
             {
-                DialogTable.SetActive(true);
-                Dialog.text = "痛苦!絕望!尖叫!";
 
                 if(focustime > 0)
                 {
@@ -330,6 +333,8 @@ public class Boss_Level_3 : MonoBehaviour
                 }
                 else if(focustime <= 0)
                 {
+                    DialogTable.SetActive(false);
+                    Dialog.text = "";
 
                     Laser.GetComponent<Animator>().SetBool("Start",true);
                     //碰撞取消
@@ -377,7 +382,7 @@ public class Boss_Level_3 : MonoBehaviour
 
                     LaserShield.SetActive(false); //自身護盾
                     
-                    PhaseTime = 0f;
+                    PhaseTime = 1f;
                     SkillPhase = 0; //迴圈重置
 
                     focustime = RechargeTime; //重新充能
@@ -476,6 +481,9 @@ public class Boss_Level_3 : MonoBehaviour
             }
             else if(magic_appear_time <= 0)
             {
+                DialogTable.SetActive(false);
+                Dialog.text = "";
+
                 magic_circle_List[numbers[i]].SetActive(true);
                 i++;
                 magic_appear_time = magic_appear_time_CD;

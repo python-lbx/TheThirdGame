@@ -49,7 +49,7 @@ public class Level_3_Inspector : MonoBehaviour
             Boss.GetComponent<Boss_Level_3>().current_Statue = Boss_Level_3.Statue.GameOver;
 
             Boss.GetComponent<Boss_Level_3>().DialogTable.SetActive(true);
-            Boss.GetComponent<Boss_Level_3>().Dialog.text = "你一個都救不了";
+            Boss.GetComponent<Boss_Level_3>().Dialog.text = "You can't save any of them";
             
             Player.GetComponent<PlayerState>().current_Statue = PlayerState.Statue.Dead;
 
@@ -60,7 +60,7 @@ public class Level_3_Inspector : MonoBehaviour
             Boss.GetComponent<Boss_Level_3>().current_Statue = Boss_Level_3.Statue.GameOver;
 
             Boss.GetComponent<Boss_Level_3>().DialogTable.SetActive(true);
-            Boss.GetComponent<Boss_Level_3>().Dialog.text = "屈服於力量吧";
+            Boss.GetComponent<Boss_Level_3>().Dialog.text = "Submit to the power";
 
             Invoke("stopthisScript",2f);
         }

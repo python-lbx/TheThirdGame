@@ -77,7 +77,6 @@ public class Orc_Wizzard : MonoBehaviour
 
             case Statue.Spell:
             anim.SetTrigger("Attack");
-            AVmanager.instance.Play("Wizard_Spell_1");
             PhaseTime = RechargeTime;
             statue = Statue.Idle;
             break;

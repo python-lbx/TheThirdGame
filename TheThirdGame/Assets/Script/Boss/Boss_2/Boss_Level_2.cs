@@ -54,7 +54,7 @@ public class Boss_Level_2 : MonoBehaviour
         Player = GameObject.Find("Player");
         DialogTable.transform.position = TextPoint.transform.position;
         DialogTable.SetActive(true);
-        Dialog.text = "這次沒那麼好運";
+        Dialog.text = "Not so lucky this time";
     }
 
 
@@ -153,7 +153,7 @@ public class Boss_Level_2 : MonoBehaviour
             {   
                 //地動熱波對話開始
                 DialogTable.SetActive(true);
-                Dialog.text = "快逃吧";
+                Dialog.text = "Run";
 
                 anim.SetBool("Run",false);
                 rb.velocity = new Vector2(0,0);
@@ -203,7 +203,7 @@ public class Boss_Level_2 : MonoBehaviour
             if(quartetflame.GetComponent<Random_Fire>().canshoot)
             {
                 DialogTable.SetActive(true);
-                Dialog.text = "開火!!射擊!!";
+                Dialog.text = "Fire!!Shoot!!";
             }
             else
             {
@@ -229,7 +229,7 @@ public class Boss_Level_2 : MonoBehaviour
             {   
                 //傳送對話
                 DialogTable.SetActive(true);
-                Dialog.text = "還沒完";
+                Dialog.text = "It's not over yet";
 
                 PhaseTime -= Time.deltaTime;
             }
@@ -237,7 +237,7 @@ public class Boss_Level_2 : MonoBehaviour
             {
                 //施法對話
                 DialogTable.SetActive(true);
-                Dialog.text = "更強的力量...";
+                Dialog.text = "Stronger power...";
 
                 anim.SetBool("Spelling",true);
                 shield.SetActive(true);
@@ -271,7 +271,7 @@ public class Boss_Level_2 : MonoBehaviour
             if(PhaseTime > 0)
             {
                 DialogTable.SetActive(true);
-                Dialog.text = "可惡...";
+                Dialog.text = "Curses...";
 
                 PhaseTime -= Time.deltaTime;
             }

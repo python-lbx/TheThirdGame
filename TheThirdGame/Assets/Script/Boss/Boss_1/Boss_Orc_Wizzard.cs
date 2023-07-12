@@ -53,7 +53,7 @@ public class Boss_Orc_Wizzard : MonoBehaviour
         Player = GameObject.Find("Player");
         DialogTable.transform.position = TextPoint.transform.position;
         DialogTable.SetActive(true);
-        Dialog.text = "驅逐入侵者";
+        Dialog.text = "Expel the invaders";
     }
     void Start()
     {
@@ -117,7 +117,7 @@ public class Boss_Orc_Wizzard : MonoBehaviour
             else if(PhaseTime <= 0)
             {        
                 DialogTable.SetActive(true);
-                Dialog.text = "滾開";
+                Dialog.text = "Get out";
                 AVmanager.instance.Play("Wizard_FireSpell_1");
 
                 anim.SetBool("Run",false);
@@ -142,7 +142,7 @@ public class Boss_Orc_Wizzard : MonoBehaviour
 
             case Statue.TransAndShoot: //5
             DialogTable.SetActive(true);
-            Dialog.text = "無處可逃";
+            Dialog.text = "Nowhere to escape";
 
             rb.gravityScale = 0;
             TransShoot();
@@ -160,7 +160,7 @@ public class Boss_Orc_Wizzard : MonoBehaviour
             else if(PhaseTime <= 0)
             {
                 DialogTable.SetActive(true);
-                Dialog.text = "感受我的憤怒";
+                Dialog.text = "Feel my anger";
 
                 GroundWave.Ground_Wave();
             } 
