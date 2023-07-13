@@ -18,7 +18,7 @@ public class SettingManager : MonoBehaviour
 
     private void Awake() 
     {
-        AudioSlider.value = PlayerPrefs.GetFloat("Audio");
+        AudioSlider.value = PlayerPrefs.GetFloat("Audio",1f); //必須對應KEY值默認為1
         
     }
     void Start() 
@@ -32,6 +32,8 @@ public class SettingManager : MonoBehaviour
     void Update()
     {   
         AVmanager.Totalvolume = AudioSlider.value;
+
+        PlayerPrefs.SetFloat("Audio",AudioSlider.value); //存儲KEY值
 
         if(GameOverUI == null)
         {
@@ -98,6 +100,7 @@ public class SettingManager : MonoBehaviour
     public void closeSetting()
     {        
         settingpackage.SetActive(false);
+        Time.timeScale = 1;
     }
     
     public void backtomenu()

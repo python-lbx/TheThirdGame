@@ -11,6 +11,7 @@ public class TutorialChest : MonoBehaviour
     [Header("掉寶")]
     public GameObject[] Tresure;
     public int DropTime;
+    public bool firsttime = true;
 
     // Start is called before the first frame update
     void Start()
@@ -25,10 +26,11 @@ public class TutorialChest : MonoBehaviour
 
         if(Here)
         {
-            if(Input.GetKeyDown(GameManager.GM.interactive))
+            if(Input.GetKeyDown(GameManager.GM.interactive) && firsttime)
             {
                 anim.SetBool("Open",true);
                 AVmanager.instance.Play("Chest_Open");
+                firsttime = false;
             }
         }
 

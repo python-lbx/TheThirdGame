@@ -56,5 +56,6 @@ public class LevelManagerUI : MonoBehaviour
     public void openSetting()
     {
         settingpackage.SetActive(true);
+        Time.timeScale = 0;
     }
 }

@@ -7175,7 +7175,7 @@ MonoBehaviour:
     ptich: 1
     loop: 0
     source: {fileID: 0}
-  Totalvolume: 1
+  Totalvolume: 0
 --- !u!4 &734385534
 Transform:
   m_ObjectHideFlags: 0
@@ -24039,6 +24039,10 @@ MonoBehaviour:
   - {fileID: 1841946212}
   BGRandomIndex: 0
   InsideRandomIndex: 0
+  BGRandomTemp: 0
+  InsideRandomTemp: 0
+  timer: 1.5
+  timercd: 1.5
 --- !u!1839735485 &8404150786998214192
 Tilemap:
   m_ObjectHideFlags: 0

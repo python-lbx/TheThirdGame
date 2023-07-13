@@ -20412,6 +20412,7 @@ MonoBehaviour:
   level: 3
   Boss: {fileID: 2116460061}
   portal: {fileID: 1611925262}
+  firsttime: 1
 --- !u!61 &301292522
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -30817,6 +30818,7 @@ MonoBehaviour:
   level: 1
   Boss: {fileID: 5115615275436969428}
   portal: {fileID: 42333244}
+  firsttime: 1
 --- !u!61 &467423013
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -31101,6 +31103,7 @@ MonoBehaviour:
   BackToLevel: {fileID: 1266651426}
   clearEquipment: {fileID: 500727272}
   player_Attributes: {fileID: 24235441}
+  playerController: {fileID: 971660490}
 --- !u!114 &500727272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38841,6 +38844,7 @@ MonoBehaviour:
   level: 2
   Boss: {fileID: 825556122}
   portal: {fileID: 658176096}
+  firsttime: 1
 --- !u!61 &640004327
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -55103,6 +55107,7 @@ MonoBehaviour:
   - {fileID: 1631504695}
   - {fileID: 1892329070}
   DropTime: 0
+  firsttime: 1
 --- !u!1 &949914268
 GameObject:
   m_ObjectHideFlags: 0
@@ -106571,6 +106576,7 @@ MonoBehaviour:
   - {fileID: 3526521}
   - {fileID: 60554333}
   DropTime: 0
+  firsttime: 1
 --- !u!1 &1546062941
 GameObject:
   m_ObjectHideFlags: 0
@@ -135042,6 +135048,7 @@ MonoBehaviour:
   - {fileID: 2903579498987979449, guid: 7e45777be12226b4a83a1aa857da9485, type: 3}
   - {fileID: 3924806303387752558, guid: 7a5a89970685cd44f81280c531a2ed9b, type: 3}
   DropTime: 5
+  firsttime: 1
 --- !u!61 &461056745908078586
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -135329,6 +135336,7 @@ MonoBehaviour:
   - {fileID: 1192161801}
   - {fileID: 683697051}
   DropTime: 0
+  firsttime: 1
 --- !u!212 &2480061813737185395
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -140652,6 +140660,7 @@ MonoBehaviour:
   - {fileID: 3924806303387752558, guid: 7a5a89970685cd44f81280c531a2ed9b, type: 3}
   cherrypoint: []
   DropTime: 3
+  firsttime: 1
 --- !u!4 &4775591092756411864
 Transform:
   m_ObjectHideFlags: 0
@@ -141295,6 +141304,7 @@ MonoBehaviour:
   - {fileID: 3924806303387752558, guid: 7a5a89970685cd44f81280c531a2ed9b, type: 3}
   cherrypoint: []
   DropTime: 0
+  firsttime: 1
 --- !u!1001 &7046599586843796937
 PrefabInstance:
   m_ObjectHideFlags: 0

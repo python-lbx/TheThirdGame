@@ -24,16 +24,17 @@ public class AVmanager : MonoBehaviour
             return;
         }
 
+        //PlayerPrefs.DeleteKey("Audio");
+
         DontDestroyOnLoad(gameObject);
 
+        Totalvolume =  PlayerPrefs.GetFloat("Audio",1f); //必須對應KEY值默認為1
         foreach(Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
-            Totalvolume =  PlayerPrefs.GetFloat("Audio",0);//必須
 
             s.source.clip  = s.clip;
 
-            s.source.volume = s.volume;
             s.source.pitch = s.ptich;
             s.source.loop = s.loop;
 
@@ -47,7 +48,7 @@ public class AVmanager : MonoBehaviour
         foreach(Sound s in sounds)
         {
             s.source.volume = Totalvolume;
-            print(s.source.volume);
+            //print(s.source.volume);
         }
     }
 
@@ -59,7 +60,7 @@ public class AVmanager : MonoBehaviour
         {
             s.source.volume = Totalvolume;
 
-            PlayerPrefs.SetFloat("Audio",s.source.volume);
+            PlayerPrefs.SetFloat("Audio",s.source.volume); //存儲
 
             //print(s.source.volume);
         }

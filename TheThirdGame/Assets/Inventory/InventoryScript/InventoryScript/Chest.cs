@@ -13,6 +13,8 @@ public class Chest : MonoBehaviour
     public GameObject[] Tresure;
     public GameObject[] cherrypoint;
     public int DropTime;
+    public bool firsttime = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,11 +29,12 @@ public class Chest : MonoBehaviour
 
         if(Here)
         {
-            if(Input.GetKeyDown(GameManager.GM.interactive))
+            if(Input.GetKeyDown(GameManager.GM.interactive) && firsttime)
             {
                 anim.SetBool("Open",true);
                 AVmanager.instance.Play("Chest_Open");
                 FirstRoom.GetComponent<RoomDirecter>().rooms[0].PortalActive = false;
+                firsttime = false;
             }
         }
 

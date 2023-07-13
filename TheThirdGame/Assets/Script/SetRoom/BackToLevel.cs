@@ -20,7 +20,7 @@ public class BackToLevel : MonoBehaviour
     {
         if(IsPlayer)
         {
-            if(Input.GetKeyDown(KeyCode.Y))
+            if(Input.GetKeyDown(GameManager.GM.interactive))
             {
                 Player.transform.position = OriginalRoomPos;
             }

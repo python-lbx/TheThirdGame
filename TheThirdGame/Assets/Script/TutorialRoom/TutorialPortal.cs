@@ -9,6 +9,7 @@ public class TutorialPortal : MonoBehaviour
     public Transform BackToLevel;
     public ClearEquipment clearEquipment;
     public Player_Attributes player_Attributes;
+    public PlayerController playerController;
 
     // Update is called once per frame
     void Update()
@@ -17,6 +18,7 @@ public class TutorialPortal : MonoBehaviour
         {
             if(Input.GetKeyDown(GameManager.GM.interactive))
             {
+                playerController.BattleStart = false;
                 Player.transform.position = BackToLevel.position;
                 clearEquipment.ClearEquip();
                 player_Attributes.updateAtt();

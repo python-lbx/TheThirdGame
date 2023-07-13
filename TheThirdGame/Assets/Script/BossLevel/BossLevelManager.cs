@@ -12,13 +12,20 @@ public class BossLevelManager : MonoBehaviour
     public int level;
     public GameObject Boss;
     public GameObject portal;
+    public bool firsttime = true;
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
         if(other.gameObject.CompareTag("Player"))
         {   
             AVmanager.instance.Stop("Level");
-            AVmanager.instance.Play("BossStart");
+
+            if(firsttime)
+            {
+                AVmanager.instance.Play("BossStart");
+                firsttime = false;
+            }
+
             UI.SetActive(true);
             bossUI = UI.GetComponent<BossResourceUI>();
             switch(level)
