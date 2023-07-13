@@ -11656,6 +11656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuPanel: {fileID: 1458114707}
+  AudioSlider: {fileID: 1087051904}
 --- !u!1 &1491976249
 GameObject:
   m_ObjectHideFlags: 0

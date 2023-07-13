@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MenuScript : MonoBehaviour
 {
     public Transform menuPanel;
+    public Slider AudioSlider;
     Event keyEvent;
     Text buttonText;
     KeyCode newKey;
@@ -294,6 +295,8 @@ public class MenuScript : MonoBehaviour
             PlayerPrefs.SetString("interactiveKey",GameManager.GM.interactive.ToString());
             break;
         }
+
+        AudioSlider.value = 1;
 
         waitingForKey = false;
     }
