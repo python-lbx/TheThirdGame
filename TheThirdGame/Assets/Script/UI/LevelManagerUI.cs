@@ -9,21 +9,23 @@ public class LevelManagerUI : MonoBehaviour
     public string levelname;
     public GameObject levelpackage;
     public GameObject settingpackage;
+    public GameObject ScreenSetting;
 
     // Start is called before the first frame update
     void Start()
     {
         levelpackage.SetActive(true);
-        settingpackage.SetActive(false);    
+        settingpackage.SetActive(false); 
+        ScreenSetting.SetActive(false);
         AVmanager.instance.Play("Menu");
     }
 
     // Update is called once per frame
     void Update()
     {   
-        if(settingpackage != null)
+        if(settingpackage != null && ScreenSetting != null)
         {
-            if(settingpackage.activeSelf)
+            if(settingpackage.activeSelf || ScreenSetting.activeSelf)
             {
                 levelpackage.SetActive(false);
             }
@@ -34,11 +36,17 @@ public class LevelManagerUI : MonoBehaviour
         }
 
 
+
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             if(settingpackage.activeSelf)
             {
                 settingpackage.SetActive(false);
+            }
+
+            if(ScreenSetting.activeSelf)
+            {
+                ScreenSetting.SetActive(false);
             }
         }
     }
@@ -56,6 +64,12 @@ public class LevelManagerUI : MonoBehaviour
     public void openSetting()
     {
         settingpackage.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void openScreenSetting()
+    {
+        ScreenSetting.SetActive(true);
         Time.timeScale = 0;
     }
 }
