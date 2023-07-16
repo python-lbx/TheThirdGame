@@ -235,9 +235,9 @@ public class SettingManager : MonoBehaviour
         width = resolution.width;
         height = resolution.height;
 
-
+        currentResolutionIndex = resolutionIndex;
 
         print(resolution.width+ ","+ resolution.height + ","+Screen.fullScreen);
-        //print(resolutionIndex);
+        print(resolutionIndex);
     }
 }
