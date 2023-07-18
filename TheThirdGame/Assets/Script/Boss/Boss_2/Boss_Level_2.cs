@@ -101,18 +101,10 @@ public class Boss_Level_2 : MonoBehaviour
             break;
 
             case 2:
-            Next_Skill_Statue = Statue.WalkAndWave;
-            break;
-
-            case 3:
-            Next_Skill_Statue = Statue.WalkAndFire;
-            break;
-
-            case 4:
             Next_Skill_Statue = Statue.Teleport;
             break;
 
-            case 5:
+            case 3:
             Next_Skill_Statue = Statue.Laser;
             break;
         }

@@ -212,7 +212,7 @@ public class Boss_Wizzard_State : MonoBehaviour
 
                 //寶箱內容
                 chest.SetActive(true);
-                chest.GetComponent<Chest>().DropTime = 5;
+                chest.GetComponent<Chest>().DropTime = 10;
 
                 //傳送門
                 portal.SetActive(true);

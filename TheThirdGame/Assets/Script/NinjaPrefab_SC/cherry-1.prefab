@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeTime: 5
   activeStart: 0
-  heal: 15
+  heal: 20
 --- !u!212 &2115691964704523265
 SpriteRenderer:
   m_ObjectHideFlags: 0
